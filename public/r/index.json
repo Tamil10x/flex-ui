@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "flexui",
+  "homepage": "https://flexui.dev",
+  "items": [
+    {
+      "name": "magnetic-button",
+      "type": "registry:ui",
+      "description": "A button that uses Framer Motion spring physics to magnetically pull toward the cursor on hover with a glowing spotlight border effect.",
+      "url": "/r/magnetic-button.json"
+    },
+    {
+      "name": "floating-panel",
+      "type": "registry:ui",
+      "description": "A headless, composable floating panel with glassmorphic styling, spring animations, position-aware anchoring, and built-in form support.",
+      "url": "/r/floating-panel.json"
+    },
+    {
+      "name": "three-hover-card",
+      "type": "registry:ui",
+      "description": "A premium card component that reveals a live Three.js 3D scene with a rotating icosahedron on hover. The canvas is lazy-loaded for performance.",
+      "url": "/r/three-hover-card.json"
+    }
+  ]
+}
