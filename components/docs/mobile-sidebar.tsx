@@ -13,6 +13,7 @@ import {
   Box,
   LayoutGrid,
   PanelTop,
+  Globe,
   Menu,
   X,
 } from "lucide-react";
@@ -26,6 +27,7 @@ const items = [
   { title: "Magnetic Button", href: "/docs/components/magnetic-button", icon: <MousePointer className="h-4 w-4" /> },
   { title: "3D Hover Card", href: "/docs/components/three-hover-card", icon: <Box className="h-4 w-4" /> },
   { title: "Floating Panel", href: "/docs/components/floating-panel", icon: <PanelTop className="h-4 w-4" /> },
+  { title: "Interactive Globe", href: "/docs/components/interactive-globe", icon: <Globe className="h-4 w-4" /> },
 ];
 
 export function MobileSidebar() {

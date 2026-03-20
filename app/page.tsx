@@ -7,6 +7,7 @@ import { BentoCard } from "@/components/marketing/bento-card";
 import { ThreeHoverCard } from "@/components/flexui/three-hover-card";
 import { MagneticButton } from "@/components/flexui/magnetic-button";
 import { CodeBlock } from "@/components/ui/code-block";
+import { InteractiveGlobe } from "@/components/flexui/interactive-globe";
 
 export default function Home() {
   return (
@@ -75,15 +76,30 @@ export default function Home() {
             </div>
           </BentoCard>
 
-          {/* Card 4 — Code snippet with copy button */}
+          {/* Card 4 — Interactive Globe showcase */}
           <BentoCard
-            className="md:col-span-2 min-h-[200px]"
+            className="md:col-span-2 min-h-[400px] overflow-hidden"
+            title="Interactive Globe"
+            subtitle="WebGL world map with animated arcs & color theming"
+          >
+            <div className="flex flex-1 w-full items-center justify-center overflow-hidden">
+              <InteractiveGlobe
+                theme="ocean"
+                showLabel={false}
+                className="w-full"
+              />
+            </div>
+          </BentoCard>
+
+          {/* Card 5 — Code snippet with copy button */}
+          <BentoCard
+            className="md:col-span-1 min-h-[200px]"
             title="One Command. Done."
             subtitle="No npm packages. No bundle bloat."
           >
             <div className="flex flex-1 items-center justify-center py-4">
               <CodeBlock
-                code="npx shadcn@latest add @flexui/three-hover-card"
+                code="npx shadcn@latest add @flexui/interactive-globe"
                 filename="Terminal"
               />
             </div>

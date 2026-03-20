@@ -14,6 +14,7 @@ import {
   Box,
   LayoutGrid,
   PanelTop,
+  Globe,
 } from "lucide-react";
 
 interface SidebarItem {
@@ -70,6 +71,11 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
         title: "Floating Panel",
         href: "/docs/components/floating-panel",
         icon: <PanelTop className="h-4 w-4" />,
+      },
+      {
+        title: "Interactive Globe",
+        href: "/docs/components/interactive-globe",
+        icon: <Globe className="h-4 w-4" />,
       },
     ],
   },

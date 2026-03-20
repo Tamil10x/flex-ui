@@ -98,6 +98,27 @@ const components: CardData[] = [
       </>
     ),
   },
+  {
+    name: "Interactive Globe",
+    href: "/docs/components/interactive-globe",
+    tier: "Tier 3",
+    tagline: "WebGL Globe",
+    description:
+      "Three.js-powered interactive world globe with animated connection arcs, ring pulses, and 5 built-in color themes.",
+    deps: ["three-globe", "@react-three/fiber", "@react-three/drei"],
+    gradient: "from-orange-600/20 via-rose-600/10 to-transparent",
+    glowColor: "rgba(249,115,22,0.15)",
+    iconBg: "bg-gradient-to-br from-orange-500 to-rose-500",
+    accentLine: "from-orange-500 to-rose-500",
+    icon: <Globe className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Globe className="absolute right-6 top-6 h-16 w-16 text-orange-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-rose-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-amber-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
 ];
 
 function ComponentCard({
