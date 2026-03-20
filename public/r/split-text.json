@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "split-text",
+  "type": "registry:ui",
+  "title": "Split Text",
+  "description": "Text animation that splits into characters or words with staggered slide, fade, or scale transitions on scroll.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/split-text.tsx",
+      "content": "\"use client\";\n\nimport React, { useRef } from \"react\";\nimport { motion, useInView } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface SplitTextProps {\n  text: string;\n  /** Split by \"char\" or \"word\" */\n  splitBy?: \"char\" | \"word\";\n  /** Stagger delay in seconds */\n  stagger?: number;\n  /** Animation variant */\n  variant?: \"slide-up\" | \"slide-down\" | \"fade\" | \"scale\";\n  once?: boolean;\n  className?: string;\n}\n\nconst variants = {\n  \"slide-up\": {\n    hidden: { y: 40, opacity: 0 },\n    visible: { y: 0, opacity: 1 },\n  },\n  \"slide-down\": {\n    hidden: { y: -40, opacity: 0 },\n    visible: { y: 0, opacity: 1 },\n  },\n  fade: {\n    hidden: { opacity: 0 },\n    visible: { opacity: 1 },\n  },\n  scale: {\n    hidden: { scale: 0.5, opacity: 0 },\n    visible: { scale: 1, opacity: 1 },\n  },\n};\n\nexport function SplitText({\n  text,\n  splitBy = \"char\",\n  stagger = 0.03,\n  variant = \"slide-up\",\n  once = true,\n  className,\n}: SplitTextProps) {\n  const ref = useRef<HTMLSpanElement>(null);\n  const isInView = useInView(ref, { once });\n\n  const units =\n    splitBy === \"word\" ? text.split(/(\\s+)/) : text.split(\"\");\n\n  const containerVariants = {\n    hidden: {},\n    visible: {\n      transition: {\n        staggerChildren: stagger,\n      },\n    },\n  };\n\n  const childVariants = {\n    hidden: variants[variant].hidden,\n    visible: {\n      ...variants[variant].visible,\n      transition: {\n        duration: 0.4,\n        ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number],\n      },\n    },\n  };\n\n  return (\n    <motion.span\n      ref={ref}\n      className={cn(\"inline-flex flex-wrap\", className)}\n      variants={containerVariants}\n      initial=\"hidden\"\n      animate={isInView ? \"visible\" : \"hidden\"}\n    >\n      {units.map((unit, i) => (\n        <span\n          key={`${unit}-${i}`}\n          className=\"inline-block overflow-hidden\"\n        >\n          <motion.span\n            className=\"inline-block whitespace-pre\"\n            variants={childVariants}\n          >\n            {unit}\n          </motion.span>\n        </span>\n      ))}\n    </motion.span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/split-text.tsx"
+    }
+  ]
+}

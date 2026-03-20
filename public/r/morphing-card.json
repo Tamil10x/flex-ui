@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "morphing-card",
+  "type": "registry:ui",
+  "title": "Morphing Card",
+  "description": "A card that smoothly morphs between collapsed and expanded states using layout animation with spring physics and content crossfade.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/morphing-card.tsx",
+      "content": "\"use client\";\n\nimport React, { useState, useId } from \"react\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\n// ─── Types ──────────────────────────────────────────────────────────────────\n\ninterface MorphingCardProps {\n  /** Content shown in collapsed state */\n  collapsed: React.ReactNode;\n  /** Content shown in expanded state */\n  expanded: React.ReactNode;\n  className?: string;\n  collapsedClassName?: string;\n  expandedClassName?: string;\n}\n\n// ─── Spring transition config ───────────────────────────────────────────────\n\nconst springTransition = {\n  type: \"spring\" as const,\n  stiffness: 200,\n  damping: 24,\n  mass: 1,\n};\n\nconst contentVariants = {\n  initial: { opacity: 0, filter: \"blur(6px)\" },\n  animate: { opacity: 1, filter: \"blur(0px)\" },\n  exit: { opacity: 0, filter: \"blur(6px)\" },\n};\n\n// ─── MorphingCard ───────────────────────────────────────────────────────────\n\nexport function MorphingCard({\n  collapsed,\n  expanded,\n  className,\n  collapsedClassName,\n  expandedClassName,\n}: MorphingCardProps) {\n  const [isExpanded, setIsExpanded] = useState(false);\n  const uniqueId = useId();\n  const layoutId = `morphing-card-${uniqueId}`;\n\n  return (\n    <motion.div\n      layoutId={layoutId}\n      onClick={() => setIsExpanded((prev) => !prev)}\n      className={cn(\n        \"relative cursor-pointer overflow-hidden\",\n        \"rounded-2xl\",\n        \"bg-zinc-950/90 backdrop-blur-2xl\",\n        \"shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(255,255,255,0.06)]\",\n        \"transition-shadow duration-500\",\n        isExpanded &&\n          \"shadow-[0_1px_0_0_rgba(255,255,255,0.05)_inset,0_0_0_1px_rgba(255,255,255,0.1),0_20px_60px_-15px_rgba(0,0,0,0.5)]\",\n        className,\n        isExpanded ? expandedClassName : collapsedClassName\n      )}\n      style={{ borderRadius: 16 }}\n      transition={springTransition}\n      layout\n      role=\"button\"\n      tabIndex={0}\n      onKeyDown={(e) => {\n        if (e.key === \"Enter\" || e.key === \" \") {\n          e.preventDefault();\n          setIsExpanded((prev) => !prev);\n        }\n      }}\n    >\n      {/* Glass top highlight */}\n      <div className=\"pointer-events-none absolute inset-x-0 top-0 z-[2] h-16 rounded-t-2xl bg-gradient-to-b from-white/[0.04] to-transparent\" />\n\n      {/* Content with crossfade */}\n      <AnimatePresence mode=\"wait\" initial={false}>\n        {isExpanded ? (\n          <motion.div\n            key=\"expanded\"\n            variants={contentVariants}\n            initial=\"initial\"\n            animate=\"animate\"\n            exit=\"exit\"\n            transition={{ duration: 0.2 }}\n            className=\"relative z-[1] p-5\"\n          >\n            {expanded}\n          </motion.div>\n        ) : (\n          <motion.div\n            key=\"collapsed\"\n            variants={contentVariants}\n            initial=\"initial\"\n            animate=\"animate\"\n            exit=\"exit\"\n            transition={{ duration: 0.2 }}\n            className=\"relative z-[1] p-5\"\n          >\n            {collapsed}\n          </motion.div>\n        )}\n      </AnimatePresence>\n    </motion.div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/morphing-card.tsx"
+    }
+  ]
+}

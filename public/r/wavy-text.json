@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "wavy-text",
+  "type": "registry:ui",
+  "title": "Wavy Text",
+  "description": "Text where each character animates in with a staggered wave pattern using spring physics on viewport entry.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/wavy-text.tsx",
+      "content": "\"use client\";\n\nimport React, { useRef } from \"react\";\nimport { motion, useInView } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface WavyTextProps {\n  text: string;\n  /** Wave amplitude in pixels */\n  amplitude?: number;\n  /** Wave speed - duration per character */\n  speed?: number;\n  /** Delay between characters */\n  delay?: number;\n  /** Replay on each view */\n  once?: boolean;\n  className?: string;\n}\n\nexport function WavyText({\n  text,\n  amplitude = 20,\n  speed = 0.3,\n  delay = 0.04,\n  once = true,\n  className,\n}: WavyTextProps) {\n  const ref = useRef<HTMLSpanElement>(null);\n  const isInView = useInView(ref, { once });\n\n  const chars = text.split(\"\");\n\n  return (\n    <span\n      ref={ref}\n      className={cn(\"inline-block overflow-hidden\", className)}\n    >\n      {chars.map((char, i) => (\n        <motion.span\n          key={`${char}-${i}`}\n          className=\"inline-block whitespace-pre\"\n          initial={{ opacity: 0, y: amplitude }}\n          animate={\n            isInView\n              ? { opacity: 1, y: 0 }\n              : { opacity: 0, y: amplitude }\n          }\n          transition={{\n            type: \"spring\",\n            stiffness: 150,\n            damping: 12,\n            mass: 0.5,\n            delay: i * delay,\n            duration: speed,\n          }}\n        >\n          {char}\n        </motion.span>\n      ))}\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/wavy-text.tsx"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rotating-text",
+  "type": "registry:ui",
+  "title": "Rotating Text",
+  "description": "Text that rotates through multiple strings with a rolling slot-machine effect using spring-physics transitions.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/rotating-text.tsx",
+      "content": "\"use client\";\n\nimport React, { useEffect, useState } from \"react\";\nimport { AnimatePresence, motion } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface RotatingTextProps {\n  /** Array of strings to rotate through */\n  words: string[];\n  /** Duration each word is shown in ms */\n  duration?: number;\n  /** Animation direction */\n  direction?: \"up\" | \"down\";\n  className?: string;\n}\n\nexport function RotatingText({\n  words,\n  duration = 2000,\n  direction = \"up\",\n  className,\n}: RotatingTextProps) {\n  const [index, setIndex] = useState(0);\n\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setIndex((prev) => (prev + 1) % words.length);\n    }, duration);\n    return () => clearInterval(interval);\n  }, [words.length, duration]);\n\n  const enterY = direction === \"up\" ? 30 : -30;\n  const exitY = direction === \"up\" ? -30 : 30;\n\n  return (\n    <span\n      className={cn(\n        \"relative inline-flex overflow-hidden\",\n        className\n      )}\n    >\n      <AnimatePresence mode=\"popLayout\">\n        <motion.span\n          key={words[index]}\n          initial={{ y: enterY, opacity: 0 }}\n          animate={{ y: 0, opacity: 1 }}\n          exit={{ y: exitY, opacity: 0 }}\n          transition={{\n            type: \"spring\",\n            stiffness: 300,\n            damping: 30,\n          }}\n          className=\"inline-block\"\n        >\n          {words[index]}\n        </motion.span>\n      </AnimatePresence>\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/rotating-text.tsx"
+    }
+  ]
+}

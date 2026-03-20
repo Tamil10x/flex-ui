@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "beams-background",
+  "type": "registry:ui",
+  "title": "Beams Background",
+  "description": "Animated light beams that sweep across the background with staggered delays and randomized angles. Pure CSS keyframes.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/beams-background.tsx",
+      "content": "\"use client\";\nimport React, { useMemo } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface BeamsBackgroundProps {\n  children?: React.ReactNode;\n  className?: string;\n  /** Number of beams */\n  beamCount?: number;\n  /** Beam color */\n  color?: string;\n  /** Animation speed in seconds */\n  speed?: number;\n}\n\nfunction seededRandom(seed: number) {\n  const x = Math.sin(seed) * 10000;\n  return x - Math.floor(x);\n}\n\nexport function BeamsBackground({\n  children,\n  className,\n  beamCount = 6,\n  color = \"rgba(255,255,255,0.5)\",\n  speed = 8,\n}: BeamsBackgroundProps) {\n  const beams = useMemo(() => {\n    return Array.from({ length: beamCount }, (_, i) => {\n      const r = (idx: number) => seededRandom(i * 100 + idx);\n      const angle = 30 + r(1) * 120; // 30-150 deg\n      const width = 40 + r(2) * 160; // 40-200px\n      const top = r(3) * 100; // 0-100%\n      const left = r(4) * 100; // 0-100%\n      const delay = r(5) * speed; // staggered\n      const opacity = 0.03 + r(6) * 0.05; // 0.03-0.08\n\n      return { angle, width, top, left, delay, opacity, id: i };\n    });\n  }, [beamCount, speed]);\n\n  return (\n    <div className={cn(\"relative overflow-hidden\", className)}>\n      {/* Beam layer */}\n      <div className=\"pointer-events-none absolute inset-0 overflow-hidden\">\n        {beams.map((beam) => (\n          <div\n            key={beam.id}\n            className=\"absolute animate-beam-sweep\"\n            style={{\n              top: `${beam.top}%`,\n              left: `${beam.left}%`,\n              width: `${beam.width}px`,\n              height: \"120%\",\n              background: `linear-gradient(transparent, ${color}, transparent)`,\n              transform: `rotate(${beam.angle}deg)`,\n              opacity: beam.opacity,\n              animationDuration: `${speed}s`,\n              animationDelay: `${beam.delay}s`,\n            }}\n          />\n        ))}\n      </div>\n      {/* Content */}\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/beams-background.tsx"
+    }
+  ]
+}

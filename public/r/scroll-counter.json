@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-counter",
+  "type": "registry:ui",
+  "title": "Scroll Counter",
+  "description": "An animated counter that counts from one number to another when scrolled into view using spring physics and direct DOM updates for performance.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/scroll-counter.tsx",
+      "content": "\"use client\";\n\nimport React, { useEffect, useRef } from \"react\";\nimport { useInView, useMotionValue, useSpring } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface ScrollCounterProps {\n  from?: number;\n  to: number;\n  prefix?: string;\n  suffix?: string;\n  decimals?: number;\n  duration?: number;\n  once?: boolean;\n  className?: string;\n}\n\nexport function ScrollCounter({\n  from = 0,\n  to,\n  prefix = \"\",\n  suffix = \"\",\n  decimals = 0,\n  duration = 2,\n  once = true,\n  className,\n}: ScrollCounterProps) {\n  const ref = useRef<HTMLSpanElement>(null);\n  const isInView = useInView(ref, { once });\n\n  const motionValue = useMotionValue(from);\n  const springValue = useSpring(motionValue, {\n    stiffness: 100 / duration,\n    damping: 30,\n    restDelta: decimals > 0 ? 0.001 : 0.5,\n  });\n\n  useEffect(() => {\n    if (isInView) {\n      motionValue.set(to);\n    } else if (!once) {\n      motionValue.set(from);\n    }\n  }, [isInView, to, from, motionValue, once]);\n\n  useEffect(() => {\n    const unsubscribe = springValue.on(\"change\", (latest) => {\n      if (ref.current) {\n        ref.current.textContent = `${prefix}${latest.toFixed(decimals)}${suffix}`;\n      }\n    });\n    return unsubscribe;\n  }, [springValue, prefix, suffix, decimals]);\n\n  return (\n    <span\n      ref={ref}\n      className={cn(\"tabular-nums\", className)}\n    >\n      {`${prefix}${from.toFixed(decimals)}${suffix}`}\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/scroll-counter.tsx"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glow-button",
+  "type": "registry:ui",
+  "title": "Glow Button",
+  "description": "A button with a pulsing glow shadow that intensifies on hover, using CSS keyframes and Framer Motion spring interactions.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/glow-button.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { motion } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface GlowButtonProps {\n  children: React.ReactNode;\n  className?: string;\n  glowColor?: string;\n  onClick?: () => void;\n  disabled?: boolean;\n}\n\nexport function GlowButton({\n  children,\n  className,\n  glowColor = \"rgba(56,189,248,0.5)\",\n  onClick,\n  disabled = false,\n}: GlowButtonProps) {\n  return (\n    <motion.button\n      whileHover={disabled ? undefined : { scale: 1.04 }}\n      whileTap={disabled ? undefined : { scale: 0.97 }}\n      transition={{ type: \"spring\", stiffness: 400, damping: 17 }}\n      disabled={disabled}\n      onClick={onClick}\n      className={cn(\n        \"relative px-8 py-4 text-sm font-semibold rounded-xl\",\n        \"bg-zinc-900 text-white border border-white/[0.08]\",\n        \"transition-all duration-300\",\n        \"hover:-translate-y-0.5\",\n        \"disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0\",\n        className\n      )}\n      style={{\n        boxShadow: disabled\n          ? undefined\n          : `0 0 20px ${glowColor}, 0 0 60px ${glowColor.replace(/[\\d.]+\\)$/, \"0.15)\")}`,\n        animation: disabled ? undefined : \"glow-pulse 2s ease-in-out infinite\",\n        // @ts-expect-error CSS custom property\n        \"--glow-color\": glowColor,\n        \"--glow-color-intense\": glowColor.replace(/[\\d.]+\\)$/, \"0.8)\"),\n        \"--glow-color-soft\": glowColor.replace(/[\\d.]+\\)$/, \"0.15)\"),\n      }}\n    >\n      <span className=\"relative z-10\">{children}</span>\n    </motion.button>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/glow-button.tsx"
+    }
+  ]
+}

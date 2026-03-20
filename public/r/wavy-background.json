@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "wavy-background",
+  "type": "registry:ui",
+  "title": "Wavy Background",
+  "description": "SVG-based animated wavy lines that drift horizontally in the background with decreasing opacity for depth.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/wavy-background.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface WavyBackgroundProps {\n  children?: React.ReactNode;\n  className?: string;\n  /** Number of wave lines */\n  waveCount?: number;\n  /** Wave color */\n  color?: string;\n  /** Animation speed in seconds */\n  speed?: number;\n  /** Wave amplitude */\n  amplitude?: number;\n}\n\nfunction buildWavePath(\n  width: number,\n  height: number,\n  amplitude: number,\n  frequency: number,\n  phase: number,\n  yOffset: number\n): string {\n  const points: string[] = [];\n  const step = 10;\n  for (let x = 0; x <= width; x += step) {\n    const y =\n      yOffset +\n      Math.sin((x / width) * Math.PI * 2 * frequency + phase) * amplitude;\n    points.push(`${x},${y}`);\n  }\n  return `M${points[0]} ${points.slice(1).map((p) => `L${p}`).join(\" \")}`;\n}\n\nexport function WavyBackground({\n  children,\n  className,\n  waveCount = 5,\n  color = \"rgba(255, 255, 255, 0.1)\",\n  speed = 15,\n  amplitude = 30,\n}: WavyBackgroundProps) {\n  const svgWidth = 2400;\n  const svgHeight = 600;\n\n  const waves = Array.from({ length: waveCount }, (_, i) => {\n    const waveAmplitude = amplitude * (1 - i * 0.12);\n    const frequency = 1.5 + i * 0.3;\n    const phase = (i * Math.PI) / 3;\n    const yOffset = svgHeight * 0.3 + i * (svgHeight * 0.1);\n    const opacity = 0.15 - i * (0.1 / waveCount);\n\n    return {\n      d: buildWavePath(svgWidth, svgHeight, waveAmplitude, frequency, phase, yOffset),\n      opacity: Math.max(opacity, 0.05),\n      animationDuration: speed + i * 2,\n    };\n  });\n\n  return (\n    <div className={cn(\"relative overflow-hidden\", className)}>\n      {/* SVG wave layer */}\n      <div className=\"pointer-events-none absolute inset-0\" aria-hidden>\n        <svg\n          viewBox={`0 0 ${svgWidth} ${svgHeight}`}\n          preserveAspectRatio=\"none\"\n          className=\"h-full w-full\"\n          style={{ animation: `wave-drift ${speed}s linear infinite` }}\n        >\n          {waves.map((wave, i) => (\n            <path\n              key={i}\n              d={wave.d}\n              fill=\"none\"\n              stroke={color}\n              strokeWidth={1.5}\n              strokeOpacity={wave.opacity}\n              style={{\n                animation: `wave-drift ${wave.animationDuration}s linear infinite`,\n              }}\n            />\n          ))}\n        </svg>\n      </div>\n\n      {/* Content */}\n      {children && <div className=\"relative z-10\">{children}</div>}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/wavy-background.tsx"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Eye, Code2, RotateCcw, Maximize2 } from "lucide-react";
+import { Eye, Code2, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CopyButton } from "@/components/ui/copy-button";
 import { SyntaxHighlight } from "@/components/ui/syntax-highlight";
@@ -51,7 +51,7 @@ export function PreviewCodeTabs({
       />
 
       <div className="relative rounded-2xl border border-white/[0.08] bg-zinc-950/80 backdrop-blur-xl transition-all duration-500 group-hover:border-white/[0.12] group-hover:shadow-[0_8px_60px_-12px_rgba(120,119,198,0.1)]">
-        {/* Tab bar — glass header */}
+        {/* Tab bar */}
         <div className="flex items-center justify-between border-b border-white/[0.06] bg-white/[0.015] px-2">
           <div className="relative flex">
             {(["preview", "code"] as const).map((t) => (
@@ -103,20 +103,9 @@ export function PreviewCodeTabs({
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="relative flex min-h-[300px] items-center justify-center overflow-visible p-10"
+              className="relative flex min-h-[300px] w-full items-center justify-center overflow-visible p-6"
             >
-              {/* Dot grid */}
-              <div
-                className="pointer-events-none absolute inset-0"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0)",
-                  backgroundSize: "20px 20px",
-                }}
-              />
-              {/* Ambient glow */}
-              <div className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/[0.03] blur-[80px]" />
-              <div className="relative z-10">{preview}</div>
+              <div className="relative z-10 w-full">{preview}</div>
             </motion.div>
           ) : (
             <motion.div

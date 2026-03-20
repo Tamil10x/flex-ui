@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-scramble",
+  "type": "registry:ui",
+  "title": "Text Scramble",
+  "description": "Text that scrambles through random characters before resolving left-to-right with configurable speed and character set.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/text-scramble.tsx",
+      "content": "\"use client\";\n\nimport React, { useEffect, useRef, useCallback } from \"react\";\nimport { useInView } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface TextScrambleProps {\n  text: string;\n  /** Characters to use for scrambling */\n  characters?: string;\n  /** Speed of scramble in ms per tick */\n  speed?: number;\n  /** How many ticks before each character resolves */\n  revealDelay?: number;\n  /** Trigger on scroll into view */\n  triggerOnView?: boolean;\n  className?: string;\n}\n\nconst DEFAULT_CHARACTERS =\n  \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%\";\n\nexport function TextScramble({\n  text,\n  characters = DEFAULT_CHARACTERS,\n  speed = 50,\n  revealDelay = 3,\n  triggerOnView = true,\n  className,\n}: TextScrambleProps) {\n  const containerRef = useRef<HTMLSpanElement>(null);\n  const isInView = useInView(containerRef, { once: true });\n  const hasRunRef = useRef(false);\n\n  const scramble = useCallback(() => {\n    const el = containerRef.current;\n    if (!el) return;\n\n    let tick = 0;\n    const length = text.length;\n\n    const interval = setInterval(() => {\n      const resolved = Math.floor(tick / revealDelay);\n\n      if (resolved >= length) {\n        el.textContent = text;\n        clearInterval(interval);\n        return;\n      }\n\n      let output = \"\";\n      for (let i = 0; i < length; i++) {\n        if (text[i] === \" \") {\n          output += \" \";\n        } else if (i < resolved) {\n          output += text[i];\n        } else {\n          output += characters[Math.floor(Math.random() * characters.length)];\n        }\n      }\n\n      el.textContent = output;\n      tick++;\n    }, speed);\n\n    return () => clearInterval(interval);\n  }, [text, characters, speed, revealDelay]);\n\n  useEffect(() => {\n    if (triggerOnView && isInView && !hasRunRef.current) {\n      hasRunRef.current = true;\n      const cleanup = scramble();\n      return cleanup;\n    }\n    if (!triggerOnView && !hasRunRef.current) {\n      hasRunRef.current = true;\n      const cleanup = scramble();\n      return cleanup;\n    }\n  }, [isInView, triggerOnView, scramble]);\n\n  return (\n    <span\n      ref={containerRef}\n      className={cn(\"inline-block font-mono\", className)}\n    >\n      {triggerOnView ? \"\\u00A0\".repeat(text.length) : text}\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/text-scramble.tsx"
+    }
+  ]
+}

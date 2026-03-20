@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee",
+  "type": "registry:ui",
+  "title": "Marquee",
+  "description": "A reusable infinite horizontal scrolling component with pure CSS animation, configurable speed, direction, and hover-to-pause.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/marquee.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface MarqueeProps {\n  children: React.ReactNode;\n  className?: string;\n  /** Scroll direction */\n  direction?: \"left\" | \"right\";\n  /** Speed in seconds for one full cycle */\n  speed?: number;\n  /** Pause on hover */\n  pauseOnHover?: boolean;\n  /** Number of content duplicates for seamless loop */\n  repeat?: number;\n}\n\nexport function Marquee({\n  children,\n  className,\n  direction = \"left\",\n  speed = 30,\n  pauseOnHover = false,\n  repeat = 4,\n}: MarqueeProps) {\n  return (\n    <div\n      className={cn(\n        \"group relative flex overflow-hidden\",\n        className\n      )}\n    >\n      {/* Left fade mask */}\n      <div className=\"pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-zinc-950 to-transparent\" />\n\n      {/* Right fade mask */}\n      <div className=\"pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-zinc-950 to-transparent\" />\n\n      {Array.from({ length: repeat }).map((_, i) => (\n        <div\n          key={i}\n          className={cn(\n            \"flex shrink-0 items-center gap-4\",\n            pauseOnHover && \"group-hover:[animation-play-state:paused]\"\n          )}\n          style={{\n            animation: `marquee-scroll ${speed}s linear infinite`,\n            animationDirection: direction === \"right\" ? \"reverse\" : \"normal\",\n          }}\n        >\n          {children}\n        </div>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/marquee.tsx"
+    }
+  ]
+}

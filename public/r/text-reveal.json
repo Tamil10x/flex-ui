@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-reveal",
+  "type": "registry:ui",
+  "title": "Text Reveal",
+  "description": "Text animation that reveals characters or words with staggered blur-in effect on scroll into view.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/text-reveal.tsx",
+      "content": "\"use client\";\n\nimport React, { useRef } from \"react\";\nimport { motion, useInView } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface TextRevealProps {\n  text: string;\n  /** \"char\" reveals letter by letter, \"word\" reveals word by word */\n  mode?: \"char\" | \"word\";\n  /** Delay between each unit in seconds */\n  stagger?: number;\n  /** Animation duration per unit */\n  duration?: number;\n  className?: string;\n  /** Only animate once */\n  once?: boolean;\n}\n\nexport function TextReveal({\n  text,\n  mode = \"char\",\n  stagger = 0.03,\n  duration = 0.5,\n  className,\n  once = true,\n}: TextRevealProps) {\n  const ref = useRef<HTMLSpanElement>(null);\n  const isInView = useInView(ref, { once });\n\n  const units =\n    mode === \"word\"\n      ? text.split(/(\\s+)/)\n      : text.split(\"\");\n\n  return (\n    <span\n      ref={ref}\n      className={cn(\n        \"inline-block overflow-hidden\",\n        className\n      )}\n    >\n      {units.map((unit, i) => (\n        <motion.span\n          key={`${unit}-${i}`}\n          className=\"inline-block whitespace-pre\"\n          initial={{ opacity: 0, y: 20, filter: \"blur(8px)\" }}\n          animate={\n            isInView\n              ? { opacity: 1, y: 0, filter: \"blur(0px)\" }\n              : { opacity: 0, y: 20, filter: \"blur(8px)\" }\n          }\n          transition={{\n            duration,\n            delay: i * stagger,\n            ease: [0.25, 0.4, 0.25, 1],\n          }}\n        >\n          {unit}\n        </motion.span>\n      ))}\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/text-reveal.tsx"
+    }
+  ]
+}

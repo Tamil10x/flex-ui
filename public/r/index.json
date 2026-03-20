@@ -7,19 +7,307 @@
       "name": "magnetic-button",
       "type": "registry:ui",
       "description": "A button that uses Framer Motion spring physics to magnetically pull toward the cursor on hover with a glowing spotlight border effect.",
-      "url": "/r/magnetic-button.json"
+      "url": "https://flexui.dev/r/magnetic-button.json"
     },
     {
       "name": "floating-panel",
       "type": "registry:ui",
       "description": "A headless, composable floating panel with glassmorphic styling, spring animations, position-aware anchoring, and built-in form support.",
-      "url": "/r/floating-panel.json"
+      "url": "https://flexui.dev/r/floating-panel.json"
     },
     {
       "name": "three-hover-card",
       "type": "registry:ui",
       "description": "A premium card component that reveals a live Three.js 3D scene with a rotating icosahedron on hover. The canvas is lazy-loaded for performance.",
-      "url": "/r/three-hover-card.json"
+      "url": "https://flexui.dev/r/three-hover-card.json"
+    },
+    {
+      "name": "interactive-globe",
+      "type": "registry:ui",
+      "description": "A 3D interactive globe component powered by Three.js and three-globe with customizable arcs, points, and atmosphere rendering.",
+      "url": "https://flexui.dev/r/interactive-globe.json"
+    },
+    {
+      "name": "cosmic-eye",
+      "type": "registry:ui",
+      "description": "A WebGL shader-based animated eye effect with cosmic nebula colors, mouse-tracking pupil, and organic noise textures.",
+      "url": "https://flexui.dev/r/cosmic-eye.json"
+    },
+    {
+      "name": "expandable-card",
+      "type": "registry:ui",
+      "description": "An expandable card component with smooth Framer Motion animations that reveals additional content on interaction.",
+      "url": "https://flexui.dev/r/expandable-card.json"
+    },
+    {
+      "name": "reflective-card",
+      "type": "registry:ui",
+      "description": "A card component with a reflective surface effect powered by Framer Motion animations that responds to cursor movement.",
+      "url": "https://flexui.dev/r/reflective-card.json"
+    },
+    {
+      "name": "shimmer-button",
+      "type": "registry:ui",
+      "description": "A button with a continuous diagonal shimmer sweep effect, configurable color, and spring-physics hover interactions.",
+      "url": "https://flexui.dev/r/shimmer-button.json"
+    },
+    {
+      "name": "text-reveal",
+      "type": "registry:ui",
+      "description": "Text animation that reveals characters or words with staggered blur-in effect on scroll into view.",
+      "url": "https://flexui.dev/r/text-reveal.json"
+    },
+    {
+      "name": "number-ticker",
+      "type": "registry:ui",
+      "description": "Animated number counter with spring physics that ticks up to a target value when scrolled into view.",
+      "url": "https://flexui.dev/r/number-ticker.json"
+    },
+    {
+      "name": "dock-menu",
+      "type": "registry:ui",
+      "description": "A macOS-style dock with smooth magnification effect powered by Framer Motion spring physics and motion values.",
+      "url": "https://flexui.dev/r/dock-menu.json"
+    },
+    {
+      "name": "spotlight-card",
+      "type": "registry:ui",
+      "description": "A glassmorphic card with a cursor-following spotlight radial gradient, border glow, and hover effects.",
+      "url": "https://flexui.dev/r/spotlight-card.json"
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "description": "An animated bottom sheet / side drawer with spring physics, backdrop blur overlay, ESC-to-close, click-outside dismiss, and body scroll lock.",
+      "url": "https://flexui.dev/r/drawer.json"
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "description": "A context-based toast notification system with spring-physics animations, auto-dismiss, four color-coded types, and stacked positioning.",
+      "url": "https://flexui.dev/r/toast.json"
+    },
+    {
+      "name": "animated-tabs",
+      "type": "registry:ui",
+      "description": "A tab component with a sliding animated indicator and smooth fade+slide content transitions. Three variants with spring physics.",
+      "url": "https://flexui.dev/r/animated-tabs.json"
+    },
+    {
+      "name": "marquee",
+      "type": "registry:ui",
+      "description": "A reusable infinite horizontal scrolling component with pure CSS animation, configurable speed, direction, and hover-to-pause.",
+      "url": "https://flexui.dev/r/marquee.json"
+    },
+    {
+      "name": "flip-words",
+      "type": "registry:ui",
+      "description": "Words that flip and rotate in and out with 3D perspective animation and spring physics.",
+      "url": "https://flexui.dev/r/flip-words.json"
+    },
+    {
+      "name": "wavy-text",
+      "type": "registry:ui",
+      "description": "Text where each character animates in with a staggered wave pattern using spring physics on viewport entry.",
+      "url": "https://flexui.dev/r/wavy-text.json"
+    },
+    {
+      "name": "typewriter-text",
+      "type": "registry:ui",
+      "description": "A typewriter effect that types text character by character with a blinking cursor, cycling through an array of words.",
+      "url": "https://flexui.dev/r/typewriter-text.json"
+    },
+    {
+      "name": "gradient-text",
+      "type": "registry:ui",
+      "description": "Animated gradient text with flowing color stops that shift across the text using a CSS keyframe animation.",
+      "url": "https://flexui.dev/r/gradient-text.json"
+    },
+    {
+      "name": "text-scramble",
+      "type": "registry:ui",
+      "description": "Text that scrambles through random characters before resolving left-to-right with configurable speed and character set.",
+      "url": "https://flexui.dev/r/text-scramble.json"
+    },
+    {
+      "name": "blur-text",
+      "type": "registry:ui",
+      "description": "Text that fades in from a blurred state, word by word or all at once, with configurable blur amount and stagger.",
+      "url": "https://flexui.dev/r/blur-text.json"
+    },
+    {
+      "name": "split-text",
+      "type": "registry:ui",
+      "description": "Text animation that splits into characters or words with staggered slide, fade, or scale transitions on scroll.",
+      "url": "https://flexui.dev/r/split-text.json"
+    },
+    {
+      "name": "rotating-text",
+      "type": "registry:ui",
+      "description": "Text that rotates through multiple strings with a rolling slot-machine effect using spring-physics transitions.",
+      "url": "https://flexui.dev/r/rotating-text.json"
+    },
+    {
+      "name": "grid-pattern",
+      "type": "registry:ui",
+      "description": "A subtle CSS grid background pattern with configurable cell size, line color, opacity, and an optional radial fade mask.",
+      "url": "https://flexui.dev/r/grid-pattern.json"
+    },
+    {
+      "name": "dot-pattern",
+      "type": "registry:ui",
+      "description": "A dot matrix background pattern with configurable spacing, dot size, color, and an optional radial fade mask.",
+      "url": "https://flexui.dev/r/dot-pattern.json"
+    },
+    {
+      "name": "beams-background",
+      "type": "registry:ui",
+      "description": "Animated light beams that sweep across the background with staggered delays and randomized angles. Pure CSS keyframes.",
+      "url": "https://flexui.dev/r/beams-background.json"
+    },
+    {
+      "name": "stars-background",
+      "type": "registry:ui",
+      "description": "A twinkling star field background with randomly scattered stars that pulse in and out at varying speeds. Pure CSS keyframes.",
+      "url": "https://flexui.dev/r/stars-background.json"
+    },
+    {
+      "name": "mesh-gradient",
+      "type": "registry:ui",
+      "description": "An animated mesh gradient background with multiple color blobs that blend together using heavy CSS blur.",
+      "url": "https://flexui.dev/r/mesh-gradient.json"
+    },
+    {
+      "name": "wavy-background",
+      "type": "registry:ui",
+      "description": "SVG-based animated wavy lines that drift horizontally in the background with decreasing opacity for depth.",
+      "url": "https://flexui.dev/r/wavy-background.json"
+    },
+    {
+      "name": "aurora-background",
+      "type": "registry:ui",
+      "description": "A CSS-only animated aurora borealis background effect with soft blurred gradient bands that drift and rotate.",
+      "url": "https://flexui.dev/r/aurora-background.json"
+    },
+    {
+      "name": "particle-field",
+      "type": "registry:ui",
+      "description": "Floating particle dots that drift slowly across the background with CSS keyframe animations and randomized timing.",
+      "url": "https://flexui.dev/r/particle-field.json"
+    },
+    {
+      "name": "scroll-progress",
+      "type": "registry:ui",
+      "description": "A fixed progress bar that animates from 0% to 100% based on page scroll using useScroll and useSpring for smooth spring-physics animation.",
+      "url": "https://flexui.dev/r/scroll-progress.json"
+    },
+    {
+      "name": "fade-on-scroll",
+      "type": "registry:ui",
+      "description": "A wrapper component that fades and slides children into view when scrolled into the viewport with configurable direction, distance, and spring physics.",
+      "url": "https://flexui.dev/r/fade-on-scroll.json"
+    },
+    {
+      "name": "scroll-counter",
+      "type": "registry:ui",
+      "description": "An animated counter that counts from one number to another when scrolled into view using spring physics and direct DOM updates for performance.",
+      "url": "https://flexui.dev/r/scroll-counter.json"
+    },
+    {
+      "name": "glow-button",
+      "type": "registry:ui",
+      "description": "A button with a pulsing glow shadow that intensifies on hover, using CSS keyframes and Framer Motion spring interactions.",
+      "url": "https://flexui.dev/r/glow-button.json"
+    },
+    {
+      "name": "ripple-button",
+      "type": "registry:ui",
+      "description": "A Material-design-style ripple effect button with expanding circles at the click position. Pure CSS animation, no Framer Motion.",
+      "url": "https://flexui.dev/r/ripple-button.json"
+    },
+    {
+      "name": "gradient-border-button",
+      "type": "registry:ui",
+      "description": "A button with a continuously rotating conic-gradient border and solid dark inner background. Framer Motion hover/tap.",
+      "url": "https://flexui.dev/r/gradient-border-button.json"
+    },
+    {
+      "name": "confetti-button",
+      "type": "registry:ui",
+      "description": "A button that bursts colorful confetti particles on click with random directions, colors, and rotations. Framer Motion hover/tap.",
+      "url": "https://flexui.dev/r/confetti-button.json"
+    },
+    {
+      "name": "follow-cursor",
+      "type": "registry:ui",
+      "description": "A decorative glowing dot that smoothly follows the cursor using Framer Motion spring physics with configurable stiffness and damping.",
+      "url": "https://flexui.dev/r/follow-cursor.json"
+    },
+    {
+      "name": "blob-cursor",
+      "type": "registry:ui",
+      "description": "A morphing blob shape that follows the cursor with heavy spring inertia, CSS blur, and mix-blend-mode for an organic liquid feel.",
+      "url": "https://flexui.dev/r/blob-cursor.json"
+    },
+    {
+      "name": "spotlight-cursor",
+      "type": "registry:ui",
+      "description": "A full-viewport radial gradient spotlight that follows the cursor, illuminating content beneath with useMotionTemplate for reactive CSS gradients.",
+      "url": "https://flexui.dev/r/spotlight-cursor.json"
+    },
+    {
+      "name": "otp-input",
+      "type": "registry:ui",
+      "description": "An animated OTP/verification code input with auto-focus navigation, paste support, spring-physics glow on active input, and glass-morphic styling.",
+      "url": "https://flexui.dev/r/otp-input.json"
+    },
+    {
+      "name": "morphing-dialog",
+      "type": "registry:ui",
+      "description": "A dialog that morphs from its trigger element using shared layout animation with spring physics, backdrop blur, and glassmorphic styling.",
+      "url": "https://flexui.dev/r/morphing-dialog.json"
+    },
+    {
+      "name": "morphing-card",
+      "type": "registry:ui",
+      "description": "A card that smoothly morphs between collapsed and expanded states using layout animation with spring physics and content crossfade.",
+      "url": "https://flexui.dev/r/morphing-card.json"
+    },
+    {
+      "name": "floating-navbar",
+      "type": "registry:ui",
+      "description": "A scroll-aware navbar that shrinks into a floating glassmorphic pill on scroll.",
+      "url": "https://flexui.dev/r/floating-navbar.json"
+    },
+    {
+      "name": "animated-input",
+      "type": "registry:ui",
+      "description": "Text input with animated floating label and expanding underline on focus.",
+      "url": "https://flexui.dev/r/animated-input.json"
+    },
+    {
+      "name": "parallax-scroll",
+      "type": "registry:ui",
+      "description": "Wrapper that adds parallax scrolling to any content with configurable speed and direction.",
+      "url": "https://flexui.dev/r/parallax-scroll.json"
+    },
+    {
+      "name": "sticky-scroll-reveal",
+      "type": "registry:ui",
+      "description": "Two-column layout with scrolling text sections and a sticky content panel.",
+      "url": "https://flexui.dev/r/sticky-scroll-reveal.json"
+    },
+    {
+      "name": "cta-block",
+      "type": "registry:ui",
+      "description": "A call-to-action section with animated gradient borders, radial glow background, and staggered entrance animation.",
+      "url": "https://flexui.dev/r/cta-block.json"
+    },
+    {
+      "name": "search-spotlight",
+      "type": "registry:ui",
+      "description": "A macOS Spotlight / Raycast-style search dialog with keyboard navigation, category grouping, and spring animations.",
+      "url": "https://flexui.dev/r/search-spotlight.json"
     }
   ]
 }

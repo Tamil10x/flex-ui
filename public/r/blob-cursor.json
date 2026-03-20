@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blob-cursor",
+  "type": "registry:ui",
+  "title": "Blob Cursor",
+  "description": "A morphing blob shape that follows the cursor with heavy spring inertia, CSS blur, and mix-blend-mode for an organic liquid feel.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/blob-cursor.tsx",
+      "content": "\"use client\";\n\nimport React, { useEffect } from \"react\";\nimport { motion, useMotionValue, useSpring } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface BlobCursorProps {\n  className?: string;\n  /** Blob color as CSS rgba string */\n  color?: string;\n  /** Blob diameter in px */\n  size?: number;\n}\n\nexport function BlobCursor({\n  className,\n  color = \"rgba(56,189,248,0.3)\",\n  size = 120,\n}: BlobCursorProps) {\n  const x = useMotionValue(-200);\n  const y = useMotionValue(-200);\n  const opacity = useMotionValue(0);\n\n  const springX = useSpring(x, { stiffness: 50, damping: 15 });\n  const springY = useSpring(y, { stiffness: 50, damping: 15 });\n  const springOpacity = useSpring(opacity, { stiffness: 200, damping: 20 });\n\n  useEffect(() => {\n    const handleMouseMove = (e: MouseEvent) => {\n      x.set(e.clientX - size / 2);\n      y.set(e.clientY - size / 2);\n      opacity.set(1);\n    };\n\n    const handleMouseLeave = () => {\n      opacity.set(0);\n    };\n\n    document.addEventListener(\"mousemove\", handleMouseMove);\n    document.addEventListener(\"mouseleave\", handleMouseLeave);\n\n    return () => {\n      document.removeEventListener(\"mousemove\", handleMouseMove);\n      document.removeEventListener(\"mouseleave\", handleMouseLeave);\n    };\n  }, [x, y, opacity, size]);\n\n  return (\n    <motion.div\n      className={cn(\"pointer-events-none fixed z-40 rounded-full\", className)}\n      style={{\n        left: springX,\n        top: springY,\n        width: size,\n        height: size,\n        opacity: springOpacity,\n        backgroundColor: color,\n        filter: \"blur(40px)\",\n        mixBlendMode: \"screen\",\n      }}\n    />\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/blob-cursor.tsx"
+    }
+  ]
+}
