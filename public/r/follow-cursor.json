@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "follow-cursor",
+  "type": "registry:ui",
+  "title": "Follow Cursor",
+  "description": "A decorative glowing dot that smoothly follows the cursor using Framer Motion spring physics with configurable stiffness and damping.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/follow-cursor.tsx",
+      "content": "\"use client\";\n\nimport React, { useEffect } from \"react\";\nimport { motion, useMotionValue, useSpring } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface FollowCursorProps {\n  className?: string;\n  /** Cursor dot color as CSS rgba string */\n  color?: string;\n  /** Dot diameter in px */\n  size?: number;\n  /** Spring stiffness */\n  stiffness?: number;\n  /** Spring damping */\n  damping?: number;\n}\n\nexport function FollowCursor({\n  className,\n  color = \"rgba(139,92,246,0.5)\",\n  size = 24,\n  stiffness = 300,\n  damping = 25,\n}: FollowCursorProps) {\n  const x = useMotionValue(-100);\n  const y = useMotionValue(-100);\n  const opacity = useMotionValue(0);\n\n  const springX = useSpring(x, { stiffness, damping });\n  const springY = useSpring(y, { stiffness, damping });\n  const springOpacity = useSpring(opacity, { stiffness: 300, damping: 20 });\n\n  useEffect(() => {\n    const handleMouseMove = (e: MouseEvent) => {\n      x.set(e.clientX - size / 2);\n      y.set(e.clientY - size / 2);\n      opacity.set(1);\n    };\n\n    const handleMouseLeave = () => {\n      opacity.set(0);\n    };\n\n    document.addEventListener(\"mousemove\", handleMouseMove);\n    document.addEventListener(\"mouseleave\", handleMouseLeave);\n\n    return () => {\n      document.removeEventListener(\"mousemove\", handleMouseMove);\n      document.removeEventListener(\"mouseleave\", handleMouseLeave);\n    };\n  }, [x, y, opacity, size]);\n\n  return (\n    <motion.div\n      className={cn(\"pointer-events-none fixed z-50 rounded-full\", className)}\n      style={{\n        left: springX,\n        top: springY,\n        width: size,\n        height: size,\n        opacity: springOpacity,\n        backgroundColor: color,\n        boxShadow: `0 0 ${size}px ${size / 2}px ${color}`,\n      }}\n    />\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/follow-cursor.tsx"
+    }
+  ]
+}

@@ -16,7 +16,7 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { value: 6, suffix: "+", label: "Components" },
+  { value: 57, suffix: "+", label: "Components" },
   { value: 100, suffix: "%", label: "TypeScript" },
   { value: 0, suffix: "", label: "Runtime CSS" },
   { value: 0, suffix: "", label: "Copy & Paste" },

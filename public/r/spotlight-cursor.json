@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spotlight-cursor",
+  "type": "registry:ui",
+  "title": "Spotlight Cursor",
+  "description": "A full-viewport radial gradient spotlight that follows the cursor, illuminating content beneath with useMotionTemplate for reactive CSS gradients.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/spotlight-cursor.tsx",
+      "content": "\"use client\";\n\nimport React, { useEffect } from \"react\";\nimport {\n  motion,\n  useMotionValue,\n  useSpring,\n  useMotionTemplate,\n} from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface SpotlightCursorProps {\n  className?: string;\n  /** Spotlight diameter in px */\n  size?: number;\n  /** Spotlight color as CSS RGB values e.g. \"255,255,255\" */\n  color?: string;\n  /** Spotlight peak opacity */\n  opacity?: number;\n}\n\nexport function SpotlightCursor({\n  className,\n  size = 400,\n  color = \"255,255,255\",\n  opacity: peakOpacity = 0.06,\n}: SpotlightCursorProps) {\n  const x = useMotionValue(-1000);\n  const y = useMotionValue(-1000);\n  const visible = useMotionValue(0);\n\n  const springX = useSpring(x, { stiffness: 200, damping: 30 });\n  const springY = useSpring(y, { stiffness: 200, damping: 30 });\n  const springOpacity = useSpring(visible, { stiffness: 300, damping: 20 });\n\n  const background = useMotionTemplate`radial-gradient(${size}px circle at ${springX}px ${springY}px, rgba(${color},${peakOpacity}), transparent 65%)`;\n\n  useEffect(() => {\n    const handleMouseMove = (e: MouseEvent) => {\n      x.set(e.clientX);\n      y.set(e.clientY);\n      visible.set(1);\n    };\n\n    const handleMouseLeave = () => {\n      visible.set(0);\n    };\n\n    document.addEventListener(\"mousemove\", handleMouseMove);\n    document.addEventListener(\"mouseleave\", handleMouseLeave);\n\n    return () => {\n      document.removeEventListener(\"mousemove\", handleMouseMove);\n      document.removeEventListener(\"mouseleave\", handleMouseLeave);\n    };\n  }, [x, y, visible]);\n\n  return (\n    <motion.div\n      className={cn(\"pointer-events-none fixed inset-0 z-30\", className)}\n      style={{\n        background,\n        opacity: springOpacity,\n      }}\n    />\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/spotlight-cursor.tsx"
+    }
+  ]
+}

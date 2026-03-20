@@ -51,6 +51,18 @@ import {
   Droplet,
   Square,
   PartyPopper,
+  Flashlight,
+  Navigation,
+  TextCursor,
+  KeyRound,
+  Maximize,
+  CreditCard,
+  Megaphone,
+  Search,
+  TrendingUp,
+  BarChart,
+  MessageSquareQuote,
+  Grid2x2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -907,6 +919,363 @@ const components: CardData[] = [
         <PartyPopper className="absolute right-6 top-6 h-16 w-16 text-pink-500/[0.07] rotate-12" />
         <Sparkles className="absolute right-20 top-14 h-8 w-8 text-rose-500/[0.1] -rotate-12" />
         <Zap className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Follow Cursor",
+    href: "/docs/components/follow-cursor",
+    tier: "Tier 1",
+    tagline: "Spring Physics",
+    description:
+      "A decorative glowing dot that smoothly follows the cursor with configurable spring stiffness and damping. Zero re-renders.",
+    deps: ["framer-motion"],
+    gradient: "from-violet-600/20 via-purple-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-purple-500",
+    accentLine: "from-violet-500 to-purple-500",
+    icon: <MousePointer className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <MousePointer className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-purple-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Blob Cursor",
+    href: "/docs/components/blob-cursor",
+    tier: "Tier 1",
+    tagline: "Liquid Effect",
+    description:
+      "A large blurred blob that follows the cursor with heavy spring inertia for an organic, liquid feel. Uses mix-blend-mode for color blending.",
+    deps: ["framer-motion"],
+    gradient: "from-cyan-600/20 via-sky-600/10 to-transparent",
+    glowColor: "rgba(56,189,248,0.15)",
+    iconBg: "bg-gradient-to-br from-cyan-500 to-sky-500",
+    accentLine: "from-cyan-500 to-sky-500",
+    icon: <Circle className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Circle className="absolute right-6 top-6 h-16 w-16 text-cyan-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-sky-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-blue-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Spotlight Cursor",
+    href: "/docs/components/spotlight-cursor",
+    tier: "Tier 1",
+    tagline: "Radial Light",
+    description:
+      "A full-viewport radial gradient spotlight that follows the cursor, subtly illuminating content beneath. Built with useMotionTemplate.",
+    deps: ["framer-motion"],
+    gradient: "from-amber-600/20 via-yellow-600/10 to-transparent",
+    glowColor: "rgba(245,158,11,0.15)",
+    iconBg: "bg-gradient-to-br from-amber-500 to-yellow-500",
+    accentLine: "from-amber-500 to-yellow-500",
+    icon: <Flashlight className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Flashlight className="absolute right-6 top-6 h-16 w-16 text-amber-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-yellow-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-orange-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Floating Navbar",
+    href: "/docs/components/floating-navbar",
+    tier: "Tier 1",
+    tagline: "Navigation",
+    description:
+      "A navbar that floats, shrinks into a glassmorphic pill on scroll, and hides/shows based on scroll direction. Spring-physics transitions.",
+    deps: ["framer-motion"],
+    gradient: "from-sky-600/20 via-blue-600/10 to-transparent",
+    glowColor: "rgba(14,165,233,0.15)",
+    iconBg: "bg-gradient-to-br from-sky-500 to-blue-500",
+    accentLine: "from-sky-500 to-blue-500",
+    icon: <Navigation className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Navigation className="absolute right-6 top-6 h-16 w-16 text-sky-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-blue-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-cyan-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Animated Input",
+    href: "/docs/components/animated-input",
+    tier: "Tier 1",
+    tagline: "Form Input",
+    description:
+      "A text input with animated floating label that transitions on focus, expanding underline, glassmorphic styling, and configurable accent colors.",
+    deps: ["framer-motion"],
+    gradient: "from-emerald-600/20 via-teal-600/10 to-transparent",
+    glowColor: "rgba(16,185,129,0.15)",
+    iconBg: "bg-gradient-to-br from-emerald-500 to-teal-500",
+    accentLine: "from-emerald-500 to-teal-500",
+    icon: <TextCursor className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <TextCursor className="absolute right-6 top-6 h-16 w-16 text-emerald-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-teal-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-green-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "OTP Input",
+    href: "/docs/components/otp-input",
+    tier: "Tier 1",
+    tagline: "Verification Code",
+    description:
+      "An animated OTP/verification code input with auto-focus between boxes, paste support, spring-physics glow on the active input, and glass-morphic styling.",
+    deps: ["framer-motion"],
+    gradient: "from-blue-600/20 via-indigo-600/10 to-transparent",
+    glowColor: "rgba(59,130,246,0.15)",
+    iconBg: "bg-gradient-to-br from-blue-500 to-indigo-500",
+    accentLine: "from-blue-500 to-indigo-500",
+    icon: <KeyRound className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <KeyRound className="absolute right-6 top-6 h-16 w-16 text-blue-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-indigo-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-sky-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Morphing Dialog",
+    href: "/docs/components/morphing-dialog",
+    tier: "Tier 1",
+    tagline: "Layout Morph",
+    description:
+      "A dialog that morphs from its trigger element using shared layout animation with spring physics, backdrop blur, and glassmorphic styling.",
+    deps: ["framer-motion", "lucide-react"],
+    gradient: "from-violet-600/20 via-purple-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-purple-500",
+    accentLine: "from-violet-500 to-purple-500",
+    icon: <Maximize className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Maximize className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-purple-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Morphing Card",
+    href: "/docs/components/morphing-card",
+    tier: "Tier 1",
+    tagline: "Shape Morph",
+    description:
+      "A card that smoothly morphs between collapsed and expanded states using layout animation with spring physics and content crossfade.",
+    deps: ["framer-motion"],
+    gradient: "from-teal-600/20 via-cyan-600/10 to-transparent",
+    glowColor: "rgba(20,184,166,0.15)",
+    iconBg: "bg-gradient-to-br from-teal-500 to-cyan-500",
+    accentLine: "from-teal-500 to-cyan-500",
+    icon: <Layers className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Layers className="absolute right-6 top-6 h-16 w-16 text-teal-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-cyan-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-emerald-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Hero Block",
+    href: "/docs/components/hero-block",
+    tier: "Tier 1",
+    tagline: "Page Section",
+    description:
+      "A complete hero section with staggered fade-in animations, gradient badge, dual CTA buttons, radial gradient glow, and optional dot-grid background.",
+    deps: ["framer-motion"],
+    gradient: "from-blue-600/20 via-cyan-600/10 to-transparent",
+    glowColor: "rgba(59,130,246,0.15)",
+    iconBg: "bg-gradient-to-br from-blue-500 to-cyan-500",
+    accentLine: "from-blue-500 to-cyan-500",
+    icon: <Layout className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Layout className="absolute right-6 top-6 h-16 w-16 text-blue-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-cyan-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-sky-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Pricing Block",
+    href: "/docs/components/pricing-block",
+    tier: "Tier 1",
+    tagline: "Page Section",
+    description:
+      "A pricing section with animated monthly/yearly toggle, glassmorphic cards, gradient-border highlighted tier, animated price counter, and staggered entrance.",
+    deps: ["framer-motion", "lucide-react"],
+    gradient: "from-emerald-600/20 via-teal-600/10 to-transparent",
+    glowColor: "rgba(16,185,129,0.15)",
+    iconBg: "bg-gradient-to-br from-emerald-500 to-teal-500",
+    accentLine: "from-emerald-500 to-teal-500",
+    icon: <CreditCard className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <CreditCard className="absolute right-6 top-6 h-16 w-16 text-emerald-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-teal-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-green-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "CTA Block",
+    href: "/docs/components/cta-block",
+    tier: "Tier 1",
+    tagline: "Call to Action",
+    description:
+      "A call-to-action section with animated gradient borders, radial glow background, centered text, and staggered entrance animation. Matching HeroBlock CTA styles.",
+    deps: ["framer-motion"],
+    gradient: "from-orange-600/20 via-amber-600/10 to-transparent",
+    glowColor: "rgba(249,115,22,0.15)",
+    iconBg: "bg-gradient-to-br from-orange-500 to-amber-500",
+    accentLine: "from-orange-500 to-amber-500",
+    icon: <Megaphone className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Megaphone className="absolute right-6 top-6 h-16 w-16 text-orange-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-amber-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-yellow-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Search Spotlight",
+    href: "/docs/components/search-spotlight",
+    tier: "Tier 1",
+    tagline: "Search Dialog",
+    description:
+      "A macOS Spotlight / Raycast-style search dialog with keyboard navigation, category grouping, glass-morphic styling, and spring animations.",
+    deps: ["framer-motion", "lucide-react"],
+    gradient: "from-indigo-600/20 via-violet-600/10 to-transparent",
+    glowColor: "rgba(99,102,241,0.15)",
+    iconBg: "bg-gradient-to-br from-indigo-500 to-violet-500",
+    accentLine: "from-indigo-500 to-violet-500",
+    icon: <Search className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Search className="absolute right-6 top-6 h-16 w-16 text-indigo-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-violet-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-purple-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Testimonials Block",
+    href: "/docs/components/testimonials-block",
+    tier: "Page Block",
+    tagline: "Social Proof",
+    description:
+      "Animated testimonial section with masonry grid and horizontal marquee variants, star ratings, glassmorphic cards, and gradient-avatar fallbacks.",
+    deps: ["framer-motion"],
+    gradient: "from-amber-600/20 via-orange-600/10 to-transparent",
+    glowColor: "rgba(245,158,11,0.15)",
+    iconBg: "bg-gradient-to-br from-amber-500 to-orange-500",
+    accentLine: "from-amber-500 to-orange-500",
+    icon: <MessageSquareQuote className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <MessageSquareQuote className="absolute right-6 top-6 h-16 w-16 text-amber-500/[0.07] rotate-12" />
+        <Star className="absolute right-20 top-14 h-8 w-8 text-orange-500/[0.1] -rotate-12" />
+        <Sparkles className="absolute right-10 top-24 h-6 w-6 text-yellow-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Features Block",
+    href: "/docs/components/features-block",
+    tier: "Page Block",
+    tagline: "Content Section",
+    description:
+      "Animated features/benefits grid with configurable columns, staggered viewport-triggered entrance, hover lift with icon glow, and optional section heading.",
+    deps: ["framer-motion"],
+    gradient: "from-sky-600/20 via-blue-600/10 to-transparent",
+    glowColor: "rgba(14,165,233,0.15)",
+    iconBg: "bg-gradient-to-br from-sky-500 to-blue-500",
+    accentLine: "from-sky-500 to-blue-500",
+    icon: <Grid2x2 className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Grid2x2 className="absolute right-6 top-6 h-16 w-16 text-sky-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-blue-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-cyan-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Sparkline Chart",
+    href: "/docs/components/sparkline-chart",
+    tier: "Tier 1",
+    tagline: "Data Viz",
+    description:
+      "A minimal pure-SVG sparkline with smooth cubic bezier curves, optional gradient area fill, and animated line drawing via stroke-dashoffset. No charting library.",
+    deps: ["framer-motion"],
+    gradient: "from-sky-600/20 via-cyan-600/10 to-transparent",
+    glowColor: "rgba(56,189,248,0.15)",
+    iconBg: "bg-gradient-to-br from-sky-500 to-cyan-500",
+    accentLine: "from-sky-500 to-cyan-500",
+    icon: <TrendingUp className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <TrendingUp className="absolute right-6 top-6 h-16 w-16 text-sky-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-cyan-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-blue-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "KPI Card",
+    href: "/docs/components/kpi-card",
+    tier: "Tier 1",
+    tagline: "Data Viz",
+    description:
+      "A glassmorphic dashboard card with spring-animated number counter, color-coded change indicator with arrow, and optional embedded sparkline.",
+    deps: ["framer-motion"],
+    gradient: "from-violet-600/20 via-purple-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-purple-500",
+    accentLine: "from-violet-500 to-purple-500",
+    icon: <BarChart className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <BarChart className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-purple-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Progress Ring",
+    href: "/docs/components/progress-ring",
+    tier: "Tier 1",
+    tagline: "Data Viz",
+    description:
+      "An SVG circular progress ring with animated stroke-dashoffset, gradient stroke, rounded line caps, and a center content slot. Animates on scroll into view.",
+    deps: ["framer-motion"],
+    gradient: "from-emerald-600/20 via-teal-600/10 to-transparent",
+    glowColor: "rgba(16,185,129,0.15)",
+    iconBg: "bg-gradient-to-br from-emerald-500 to-teal-500",
+    accentLine: "from-emerald-500 to-teal-500",
+    icon: <CircleDot className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <CircleDot className="absolute right-6 top-6 h-16 w-16 text-emerald-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-teal-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-green-500/[0.08] rotate-45" />
       </>
     ),
   },

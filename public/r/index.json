@@ -230,6 +230,78 @@
       "type": "registry:ui",
       "description": "A button that bursts colorful confetti particles on click with random directions, colors, and rotations. Framer Motion hover/tap.",
       "url": "https://flexui.dev/r/confetti-button.json"
+    },
+    {
+      "name": "follow-cursor",
+      "type": "registry:ui",
+      "description": "A decorative glowing dot that smoothly follows the cursor using Framer Motion spring physics with configurable stiffness and damping.",
+      "url": "https://flexui.dev/r/follow-cursor.json"
+    },
+    {
+      "name": "blob-cursor",
+      "type": "registry:ui",
+      "description": "A morphing blob shape that follows the cursor with heavy spring inertia, CSS blur, and mix-blend-mode for an organic liquid feel.",
+      "url": "https://flexui.dev/r/blob-cursor.json"
+    },
+    {
+      "name": "spotlight-cursor",
+      "type": "registry:ui",
+      "description": "A full-viewport radial gradient spotlight that follows the cursor, illuminating content beneath with useMotionTemplate for reactive CSS gradients.",
+      "url": "https://flexui.dev/r/spotlight-cursor.json"
+    },
+    {
+      "name": "otp-input",
+      "type": "registry:ui",
+      "description": "An animated OTP/verification code input with auto-focus navigation, paste support, spring-physics glow on active input, and glass-morphic styling.",
+      "url": "https://flexui.dev/r/otp-input.json"
+    },
+    {
+      "name": "morphing-dialog",
+      "type": "registry:ui",
+      "description": "A dialog that morphs from its trigger element using shared layout animation with spring physics, backdrop blur, and glassmorphic styling.",
+      "url": "https://flexui.dev/r/morphing-dialog.json"
+    },
+    {
+      "name": "morphing-card",
+      "type": "registry:ui",
+      "description": "A card that smoothly morphs between collapsed and expanded states using layout animation with spring physics and content crossfade.",
+      "url": "https://flexui.dev/r/morphing-card.json"
+    },
+    {
+      "name": "floating-navbar",
+      "type": "registry:ui",
+      "description": "A scroll-aware navbar that shrinks into a floating glassmorphic pill on scroll.",
+      "url": "https://flexui.dev/r/floating-navbar.json"
+    },
+    {
+      "name": "animated-input",
+      "type": "registry:ui",
+      "description": "Text input with animated floating label and expanding underline on focus.",
+      "url": "https://flexui.dev/r/animated-input.json"
+    },
+    {
+      "name": "parallax-scroll",
+      "type": "registry:ui",
+      "description": "Wrapper that adds parallax scrolling to any content with configurable speed and direction.",
+      "url": "https://flexui.dev/r/parallax-scroll.json"
+    },
+    {
+      "name": "sticky-scroll-reveal",
+      "type": "registry:ui",
+      "description": "Two-column layout with scrolling text sections and a sticky content panel.",
+      "url": "https://flexui.dev/r/sticky-scroll-reveal.json"
+    },
+    {
+      "name": "cta-block",
+      "type": "registry:ui",
+      "description": "A call-to-action section with animated gradient borders, radial glow background, and staggered entrance animation.",
+      "url": "https://flexui.dev/r/cta-block.json"
+    },
+    {
+      "name": "search-spotlight",
+      "type": "registry:ui",
+      "description": "A macOS Spotlight / Raycast-style search dialog with keyboard navigation, category grouping, and spring animations.",
+      "url": "https://flexui.dev/r/search-spotlight.json"
     }
   ]
 }

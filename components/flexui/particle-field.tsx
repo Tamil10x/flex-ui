@@ -35,16 +35,21 @@ export function ParticleField({
   speed = 1,
 }: ParticleFieldProps) {
   const particles = useMemo<Particle[]>(() => {
+    // Seeded PRNG for deterministic SSR/client match
+    const seed = (n: number) => {
+      const x = Math.sin(n * 9301 + 49297) * 49297;
+      return x - Math.floor(x);
+    };
     const seeded: Particle[] = [];
     for (let i = 0; i < count; i++) {
       seeded.push({
         id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * (maxSize - 1) + 1,
-        duration: (Math.random() * 6 + 4) / speed,
-        delay: Math.random() * -10,
-        opacity: Math.random() * 0.5 + 0.2,
+        x: seed(i * 6 + 1) * 100,
+        y: seed(i * 6 + 2) * 100,
+        size: seed(i * 6 + 3) * (maxSize - 1) + 1,
+        duration: (seed(i * 6 + 4) * 6 + 4) / speed,
+        delay: seed(i * 6 + 5) * -10,
+        opacity: seed(i * 6 + 6) * 0.5 + 0.2,
       });
     }
     return seeded;

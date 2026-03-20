@@ -89,11 +89,15 @@ function Shards() {
   const groupRef = useRef<Group>(null);
 
   const shards = useMemo(() => {
+    const s = (n: number) => {
+      const x = Math.sin(n * 9301 + 49297) * 49297;
+      return x - Math.floor(x);
+    };
     const items = [];
     for (let i = 0; i < 8; i++) {
       const angle = (i / 8) * Math.PI * 2;
-      const r = 2 + Math.random() * 0.6;
-      const y = (Math.random() - 0.5) * 2;
+      const r = 2 + s(i * 7 + 1) * 0.6;
+      const y = (s(i * 7 + 2) - 0.5) * 2;
       items.push({
         pos: [
           Math.cos(angle) * r,
@@ -101,12 +105,12 @@ function Shards() {
           Math.sin(angle) * r,
         ] as [number, number, number],
         rot: [
-          Math.random() * Math.PI,
-          Math.random() * Math.PI,
-          Math.random() * Math.PI,
+          s(i * 7 + 3) * Math.PI,
+          s(i * 7 + 4) * Math.PI,
+          s(i * 7 + 5) * Math.PI,
         ] as [number, number, number],
-        scale: 0.06 + Math.random() * 0.08,
-        speed: 0.3 + Math.random() * 0.5,
+        scale: 0.06 + s(i * 7 + 6) * 0.08,
+        speed: 0.3 + s(i * 7 + 7) * 0.5,
         color: ["#38bdf8", "#a78bfa", "#818cf8", "#67e8f9"][i % 4],
       });
     }
@@ -187,19 +191,23 @@ function Dust() {
   const ref = useRef<Group>(null);
 
   const particles = useMemo(() => {
+    const s = (n: number) => {
+      const x = Math.sin(n * 9301 + 49297) * 49297;
+      return x - Math.floor(x);
+    };
     const colors = ["#38bdf8", "#a78bfa", "#67e8f9", "#818cf8"];
-    return Array.from({ length: 30 }).map(() => {
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
-      const r = 2.5 + Math.random() * 1.5;
+    return Array.from({ length: 30 }).map((_, i) => {
+      const theta = s(i * 5 + 1) * Math.PI * 2;
+      const phi = Math.acos(2 * s(i * 5 + 2) - 1);
+      const r = 2.5 + s(i * 5 + 3) * 1.5;
       return {
         pos: [
           r * Math.sin(phi) * Math.cos(theta),
           r * Math.sin(phi) * Math.sin(theta),
           r * Math.cos(phi),
         ] as [number, number, number],
-        size: 0.008 + Math.random() * 0.012,
-        color: colors[Math.floor(Math.random() * colors.length)],
+        size: 0.008 + s(i * 5 + 4) * 0.012,
+        color: colors[Math.floor(s(i * 5 + 5) * colors.length)],
       };
     });
   }, []);

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "parallax-scroll",
+  "type": "registry:ui",
+  "title": "Parallax Scroll",
+  "description": "Wrapper that adds parallax scrolling to any content with configurable speed and direction.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/parallax-scroll.tsx",
+      "content": "\"use client\";\n\nimport React, { useRef } from \"react\";\nimport { motion, useScroll, useTransform } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface ParallaxScrollProps {\n  children: React.ReactNode;\n  className?: string;\n  /** Parallax multiplier — controls how far content shifts relative to scroll. Default 0.5 */\n  speed?: number;\n  /** Which way content moves relative to scroll direction */\n  direction?: \"up\" | \"down\";\n}\n\nexport function ParallaxScroll({\n  children,\n  className,\n  speed = 0.5,\n  direction = \"up\",\n}: ParallaxScrollProps) {\n  const ref = useRef<HTMLDivElement>(null);\n\n  const { scrollYProgress } = useScroll({\n    target: ref,\n    offset: [\"start end\", \"end start\"],\n  });\n\n  const magnitude = direction === \"up\" ? -1 : 1;\n  const y = useTransform(\n    scrollYProgress,\n    [0, 1],\n    [magnitude * speed * 100, magnitude * speed * -100]\n  );\n\n  return (\n    <div ref={ref} className={cn(\"relative overflow-hidden\", className)}>\n      <motion.div style={{ y }}>{children}</motion.div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/parallax-scroll.tsx"
+    }
+  ]
+}

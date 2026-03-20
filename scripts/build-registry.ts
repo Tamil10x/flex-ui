@@ -620,6 +620,150 @@ const COMPONENTS: RegistryComponent[] = [
       },
     ],
   },
+  {
+    name: "follow-cursor",
+    type: "registry:ui",
+    title: "Follow Cursor",
+    description:
+      "A decorative glowing dot that smoothly follows the cursor using Framer Motion spring physics with configurable stiffness and damping.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/follow-cursor.tsx",
+        target: "components/flexui/follow-cursor.tsx",
+      },
+    ],
+  },
+  {
+    name: "blob-cursor",
+    type: "registry:ui",
+    title: "Blob Cursor",
+    description:
+      "A morphing blob shape that follows the cursor with heavy spring inertia, CSS blur, and mix-blend-mode for an organic liquid feel.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/blob-cursor.tsx",
+        target: "components/flexui/blob-cursor.tsx",
+      },
+    ],
+  },
+  {
+    name: "spotlight-cursor",
+    type: "registry:ui",
+    title: "Spotlight Cursor",
+    description:
+      "A full-viewport radial gradient spotlight that follows the cursor, illuminating content beneath with useMotionTemplate for reactive CSS gradients.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/spotlight-cursor.tsx",
+        target: "components/flexui/spotlight-cursor.tsx",
+      },
+    ],
+  },
+  {
+    name: "otp-input",
+    type: "registry:ui",
+    title: "OTP Input",
+    description:
+      "An animated OTP/verification code input with auto-focus navigation, paste support, spring-physics glow on active input, and glass-morphic styling.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/otp-input.tsx",
+        target: "components/flexui/otp-input.tsx",
+      },
+    ],
+  },
+  {
+    name: "morphing-dialog",
+    type: "registry:ui",
+    title: "Morphing Dialog",
+    description:
+      "A dialog that morphs from its trigger element using shared layout animation with spring physics, backdrop blur, and glassmorphic styling.",
+    dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/morphing-dialog.tsx",
+        target: "components/flexui/morphing-dialog.tsx",
+      },
+    ],
+  },
+  {
+    name: "morphing-card",
+    type: "registry:ui",
+    title: "Morphing Card",
+    description:
+      "A card that smoothly morphs between collapsed and expanded states using layout animation with spring physics and content crossfade.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/morphing-card.tsx",
+        target: "components/flexui/morphing-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "floating-navbar",
+    type: "registry:ui",
+    title: "Floating Navbar",
+    description: "A scroll-aware navbar that shrinks into a floating glassmorphic pill on scroll.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [{ path: "components/flexui/floating-navbar.tsx", target: "components/flexui/floating-navbar.tsx" }],
+  },
+  {
+    name: "animated-input",
+    type: "registry:ui",
+    title: "Animated Input",
+    description: "Text input with animated floating label and expanding underline on focus.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [{ path: "components/flexui/animated-input.tsx", target: "components/flexui/animated-input.tsx" }],
+  },
+  {
+    name: "parallax-scroll",
+    type: "registry:ui",
+    title: "Parallax Scroll",
+    description: "Wrapper that adds parallax scrolling to any content with configurable speed and direction.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [{ path: "components/flexui/parallax-scroll.tsx", target: "components/flexui/parallax-scroll.tsx" }],
+  },
+  {
+    name: "sticky-scroll-reveal",
+    type: "registry:ui",
+    title: "Sticky Scroll Reveal",
+    description: "Two-column layout with scrolling text sections and a sticky content panel.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [{ path: "components/flexui/sticky-scroll-reveal.tsx", target: "components/flexui/sticky-scroll-reveal.tsx" }],
+  },
+  {
+    name: "cta-block",
+    type: "registry:ui",
+    title: "CTA Block",
+    description: "A call-to-action section with animated gradient borders, radial glow background, and staggered entrance animation.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [{ path: "components/flexui/cta-block.tsx", target: "components/flexui/cta-block.tsx" }],
+  },
+  {
+    name: "search-spotlight",
+    type: "registry:ui",
+    title: "Search Spotlight",
+    description: "A macOS Spotlight / Raycast-style search dialog with keyboard navigation, category grouping, and spring animations.",
+    dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: [],
+    files: [{ path: "components/flexui/search-spotlight.tsx", target: "components/flexui/search-spotlight.tsx" }],
+  },
 ];
 
 // ─── Build Logic ────────────────────────────────────────────────────────────
