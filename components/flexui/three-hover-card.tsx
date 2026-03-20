@@ -87,15 +87,13 @@ export function ThreeHoverCard({
       className={cn("group/card relative", className)}
       style={{ perspective: 1000 }}
     >
-      {/* ── 1. Ambient glow (blurred, behind everything) ─────────── */}
+      {/* ── 1. Ambient glow (within bounds) ─────────────────────── */}
       <motion.div
-        className="pointer-events-none absolute -inset-8 rounded-[28px] blur-3xl"
-        animate={{
-          opacity: isHovered ? 0.8 : 0,
-        }}
+        className="pointer-events-none absolute inset-0 rounded-[21px] blur-2xl"
+        animate={{ opacity: isHovered ? 0.5 : 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         style={{
-          background: `radial-gradient(600px circle at ${mousePos.x + 32}px ${mousePos.y + 32}px, rgba(139,92,246,0.15), rgba(56,189,248,0.08), transparent 60%)`,
+          background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(139,92,246,0.1), rgba(56,189,248,0.05), transparent 55%)`,
         }}
       />
 
