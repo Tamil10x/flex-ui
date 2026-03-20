@@ -140,6 +140,54 @@
       "type": "registry:ui",
       "description": "Text that rotates through multiple strings with a rolling slot-machine effect using spring-physics transitions.",
       "url": "https://flexui.dev/r/rotating-text.json"
+    },
+    {
+      "name": "grid-pattern",
+      "type": "registry:ui",
+      "description": "A subtle CSS grid background pattern with configurable cell size, line color, opacity, and an optional radial fade mask.",
+      "url": "https://flexui.dev/r/grid-pattern.json"
+    },
+    {
+      "name": "dot-pattern",
+      "type": "registry:ui",
+      "description": "A dot matrix background pattern with configurable spacing, dot size, color, and an optional radial fade mask.",
+      "url": "https://flexui.dev/r/dot-pattern.json"
+    },
+    {
+      "name": "beams-background",
+      "type": "registry:ui",
+      "description": "Animated light beams that sweep across the background with staggered delays and randomized angles. Pure CSS keyframes.",
+      "url": "https://flexui.dev/r/beams-background.json"
+    },
+    {
+      "name": "stars-background",
+      "type": "registry:ui",
+      "description": "A twinkling star field background with randomly scattered stars that pulse in and out at varying speeds. Pure CSS keyframes.",
+      "url": "https://flexui.dev/r/stars-background.json"
+    },
+    {
+      "name": "mesh-gradient",
+      "type": "registry:ui",
+      "description": "An animated mesh gradient background with multiple color blobs that blend together using heavy CSS blur.",
+      "url": "https://flexui.dev/r/mesh-gradient.json"
+    },
+    {
+      "name": "wavy-background",
+      "type": "registry:ui",
+      "description": "SVG-based animated wavy lines that drift horizontally in the background with decreasing opacity for depth.",
+      "url": "https://flexui.dev/r/wavy-background.json"
+    },
+    {
+      "name": "aurora-background",
+      "type": "registry:ui",
+      "description": "A CSS-only animated aurora borealis background effect with soft blurred gradient bands that drift and rotate.",
+      "url": "https://flexui.dev/r/aurora-background.json"
+    },
+    {
+      "name": "particle-field",
+      "type": "registry:ui",
+      "description": "Floating particle dots that drift slowly across the background with CSS keyframe animations and randomized timing.",
+      "url": "https://flexui.dev/r/particle-field.json"
     }
   ]
 }

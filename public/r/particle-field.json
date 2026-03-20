@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "particle-field",
+  "type": "registry:ui",
+  "title": "Particle Field",
+  "description": "Floating particle dots that drift slowly across the background with CSS keyframe animations and randomized timing.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/particle-field.tsx",
+      "content": "\"use client\";\n\nimport React, { useMemo } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface ParticleFieldProps {\n  children?: React.ReactNode;\n  className?: string;\n  /** Number of particles */\n  count?: number;\n  /** Particle color */\n  color?: string;\n  /** Max particle size in px */\n  maxSize?: number;\n  /** Animation speed multiplier */\n  speed?: number;\n}\n\ninterface Particle {\n  id: number;\n  x: number;\n  y: number;\n  size: number;\n  duration: number;\n  delay: number;\n  opacity: number;\n}\n\nexport function ParticleField({\n  children,\n  className,\n  count = 40,\n  color = \"rgba(255, 255, 255, 0.6)\",\n  maxSize = 4,\n  speed = 1,\n}: ParticleFieldProps) {\n  const particles = useMemo<Particle[]>(() => {\n    const seeded: Particle[] = [];\n    for (let i = 0; i < count; i++) {\n      seeded.push({\n        id: i,\n        x: Math.random() * 100,\n        y: Math.random() * 100,\n        size: Math.random() * (maxSize - 1) + 1,\n        duration: (Math.random() * 6 + 4) / speed,\n        delay: Math.random() * -10,\n        opacity: Math.random() * 0.5 + 0.2,\n      });\n    }\n    return seeded;\n  }, [count, maxSize, speed]);\n\n  return (\n    <div\n      className={cn(\n        \"relative overflow-hidden bg-zinc-950\",\n        className\n      )}\n    >\n      {/* Particle layer */}\n      <div className=\"pointer-events-none absolute inset-0\">\n        {particles.map((p) => (\n          <div\n            key={p.id}\n            className=\"absolute rounded-full animate-particle-drift\"\n            style={{\n              left: `${p.x}%`,\n              top: `${p.y}%`,\n              width: `${p.size}px`,\n              height: `${p.size}px`,\n              backgroundColor: color,\n              opacity: p.opacity,\n              animationDuration: `${p.duration}s`,\n              animationDelay: `${p.delay}s`,\n            }}\n          />\n        ))}\n      </div>\n\n      {/* Content renders on top */}\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/particle-field.tsx"
+    }
+  ]
+}

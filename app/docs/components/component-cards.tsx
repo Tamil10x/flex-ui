@@ -36,6 +36,15 @@ import {
   Shuffle,
   Eye,
   SplitSquareHorizontal,
+  Grid3x3,
+  Circle,
+  Star,
+  Blend,
+  Activity,
+  Sun,
+  CircleDot,
+  ArrowUpDown,
+  Pin,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -535,6 +544,174 @@ const components: CardData[] = [
         <RotateCw className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
         <Sparkles className="absolute right-20 top-14 h-8 w-8 text-purple-500/[0.1] -rotate-12" />
         <Zap className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Grid Pattern",
+    href: "/docs/components/grid-pattern",
+    tier: "Tier 1",
+    tagline: "Background Pattern",
+    description:
+      "A subtle CSS grid background pattern with configurable cell size, line color, opacity, and an optional radial fade mask. Pure CSS, no JS.",
+    deps: [],
+    gradient: "from-slate-600/20 via-zinc-600/10 to-transparent",
+    glowColor: "rgba(148,163,184,0.15)",
+    iconBg: "bg-gradient-to-br from-slate-500 to-zinc-500",
+    accentLine: "from-slate-500 to-zinc-500",
+    icon: <Grid3x3 className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Grid3x3 className="absolute right-6 top-6 h-16 w-16 text-slate-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-zinc-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-gray-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Dot Pattern",
+    href: "/docs/components/dot-pattern",
+    tier: "Tier 1",
+    tagline: "Background Pattern",
+    description:
+      "A dot matrix background pattern with configurable spacing, dot size, color, and an optional radial fade mask. Pure CSS, no JS.",
+    deps: [],
+    gradient: "from-neutral-600/20 via-stone-600/10 to-transparent",
+    glowColor: "rgba(163,163,163,0.15)",
+    iconBg: "bg-gradient-to-br from-neutral-500 to-stone-500",
+    accentLine: "from-neutral-500 to-stone-500",
+    icon: <Circle className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Circle className="absolute right-6 top-6 h-16 w-16 text-neutral-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-stone-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-gray-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Beams Background",
+    href: "/docs/components/beams-background",
+    tier: "Tier 1",
+    tagline: "Light Sweep",
+    description:
+      "Animated light beams that sweep across the background with staggered delays and randomized angles. Pure CSS keyframes — no JS animation loop.",
+    deps: [],
+    gradient: "from-yellow-600/20 via-amber-600/10 to-transparent",
+    glowColor: "rgba(234,179,8,0.15)",
+    iconBg: "bg-gradient-to-br from-yellow-500 to-amber-500",
+    accentLine: "from-yellow-500 to-amber-500",
+    icon: <Zap className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Zap className="absolute right-6 top-6 h-16 w-16 text-yellow-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-amber-500/[0.1] -rotate-12" />
+        <Layers className="absolute right-10 top-24 h-6 w-6 text-orange-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Stars Background",
+    href: "/docs/components/stars-background",
+    tier: "Tier 1",
+    tagline: "Twinkle Field",
+    description:
+      "A twinkling star field background with randomly scattered stars that pulse in and out at varying speeds. Pure CSS — no canvas, no WebGL.",
+    deps: [],
+    gradient: "from-indigo-600/20 via-blue-600/10 to-transparent",
+    glowColor: "rgba(99,102,241,0.15)",
+    iconBg: "bg-gradient-to-br from-indigo-500 to-blue-500",
+    accentLine: "from-indigo-500 to-blue-500",
+    icon: <Star className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Star className="absolute right-6 top-6 h-16 w-16 text-indigo-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-blue-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-violet-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Mesh Gradient",
+    href: "/docs/components/mesh-gradient",
+    tier: "Tier 1",
+    tagline: "Background Effect",
+    description:
+      "Animated mesh gradient background with multiple color blobs that blend together using heavy CSS blur. Zero dependencies.",
+    deps: [],
+    gradient: "from-violet-600/20 via-cyan-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-cyan-500",
+    accentLine: "from-violet-500 to-cyan-500",
+    icon: <Blend className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Blend className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-cyan-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-pink-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Wavy Background",
+    href: "/docs/components/wavy-background",
+    tier: "Tier 1",
+    tagline: "Background Effect",
+    description:
+      "SVG-based animated wavy lines that drift horizontally in the background. Multiple sine-wave paths with decreasing opacity for depth.",
+    deps: [],
+    gradient: "from-sky-600/20 via-blue-600/10 to-transparent",
+    glowColor: "rgba(14,165,233,0.15)",
+    iconBg: "bg-gradient-to-br from-sky-500 to-blue-500",
+    accentLine: "from-sky-500 to-blue-500",
+    icon: <Activity className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Activity className="absolute right-6 top-6 h-16 w-16 text-sky-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-blue-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-cyan-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Aurora Background",
+    href: "/docs/components/aurora-background",
+    tier: "Tier 1",
+    tagline: "Background Effect",
+    description:
+      "CSS-only animated aurora borealis background with soft blurred gradient bands that drift and rotate. Configurable colors, speed, and blur.",
+    deps: [],
+    gradient: "from-violet-600/20 via-cyan-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-cyan-500",
+    accentLine: "from-violet-500 to-cyan-500",
+    icon: <Sun className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Sun className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-cyan-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-emerald-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Particle Field",
+    href: "/docs/components/particle-field",
+    tier: "Tier 1",
+    tagline: "Background Effect",
+    description:
+      "Floating particle dots that drift slowly across the background with CSS keyframe animations. Randomized positions, sizes, and timing for organic feel.",
+    deps: [],
+    gradient: "from-sky-600/20 via-indigo-600/10 to-transparent",
+    glowColor: "rgba(56,189,248,0.15)",
+    iconBg: "bg-gradient-to-br from-sky-500 to-indigo-500",
+    accentLine: "from-sky-500 to-indigo-500",
+    icon: <CircleDot className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <CircleDot className="absolute right-6 top-6 h-16 w-16 text-sky-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-indigo-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-blue-500/[0.08] rotate-45" />
       </>
     ),
   },

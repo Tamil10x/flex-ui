@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dot-pattern",
+  "type": "registry:ui",
+  "title": "Dot Pattern",
+  "description": "A dot matrix background pattern with configurable spacing, dot size, color, and an optional radial fade mask.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/dot-pattern.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface DotPatternProps {\n  children?: React.ReactNode;\n  className?: string;\n  /** Dot spacing in px */\n  spacing?: number;\n  /** Dot size in px */\n  dotSize?: number;\n  /** Dot color */\n  color?: string;\n  /** Radial fade mask */\n  fade?: boolean;\n}\n\nexport function DotPattern({\n  children,\n  className,\n  spacing = 24,\n  dotSize = 1.2,\n  color = \"rgb(255 255 255 / 0.3)\",\n  fade = false,\n}: DotPatternProps) {\n  return (\n    <div className={cn(\"relative overflow-hidden\", className)}>\n      {/* Dot matrix */}\n      <div\n        className=\"pointer-events-none absolute inset-0\"\n        style={{\n          backgroundImage: `radial-gradient(circle, ${color} ${dotSize}px, transparent ${dotSize}px)`,\n          backgroundSize: `${spacing}px ${spacing}px`,\n          ...(fade\n            ? {\n                maskImage:\n                  \"radial-gradient(ellipse at center, black 30%, transparent 70%)\",\n                WebkitMaskImage:\n                  \"radial-gradient(ellipse at center, black 30%, transparent 70%)\",\n              }\n            : {}),\n        }}\n      />\n      {/* Children on top */}\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/dot-pattern.tsx"
+    }
+  ]
+}

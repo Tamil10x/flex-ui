@@ -395,6 +395,126 @@ const COMPONENTS: RegistryComponent[] = [
       },
     ],
   },
+  {
+    name: "grid-pattern",
+    type: "registry:ui",
+    title: "Grid Pattern",
+    description:
+      "A subtle CSS grid background pattern with configurable cell size, line color, opacity, and an optional radial fade mask.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/grid-pattern.tsx",
+        target: "components/flexui/grid-pattern.tsx",
+      },
+    ],
+  },
+  {
+    name: "dot-pattern",
+    type: "registry:ui",
+    title: "Dot Pattern",
+    description:
+      "A dot matrix background pattern with configurable spacing, dot size, color, and an optional radial fade mask.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/dot-pattern.tsx",
+        target: "components/flexui/dot-pattern.tsx",
+      },
+    ],
+  },
+  {
+    name: "beams-background",
+    type: "registry:ui",
+    title: "Beams Background",
+    description:
+      "Animated light beams that sweep across the background with staggered delays and randomized angles. Pure CSS keyframes.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/beams-background.tsx",
+        target: "components/flexui/beams-background.tsx",
+      },
+    ],
+  },
+  {
+    name: "stars-background",
+    type: "registry:ui",
+    title: "Stars Background",
+    description:
+      "A twinkling star field background with randomly scattered stars that pulse in and out at varying speeds. Pure CSS keyframes.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/stars-background.tsx",
+        target: "components/flexui/stars-background.tsx",
+      },
+    ],
+  },
+  {
+    name: "mesh-gradient",
+    type: "registry:ui",
+    title: "Mesh Gradient",
+    description:
+      "An animated mesh gradient background with multiple color blobs that blend together using heavy CSS blur.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/mesh-gradient.tsx",
+        target: "components/flexui/mesh-gradient.tsx",
+      },
+    ],
+  },
+  {
+    name: "wavy-background",
+    type: "registry:ui",
+    title: "Wavy Background",
+    description:
+      "SVG-based animated wavy lines that drift horizontally in the background with decreasing opacity for depth.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/wavy-background.tsx",
+        target: "components/flexui/wavy-background.tsx",
+      },
+    ],
+  },
+  {
+    name: "aurora-background",
+    type: "registry:ui",
+    title: "Aurora Background",
+    description:
+      "A CSS-only animated aurora borealis background effect with soft blurred gradient bands that drift and rotate.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/aurora-background.tsx",
+        target: "components/flexui/aurora-background.tsx",
+      },
+    ],
+  },
+  {
+    name: "particle-field",
+    type: "registry:ui",
+    title: "Particle Field",
+    description:
+      "Floating particle dots that drift slowly across the background with CSS keyframe animations and randomized timing.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/particle-field.tsx",
+        target: "components/flexui/particle-field.tsx",
+      },
+    ],
+  },
 ];
 
 // ─── Build Logic ────────────────────────────────────────────────────────────

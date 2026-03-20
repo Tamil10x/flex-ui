@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "grid-pattern",
+  "type": "registry:ui",
+  "title": "Grid Pattern",
+  "description": "A subtle CSS grid background pattern with configurable cell size, line color, opacity, and an optional radial fade mask.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/grid-pattern.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface GridPatternProps {\n  children?: React.ReactNode;\n  className?: string;\n  /** Grid cell size in px */\n  size?: number;\n  /** Line color */\n  color?: string;\n  /** Line opacity (0-1) */\n  opacity?: number;\n  /** Radial fade mask from center */\n  fade?: boolean;\n}\n\nexport function GridPattern({\n  children,\n  className,\n  size = 40,\n  color = \"rgb(255 255 255)\",\n  opacity = 0.06,\n  fade = false,\n}: GridPatternProps) {\n  return (\n    <div className={cn(\"relative overflow-hidden\", className)}>\n      {/* Grid lines */}\n      <div\n        className=\"pointer-events-none absolute inset-0\"\n        style={{\n          backgroundImage: `linear-gradient(${color} / ${opacity} 1px, transparent 1px), linear-gradient(to right, ${color} / ${opacity} 1px, transparent 1px)`,\n          backgroundSize: `${size}px ${size}px`,\n          ...(fade\n            ? {\n                maskImage:\n                  \"radial-gradient(ellipse at center, black 30%, transparent 70%)\",\n                WebkitMaskImage:\n                  \"radial-gradient(ellipse at center, black 30%, transparent 70%)\",\n              }\n            : {}),\n        }}\n      />\n      {/* Children on top */}\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/grid-pattern.tsx"
+    }
+  ]
+}

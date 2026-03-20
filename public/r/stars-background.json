@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stars-background",
+  "type": "registry:ui",
+  "title": "Stars Background",
+  "description": "A twinkling star field background with randomly scattered stars that pulse in and out at varying speeds. Pure CSS keyframes.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/stars-background.tsx",
+      "content": "\"use client\";\nimport React, { useMemo } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface StarsBackgroundProps {\n  children?: React.ReactNode;\n  className?: string;\n  /** Number of stars */\n  count?: number;\n  /** Star color */\n  color?: string;\n  /** Enable twinkling animation */\n  twinkle?: boolean;\n  /** Twinkle speed range in seconds [min, max] */\n  twinkleSpeed?: [number, number];\n}\n\nfunction seededRandom(seed: number) {\n  const x = Math.sin(seed) * 10000;\n  return x - Math.floor(x);\n}\n\nexport function StarsBackground({\n  children,\n  className,\n  count = 80,\n  color = \"white\",\n  twinkle = true,\n  twinkleSpeed = [1.5, 4],\n}: StarsBackgroundProps) {\n  const stars = useMemo(() => {\n    return Array.from({ length: count }, (_, i) => {\n      const r = (idx: number) => seededRandom(i * 100 + idx);\n      const x = r(1) * 100;\n      const y = r(2) * 100;\n      const size = 1 + r(3) * 2; // 1-3px\n      const opacity = 0.3 + r(4) * 0.7; // 0.3-1\n      const duration =\n        twinkleSpeed[0] + r(5) * (twinkleSpeed[1] - twinkleSpeed[0]);\n      const delay = r(6) * duration;\n\n      return { x, y, size, opacity, duration, delay, id: i };\n    });\n  }, [count, twinkleSpeed]);\n\n  return (\n    <div className={cn(\"relative overflow-hidden\", className)}>\n      {/* Stars layer */}\n      <div className=\"pointer-events-none absolute inset-0\">\n        {stars.map((star) => (\n          <div\n            key={star.id}\n            className={cn(\"absolute rounded-full\", twinkle && \"animate-star-twinkle\")}\n            style={{\n              left: `${star.x}%`,\n              top: `${star.y}%`,\n              width: `${star.size}px`,\n              height: `${star.size}px`,\n              backgroundColor: color,\n              opacity: star.opacity,\n              ...(twinkle\n                ? {\n                    animationDuration: `${star.duration}s`,\n                    animationDelay: `${star.delay}s`,\n                  }\n                : {}),\n            }}\n          />\n        ))}\n      </div>\n      {/* Content */}\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/stars-background.tsx"
+    }
+  ]
+}
