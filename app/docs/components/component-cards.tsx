@@ -167,6 +167,27 @@ const components: CardData[] = [
     ),
   },
   {
+    name: "Cosmic Eye",
+    href: "/docs/components/cosmic-eye",
+    tier: "Tier 3",
+    tagline: "WebGL Shader",
+    description:
+      "A WebGL shader-based animated eye with two-tone iris, mouse-tracking pupil, swirling noise tendrils, and pulsing corona glow.",
+    deps: ["ogl"],
+    gradient: "from-violet-600/20 via-cyan-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-cyan-500",
+    accentLine: "from-violet-500 to-cyan-500",
+    icon: <Eye className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Eye className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-cyan-500/[0.1] -rotate-12" />
+        <Circle className="absolute right-10 top-24 h-6 w-6 text-purple-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
     name: "Expandable Card",
     href: "/docs/components/expandable-card",
     tier: "Tier 1",

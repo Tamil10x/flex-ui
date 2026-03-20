@@ -103,20 +103,9 @@ export function PreviewCodeTabs({
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="relative flex min-h-[300px] items-center justify-center overflow-visible p-10"
+              className="relative flex min-h-[300px] w-full items-center justify-center overflow-visible p-6"
             >
-              {/* Dot grid */}
-              <div
-                className="pointer-events-none absolute inset-0"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0)",
-                  backgroundSize: "20px 20px",
-                }}
-              />
-              {/* Ambient glow */}
-              <div className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/[0.03] blur-[80px]" />
-              <div className="relative z-10">{preview}</div>
+              <div className="relative z-10 w-full">{preview}</div>
             </motion.div>
           ) : (
             <motion.div

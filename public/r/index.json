@@ -28,6 +28,12 @@
       "url": "https://flexui.dev/r/interactive-globe.json"
     },
     {
+      "name": "cosmic-eye",
+      "type": "registry:ui",
+      "description": "A WebGL shader-based animated eye effect with cosmic nebula colors, mouse-tracking pupil, and organic noise textures.",
+      "url": "https://flexui.dev/r/cosmic-eye.json"
+    },
+    {
       "name": "expandable-card",
       "type": "registry:ui",
       "description": "An expandable card component with smooth Framer Motion animations that reveals additional content on interaction.",

@@ -111,6 +111,21 @@ const COMPONENTS: RegistryComponent[] = [
     ],
   },
   {
+    name: "cosmic-eye",
+    type: "registry:ui",
+    title: "Cosmic Eye",
+    description:
+      "A WebGL shader-based animated eye effect with cosmic nebula colors, mouse-tracking pupil, and organic noise textures.",
+    dependencies: ["ogl"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/cosmic-eye.tsx",
+        target: "components/flexui/cosmic-eye.tsx",
+      },
+    ],
+  },
+  {
     name: "expandable-card",
     type: "registry:ui",
     title: "Expandable Card",
