@@ -43,6 +43,12 @@ import {
   CircleDot,
   ArrowUpDown,
   Pin,
+  BarChart3,
+  Calculator,
+  Flame,
+  Droplet,
+  Square,
+  PartyPopper,
 } from "lucide-react";
 
 interface SidebarItem {
@@ -273,6 +279,48 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
         title: "Sticky Scroll Reveal",
         href: "/docs/components/sticky-scroll-reveal",
         icon: <Pin className="h-4 w-4" />,
+        isNew: true,
+      },
+      {
+        title: "Scroll Progress",
+        href: "/docs/components/scroll-progress",
+        icon: <BarChart3 className="h-4 w-4" />,
+        isNew: true,
+      },
+      {
+        title: "Fade on Scroll",
+        href: "/docs/components/fade-on-scroll",
+        icon: <Eye className="h-4 w-4" />,
+        isNew: true,
+      },
+      {
+        title: "Scroll Counter",
+        href: "/docs/components/scroll-counter",
+        icon: <Calculator className="h-4 w-4" />,
+        isNew: true,
+      },
+      {
+        title: "Glow Button",
+        href: "/docs/components/glow-button",
+        icon: <Flame className="h-4 w-4" />,
+        isNew: true,
+      },
+      {
+        title: "Ripple Button",
+        href: "/docs/components/ripple-button",
+        icon: <Droplet className="h-4 w-4" />,
+        isNew: true,
+      },
+      {
+        title: "Gradient Border Button",
+        href: "/docs/components/gradient-border-button",
+        icon: <Square className="h-4 w-4" />,
+        isNew: true,
+      },
+      {
+        title: "Confetti Button",
+        href: "/docs/components/confetti-button",
+        icon: <PartyPopper className="h-4 w-4" />,
         isNew: true,
       },
     ],

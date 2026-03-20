@@ -45,6 +45,12 @@ import {
   CircleDot,
   ArrowUpDown,
   Pin,
+  BarChart3,
+  Calculator,
+  Flame,
+  Droplet,
+  Square,
+  PartyPopper,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -712,6 +718,195 @@ const components: CardData[] = [
         <CircleDot className="absolute right-6 top-6 h-16 w-16 text-sky-500/[0.07] rotate-12" />
         <Sparkles className="absolute right-20 top-14 h-8 w-8 text-indigo-500/[0.1] -rotate-12" />
         <Zap className="absolute right-10 top-24 h-6 w-6 text-blue-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Parallax Scroll",
+    href: "/docs/components/parallax-scroll",
+    tier: "Tier 1",
+    tagline: "Scroll Effect",
+    description:
+      "A composable parallax wrapper that translates child content along the Y axis based on scroll progress. Configurable speed and direction.",
+    deps: ["framer-motion"],
+    gradient: "from-teal-600/20 via-cyan-600/10 to-transparent",
+    glowColor: "rgba(20,184,166,0.15)",
+    iconBg: "bg-gradient-to-br from-teal-500 to-cyan-500",
+    accentLine: "from-teal-500 to-cyan-500",
+    icon: <ArrowUpDown className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <ArrowUpDown className="absolute right-6 top-6 h-16 w-16 text-teal-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-cyan-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-emerald-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Sticky Scroll Reveal",
+    href: "/docs/components/sticky-scroll-reveal",
+    tier: "Tier 1",
+    tagline: "Scroll Layout",
+    description:
+      "Two-column scroll-linked layout with a sticky glassmorphic content panel and text sections that fade in based on scroll progress.",
+    deps: ["framer-motion"],
+    gradient: "from-rose-600/20 via-pink-600/10 to-transparent",
+    glowColor: "rgba(244,63,94,0.15)",
+    iconBg: "bg-gradient-to-br from-rose-500 to-pink-500",
+    accentLine: "from-rose-500 to-pink-500",
+    icon: <Pin className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Pin className="absolute right-6 top-6 h-16 w-16 text-rose-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-pink-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Scroll Progress",
+    href: "/docs/components/scroll-progress",
+    tier: "Tier 1",
+    tagline: "Progress Bar",
+    description:
+      "A fixed progress bar that animates from 0% to 100% based on page scroll. Uses useScroll and useSpring for smooth, spring-physics animation.",
+    deps: ["framer-motion"],
+    gradient: "from-blue-600/20 via-cyan-600/10 to-transparent",
+    glowColor: "rgba(59,130,246,0.15)",
+    iconBg: "bg-gradient-to-br from-blue-500 to-cyan-500",
+    accentLine: "from-blue-500 to-cyan-500",
+    icon: <BarChart3 className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <BarChart3 className="absolute right-6 top-6 h-16 w-16 text-blue-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-cyan-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-sky-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Fade on Scroll",
+    href: "/docs/components/fade-on-scroll",
+    tier: "Tier 1",
+    tagline: "Scroll Reveal",
+    description:
+      "A wrapper that fades and slides children into view when scrolled into the viewport. Configurable direction, distance, delay, and spring physics.",
+    deps: ["framer-motion"],
+    gradient: "from-violet-600/20 via-purple-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-purple-500",
+    accentLine: "from-violet-500 to-purple-500",
+    icon: <Eye className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Eye className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-purple-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Scroll Counter",
+    href: "/docs/components/scroll-counter",
+    tier: "Tier 1",
+    tagline: "Animated Counter",
+    description:
+      "Counts from one number to another when scrolled into view. Uses spring physics and direct DOM updates via ref for zero re-render performance.",
+    deps: ["framer-motion"],
+    gradient: "from-amber-600/20 via-orange-600/10 to-transparent",
+    glowColor: "rgba(245,158,11,0.15)",
+    iconBg: "bg-gradient-to-br from-amber-500 to-orange-500",
+    accentLine: "from-amber-500 to-orange-500",
+    icon: <Calculator className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Calculator className="absolute right-6 top-6 h-16 w-16 text-amber-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-orange-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-yellow-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Glow Button",
+    href: "/docs/components/glow-button",
+    tier: "Tier 1",
+    tagline: "Pulsing Glow",
+    description:
+      "A button with a pulsing glow shadow that intensifies on hover. CSS keyframe animation for idle pulse, Framer Motion spring for hover/tap interactions.",
+    deps: ["framer-motion"],
+    gradient: "from-sky-600/20 via-cyan-600/10 to-transparent",
+    glowColor: "rgba(56,189,248,0.15)",
+    iconBg: "bg-gradient-to-br from-sky-500 to-cyan-500",
+    accentLine: "from-sky-500 to-cyan-500",
+    icon: <Flame className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Flame className="absolute right-6 top-6 h-16 w-16 text-sky-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-cyan-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-blue-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Ripple Button",
+    href: "/docs/components/ripple-button",
+    tier: "Tier 1",
+    tagline: "Click Ripple",
+    description:
+      "Material-design-style ripple effect on click. Expanding circles at click position that scale and fade out. Multiple ripples can stack. Pure CSS animation.",
+    deps: [],
+    gradient: "from-blue-600/20 via-indigo-600/10 to-transparent",
+    glowColor: "rgba(59,130,246,0.15)",
+    iconBg: "bg-gradient-to-br from-blue-500 to-indigo-500",
+    accentLine: "from-blue-500 to-indigo-500",
+    icon: <Droplet className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Droplet className="absolute right-6 top-6 h-16 w-16 text-blue-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-indigo-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-sky-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Gradient Border Button",
+    href: "/docs/components/gradient-border-button",
+    tier: "Tier 1",
+    tagline: "Rotating Border",
+    description:
+      "An animated rotating conic-gradient border with a solid dark inner background. Configurable colors, border width, and rotation speed. Framer Motion hover/tap.",
+    deps: ["framer-motion"],
+    gradient: "from-violet-600/20 via-fuchsia-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-fuchsia-500",
+    accentLine: "from-violet-500 to-fuchsia-500",
+    icon: <Square className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Square className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-fuchsia-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-purple-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Confetti Button",
+    href: "/docs/components/confetti-button",
+    tier: "Tier 1",
+    tagline: "Particle Burst",
+    description:
+      "On click, bursts colorful confetti particles that fly outward in random directions with random colors, sizes, and rotations. Auto-cleanup after animation.",
+    deps: ["framer-motion"],
+    gradient: "from-pink-600/20 via-rose-600/10 to-transparent",
+    glowColor: "rgba(236,72,153,0.15)",
+    iconBg: "bg-gradient-to-br from-pink-500 to-rose-500",
+    accentLine: "from-pink-500 to-rose-500",
+    icon: <PartyPopper className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <PartyPopper className="absolute right-6 top-6 h-16 w-16 text-pink-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-rose-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
       </>
     ),
   },

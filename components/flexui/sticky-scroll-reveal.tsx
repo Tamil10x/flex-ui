@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface StickySection {
@@ -114,7 +114,7 @@ function StickyContentPanel({
 }: {
   section: StickySection;
   index: number;
-  activeIndex: ReturnType<typeof useTransform<number>>;
+  activeIndex: MotionValue<number>;
 }) {
   const opacity = useTransform(activeIndex, (latest: number) => {
     const distance = Math.abs(latest - index);

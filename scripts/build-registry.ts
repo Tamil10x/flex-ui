@@ -515,6 +515,111 @@ const COMPONENTS: RegistryComponent[] = [
       },
     ],
   },
+  {
+    name: "scroll-progress",
+    type: "registry:ui",
+    title: "Scroll Progress",
+    description:
+      "A fixed progress bar that animates from 0% to 100% based on page scroll using useScroll and useSpring for smooth spring-physics animation.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/scroll-progress.tsx",
+        target: "components/flexui/scroll-progress.tsx",
+      },
+    ],
+  },
+  {
+    name: "fade-on-scroll",
+    type: "registry:ui",
+    title: "Fade on Scroll",
+    description:
+      "A wrapper component that fades and slides children into view when scrolled into the viewport with configurable direction, distance, and spring physics.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/fade-on-scroll.tsx",
+        target: "components/flexui/fade-on-scroll.tsx",
+      },
+    ],
+  },
+  {
+    name: "scroll-counter",
+    type: "registry:ui",
+    title: "Scroll Counter",
+    description:
+      "An animated counter that counts from one number to another when scrolled into view using spring physics and direct DOM updates for performance.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/scroll-counter.tsx",
+        target: "components/flexui/scroll-counter.tsx",
+      },
+    ],
+  },
+  {
+    name: "glow-button",
+    type: "registry:ui",
+    title: "Glow Button",
+    description:
+      "A button with a pulsing glow shadow that intensifies on hover, using CSS keyframes and Framer Motion spring interactions.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/glow-button.tsx",
+        target: "components/flexui/glow-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "ripple-button",
+    type: "registry:ui",
+    title: "Ripple Button",
+    description:
+      "A Material-design-style ripple effect button with expanding circles at the click position. Pure CSS animation, no Framer Motion.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/ripple-button.tsx",
+        target: "components/flexui/ripple-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "gradient-border-button",
+    type: "registry:ui",
+    title: "Gradient Border Button",
+    description:
+      "A button with a continuously rotating conic-gradient border and solid dark inner background. Framer Motion hover/tap.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/gradient-border-button.tsx",
+        target: "components/flexui/gradient-border-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "confetti-button",
+    type: "registry:ui",
+    title: "Confetti Button",
+    description:
+      "A button that bursts colorful confetti particles on click with random directions, colors, and rotations. Framer Motion hover/tap.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/confetti-button.tsx",
+        target: "components/flexui/confetti-button.tsx",
+      },
+    ],
+  },
 ];
 
 // ─── Build Logic ────────────────────────────────────────────────────────────
