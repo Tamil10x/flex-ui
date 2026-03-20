@@ -15,6 +15,8 @@ import {
   LayoutGrid,
   PanelTop,
   Globe,
+  Expand,
+  Scan,
 } from "lucide-react";
 
 interface SidebarItem {
@@ -76,6 +78,16 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
         title: "Interactive Globe",
         href: "/docs/components/interactive-globe",
         icon: <Globe className="h-4 w-4" />,
+      },
+      {
+        title: "Expandable Card",
+        href: "/docs/components/expandable-card",
+        icon: <Expand className="h-4 w-4" />,
+      },
+      {
+        title: "Reflective Card",
+        href: "/docs/components/reflective-card",
+        icon: <Scan className="h-4 w-4" />,
       },
     ],
   },

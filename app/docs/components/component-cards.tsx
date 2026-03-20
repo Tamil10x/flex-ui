@@ -16,6 +16,10 @@ import {
   PanelTop,
   MessageSquare,
   Layout,
+  Expand,
+  Rows3,
+  Scan,
+  Video,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -116,6 +120,48 @@ const components: CardData[] = [
         <Globe className="absolute right-6 top-6 h-16 w-16 text-orange-500/[0.07] rotate-12" />
         <Sparkles className="absolute right-20 top-14 h-8 w-8 text-rose-500/[0.1] -rotate-12" />
         <Zap className="absolute right-10 top-24 h-6 w-6 text-amber-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Expandable Card",
+    href: "/docs/components/expandable-card",
+    tier: "Tier 1",
+    tagline: "Click to Expand",
+    description:
+      "Composable click-to-expand card with spring-physics resize, blur/fade/slide content presets, and staggered reveals.",
+    deps: ["framer-motion"],
+    gradient: "from-amber-600/20 via-yellow-600/10 to-transparent",
+    glowColor: "rgba(245,158,11,0.15)",
+    iconBg: "bg-gradient-to-br from-amber-500 to-yellow-500",
+    accentLine: "from-amber-500 to-yellow-500",
+    icon: <Expand className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Expand className="absolute right-6 top-6 h-16 w-16 text-amber-500/[0.07] rotate-12" />
+        <Rows3 className="absolute right-20 top-14 h-8 w-8 text-yellow-500/[0.1] -rotate-12" />
+        <Sparkles className="absolute right-10 top-24 h-6 w-6 text-orange-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Reflective Card",
+    href: "/docs/components/reflective-card",
+    tier: "Tier 3",
+    tagline: "Webcam + SVG Filters",
+    description:
+      "Metallic ID-card with live webcam backdrop, SVG displacement, specular lighting, 3D tilt, and holographic glass border on hover.",
+    deps: ["framer-motion"],
+    gradient: "from-pink-600/20 via-rose-600/10 to-transparent",
+    glowColor: "rgba(236,72,153,0.15)",
+    iconBg: "bg-gradient-to-br from-pink-500 to-rose-500",
+    accentLine: "from-pink-500 to-rose-500",
+    icon: <Scan className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Scan className="absolute right-6 top-6 h-16 w-16 text-pink-500/[0.07] rotate-12" />
+        <Video className="absolute right-20 top-14 h-8 w-8 text-rose-500/[0.1] -rotate-12" />
+        <Sparkles className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
       </>
     ),
   },

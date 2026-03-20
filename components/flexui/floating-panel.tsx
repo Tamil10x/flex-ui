@@ -9,6 +9,7 @@ import React, {
   useState,
   useCallback,
 } from "react";
+import { createPortal } from "react-dom";
 import { ArrowLeftIcon } from "lucide-react";
 import { AnimatePresence, motion, MotionConfig, type Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -227,7 +228,9 @@ export function FloatingPanelContent({
     visible: { opacity: 1, scale: 1, y: 0 },
   };
 
-  return (
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <>
@@ -236,13 +239,13 @@ export function FloatingPanelContent({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-[2px]"
+            className="fixed inset-0 z-[9998] bg-black/40 backdrop-blur-[2px]"
           />
           {/* Panel */}
           <motion.div
             ref={contentRef}
             className={cn(
-              "fixed z-50 w-[320px] overflow-hidden rounded-xl border border-white/[0.08] bg-zinc-900 shadow-2xl shadow-black/50",
+              "fixed z-[9999] w-[320px] overflow-hidden rounded-xl border border-white/[0.08] bg-zinc-900 shadow-2xl shadow-black/50",
               className
             )}
             style={{
@@ -276,7 +279,8 @@ export function FloatingPanelContent({
           </motion.div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
 

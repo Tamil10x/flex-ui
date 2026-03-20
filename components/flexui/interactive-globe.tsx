@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import type { GlobeConfig } from "@/components/ui/globe";
 import { cn } from "@/lib/utils";
@@ -137,8 +137,10 @@ export interface InteractiveGlobeProps {
   data?: GlobeArc[];
   /** Duration of each arc animation in ms */
   arcTime?: number;
-  /** Auto-rotate speed */
+  /** Auto-rotate speed (0 = stopped) */
   autoRotateSpeed?: number;
+  /** Enable auto-rotation */
+  autoRotate?: boolean;
   /** Container className */
   className?: string;
   /** Show heading/subtitle */
@@ -158,11 +160,20 @@ export function InteractiveGlobe({
   data,
   arcTime = 1000,
   autoRotateSpeed = 0.5,
+  autoRotate = true,
   className,
   showLabel = true,
   heading = "Connected Worldwide",
   subtitle = "Real-time data flows across the globe with live animated arcs.",
 }: InteractiveGlobeProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // Trigger fade-in after mount
+    const raf = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
   const themeValues = THEMES[theme];
 
   const resolvedGlobeColor = globeColor ?? themeValues.globeColor;
@@ -175,48 +186,84 @@ export function InteractiveGlobe({
   );
   const arcs = data ?? sampleArcs;
 
-  const globeConfig: GlobeConfig = {
-    pointSize: 4,
-    globeColor: resolvedGlobeColor,
-    showAtmosphere: true,
-    atmosphereColor: resolvedAtmosphereColor,
-    atmosphereAltitude,
-    emissive: themeValues.emissive,
-    emissiveIntensity: 0.1,
-    shininess: 0.9,
-    polygonColor: themeValues.polygonColor,
-    ambientLight: themeValues.ambientLight,
-    directionalLeftLight: "#ffffff",
-    directionalTopLight: "#ffffff",
-    pointLight: "#ffffff",
-    arcTime,
-    arcLength: 0.9,
-    rings: 1,
-    maxRings: 3,
-    initialPosition: { lat: 22.3193, lng: 114.1694 },
-    autoRotate: true,
-    autoRotateSpeed,
-  };
+  const globeConfig: GlobeConfig = useMemo(
+    () => ({
+      pointSize: 4,
+      globeColor: resolvedGlobeColor,
+      showAtmosphere: true,
+      atmosphereColor: resolvedAtmosphereColor,
+      atmosphereAltitude,
+      emissive: themeValues.emissive,
+      emissiveIntensity: 0.1,
+      shininess: 0.9,
+      polygonColor: themeValues.polygonColor,
+      ambientLight: themeValues.ambientLight,
+      directionalLeftLight: "#ffffff",
+      directionalTopLight: "#ffffff",
+      pointLight: "#ffffff",
+      arcTime,
+      arcLength: 0.9,
+      rings: 1,
+      maxRings: 3,
+      initialPosition: { lat: 22.3193, lng: 114.1694 },
+      autoRotate,
+      autoRotateSpeed,
+    }),
+    [
+      resolvedGlobeColor,
+      resolvedAtmosphereColor,
+      atmosphereAltitude,
+      themeValues,
+      arcTime,
+      autoRotate,
+      autoRotateSpeed,
+    ]
+  );
 
   return (
     <div
       className={cn(
         "relative flex flex-col items-center justify-center w-full overflow-hidden",
+        "transition-opacity duration-700 ease-out",
+        mounted ? "opacity-100" : "opacity-0",
         className
       )}
     >
       {showLabel && (
         <div className="relative z-20 mb-2 text-center">
-          <h3 className="text-xl font-bold text-white md:text-3xl">{heading}</h3>
-          <p className="mt-1 text-sm text-zinc-400 max-w-xs mx-auto">{subtitle}</p>
+          <h3
+            className={cn(
+              "text-xl font-bold text-white md:text-3xl",
+              "transition-all duration-700 ease-out delay-200",
+              mounted
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-3"
+            )}
+          >
+            {heading}
+          </h3>
+          <p
+            className={cn(
+              "mt-1 text-sm text-zinc-400 max-w-xs mx-auto",
+              "transition-all duration-700 ease-out delay-400",
+              mounted
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-3"
+            )}
+          >
+            {subtitle}
+          </p>
         </div>
       )}
 
       {/* Gradient fade at bottom */}
       <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-b from-transparent to-black z-10 pointer-events-none" />
 
-      {/* Globe canvas */}
-      <div className="relative z-0 w-full" style={{ height: 380 }}>
+      {/* Globe canvas — touch-action:none prevents scroll hijack on mobile */}
+      <div
+        className="relative z-0 w-full"
+        style={{ height: 380, touchAction: "none" }}
+      >
         <World data={arcs} globeConfig={globeConfig} />
       </div>
     </div>

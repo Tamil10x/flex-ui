@@ -10,7 +10,7 @@ const examples = [
     title: "Default",
     tag: "Base",
     tagColor: "bg-zinc-800 text-zinc-400",
-    description: "Standard 3D hover card with default title and description.",
+    description: "Default card with portrait image, glass border, and 3D tilt on hover.",
     preview: (
       <div className="w-full max-w-xs">
         <ThreeHoverCard />
@@ -20,34 +20,37 @@ const examples = [
     filename: "default.tsx",
   },
   {
-    id: "thc-custom-text",
-    title: "Configured Via Props",
+    id: "thc-custom-image",
+    title: "Custom Image",
     tag: "Props",
     tagColor: "bg-purple-500/10 text-purple-400",
-    description: "Custom title and description passed via props.",
+    description: "Use any image URL with custom title and description.",
     preview: (
       <div className="w-full max-w-xs">
         <ThreeHoverCard
-          title="WebGL Experience"
-          description="An immersive 3D scene with distorted geometry."
+          imageSrc="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop&crop=faces"
+          title="Creative Director"
+          description="Hover for a cinematic glass shimmer effect."
         />
       </div>
     ),
     code: `<ThreeHoverCard
-  title="WebGL Experience"
-  description="An immersive 3D scene with distorted geometry."
+  imageSrc="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop&crop=faces"
+  title="Creative Director"
+  description="Hover for a cinematic glass shimmer effect."
 />`,
-    filename: "custom-text.tsx",
+    filename: "custom-image.tsx",
   },
   {
     id: "thc-children",
-    title: "With Custom Content",
+    title: "With Children",
     tag: "Compose",
     tagColor: "bg-amber-500/10 text-amber-400",
-    description: "Inject children content like pricing badges or CTAs.",
+    description: "Add badges, CTAs, or any content via children.",
     preview: (
       <div className="w-full max-w-xs">
         <ThreeHoverCard
+          imageSrc="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop&crop=faces"
           title="Premium Plan"
           description="Everything you need for cinematic interfaces."
         >
@@ -60,6 +63,7 @@ const examples = [
       </div>
     ),
     code: `<ThreeHoverCard
+  imageSrc="/your-image.jpg"
   title="Premium Plan"
   description="Everything you need for cinematic interfaces."
 >
@@ -73,26 +77,28 @@ const examples = [
   },
   {
     id: "thc-wide",
-    title: "Custom Size",
+    title: "Full Width",
     tag: "Layout",
     tagColor: "bg-cyan-500/10 text-cyan-400",
-    description: "Stretch the card to custom dimensions with className.",
+    description: "Stretches to fill container with landscape crop.",
     span: "2" as const,
     preview: (
       <div className="w-full">
         <ThreeHoverCard
-          title="Full Width"
-          description="This card stretches to fill its container."
+          imageSrc="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1200&h=600&fit=crop&crop=faces"
+          title="Landscape Mode"
+          description="Works at any aspect ratio — the image fills and crops."
           className="h-[280px] w-full"
         />
       </div>
     ),
     code: `<ThreeHoverCard
-  title="Full Width"
-  description="This card stretches to fill its container."
+  imageSrc="/landscape.jpg"
+  title="Landscape Mode"
+  description="Works at any aspect ratio."
   className="h-[280px] w-full"
 />`,
-    filename: "custom-size.tsx",
+    filename: "full-width.tsx",
   },
 ];
 

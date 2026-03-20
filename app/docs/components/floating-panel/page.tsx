@@ -487,20 +487,17 @@ export default function FloatingPanelDoc() {
               a: "Ensure framer-motion types match your version. The component uses the 'framer-motion' import path, not 'motion/react'.",
             },
           ].map((item) => (
-            <details
+            <div
               key={item.q}
-              className="group/faq rounded-xl border border-white/[0.06] bg-zinc-950/50 transition-all duration-200 hover:border-white/[0.1] open:border-white/[0.1]"
+              className="rounded-xl border border-white/[0.06] bg-zinc-950/50 transition-all duration-200 hover:border-white/[0.1]"
             >
-              <summary className="flex cursor-pointer items-center justify-between p-5 text-sm font-semibold text-white list-none">
+              <div className="p-5 text-sm font-semibold text-white">
                 {item.q}
-                <span className="ml-4 text-zinc-600 transition-transform duration-200 group-open/faq:rotate-45">
-                  +
-                </span>
-              </summary>
+              </div>
               <div className="border-t border-white/[0.04] px-5 py-4 text-sm text-zinc-500">
                 {item.a}
               </div>
-            </details>
+            </div>
           ))}
         </div>
       </DocSection>

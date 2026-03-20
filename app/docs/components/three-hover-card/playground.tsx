@@ -16,7 +16,7 @@ const propDefs = [
     name: "description",
     label: "Description",
     control: { type: "text" as const },
-    defaultValue: "Hover to reveal a live WebGL experience.",
+    defaultValue: "Hover to reveal a cinematic glass border with 3D depth effect.",
   },
 ];
 
@@ -24,7 +24,10 @@ function generateCode(values: Record<string, string | number | boolean>) {
   const props: string[] = [];
   if (values.title !== "Interactive 3D")
     props.push(`  title="${values.title}"`);
-  if (values.description !== "Hover to reveal a live WebGL experience.")
+  if (
+    values.description !==
+    "Hover to reveal a cinematic glass border with 3D depth effect."
+  )
     props.push(`  description="${values.description}"`);
 
   const propsStr = props.length > 0 ? `\n${props.join("\n")}\n` : "";
@@ -38,9 +41,12 @@ export function Demo() {
 }
 
 export function ThreeHoverCardPlayground() {
-  const [values, setValues] = useState<Record<string, string | number | boolean>>({
+  const [values, setValues] = useState<
+    Record<string, string | number | boolean>
+  >({
     title: "Interactive 3D",
-    description: "Hover to reveal a live WebGL experience.",
+    description:
+      "Hover to reveal a cinematic glass border with 3D depth effect.",
   });
 
   const handleChange = (name: string, value: string | number | boolean) => {

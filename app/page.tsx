@@ -29,18 +29,14 @@ export default function Home() {
         </div>
 
         <BentoGrid>
-          {/* Card 1 — Large: ThreeHoverCard showcase */}
-          <BentoCard
-            className="md:col-span-2 md:row-span-2 min-h-[400px]"
-            title="3D Hover Card"
-            subtitle="WebGL-powered. Lazy-loaded on hover."
-          >
+          {/* Card 1 — Large: ThreeHoverCard */}
+          <div className="md:col-span-2 md:row-span-2 min-h-[400px]">
             <ThreeHoverCard
-              title="Icosahedron"
-              description="Hover me to reveal a live 3D scene."
-              className="h-full min-h-[280px]"
+              title="3D Hover Card"
+              description="Glass border, 3D tilt, and cinematic light sweep on hover."
+              className="h-full"
             />
-          </BentoCard>
+          </div>
 
           {/* Card 2 — Typography / animation showcase */}
           <BentoCard
