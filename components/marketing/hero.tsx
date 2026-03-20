@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { GradientBorderButton } from "@/components/flexui/gradient-border-button";
-import { GlowButton } from "@/components/flexui/glow-button";
+import { ConfettiButton } from "@/components/flexui/confetti-button";
 import { RotatingText } from "@/components/flexui/rotating-text";
 import { TypewriterText } from "@/components/flexui/typewriter-text";
 import { CopyButton } from "@/components/ui/copy-button";
@@ -43,7 +43,7 @@ export function Hero() {
           className="h-[1.15em] bg-gradient-to-r from-[#8B5CF6] via-[#EC4899] to-[#389CFD] bg-clip-text text-transparent"
         />
         <br />
-        Interfaces.
+        Interfaces 
       </motion.h1>
 
       {/* Typewriter */}
@@ -72,7 +72,7 @@ export function Hero() {
       </motion.p>
 
       {/* CTAs */}
-      <motion.div {...fadeUp(1.3)} className="mt-10 flex flex-wrap items-center justify-center gap-4">
+      <motion.div {...fadeUp(1.3)} className="mt-10 flex flex-wrap items-center justify-center gap-12">
         <Link href="/docs/components">
           <GradientBorderButton
             colors={["#8B5CF6", "#389CFD", "#EC4899", "#8B5CF6"]}
@@ -83,9 +83,9 @@ export function Hero() {
           </GradientBorderButton>
         </Link>
         <Link href="/docs/installation">
-          <GlowButton glowColor="rgba(56,156,253,0.4)" className="px-8 py-4 text-[15px] font-semibold">
+          <ConfettiButton className="px-8 py-4 text-[15px] font-semibold">
             Get Started →
-          </GlowButton>
+          </ConfettiButton>
         </Link>
       </motion.div>
 
