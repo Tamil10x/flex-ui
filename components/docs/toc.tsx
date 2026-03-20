@@ -1,22 +1,33 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface TocItem {
   id: string;
-  label: string;
-  depth?: number;
+  text: string;
+  level: number;
 }
 
-interface TocProps {
-  items: TocItem[];
-}
+export function TableOfContents() {
+  const [headings, setHeadings] = useState<TocItem[]>([]);
+  const [activeId, setActiveId] = useState<string>("");
 
-export function TableOfContents({ items }: TocProps) {
-  const [activeId, setActiveId] = useState("");
-
+  // Scan the page for h2/h3 elements with IDs
   useEffect(() => {
+    const elements = document.querySelectorAll("h2[id], h3[id]");
+    const items: TocItem[] = Array.from(elements).map((el) => ({
+      id: el.id,
+      text: el.textContent || "",
+      level: el.tagName === "H2" ? 2 : 3,
+    }));
+    setHeadings(items);
+  }, []);
+
+  // Track active heading via IntersectionObserver
+  useEffect(() => {
+    if (headings.length === 0) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -25,36 +36,38 @@ export function TableOfContents({ items }: TocProps) {
           }
         }
       },
-      { rootMargin: "-80px 0px -60% 0px", threshold: 0.1 }
+      { rootMargin: "-80px 0px -70% 0px", threshold: 0 }
     );
 
-    for (const item of items) {
-      const el = document.getElementById(item.id);
+    headings.forEach((h) => {
+      const el = document.getElementById(h.id);
       if (el) observer.observe(el);
-    }
+    });
 
     return () => observer.disconnect();
-  }, [items]);
+  }, [headings]);
+
+  if (headings.length === 0) return null;
 
   return (
-    <nav className="sticky top-24 hidden w-48 shrink-0 xl:block">
-      <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">
-        On This Page
-      </h4>
-      <ul className="space-y-1 border-l border-white/[0.06]">
-        {items.map((item) => (
-          <li key={item.id}>
+    <nav className="sticky top-20 hidden xl:block w-48 shrink-0 self-start">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+        On this page
+      </p>
+      <ul className="space-y-1.5 border-l border-white/[0.06]">
+        {headings.map((h) => (
+          <li key={h.id}>
             <a
-              href={`#${item.id}`}
+              href={`#${h.id}`}
               className={cn(
-                "block border-l-2 py-1 text-sm transition-colors",
-                item.depth === 2 ? "pl-4" : "pl-7",
-                activeId === item.id
-                  ? "border-purple-400 text-white"
-                  : "border-transparent text-zinc-500 hover:text-zinc-300"
+                "block border-l-2 py-1 text-xs transition-all duration-150",
+                h.level === 3 ? "pl-6" : "pl-3",
+                activeId === h.id
+                  ? "border-blue-400 text-white font-medium"
+                  : "border-transparent text-zinc-500 hover:text-zinc-300 hover:border-zinc-700"
               )}
             >
-              {item.label}
+              {h.text}
             </a>
           </li>
         ))}

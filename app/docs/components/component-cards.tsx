@@ -20,6 +20,22 @@ import {
   Rows3,
   Scan,
   Video,
+  MousePointerClick,
+  Lightbulb,
+  Type,
+  Hash,
+  AlignLeft,
+  Monitor,
+  PanelBottomOpen,
+  Bell,
+  MoveHorizontal,
+  RotateCw,
+  Waves,
+  FlipHorizontal,
+  Palette,
+  Shuffle,
+  Eye,
+  SplitSquareHorizontal,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -162,6 +178,363 @@ const components: CardData[] = [
         <Scan className="absolute right-6 top-6 h-16 w-16 text-pink-500/[0.07] rotate-12" />
         <Video className="absolute right-20 top-14 h-8 w-8 text-rose-500/[0.1] -rotate-12" />
         <Sparkles className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Spotlight Card",
+    href: "/docs/components/spotlight-card",
+    tier: "Tier 1",
+    tagline: "Cursor Spotlight",
+    description:
+      "Lightweight dark card with a cursor-following radial spotlight effect. Pure CSS + Framer Motion springs — no Three.js, no WebGL.",
+    deps: ["framer-motion"],
+    gradient: "from-cyan-600/20 via-sky-600/10 to-transparent",
+    glowColor: "rgba(56,189,248,0.15)",
+    iconBg: "bg-gradient-to-br from-cyan-500 to-sky-500",
+    accentLine: "from-cyan-500 to-sky-500",
+    icon: <Lightbulb className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Lightbulb className="absolute right-6 top-6 h-16 w-16 text-cyan-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-sky-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-blue-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Shimmer Button",
+    href: "/docs/components/shimmer-button",
+    tier: "Tier 1",
+    tagline: "Animated Sweep",
+    description:
+      "Dark-themed button with a continuous diagonal shimmer sweep effect, configurable color, and spring-physics hover interactions.",
+    deps: ["framer-motion"],
+    gradient: "from-sky-600/20 via-indigo-600/10 to-transparent",
+    glowColor: "rgba(56,189,248,0.15)",
+    iconBg: "bg-gradient-to-br from-sky-500 to-indigo-500",
+    accentLine: "from-sky-500 to-indigo-500",
+    icon: <MousePointerClick className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <MousePointerClick className="absolute right-6 top-6 h-16 w-16 text-sky-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-indigo-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-blue-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Text Reveal",
+    href: "/docs/components/text-reveal",
+    tier: "Tier 1",
+    tagline: "Text Animation",
+    description:
+      "Staggered text reveal animation that unveils text character-by-character or word-by-word with blur-and-slide transitions on viewport entry.",
+    deps: ["framer-motion"],
+    gradient: "from-rose-600/20 via-red-600/10 to-transparent",
+    glowColor: "rgba(244,63,94,0.15)",
+    iconBg: "bg-gradient-to-br from-rose-500 to-red-500",
+    accentLine: "from-rose-500 to-red-500",
+    icon: <Type className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Type className="absolute right-6 top-6 h-16 w-16 text-rose-500/[0.07] rotate-12" />
+        <AlignLeft className="absolute right-20 top-14 h-8 w-8 text-red-500/[0.1] -rotate-12" />
+        <Sparkles className="absolute right-10 top-24 h-6 w-6 text-pink-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Number Ticker",
+    href: "/docs/components/number-ticker",
+    tier: "Tier 1",
+    tagline: "Animated Counter",
+    description:
+      "Spring-animated number counter that ticks up to a target value on viewport entry. Supports prefix, suffix, decimals, and configurable spring physics.",
+    deps: ["framer-motion"],
+    gradient: "from-teal-600/20 via-emerald-600/10 to-transparent",
+    glowColor: "rgba(20,184,166,0.15)",
+    iconBg: "bg-gradient-to-br from-teal-500 to-emerald-500",
+    accentLine: "from-teal-500 to-emerald-500",
+    icon: <Hash className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Hash className="absolute right-6 top-6 h-16 w-16 text-teal-500/[0.07] rotate-12" />
+        <Zap className="absolute right-20 top-14 h-8 w-8 text-emerald-500/[0.1] -rotate-12" />
+        <Sparkles className="absolute right-10 top-24 h-6 w-6 text-green-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Dock Menu",
+    href: "/docs/components/dock-menu",
+    tier: "Tier 1",
+    tagline: "macOS Dock",
+    description:
+      "A macOS-style dock bar with spring-physics magnification effect. Icons scale smoothly based on cursor proximity using Framer Motion values.",
+    deps: ["framer-motion"],
+    gradient: "from-indigo-600/20 via-violet-600/10 to-transparent",
+    glowColor: "rgba(99,102,241,0.15)",
+    iconBg: "bg-gradient-to-br from-indigo-500 to-violet-500",
+    accentLine: "from-indigo-500 to-violet-500",
+    icon: <Monitor className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Monitor className="absolute right-6 top-6 h-16 w-16 text-indigo-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-violet-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-purple-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Drawer",
+    href: "/docs/components/drawer",
+    tier: "Tier 1",
+    tagline: "Bottom Sheet",
+    description:
+      "An animated bottom sheet / side drawer with spring physics, backdrop blur overlay, ESC-to-close, and body scroll lock. Opens from bottom, right, or left.",
+    deps: ["framer-motion"],
+    gradient: "from-lime-600/20 via-green-600/10 to-transparent",
+    glowColor: "rgba(132,204,22,0.15)",
+    iconBg: "bg-gradient-to-br from-lime-500 to-green-500",
+    accentLine: "from-lime-500 to-green-500",
+    icon: <PanelBottomOpen className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <PanelBottomOpen className="absolute right-6 top-6 h-16 w-16 text-lime-500/[0.07] rotate-12" />
+        <Layers className="absolute right-20 top-14 h-8 w-8 text-green-500/[0.1] -rotate-12" />
+        <Sparkles className="absolute right-10 top-24 h-6 w-6 text-emerald-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Toast",
+    href: "/docs/components/toast",
+    tier: "Tier 1",
+    tagline: "Notifications",
+    description:
+      "Context-based toast notification system with spring-physics entry, auto-dismiss, four color-coded types, stacked positioning, and manual dismiss.",
+    deps: ["framer-motion", "lucide-react"],
+    gradient: "from-fuchsia-600/20 via-pink-600/10 to-transparent",
+    glowColor: "rgba(217,70,239,0.15)",
+    iconBg: "bg-gradient-to-br from-fuchsia-500 to-pink-500",
+    accentLine: "from-fuchsia-500 to-pink-500",
+    icon: <Bell className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Bell className="absolute right-6 top-6 h-16 w-16 text-fuchsia-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-pink-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-rose-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Animated Tabs",
+    href: "/docs/components/animated-tabs",
+    tier: "Tier 1",
+    tagline: "Tab Navigation",
+    description:
+      "Sliding animated indicator with spring physics and smooth fade+slide content transitions. Three variants: underline, pill, and bordered.",
+    deps: ["framer-motion"],
+    gradient: "from-blue-600/20 via-indigo-600/10 to-transparent",
+    glowColor: "rgba(59,130,246,0.15)",
+    iconBg: "bg-gradient-to-br from-blue-500 to-indigo-500",
+    accentLine: "from-blue-500 to-indigo-500",
+    icon: <Layers className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Layers className="absolute right-6 top-6 h-16 w-16 text-blue-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-indigo-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-sky-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Marquee",
+    href: "/docs/components/marquee",
+    tier: "Tier 1",
+    tagline: "Infinite Scroll",
+    description:
+      "Pure CSS infinite horizontal scrolling with configurable speed, direction, hover-to-pause, and fade edge masks. No Framer Motion needed.",
+    deps: [],
+    gradient: "from-emerald-600/20 via-green-600/10 to-transparent",
+    glowColor: "rgba(16,185,129,0.15)",
+    iconBg: "bg-gradient-to-br from-emerald-500 to-green-500",
+    accentLine: "from-emerald-500 to-green-500",
+    icon: <MoveHorizontal className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <MoveHorizontal className="absolute right-6 top-6 h-16 w-16 text-emerald-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-green-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-teal-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Flip Words",
+    href: "/docs/components/flip-words",
+    tier: "Tier 1",
+    tagline: "3D Word Flip",
+    description:
+      "Words that flip and rotate in and out with 3D perspective animation and spring physics. Auto-cycles through an array of words.",
+    deps: ["framer-motion"],
+    gradient: "from-purple-600/20 via-violet-600/10 to-transparent",
+    glowColor: "rgba(168,85,247,0.15)",
+    iconBg: "bg-gradient-to-br from-purple-500 to-violet-500",
+    accentLine: "from-purple-500 to-violet-500",
+    icon: <RotateCw className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <FlipHorizontal className="absolute right-6 top-6 h-16 w-16 text-purple-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-violet-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Wavy Text",
+    href: "/docs/components/wavy-text",
+    tier: "Tier 1",
+    tagline: "Wave Animation",
+    description:
+      "Text where each character animates in with a staggered wave pattern using spring physics, triggered on scroll into viewport.",
+    deps: ["framer-motion"],
+    gradient: "from-sky-600/20 via-cyan-600/10 to-transparent",
+    glowColor: "rgba(14,165,233,0.15)",
+    iconBg: "bg-gradient-to-br from-sky-500 to-cyan-500",
+    accentLine: "from-sky-500 to-cyan-500",
+    icon: <Waves className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Waves className="absolute right-6 top-6 h-16 w-16 text-sky-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-cyan-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-blue-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Typewriter Text",
+    href: "/docs/components/typewriter-text",
+    tier: "Tier 1",
+    tagline: "Typing Effect",
+    description:
+      "A typewriter effect that types text character by character with a blinking cursor. Cycles through an array of words with configurable speeds.",
+    deps: [],
+    gradient: "from-amber-600/20 via-orange-600/10 to-transparent",
+    glowColor: "rgba(245,158,11,0.15)",
+    iconBg: "bg-gradient-to-br from-amber-500 to-orange-500",
+    accentLine: "from-amber-500 to-orange-500",
+    icon: <Type className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Type className="absolute right-6 top-6 h-16 w-16 text-amber-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-orange-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-yellow-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Gradient Text",
+    href: "/docs/components/gradient-text",
+    tier: "Tier 1",
+    tagline: "Flowing Colors",
+    description:
+      "Animated gradient text with flowing color stops that shift across the text. Configurable colors, speed, and static mode.",
+    deps: [],
+    gradient: "from-violet-600/20 via-pink-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-pink-500",
+    accentLine: "from-violet-500 to-pink-500",
+    icon: <Palette className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Palette className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-pink-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Text Scramble",
+    href: "/docs/components/text-scramble",
+    tier: "Tier 1",
+    tagline: "Decode Effect",
+    description:
+      "Text that scrambles through random characters before resolving left-to-right. Configurable speed, character set, and viewport trigger.",
+    deps: ["framer-motion"],
+    gradient: "from-amber-600/20 via-orange-600/10 to-transparent",
+    glowColor: "rgba(245,158,11,0.15)",
+    iconBg: "bg-gradient-to-br from-amber-500 to-orange-500",
+    accentLine: "from-amber-500 to-orange-500",
+    icon: <Shuffle className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Shuffle className="absolute right-6 top-6 h-16 w-16 text-amber-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-orange-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-yellow-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Blur Text",
+    href: "/docs/components/blur-text",
+    tier: "Tier 1",
+    tagline: "Focus Reveal",
+    description:
+      "Text that fades in from a blurred state, word by word or all at once. Configurable blur amount, stagger, and scroll trigger.",
+    deps: ["framer-motion"],
+    gradient: "from-cyan-600/20 via-blue-600/10 to-transparent",
+    glowColor: "rgba(6,182,212,0.15)",
+    iconBg: "bg-gradient-to-br from-cyan-500 to-blue-500",
+    accentLine: "from-cyan-500 to-blue-500",
+    icon: <Eye className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Eye className="absolute right-6 top-6 h-16 w-16 text-cyan-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-blue-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-sky-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Split Text",
+    href: "/docs/components/split-text",
+    tier: "Tier 1",
+    tagline: "Text Animation",
+    description:
+      "Text that splits apart into characters or words with staggered slide, fade, or scale animations triggered on scroll into view.",
+    deps: ["framer-motion"],
+    gradient: "from-amber-600/20 via-orange-600/10 to-transparent",
+    glowColor: "rgba(245,158,11,0.15)",
+    iconBg: "bg-gradient-to-br from-amber-500 to-orange-500",
+    accentLine: "from-amber-500 to-orange-500",
+    icon: <SplitSquareHorizontal className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <SplitSquareHorizontal className="absolute right-6 top-6 h-16 w-16 text-amber-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-orange-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-yellow-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Rotating Text",
+    href: "/docs/components/rotating-text",
+    tier: "Tier 1",
+    tagline: "Slot Machine",
+    description:
+      "Text that rotates through multiple strings with a rolling slot-machine effect. Spring-physics transitions with configurable direction.",
+    deps: ["framer-motion"],
+    gradient: "from-violet-600/20 via-purple-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-purple-500",
+    accentLine: "from-violet-500 to-purple-500",
+    icon: <RotateCw className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <RotateCw className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-purple-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
       </>
     ),
   },

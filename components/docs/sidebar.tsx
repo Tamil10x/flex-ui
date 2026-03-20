@@ -17,12 +17,31 @@ import {
   Globe,
   Expand,
   Scan,
+  Sparkles,
+  Lightbulb,
+  Type,
+  Hash,
+  Search,
+  Monitor,
+  PanelBottomOpen,
+  Bell,
+  Layers,
+  MoveHorizontal,
+  RotateCw,
+  Waves,
+  Palette,
+  Shuffle,
+  Eye,
+  SplitSquareHorizontal,
+  Grid3x3,
+  Circle,
 } from "lucide-react";
 
 interface SidebarItem {
   title: string;
   href: string;
   icon: React.ReactNode;
+  isNew?: boolean;
 }
 
 const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
@@ -48,6 +67,12 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
         title: "Changelog",
         href: "/docs/changelog",
         icon: <FileText className="h-4 w-4" />,
+      },
+      {
+        title: "AI Studio",
+        href: "/studio",
+        icon: <Sparkles className="h-4 w-4" />,
+        isNew: true,
       },
     ],
   },
@@ -89,6 +114,99 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
         href: "/docs/components/reflective-card",
         icon: <Scan className="h-4 w-4" />,
       },
+      {
+        title: "Spotlight Card",
+        href: "/docs/components/spotlight-card",
+        icon: <Lightbulb className="h-4 w-4" />,
+      },
+      {
+        title: "Shimmer Button",
+        href: "/docs/components/shimmer-button",
+        icon: <Sparkles className="h-4 w-4" />,
+      },
+      {
+        title: "Text Reveal",
+        href: "/docs/components/text-reveal",
+        icon: <Type className="h-4 w-4" />,
+      },
+      {
+        title: "Number Ticker",
+        href: "/docs/components/number-ticker",
+        icon: <Hash className="h-4 w-4" />,
+      },
+      {
+        title: "Dock Menu",
+        href: "/docs/components/dock-menu",
+        icon: <Monitor className="h-4 w-4" />,
+      },
+      {
+        title: "Drawer",
+        href: "/docs/components/drawer",
+        icon: <PanelBottomOpen className="h-4 w-4" />,
+      },
+      {
+        title: "Toast",
+        href: "/docs/components/toast",
+        icon: <Bell className="h-4 w-4" />,
+      },
+      {
+        title: "Animated Tabs",
+        href: "/docs/components/animated-tabs",
+        icon: <Layers className="h-4 w-4" />,
+      },
+      {
+        title: "Marquee",
+        href: "/docs/components/marquee",
+        icon: <MoveHorizontal className="h-4 w-4" />,
+      },
+      {
+        title: "Flip Words",
+        href: "/docs/components/flip-words",
+        icon: <RotateCw className="h-4 w-4" />,
+        isNew: true,
+      },
+      {
+        title: "Wavy Text",
+        href: "/docs/components/wavy-text",
+        icon: <Waves className="h-4 w-4" />,
+        isNew: true,
+      },
+      {
+        title: "Typewriter Text",
+        href: "/docs/components/typewriter-text",
+        icon: <Type className="h-4 w-4" />,
+        isNew: true,
+      },
+      {
+        title: "Gradient Text",
+        href: "/docs/components/gradient-text",
+        icon: <Palette className="h-4 w-4" />,
+        isNew: true,
+      },
+      {
+        title: "Text Scramble",
+        href: "/docs/components/text-scramble",
+        icon: <Shuffle className="h-4 w-4" />,
+        isNew: true,
+      },
+      {
+        title: "Blur Text",
+        href: "/docs/components/blur-text",
+        icon: <Eye className="h-4 w-4" />,
+        isNew: true,
+      },
+      {
+        title: "Split Text",
+        href: "/docs/components/split-text",
+        icon: <SplitSquareHorizontal className="h-4 w-4" />,
+        isNew: true,
+      },
+      {
+        title: "Rotating Text",
+        href: "/docs/components/rotating-text",
+        icon: <RotateCw className="h-4 w-4" />,
+        isNew: true,
+      },
     ],
   },
 ];
@@ -99,7 +217,7 @@ export function DocsSidebar() {
   return (
     <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-64 shrink-0 overflow-y-auto border-r border-white/[0.06] py-8 pr-6 lg:block">
       {/* Logo */}
-      <Link href="/" className="mb-8 flex items-center gap-2.5 px-3">
+      <Link href="/" className="mb-4 flex items-center gap-2.5 px-3">
         <Image
           src="/logo.png"
           alt="FlexUI"
@@ -114,6 +232,22 @@ export function DocsSidebar() {
           </span>
         </span>
       </Link>
+
+      {/* Search trigger */}
+      <button
+        onClick={() => {
+          document.dispatchEvent(
+            new KeyboardEvent("keydown", { key: "k", metaKey: true })
+          );
+        }}
+        className="mb-6 flex w-full items-center gap-2.5 rounded-lg border border-white/[0.06] bg-white/[0.03] px-3 py-2 text-sm text-zinc-500 transition-colors hover:border-white/[0.1] hover:bg-white/[0.05] hover:text-zinc-400"
+      >
+        <Search className="h-3.5 w-3.5" />
+        <span className="flex-1 text-left">Search...</span>
+        <kbd className="rounded bg-white/[0.06] px-1.5 py-0.5 text-[10px] font-medium">
+          ⌘K
+        </kbd>
+      </button>
 
       {sidebarSections.map((section) => (
         <div key={section.heading} className="mb-6">
@@ -143,6 +277,11 @@ export function DocsSidebar() {
                     {item.icon}
                   </span>
                   {item.title}
+                  {item.isNew && (
+                    <span className="ml-auto rounded bg-gradient-to-r from-blue-500/20 to-cyan-500/20 px-1.5 py-0.5 text-[10px] font-semibold leading-none text-cyan-400 ring-1 ring-cyan-500/20">
+                      New
+                    </span>
+                  )}
                 </Link>
               );
             })}

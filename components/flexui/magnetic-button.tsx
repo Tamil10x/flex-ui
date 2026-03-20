@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useMotionTemplate, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface MagneticButtonProps {
@@ -33,6 +33,8 @@ export function MagneticButton({
   const springConfig = { damping: 15, stiffness: 150, mass: 0.1 };
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
+
+  const spotlightBg = useMotionTemplate`radial-gradient(${spotlightSize}px circle at ${spotlightX}px ${spotlightY}px, rgba(255,255,255,0.15), transparent 60%)`;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!ref.current) return;
@@ -74,15 +76,10 @@ export function MagneticButton({
     >
       {/* Spotlight glow overlay */}
       <motion.div
-        className="pointer-events-none absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300"
+        className="pointer-events-none absolute inset-0 rounded-xl transition-opacity duration-300"
         style={{
           opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(${spotlightSize}px circle at ${spotlightX.get()}px ${spotlightY.get()}px, rgba(255,255,255,0.15), transparent 60%)`,
-        }}
-        animate={{
-          background: isHovered
-            ? `radial-gradient(${spotlightSize}px circle at var(--spotlight-x) var(--spotlight-y), rgba(255,255,255,0.15), transparent 60%)`
-            : undefined,
+          background: spotlightBg,
         }}
       />
 

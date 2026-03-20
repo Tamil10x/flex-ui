@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-ticker",
+  "type": "registry:ui",
+  "title": "Number Ticker",
+  "description": "Animated number counter with spring physics that ticks up to a target value when scrolled into view.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/number-ticker.tsx",
+      "content": "\"use client\";\n\nimport React, { useEffect, useRef } from \"react\";\nimport {\n  useInView,\n  useMotionValue,\n  useSpring,\n  useTransform,\n  motion,\n} from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface NumberTickerProps {\n  value: number;\n  /** Prefix like \"$\" or \"#\" */\n  prefix?: string;\n  /** Suffix like \"+\" or \"%\" */\n  suffix?: string;\n  /** Decimal places */\n  decimals?: number;\n  /** Spring stiffness */\n  stiffness?: number;\n  /** Spring damping */\n  damping?: number;\n  className?: string;\n  /** Only animate once */\n  once?: boolean;\n}\n\nexport function NumberTicker({\n  value,\n  prefix = \"\",\n  suffix = \"\",\n  decimals = 0,\n  stiffness = 100,\n  damping = 30,\n  className,\n  once = true,\n}: NumberTickerProps) {\n  const ref = useRef<HTMLSpanElement>(null);\n  const isInView = useInView(ref, { once });\n\n  const motionValue = useMotionValue(0);\n  const springValue = useSpring(motionValue, { stiffness, damping });\n  const displayValue = useTransform(springValue, (latest) => {\n    return `${prefix}${latest.toFixed(decimals)}${suffix}`;\n  });\n\n  useEffect(() => {\n    if (isInView) {\n      motionValue.set(value);\n    }\n  }, [isInView, value, motionValue]);\n\n  return (\n    <motion.span ref={ref} className={cn(\"tabular-nums\", className)}>\n      {displayValue}\n    </motion.span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/number-ticker.tsx"
+    }
+  ]
+}

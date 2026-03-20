@@ -15,6 +15,7 @@ function HighMetalCard() {
       blurStrength={8}
       specularConstant={2}
       grayscale={0}
+      enableWebcam
     />
   );
 }

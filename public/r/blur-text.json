@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blur-text",
+  "type": "registry:ui",
+  "title": "Blur Text",
+  "description": "Text that fades in from a blurred state, word by word or all at once, with configurable blur amount and stagger.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/blur-text.tsx",
+      "content": "\"use client\";\n\nimport React, { useRef } from \"react\";\nimport { motion, useInView } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface BlurTextProps {\n  text: string;\n  /** \"word\" animates word by word, \"all\" animates entire text */\n  mode?: \"word\" | \"all\";\n  /** Blur amount in pixels */\n  blur?: number;\n  /** Stagger delay between words in seconds */\n  delay?: number;\n  /** Duration of each word's animation */\n  duration?: number;\n  once?: boolean;\n  className?: string;\n}\n\nexport function BlurText({\n  text,\n  mode = \"word\",\n  blur = 10,\n  delay = 0.08,\n  duration = 0.5,\n  once = true,\n  className,\n}: BlurTextProps) {\n  const ref = useRef<HTMLSpanElement>(null);\n  const isInView = useInView(ref, { once });\n\n  if (mode === \"all\") {\n    return (\n      <motion.span\n        ref={ref}\n        className={cn(\"inline-block\", className)}\n        initial={{ opacity: 0, filter: `blur(${blur}px)`, y: 8 }}\n        animate={\n          isInView\n            ? { opacity: 1, filter: \"blur(0px)\", y: 0 }\n            : { opacity: 0, filter: `blur(${blur}px)`, y: 8 }\n        }\n        transition={{\n          duration,\n          ease: [0.25, 0.4, 0.25, 1],\n        }}\n      >\n        {text}\n      </motion.span>\n    );\n  }\n\n  const words = text.split(/(\\s+)/);\n\n  return (\n    <span ref={ref} className={cn(\"inline-block overflow-hidden\", className)}>\n      {words.map((word, i) => (\n        <motion.span\n          key={`${word}-${i}`}\n          className=\"inline-block whitespace-pre\"\n          initial={{ opacity: 0, filter: `blur(${blur}px)`, y: 8 }}\n          animate={\n            isInView\n              ? { opacity: 1, filter: \"blur(0px)\", y: 0 }\n              : { opacity: 0, filter: `blur(${blur}px)`, y: 8 }\n          }\n          transition={{\n            duration,\n            delay: i * delay,\n            ease: [0.25, 0.4, 0.25, 1],\n          }}\n        >\n          {word}\n        </motion.span>\n      ))}\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/blur-text.tsx"
+    }
+  ]
+}

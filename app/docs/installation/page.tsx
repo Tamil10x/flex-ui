@@ -162,6 +162,58 @@ export default function Hero() {
                   three, @react-three/fiber, @react-three/drei
                 </td>
               </tr>
+              <tr>
+                <td className="px-4 py-3 font-medium text-white">
+                  Floating Panel
+                </td>
+                <td className="px-4 py-3">
+                  <code className="text-xs text-purple-400">
+                    @flexui/floating-panel
+                  </code>
+                </td>
+                <td className="hidden px-4 py-3 text-zinc-500 sm:table-cell">
+                  framer-motion, lucide-react
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 font-medium text-white">
+                  Interactive Globe
+                </td>
+                <td className="px-4 py-3">
+                  <code className="text-xs text-purple-400">
+                    @flexui/interactive-globe
+                  </code>
+                </td>
+                <td className="hidden px-4 py-3 text-zinc-500 sm:table-cell">
+                  three, three-globe, @react-three/fiber, @react-three/drei
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 font-medium text-white">
+                  Expandable Card
+                </td>
+                <td className="px-4 py-3">
+                  <code className="text-xs text-purple-400">
+                    @flexui/expandable-card
+                  </code>
+                </td>
+                <td className="hidden px-4 py-3 text-zinc-500 sm:table-cell">
+                  framer-motion
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 font-medium text-white">
+                  Reflective Card
+                </td>
+                <td className="px-4 py-3">
+                  <code className="text-xs text-purple-400">
+                    @flexui/reflective-card
+                  </code>
+                </td>
+                <td className="hidden px-4 py-3 text-zinc-500 sm:table-cell">
+                  framer-motion
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>

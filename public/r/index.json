@@ -7,19 +7,139 @@
       "name": "magnetic-button",
       "type": "registry:ui",
       "description": "A button that uses Framer Motion spring physics to magnetically pull toward the cursor on hover with a glowing spotlight border effect.",
-      "url": "/r/magnetic-button.json"
+      "url": "https://flexui.dev/r/magnetic-button.json"
     },
     {
       "name": "floating-panel",
       "type": "registry:ui",
       "description": "A headless, composable floating panel with glassmorphic styling, spring animations, position-aware anchoring, and built-in form support.",
-      "url": "/r/floating-panel.json"
+      "url": "https://flexui.dev/r/floating-panel.json"
     },
     {
       "name": "three-hover-card",
       "type": "registry:ui",
       "description": "A premium card component that reveals a live Three.js 3D scene with a rotating icosahedron on hover. The canvas is lazy-loaded for performance.",
-      "url": "/r/three-hover-card.json"
+      "url": "https://flexui.dev/r/three-hover-card.json"
+    },
+    {
+      "name": "interactive-globe",
+      "type": "registry:ui",
+      "description": "A 3D interactive globe component powered by Three.js and three-globe with customizable arcs, points, and atmosphere rendering.",
+      "url": "https://flexui.dev/r/interactive-globe.json"
+    },
+    {
+      "name": "expandable-card",
+      "type": "registry:ui",
+      "description": "An expandable card component with smooth Framer Motion animations that reveals additional content on interaction.",
+      "url": "https://flexui.dev/r/expandable-card.json"
+    },
+    {
+      "name": "reflective-card",
+      "type": "registry:ui",
+      "description": "A card component with a reflective surface effect powered by Framer Motion animations that responds to cursor movement.",
+      "url": "https://flexui.dev/r/reflective-card.json"
+    },
+    {
+      "name": "shimmer-button",
+      "type": "registry:ui",
+      "description": "A button with a continuous diagonal shimmer sweep effect, configurable color, and spring-physics hover interactions.",
+      "url": "https://flexui.dev/r/shimmer-button.json"
+    },
+    {
+      "name": "text-reveal",
+      "type": "registry:ui",
+      "description": "Text animation that reveals characters or words with staggered blur-in effect on scroll into view.",
+      "url": "https://flexui.dev/r/text-reveal.json"
+    },
+    {
+      "name": "number-ticker",
+      "type": "registry:ui",
+      "description": "Animated number counter with spring physics that ticks up to a target value when scrolled into view.",
+      "url": "https://flexui.dev/r/number-ticker.json"
+    },
+    {
+      "name": "dock-menu",
+      "type": "registry:ui",
+      "description": "A macOS-style dock with smooth magnification effect powered by Framer Motion spring physics and motion values.",
+      "url": "https://flexui.dev/r/dock-menu.json"
+    },
+    {
+      "name": "spotlight-card",
+      "type": "registry:ui",
+      "description": "A glassmorphic card with a cursor-following spotlight radial gradient, border glow, and hover effects.",
+      "url": "https://flexui.dev/r/spotlight-card.json"
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "description": "An animated bottom sheet / side drawer with spring physics, backdrop blur overlay, ESC-to-close, click-outside dismiss, and body scroll lock.",
+      "url": "https://flexui.dev/r/drawer.json"
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "description": "A context-based toast notification system with spring-physics animations, auto-dismiss, four color-coded types, and stacked positioning.",
+      "url": "https://flexui.dev/r/toast.json"
+    },
+    {
+      "name": "animated-tabs",
+      "type": "registry:ui",
+      "description": "A tab component with a sliding animated indicator and smooth fade+slide content transitions. Three variants with spring physics.",
+      "url": "https://flexui.dev/r/animated-tabs.json"
+    },
+    {
+      "name": "marquee",
+      "type": "registry:ui",
+      "description": "A reusable infinite horizontal scrolling component with pure CSS animation, configurable speed, direction, and hover-to-pause.",
+      "url": "https://flexui.dev/r/marquee.json"
+    },
+    {
+      "name": "flip-words",
+      "type": "registry:ui",
+      "description": "Words that flip and rotate in and out with 3D perspective animation and spring physics.",
+      "url": "https://flexui.dev/r/flip-words.json"
+    },
+    {
+      "name": "wavy-text",
+      "type": "registry:ui",
+      "description": "Text where each character animates in with a staggered wave pattern using spring physics on viewport entry.",
+      "url": "https://flexui.dev/r/wavy-text.json"
+    },
+    {
+      "name": "typewriter-text",
+      "type": "registry:ui",
+      "description": "A typewriter effect that types text character by character with a blinking cursor, cycling through an array of words.",
+      "url": "https://flexui.dev/r/typewriter-text.json"
+    },
+    {
+      "name": "gradient-text",
+      "type": "registry:ui",
+      "description": "Animated gradient text with flowing color stops that shift across the text using a CSS keyframe animation.",
+      "url": "https://flexui.dev/r/gradient-text.json"
+    },
+    {
+      "name": "text-scramble",
+      "type": "registry:ui",
+      "description": "Text that scrambles through random characters before resolving left-to-right with configurable speed and character set.",
+      "url": "https://flexui.dev/r/text-scramble.json"
+    },
+    {
+      "name": "blur-text",
+      "type": "registry:ui",
+      "description": "Text that fades in from a blurred state, word by word or all at once, with configurable blur amount and stagger.",
+      "url": "https://flexui.dev/r/blur-text.json"
+    },
+    {
+      "name": "split-text",
+      "type": "registry:ui",
+      "description": "Text animation that splits into characters or words with staggered slide, fade, or scale transitions on scroll.",
+      "url": "https://flexui.dev/r/split-text.json"
+    },
+    {
+      "name": "rotating-text",
+      "type": "registry:ui",
+      "description": "Text that rotates through multiple strings with a rolling slot-machine effect using spring-physics transitions.",
+      "url": "https://flexui.dev/r/rotating-text.json"
     }
   ]
 }

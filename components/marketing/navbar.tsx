@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/docs/components", label: "Components" },
   { href: "/docs/installation", label: "Installation" },
   { href: "/docs/changelog", label: "Changelog" },
+  { href: "/studio", label: "Studio", badge: "AI" },
 ];
 
 export function Navbar() {
@@ -56,14 +57,19 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-lg px-3 py-2 text-sm text-zinc-400 transition-colors hover:text-white"
+              className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm text-zinc-400 transition-colors hover:text-white"
             >
               {link.label}
+              {"badge" in link && link.badge && (
+                <span className="rounded bg-gradient-to-r from-blue-500/20 to-cyan-500/20 px-1.5 py-0.5 text-[10px] font-semibold leading-none text-cyan-400 ring-1 ring-cyan-500/20">
+                  {link.badge}
+                </span>
+              )}
             </Link>
           ))}
           <div className="mx-3 h-4 w-px bg-white/10" />
           <Link
-            href="https://github.com"
+            href="https://github.com/flexui/flexui"
             target="_blank"
             className="rounded-lg p-2 text-zinc-400 transition-colors hover:text-white"
           >
@@ -74,6 +80,8 @@ export function Navbar() {
         {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
           className="rounded-lg p-2 text-zinc-400 transition-colors hover:text-white md:hidden"
         >
           {mobileOpen ? (
@@ -93,9 +101,14 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm text-zinc-400 transition-colors hover:text-white"
+                className="flex items-center gap-1.5 rounded-lg px-3 py-2.5 text-sm text-zinc-400 transition-colors hover:text-white"
               >
                 {link.label}
+                {"badge" in link && link.badge && (
+                  <span className="rounded bg-gradient-to-r from-blue-500/20 to-cyan-500/20 px-1.5 py-0.5 text-[10px] font-semibold leading-none text-cyan-400 ring-1 ring-cyan-500/20">
+                    {link.badge}
+                  </span>
+                )}
               </Link>
             ))}
           </div>

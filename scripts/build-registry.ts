@@ -1,6 +1,10 @@
 import * as fs from "fs";
 import * as path from "path";
 
+// ─── Configuration ──────────────────────────────────────────────────────────
+
+const BASE_URL = "https://flexui.dev";
+
 // ─── Registry Component Definitions ─────────────────────────────────────────
 
 interface RegistryFile {
@@ -83,6 +87,314 @@ const COMPONENTS: RegistryComponent[] = [
       },
     ],
   },
+  {
+    name: "interactive-globe",
+    type: "registry:ui",
+    title: "Interactive Globe",
+    description:
+      "A 3D interactive globe component powered by Three.js and three-globe with customizable arcs, points, and atmosphere rendering.",
+    dependencies: ["three", "three-globe", "@react-three/fiber", "@react-three/drei"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/interactive-globe.tsx",
+        target: "components/flexui/interactive-globe.tsx",
+      },
+      {
+        path: "components/ui/globe.tsx",
+        target: "components/ui/globe.tsx",
+      },
+      {
+        path: "data/globe.json",
+        target: "data/globe.json",
+      },
+    ],
+  },
+  {
+    name: "expandable-card",
+    type: "registry:ui",
+    title: "Expandable Card",
+    description:
+      "An expandable card component with smooth Framer Motion animations that reveals additional content on interaction.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/expandable-card.tsx",
+        target: "components/flexui/expandable-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "reflective-card",
+    type: "registry:ui",
+    title: "Reflective Card",
+    description:
+      "A card component with a reflective surface effect powered by Framer Motion animations that responds to cursor movement.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/reflective-card.tsx",
+        target: "components/flexui/reflective-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "shimmer-button",
+    type: "registry:ui",
+    title: "Shimmer Button",
+    description:
+      "A button with a continuous diagonal shimmer sweep effect, configurable color, and spring-physics hover interactions.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/shimmer-button.tsx",
+        target: "components/flexui/shimmer-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "text-reveal",
+    type: "registry:ui",
+    title: "Text Reveal",
+    description:
+      "Text animation that reveals characters or words with staggered blur-in effect on scroll into view.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/text-reveal.tsx",
+        target: "components/flexui/text-reveal.tsx",
+      },
+    ],
+  },
+  {
+    name: "number-ticker",
+    type: "registry:ui",
+    title: "Number Ticker",
+    description:
+      "Animated number counter with spring physics that ticks up to a target value when scrolled into view.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/number-ticker.tsx",
+        target: "components/flexui/number-ticker.tsx",
+      },
+    ],
+  },
+  {
+    name: "dock-menu",
+    type: "registry:ui",
+    title: "Dock Menu",
+    description:
+      "A macOS-style dock with smooth magnification effect powered by Framer Motion spring physics and motion values.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/dock-menu.tsx",
+        target: "components/flexui/dock-menu.tsx",
+      },
+    ],
+  },
+  {
+    name: "spotlight-card",
+    type: "registry:ui",
+    title: "Spotlight Card",
+    description:
+      "A glassmorphic card with a cursor-following spotlight radial gradient, border glow, and hover effects.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/spotlight-card.tsx",
+        target: "components/flexui/spotlight-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "drawer",
+    type: "registry:ui",
+    title: "Drawer",
+    description:
+      "An animated bottom sheet / side drawer with spring physics, backdrop blur overlay, ESC-to-close, click-outside dismiss, and body scroll lock.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/drawer.tsx",
+        target: "components/flexui/drawer.tsx",
+      },
+    ],
+  },
+  {
+    name: "toast",
+    type: "registry:ui",
+    title: "Toast",
+    description:
+      "A context-based toast notification system with spring-physics animations, auto-dismiss, four color-coded types, and stacked positioning.",
+    dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/toast.tsx",
+        target: "components/flexui/toast.tsx",
+      },
+    ],
+  },
+  {
+    name: "animated-tabs",
+    type: "registry:ui",
+    title: "Animated Tabs",
+    description:
+      "A tab component with a sliding animated indicator and smooth fade+slide content transitions. Three variants with spring physics.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/animated-tabs.tsx",
+        target: "components/flexui/animated-tabs.tsx",
+      },
+    ],
+  },
+  {
+    name: "marquee",
+    type: "registry:ui",
+    title: "Marquee",
+    description:
+      "A reusable infinite horizontal scrolling component with pure CSS animation, configurable speed, direction, and hover-to-pause.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/marquee.tsx",
+        target: "components/flexui/marquee.tsx",
+      },
+    ],
+  },
+  {
+    name: "flip-words",
+    type: "registry:ui",
+    title: "Flip Words",
+    description:
+      "Words that flip and rotate in and out with 3D perspective animation and spring physics.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/flip-words.tsx",
+        target: "components/flexui/flip-words.tsx",
+      },
+    ],
+  },
+  {
+    name: "wavy-text",
+    type: "registry:ui",
+    title: "Wavy Text",
+    description:
+      "Text where each character animates in with a staggered wave pattern using spring physics on viewport entry.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/wavy-text.tsx",
+        target: "components/flexui/wavy-text.tsx",
+      },
+    ],
+  },
+  {
+    name: "typewriter-text",
+    type: "registry:ui",
+    title: "Typewriter Text",
+    description:
+      "A typewriter effect that types text character by character with a blinking cursor, cycling through an array of words.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/typewriter-text.tsx",
+        target: "components/flexui/typewriter-text.tsx",
+      },
+    ],
+  },
+  {
+    name: "gradient-text",
+    type: "registry:ui",
+    title: "Gradient Text",
+    description:
+      "Animated gradient text with flowing color stops that shift across the text using a CSS keyframe animation.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/gradient-text.tsx",
+        target: "components/flexui/gradient-text.tsx",
+      },
+    ],
+  },
+  {
+    name: "text-scramble",
+    type: "registry:ui",
+    title: "Text Scramble",
+    description:
+      "Text that scrambles through random characters before resolving left-to-right with configurable speed and character set.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/text-scramble.tsx",
+        target: "components/flexui/text-scramble.tsx",
+      },
+    ],
+  },
+  {
+    name: "blur-text",
+    type: "registry:ui",
+    title: "Blur Text",
+    description:
+      "Text that fades in from a blurred state, word by word or all at once, with configurable blur amount and stagger.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/blur-text.tsx",
+        target: "components/flexui/blur-text.tsx",
+      },
+    ],
+  },
+  {
+    name: "split-text",
+    type: "registry:ui",
+    title: "Split Text",
+    description:
+      "Text animation that splits into characters or words with staggered slide, fade, or scale transitions on scroll.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/split-text.tsx",
+        target: "components/flexui/split-text.tsx",
+      },
+    ],
+  },
+  {
+    name: "rotating-text",
+    type: "registry:ui",
+    title: "Rotating Text",
+    description:
+      "Text that rotates through multiple strings with a rolling slot-machine effect using spring-physics transitions.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/rotating-text.tsx",
+        target: "components/flexui/rotating-text.tsx",
+      },
+    ],
+  },
 ];
 
 // ─── Build Logic ────────────────────────────────────────────────────────────
@@ -140,7 +452,7 @@ function main() {
         name: component.name,
         type: component.type,
         description: component.description,
-        url: `/r/${component.name}.json`,
+        url: `${BASE_URL}/r/${component.name}.json`,
       });
     } catch (err) {
       console.error(`  ✗ ${component.name}: ${(err as Error).message}`);

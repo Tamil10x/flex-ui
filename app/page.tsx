@@ -4,10 +4,13 @@ import { Navbar } from "@/components/marketing/navbar";
 import { Hero } from "@/components/marketing/hero";
 import { BentoGrid } from "@/components/marketing/bento-grid";
 import { BentoCard } from "@/components/marketing/bento-card";
-import { ThreeHoverCard } from "@/components/flexui/three-hover-card";
+import { StatsSection } from "@/components/marketing/stats-section";
+import { ComponentMarquee } from "@/components/marketing/component-marquee";
+import { LazyThreeHoverCard as ThreeHoverCard, LazyInteractiveGlobe as InteractiveGlobe } from "@/components/marketing/lazy-components";
 import { MagneticButton } from "@/components/flexui/magnetic-button";
 import { CodeBlock } from "@/components/ui/code-block";
-import { InteractiveGlobe } from "@/components/flexui/interactive-globe";
+import { ErrorBoundary } from "@/components/ui/error-boundary";
+import { Github, Twitter } from "lucide-react";
 
 export default function Home() {
   return (
@@ -31,11 +34,13 @@ export default function Home() {
         <BentoGrid>
           {/* Card 1 — Large: ThreeHoverCard */}
           <div className="md:col-span-2 md:row-span-2 min-h-[400px]">
-            <ThreeHoverCard
-              title="3D Hover Card"
-              description="Glass border, 3D tilt, and cinematic light sweep on hover."
-              className="h-full"
-            />
+            <ErrorBoundary>
+              <ThreeHoverCard
+                title="3D Hover Card"
+                description="Glass border, 3D tilt, and cinematic light sweep on hover."
+                className="h-full"
+              />
+            </ErrorBoundary>
           </div>
 
           {/* Card 2 — Typography / animation showcase */}
@@ -79,11 +84,13 @@ export default function Home() {
             subtitle="WebGL world map with animated arcs & color theming"
           >
             <div className="flex flex-1 w-full items-center justify-center overflow-hidden">
-              <InteractiveGlobe
-                theme="ocean"
-                showLabel={false}
-                className="w-full"
-              />
+              <ErrorBoundary>
+                <InteractiveGlobe
+                  theme="ocean"
+                  showLabel={false}
+                  className="w-full"
+                />
+              </ErrorBoundary>
             </div>
           </BentoCard>
 
@@ -102,6 +109,12 @@ export default function Home() {
           </BentoCard>
         </BentoGrid>
       </section>
+
+      {/* Stats / Social Proof */}
+      <StatsSection />
+
+      {/* Component Marquee */}
+      <ComponentMarquee />
 
       {/* Getting Started CTA */}
       <section className="border-t border-white/[0.06] py-24">
@@ -144,45 +157,173 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/[0.06] py-12">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 sm:flex-row">
-          <div className="flex items-center gap-2.5">
-            <Image
-              src="/logo.png"
-              alt="FlexUI"
-              width={24}
-              height={24}
-              className="rounded-md"
-            />
-            <span className="text-sm font-bold text-zinc-400">
-              FLEX
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                UI
-              </span>
-            </span>
+      <footer className="border-t border-white/[0.06] py-16">
+        <div className="mx-auto max-w-7xl px-6">
+          {/* Top row: Logo + columns */}
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-6">
+            {/* Brand */}
+            <div className="col-span-2">
+              <div className="flex items-center gap-2.5">
+                <Image
+                  src="/logo.png"
+                  alt="FlexUI"
+                  width={24}
+                  height={24}
+                  className="rounded-md"
+                />
+                <span className="text-sm font-bold text-zinc-400">
+                  FLEX
+                  <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                    UI
+                  </span>
+                </span>
+              </div>
+              <p className="mt-3 max-w-xs text-sm text-zinc-600">
+                Flexible. Intuitive. Responsive.
+              </p>
+            </div>
+
+            {/* Product */}
+            <div>
+              <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                Product
+              </h4>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/docs/components"
+                    className="text-sm text-zinc-500 transition-colors hover:text-zinc-300"
+                  >
+                    Components
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/docs/introduction"
+                    className="text-sm text-zinc-500 transition-colors hover:text-zinc-300"
+                  >
+                    Documentation
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/docs/changelog"
+                    className="text-sm text-zinc-500 transition-colors hover:text-zinc-300"
+                  >
+                    Changelog
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Resources */}
+            <div>
+              <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                Resources
+              </h4>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/docs/installation"
+                    className="text-sm text-zinc-500 transition-colors hover:text-zinc-300"
+                  >
+                    Installation
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/docs/mcp-server"
+                    className="text-sm text-zinc-500 transition-colors hover:text-zinc-300"
+                  >
+                    MCP Server
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="https://github.com/flexui/flexui"
+                    target="_blank"
+                    className="text-sm text-zinc-500 transition-colors hover:text-zinc-300"
+                  >
+                    GitHub
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Community */}
+            <div>
+              <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                Community
+              </h4>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="https://x.com/flexui"
+                    target="_blank"
+                    className="text-sm text-zinc-500 transition-colors hover:text-zinc-300"
+                  >
+                    Twitter
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="https://discord.com"
+                    target="_blank"
+                    className="text-sm text-zinc-500 transition-colors hover:text-zinc-300"
+                  >
+                    Discord
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div>
+              <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                Legal
+              </h4>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/privacy"
+                    className="text-sm text-zinc-500 transition-colors hover:text-zinc-300"
+                  >
+                    Privacy
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/terms"
+                    className="text-sm text-zinc-500 transition-colors hover:text-zinc-300"
+                  >
+                    Terms
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
-          <p className="text-sm text-zinc-600">
-            Flexible. Intuitive. Responsive.
-          </p>
-          <div className="flex gap-6">
-            <Link
-              href="/docs/introduction"
-              className="text-sm text-zinc-500 transition-colors hover:text-zinc-300"
-            >
-              Docs
-            </Link>
-            <Link
-              href="/docs/components"
-              className="text-sm text-zinc-500 transition-colors hover:text-zinc-300"
-            >
-              Components
-            </Link>
-            <Link
-              href="/docs/changelog"
-              className="text-sm text-zinc-500 transition-colors hover:text-zinc-300"
-            >
-              Changelog
-            </Link>
+
+          {/* Divider + social row */}
+          <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/[0.06] pt-8 sm:flex-row">
+            <p className="text-xs text-zinc-600">
+              &copy; {new Date().getFullYear()} FlexUI. All rights reserved.
+            </p>
+            <div className="flex gap-4">
+              <Link
+                href="https://github.com"
+                target="_blank"
+                className="text-zinc-600 transition-colors hover:text-zinc-400"
+              >
+                <Github className="h-4 w-4" />
+              </Link>
+              <Link
+                href="https://twitter.com"
+                target="_blank"
+                className="text-zinc-600 transition-colors hover:text-zinc-400"
+              >
+                <Twitter className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </footer>

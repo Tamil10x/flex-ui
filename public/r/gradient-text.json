@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-text",
+  "type": "registry:ui",
+  "title": "Gradient Text",
+  "description": "Animated gradient text with flowing color stops that shift across the text using a CSS keyframe animation.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/gradient-text.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface GradientTextProps {\n  children: React.ReactNode;\n  className?: string;\n  /** Gradient colors as CSS color values */\n  colors?: string[];\n  /** Animation speed in seconds */\n  speed?: number;\n  /** Whether to animate the gradient */\n  animate?: boolean;\n}\n\nexport function GradientText({\n  children,\n  className,\n  colors = [\"#8b5cf6\", \"#06b6d4\", \"#ec4899\", \"#8b5cf6\"],\n  speed = 3,\n  animate = true,\n}: GradientTextProps) {\n  const gradient = `linear-gradient(90deg, ${colors.join(\", \")})`;\n\n  return (\n    <span\n      className={cn(\n        \"inline-block bg-clip-text text-transparent\",\n        animate && \"animate-gradient-shift\",\n        className\n      )}\n      style={{\n        backgroundImage: gradient,\n        backgroundSize: animate ? \"200% auto\" : \"100% auto\",\n        ...(animate ? { animationDuration: `${speed}s` } : {}),\n      }}\n    >\n      {children}\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/gradient-text.tsx"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState, useCallback, type RefObject } from "react";
 import {
   motion,
   useMotionValue,
@@ -23,6 +23,7 @@ interface ReflectiveCardProps {
   color?: string;
   children?: React.ReactNode;
   className?: string;
+  enableWebcam?: boolean;
 }
 
 function useFilterId() {
@@ -42,19 +43,21 @@ export function ReflectiveCard({
   color = "white",
   children,
   className,
+  enableWebcam = false,
 }: ReflectiveCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const auroraRef = useRef<HTMLDivElement>(null);
   const [streamActive, setStreamActive] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 160, y: 240 });
   const [isHovered, setIsHovered] = useState(false);
   const [mounted, setMounted] = useState(false);
   const timeRef = useRef(0);
-  const [time, setTime] = useState(0);
   const id = useFilterId();
 
   // ── Webcam ────────────────────────────────────────────────────────
   useEffect(() => {
+    if (!enableWebcam) return;
     let stream: MediaStream | null = null;
     const start = async () => {
       try {
@@ -71,7 +74,7 @@ export function ReflectiveCard({
     };
     start();
     return () => { stream?.getTracks().forEach((t) => t.stop()); };
-  }, []);
+  }, [enableWebcam]);
 
   // ── Mount flag + animated aurora timer ──────────────────────────────
   useEffect(() => {
@@ -79,7 +82,35 @@ export function ReflectiveCard({
     let raf: number;
     const tick = () => {
       timeRef.current = Date.now() * 0.001;
-      setTime(timeRef.current);
+      const t = timeRef.current;
+
+      // Update aurora bands directly via ref
+      if (auroraRef.current) {
+        const a1 = 30 + Math.sin(t * 0.4) * 20;
+        const a2 = 60 + Math.cos(t * 0.3) * 15;
+        const a3 = 80 + Math.sin(t * 0.5 + 1) * 10;
+        auroraRef.current.style.background = `
+          linear-gradient(${110 + Math.sin(t * 0.2) * 10}deg,
+            transparent ${a1 - 10}%,
+            rgba(139,92,246,0.3) ${a1}%,
+            rgba(56,189,248,0.25) ${a1 + 8}%,
+            transparent ${a1 + 15}%
+          ),
+          linear-gradient(${130 + Math.cos(t * 0.15) * 8}deg,
+            transparent ${a2 - 8}%,
+            rgba(52,211,153,0.2) ${a2}%,
+            rgba(250,204,21,0.15) ${a2 + 6}%,
+            transparent ${a2 + 12}%
+          ),
+          linear-gradient(${100 + Math.sin(t * 0.3) * 12}deg,
+            transparent ${a3 - 6}%,
+            rgba(236,72,153,0.2) ${a3}%,
+            rgba(167,139,250,0.15) ${a3 + 5}%,
+            transparent ${a3 + 10}%
+          )
+        `;
+      }
+
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -115,11 +146,7 @@ export function ReflectiveCard({
   const baseFreq = 0.03 / Math.max(0.1, noiseScale);
   const saturation = 1 - Math.max(0, Math.min(1, grayscale));
   const angle = Math.atan2(mousePos.y - 240, mousePos.x - 160) * (180 / Math.PI);
-
-  // Aurora band positions (animated)
-  const a1 = 30 + Math.sin(time * 0.4) * 20;
-  const a2 = 60 + Math.cos(time * 0.3) * 15;
-  const a3 = 80 + Math.sin(time * 0.5 + 1) * 10;
+  const time = timeRef.current;
 
   // Don't render dynamic content on server to avoid hydration mismatch
   if (!mounted) {
@@ -205,31 +232,7 @@ export function ReflectiveCard({
 
         {/* ── Aurora bands ───────────────────────────────────────── */}
         <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden opacity-40 mix-blend-screen">
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `
-                linear-gradient(${110 + Math.sin(time * 0.2) * 10}deg,
-                  transparent ${a1 - 10}%,
-                  rgba(139,92,246,0.3) ${a1}%,
-                  rgba(56,189,248,0.25) ${a1 + 8}%,
-                  transparent ${a1 + 15}%
-                ),
-                linear-gradient(${130 + Math.cos(time * 0.15) * 8}deg,
-                  transparent ${a2 - 8}%,
-                  rgba(52,211,153,0.2) ${a2}%,
-                  rgba(250,204,21,0.15) ${a2 + 6}%,
-                  transparent ${a2 + 12}%
-                ),
-                linear-gradient(${100 + Math.sin(time * 0.3) * 12}deg,
-                  transparent ${a3 - 6}%,
-                  rgba(236,72,153,0.2) ${a3}%,
-                  rgba(167,139,250,0.15) ${a3 + 5}%,
-                  transparent ${a3 + 10}%
-                )
-              `,
-            }}
-          />
+          <div ref={auroraRef} className="absolute inset-0" />
         </div>
 
         {/* Noise grain */}
