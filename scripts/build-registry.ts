@@ -930,6 +930,101 @@ const COMPONENTS: RegistryComponent[] = [
   { name: "ambient-tilt", type: "registry:ui", title: "Ambient Tilt", description: "A wrapper that adds subtle 3D tilt based on cursor position or device gyroscope with spring-animated transforms.", dependencies: ["framer-motion"], registryDependencies: [], files: [{ path: "components/flexui/ambient-tilt.tsx", target: "components/flexui/ambient-tilt.tsx" }] },
   { name: "icon-cloud", type: "registry:ui", title: "Icon Cloud", description: "A 3D tag cloud of floating icons that rotate as a sphere with drag interaction and depth-based scaling.", dependencies: [], registryDependencies: [], files: [{ path: "components/flexui/icon-cloud.tsx", target: "components/flexui/icon-cloud.tsx" }] },
   { name: "retro-grid", type: "registry:ui", title: "Retro Grid", description: "A perspective grid that vanishes to a horizon point with a retro synthwave aesthetic and optional scroll animation.", dependencies: [], registryDependencies: [], files: [{ path: "components/flexui/retro-grid.tsx", target: "components/flexui/retro-grid.tsx" }] },
+  { name: "evolution-hero", type: "registry:ui", title: "Evolution Hero", description: "Cinematic hero section with AI-generated evolution scene background, mouse parallax, holographic code overlays, and scanning effects.", dependencies: ["framer-motion"], registryDependencies: [], files: [{ path: "components/flexui/evolution-hero.tsx", target: "components/flexui/evolution-hero.tsx" }] },
+  { name: "water-ripple", type: "registry:ui", title: "Water Ripple", description: "WebGL water ripple displacement effect on any image with interactive cursor-driven waves.", dependencies: [], registryDependencies: [], files: [{ path: "components/flexui/water-ripple.tsx", target: "components/flexui/water-ripple.tsx" }] },
+  { name: "kpi-card", type: "registry:ui", title: "KPI Card", description: "Dashboard KPI card with animated number counter, change indicator, and optional sparkline.", dependencies: ["framer-motion"], registryDependencies: [], files: [{ path: "components/flexui/kpi-card.tsx", target: "components/flexui/kpi-card.tsx" }] },
+  { name: "sparkline-chart", type: "registry:ui", title: "Sparkline Chart", description: "Pure SVG sparkline with smooth bezier curves and optional animated drawing.", dependencies: ["framer-motion"], registryDependencies: [], files: [{ path: "components/flexui/sparkline-chart.tsx", target: "components/flexui/sparkline-chart.tsx" }] },
+  { name: "progress-ring", type: "registry:ui", title: "Progress Ring", description: "SVG progress ring with animated stroke and configurable gradient.", dependencies: ["framer-motion"], registryDependencies: [], files: [{ path: "components/flexui/progress-ring.tsx", target: "components/flexui/progress-ring.tsx" }] },
+  {
+    name: "splash-cursor",
+    type: "registry:ui",
+    title: "Splash Cursor",
+    description:
+      "A fluid ink splash effect that follows the cursor with colorful blobs, blur trails, and velocity-based motion using Canvas 2D.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/splash-cursor.tsx",
+        target: "components/flexui/splash-cursor.tsx",
+      },
+    ],
+  },
+  {
+    name: "flickering-grid",
+    type: "registry:ui",
+    title: "Flickering Grid",
+    description:
+      "A canvas-rendered grid of cells that randomly flicker on and off with smooth opacity transitions and a radial fade mask.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/flickering-grid.tsx",
+        target: "components/flexui/flickering-grid.tsx",
+      },
+    ],
+  },
+  {
+    name: "border-beam",
+    type: "registry:ui",
+    title: "Border Beam",
+    description:
+      "A continuous animated light beam that travels around the border of an element using CSS conic-gradient rotation with a glow trail.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/border-beam.tsx",
+        target: "components/flexui/border-beam.tsx",
+      },
+    ],
+  },
+  {
+    name: "neon-glow-card",
+    type: "registry:ui",
+    title: "Neon Glow Card",
+    description:
+      "A card with animated neon border glow that pulses and reacts to cursor position with multiple box-shadow layers and spring-scale hover.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/neon-glow-card.tsx",
+        target: "components/flexui/neon-glow-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "infinite-canvas",
+    type: "registry:ui",
+    title: "Infinite Canvas",
+    description:
+      "A pannable, zoomable canvas where child elements float in 2D space with grid background, mouse wheel zoom, and touch pinch support.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/infinite-canvas.tsx",
+        target: "components/flexui/infinite-canvas.tsx",
+      },
+    ],
+  },
+  {
+    name: "cinematic-hero",
+    type: "registry:ui",
+    title: "Cinematic Hero",
+    description:
+      "A full-screen cinematic hero section with multiple background variants, staggered word blur-reveal headline, animated CTAs, and badge.",
+    dependencies: ["framer-motion"],
+    registryDependencies: ["particle-field", "grid-pattern", "stars-background", "aurora-background"],
+    files: [
+      {
+        path: "components/flexui/cinematic-hero.tsx",
+        target: "components/flexui/cinematic-hero.tsx",
+      },
+    ],
+  },
 ];
 
 // ─── Build Logic ────────────────────────────────────────────────────────────

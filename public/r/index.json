@@ -458,6 +458,72 @@
       "type": "registry:ui",
       "description": "A perspective grid that vanishes to a horizon point with a retro synthwave aesthetic and optional scroll animation.",
       "url": "https://flexui.dev/r/retro-grid.json"
+    },
+    {
+      "name": "evolution-hero",
+      "type": "registry:ui",
+      "description": "Cinematic hero section with AI-generated evolution scene background, mouse parallax, holographic code overlays, and scanning effects.",
+      "url": "https://flexui.dev/r/evolution-hero.json"
+    },
+    {
+      "name": "water-ripple",
+      "type": "registry:ui",
+      "description": "WebGL water ripple displacement effect on any image with interactive cursor-driven waves.",
+      "url": "https://flexui.dev/r/water-ripple.json"
+    },
+    {
+      "name": "kpi-card",
+      "type": "registry:ui",
+      "description": "Dashboard KPI card with animated number counter, change indicator, and optional sparkline.",
+      "url": "https://flexui.dev/r/kpi-card.json"
+    },
+    {
+      "name": "sparkline-chart",
+      "type": "registry:ui",
+      "description": "Pure SVG sparkline with smooth bezier curves and optional animated drawing.",
+      "url": "https://flexui.dev/r/sparkline-chart.json"
+    },
+    {
+      "name": "progress-ring",
+      "type": "registry:ui",
+      "description": "SVG progress ring with animated stroke and configurable gradient.",
+      "url": "https://flexui.dev/r/progress-ring.json"
+    },
+    {
+      "name": "splash-cursor",
+      "type": "registry:ui",
+      "description": "A fluid ink splash effect that follows the cursor with colorful blobs, blur trails, and velocity-based motion using Canvas 2D.",
+      "url": "https://flexui.dev/r/splash-cursor.json"
+    },
+    {
+      "name": "flickering-grid",
+      "type": "registry:ui",
+      "description": "A canvas-rendered grid of cells that randomly flicker on and off with smooth opacity transitions and a radial fade mask.",
+      "url": "https://flexui.dev/r/flickering-grid.json"
+    },
+    {
+      "name": "border-beam",
+      "type": "registry:ui",
+      "description": "A continuous animated light beam that travels around the border of an element using CSS conic-gradient rotation with a glow trail.",
+      "url": "https://flexui.dev/r/border-beam.json"
+    },
+    {
+      "name": "neon-glow-card",
+      "type": "registry:ui",
+      "description": "A card with animated neon border glow that pulses and reacts to cursor position with multiple box-shadow layers and spring-scale hover.",
+      "url": "https://flexui.dev/r/neon-glow-card.json"
+    },
+    {
+      "name": "infinite-canvas",
+      "type": "registry:ui",
+      "description": "A pannable, zoomable canvas where child elements float in 2D space with grid background, mouse wheel zoom, and touch pinch support.",
+      "url": "https://flexui.dev/r/infinite-canvas.json"
+    },
+    {
+      "name": "cinematic-hero",
+      "type": "registry:ui",
+      "description": "A full-screen cinematic hero section with multiple background variants, staggered word blur-reveal headline, animated CTAs, and badge.",
+      "url": "https://flexui.dev/r/cinematic-hero.json"
     }
   ]
 }

@@ -74,6 +74,8 @@ import {
   Wind,
   Cloud,
   Move3d,
+  Paintbrush,
+  Film,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -1791,6 +1793,132 @@ const components: CardData[] = [
         <Grid3x3 className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
         <Sparkles className="absolute right-20 top-14 h-8 w-8 text-fuchsia-500/[0.1] -rotate-12" />
         <Zap className="absolute right-10 top-24 h-6 w-6 text-purple-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Splash Cursor",
+    href: "/docs/components/splash-cursor",
+    tier: "Tier 1",
+    tagline: "Canvas 2D",
+    description:
+      "A fluid ink splash effect that follows the cursor with colorful blobs, blur trails, and velocity-based motion. Pure Canvas 2D.",
+    deps: [],
+    gradient: "from-fuchsia-600/20 via-pink-600/10 to-transparent",
+    glowColor: "rgba(236,72,153,0.15)",
+    iconBg: "bg-gradient-to-br from-fuchsia-500 to-pink-500",
+    accentLine: "from-fuchsia-500 to-pink-500",
+    icon: <Paintbrush className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Paintbrush className="absolute right-6 top-6 h-16 w-16 text-fuchsia-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-pink-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-rose-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Neon Glow Card",
+    href: "/docs/components/neon-glow-card",
+    tier: "Tier 1",
+    tagline: "Neon Glow",
+    description:
+      "A card with animated neon border glow that pulses and reacts to cursor position. Multiple box-shadow layers and spring-scale hover.",
+    deps: ["framer-motion"],
+    gradient: "from-cyan-600/20 via-blue-600/10 to-transparent",
+    glowColor: "rgba(56,156,253,0.15)",
+    iconBg: "bg-gradient-to-br from-cyan-500 to-blue-500",
+    accentLine: "from-cyan-500 to-blue-500",
+    icon: <Flame className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Flame className="absolute right-6 top-6 h-16 w-16 text-cyan-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-blue-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-sky-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Flickering Grid",
+    href: "/docs/components/flickering-grid",
+    tier: "Tier 1",
+    tagline: "Canvas Background",
+    description:
+      "A grid of cells that randomly flicker on and off with smooth opacity transitions. Canvas-based for performance with a radial fade mask.",
+    deps: [],
+    gradient: "from-violet-600/20 via-purple-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-purple-500",
+    accentLine: "from-violet-500 to-purple-500",
+    icon: <Grid3x3 className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Grid3x3 className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-purple-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Border Beam",
+    href: "/docs/components/border-beam",
+    tier: "Tier 1",
+    tagline: "CSS Animation",
+    description:
+      "A continuous animated light beam that travels around the border of an element. Pure CSS with a glow trail effect.",
+    deps: [],
+    gradient: "from-sky-600/20 via-blue-600/10 to-transparent",
+    glowColor: "rgba(56,156,253,0.15)",
+    iconBg: "bg-gradient-to-br from-sky-500 to-blue-500",
+    accentLine: "from-sky-500 to-blue-500",
+    icon: <Sparkles className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Sparkles className="absolute right-6 top-6 h-16 w-16 text-sky-500/[0.07] rotate-12" />
+        <Zap className="absolute right-20 top-14 h-8 w-8 text-blue-500/[0.1] -rotate-12" />
+        <Star className="absolute right-10 top-24 h-6 w-6 text-cyan-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Infinite Canvas",
+    href: "/docs/components/infinite-canvas",
+    tier: "Tier 2",
+    tagline: "Pan & Zoom",
+    description:
+      "A pannable, zoomable canvas where child elements float in 2D space with grid background, mouse wheel zoom toward cursor, and touch pinch support.",
+    deps: ["framer-motion"],
+    gradient: "from-teal-600/20 via-emerald-600/10 to-transparent",
+    glowColor: "rgba(20,184,166,0.15)",
+    iconBg: "bg-gradient-to-br from-teal-500 to-emerald-500",
+    accentLine: "from-teal-500 to-emerald-500",
+    icon: <Layout className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Layout className="absolute right-6 top-6 h-16 w-16 text-teal-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-emerald-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-green-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Cinematic Hero",
+    href: "/docs/components/cinematic-hero",
+    tier: "Tier 2",
+    tagline: "Hero Section",
+    description:
+      "A full-screen cinematic hero section with five background variants, staggered word blur-reveal headline, animated CTAs, and badge with pinging dot.",
+    deps: ["framer-motion"],
+    gradient: "from-indigo-600/20 via-violet-600/10 to-transparent",
+    glowColor: "rgba(99,102,241,0.15)",
+    iconBg: "bg-gradient-to-br from-indigo-500 to-violet-500",
+    accentLine: "from-indigo-500 to-violet-500",
+    icon: <Film className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Film className="absolute right-6 top-6 h-16 w-16 text-indigo-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-violet-500/[0.1] -rotate-12" />
+        <Star className="absolute right-10 top-24 h-6 w-6 text-purple-500/[0.08] rotate-45" />
       </>
     ),
   },

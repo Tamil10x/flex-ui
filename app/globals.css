@@ -359,3 +359,18 @@ body {
     background-position: 0 40px;
   }
 }
+
+/* Neon pulse glow */
+@keyframes neon-pulse {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.15);
+  }
+}
+
+.neon-pulse {
+  animation: neon-pulse 3s ease-in-out infinite;
+}

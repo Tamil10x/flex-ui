@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress-ring",
+  "type": "registry:ui",
+  "title": "Progress Ring",
+  "description": "SVG progress ring with animated stroke and configurable gradient.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/progress-ring.tsx",
+      "content": "\"use client\";\n\nimport React, { useRef, useId } from \"react\";\nimport { motion, useInView } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface ProgressRingProps {\n  value: number;\n  size?: number;\n  strokeWidth?: number;\n  color?: string;\n  trackColor?: string;\n  className?: string;\n  children?: React.ReactNode;\n  animate?: boolean;\n}\n\nexport function ProgressRing({\n  value,\n  size = 120,\n  strokeWidth = 8,\n  color = \"#38bdf8\",\n  trackColor = \"rgba(255,255,255,0.06)\",\n  className,\n  children,\n  animate = true,\n}: ProgressRingProps) {\n  const ref = useRef<HTMLDivElement>(null);\n  const isInView = useInView(ref, { once: true, margin: \"-40px\" });\n  const uid = useId();\n  const gradientId = `ring-grad-${uid}`;\n\n  const radius = (size - strokeWidth) / 2;\n  const circumference = 2 * Math.PI * radius;\n  const clamped = Math.max(0, Math.min(100, value));\n  const targetOffset = circumference - (clamped / 100) * circumference;\n\n  return (\n    <div\n      ref={ref}\n      className={cn(\"relative inline-flex items-center justify-center\", className)}\n      style={{ width: size, height: size }}\n    >\n      <svg\n        width={size}\n        height={size}\n        viewBox={`0 0 ${size} ${size}`}\n        className=\"-rotate-90\"\n      >\n        <defs>\n          <linearGradient id={gradientId} x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">\n            <stop offset=\"0%\" stopColor={color} />\n            <stop offset=\"100%\" stopColor={color} stopOpacity={0.5} />\n          </linearGradient>\n        </defs>\n\n        {/* Track */}\n        <circle\n          cx={size / 2}\n          cy={size / 2}\n          r={radius}\n          fill=\"none\"\n          stroke={trackColor}\n          strokeWidth={strokeWidth}\n        />\n\n        {/* Progress arc */}\n        <motion.circle\n          cx={size / 2}\n          cy={size / 2}\n          r={radius}\n          fill=\"none\"\n          stroke={`url(#${gradientId})`}\n          strokeWidth={strokeWidth}\n          strokeLinecap=\"round\"\n          strokeDasharray={circumference}\n          initial={\n            animate ? { strokeDashoffset: circumference } : { strokeDashoffset: targetOffset }\n          }\n          animate={\n            animate && isInView\n              ? { strokeDashoffset: targetOffset }\n              : undefined\n          }\n          transition={{\n            duration: 1.2,\n            ease: \"easeOut\",\n          }}\n        />\n      </svg>\n\n      {/* Center content */}\n      {children && (\n        <div className=\"absolute inset-0 flex items-center justify-center\">\n          {children}\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/progress-ring.tsx"
+    }
+  ]
+}

@@ -29,6 +29,8 @@ import {
   Wind,
   Cloud,
   Move3d,
+  Paintbrush,
+  Film,
 } from "lucide-react";
 
 interface SidebarItem {
@@ -72,6 +74,7 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "Morphing Card", href: "/docs/components/morphing-card", icon: <Layers className="h-4 w-4" />, isNew: true },
       { title: "KPI Card", href: "/docs/components/kpi-card", icon: <BarChart className="h-4 w-4" />, isNew: true },
       { title: "Holographic Card", href: "/docs/components/holographic-card", icon: <Sparkles className="h-4 w-4" />, isNew: true },
+      { title: "Neon Glow Card", href: "/docs/components/neon-glow-card", icon: <Flame className="h-4 w-4" />, isNew: true },
     ],
   },
   {
@@ -104,6 +107,7 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "Wavy Lines", href: "/docs/components/wavy-background", icon: <Activity className="h-4 w-4" />, isNew: true },
       { title: "Neural Network", href: "/docs/components/neural-network", icon: <Network className="h-4 w-4" />, isNew: true },
       { title: "Retro Grid", href: "/docs/components/retro-grid", icon: <Grid3x3 className="h-4 w-4" />, isNew: true },
+      { title: "Flickering Grid", href: "/docs/components/flickering-grid", icon: <Grid3x3 className="h-4 w-4" />, isNew: true },
     ],
   },
   {
@@ -123,6 +127,7 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "Blob Cursor", href: "/docs/components/blob-cursor", icon: <Circle className="h-4 w-4" />, isNew: true },
       { title: "Spotlight Cursor", href: "/docs/components/spotlight-cursor", icon: <Flashlight className="h-4 w-4" />, isNew: true },
       { title: "Gravity Grid", href: "/docs/components/gravity-grid", icon: <Grid2x2 className="h-4 w-4" />, isNew: true },
+      { title: "Splash Cursor", href: "/docs/components/splash-cursor", icon: <Paintbrush className="h-4 w-4" />, isNew: true },
     ],
   },
   {
@@ -138,10 +143,12 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "Morphing Dialog", href: "/docs/components/morphing-dialog", icon: <Maximize className="h-4 w-4" />, isNew: true },
       { title: "Search Spotlight", href: "/docs/components/search-spotlight", icon: <Search className="h-4 w-4" />, isNew: true },
       { title: "Moving Border", href: "/docs/components/moving-border", icon: <Square className="h-4 w-4" />, isNew: true },
+      { title: "Border Beam", href: "/docs/components/border-beam", icon: <Sparkles className="h-4 w-4" />, isNew: true },
       { title: "Typewriter Terminal", href: "/docs/components/typewriter-terminal", icon: <Terminal className="h-4 w-4" />, isNew: true },
       { title: "Browser Frame", href: "/docs/components/browser-frame", icon: <Monitor className="h-4 w-4" />, isNew: true },
       { title: "Phone Frame", href: "/docs/components/phone-frame", icon: <Smartphone className="h-4 w-4" />, isNew: true },
       { title: "Split Screen Reveal", href: "/docs/components/split-screen-reveal", icon: <Columns className="h-4 w-4" />, isNew: true },
+      { title: "Infinite Canvas", href: "/docs/components/infinite-canvas", icon: <Layout className="h-4 w-4" />, isNew: true },
     ],
   },
   {
@@ -159,6 +166,7 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "Features Block", href: "/docs/components/features-block", icon: <Grid2x2 className="h-4 w-4" />, isNew: true },
       { title: "Testimonials", href: "/docs/components/testimonials-block", icon: <MessageSquareQuote className="h-4 w-4" />, isNew: true },
       { title: "CTA Block", href: "/docs/components/cta-block", icon: <Megaphone className="h-4 w-4" />, isNew: true },
+      { title: "Cinematic Hero", href: "/docs/components/cinematic-hero", icon: <Film className="h-4 w-4" />, isNew: true },
     ],
   },
   {
@@ -189,6 +197,7 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "Interactive Globe", href: "/docs/components/interactive-globe", icon: <Globe className="h-4 w-4" /> },
       { title: "Cosmic Eye", href: "/docs/components/cosmic-eye", icon: <EyeIcon className="h-4 w-4" />, isNew: true },
       { title: "Shader Blob", href: "/docs/components/shader-blob", icon: <Circle className="h-4 w-4" />, isNew: true },
+      { title: "Evolution Hero", href: "/docs/components/evolution-hero", icon: <Sparkles className="h-4 w-4" />, isNew: true },
     ],
   },
 ];
