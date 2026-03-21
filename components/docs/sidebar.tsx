@@ -19,12 +19,23 @@ import {
   Layout, CreditCard, Megaphone, MessageSquareQuote, Grid2x2,
   TrendingUp, BarChart,
   EyeIcon,
+  PenTool,
+  Terminal, Smartphone,
+  Waypoints,
+  Orbit,
+  Network,
+  Music,
+  Columns,
+  Wind,
+  Cloud,
+  Move3d,
 } from "lucide-react";
 
 interface SidebarItem {
   title: string;
   href: string;
   icon: React.ReactNode;
+  isNew?: boolean;
 }
 
 const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
@@ -43,113 +54,141 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
     heading: "Buttons",
     items: [
       { title: "Magnetic Button", href: "/docs/components/magnetic-button", icon: <MousePointer className="h-4 w-4" /> },
-      { title: "Shimmer Button", href: "/docs/components/shimmer-button", icon: <Sparkles className="h-4 w-4" /> },
-      { title: "Glow Button", href: "/docs/components/glow-button", icon: <Flame className="h-4 w-4" /> },
-      { title: "Ripple Button", href: "/docs/components/ripple-button", icon: <Droplet className="h-4 w-4" /> },
-      { title: "Gradient Border", href: "/docs/components/gradient-border-button", icon: <Square className="h-4 w-4" /> },
-      { title: "Confetti Button", href: "/docs/components/confetti-button", icon: <PartyPopper className="h-4 w-4" /> },
+      { title: "Shimmer Button", href: "/docs/components/shimmer-button", icon: <Sparkles className="h-4 w-4" />, isNew: true },
+      { title: "Glow Button", href: "/docs/components/glow-button", icon: <Flame className="h-4 w-4" />, isNew: true },
+      { title: "Ripple Button", href: "/docs/components/ripple-button", icon: <Droplet className="h-4 w-4" />, isNew: true },
+      { title: "Gradient Border", href: "/docs/components/gradient-border-button", icon: <Square className="h-4 w-4" />, isNew: true },
+      { title: "Confetti Button", href: "/docs/components/confetti-button", icon: <PartyPopper className="h-4 w-4" />, isNew: true },
+      { title: "Liquid Button", href: "/docs/components/liquid-button", icon: <Droplet className="h-4 w-4" />, isNew: true },
     ],
   },
   {
     heading: "Cards",
     items: [
       { title: "3D Hover Card", href: "/docs/components/three-hover-card", icon: <Box className="h-4 w-4" /> },
-      { title: "Spotlight Card", href: "/docs/components/spotlight-card", icon: <Lightbulb className="h-4 w-4" /> },
+      { title: "Spotlight Card", href: "/docs/components/spotlight-card", icon: <Lightbulb className="h-4 w-4" />, isNew: true },
       { title: "Expandable Card", href: "/docs/components/expandable-card", icon: <Expand className="h-4 w-4" /> },
       { title: "Reflective Card", href: "/docs/components/reflective-card", icon: <Scan className="h-4 w-4" /> },
-      { title: "Morphing Card", href: "/docs/components/morphing-card", icon: <Layers className="h-4 w-4" /> },
-      { title: "KPI Card", href: "/docs/components/kpi-card", icon: <BarChart className="h-4 w-4" /> },
+      { title: "Morphing Card", href: "/docs/components/morphing-card", icon: <Layers className="h-4 w-4" />, isNew: true },
+      { title: "KPI Card", href: "/docs/components/kpi-card", icon: <BarChart className="h-4 w-4" />, isNew: true },
+      { title: "Holographic Card", href: "/docs/components/holographic-card", icon: <Sparkles className="h-4 w-4" />, isNew: true },
     ],
   },
   {
     heading: "Text Animations",
     items: [
-      { title: "Text Reveal", href: "/docs/components/text-reveal", icon: <Type className="h-4 w-4" /> },
-      { title: "Typewriter", href: "/docs/components/typewriter-text", icon: <Type className="h-4 w-4" /> },
-      { title: "Gradient Text", href: "/docs/components/gradient-text", icon: <Palette className="h-4 w-4" /> },
-      { title: "Flip Words", href: "/docs/components/flip-words", icon: <RotateCw className="h-4 w-4" /> },
-      { title: "Wavy Text", href: "/docs/components/wavy-text", icon: <Waves className="h-4 w-4" /> },
-      { title: "Text Scramble", href: "/docs/components/text-scramble", icon: <Shuffle className="h-4 w-4" /> },
-      { title: "Blur Text", href: "/docs/components/blur-text", icon: <Eye className="h-4 w-4" /> },
-      { title: "Split Text", href: "/docs/components/split-text", icon: <SplitSquareHorizontal className="h-4 w-4" /> },
-      { title: "Rotating Text", href: "/docs/components/rotating-text", icon: <RotateCw className="h-4 w-4" /> },
-      { title: "Number Ticker", href: "/docs/components/number-ticker", icon: <Hash className="h-4 w-4" /> },
+      { title: "Text Reveal", href: "/docs/components/text-reveal", icon: <Type className="h-4 w-4" />, isNew: true },
+      { title: "Typewriter", href: "/docs/components/typewriter-text", icon: <Type className="h-4 w-4" />, isNew: true },
+      { title: "Gradient Text", href: "/docs/components/gradient-text", icon: <Palette className="h-4 w-4" />, isNew: true },
+      { title: "Flip Words", href: "/docs/components/flip-words", icon: <RotateCw className="h-4 w-4" />, isNew: true },
+      { title: "Wavy Text", href: "/docs/components/wavy-text", icon: <Waves className="h-4 w-4" />, isNew: true },
+      { title: "Text Scramble", href: "/docs/components/text-scramble", icon: <Shuffle className="h-4 w-4" />, isNew: true },
+      { title: "Blur Text", href: "/docs/components/blur-text", icon: <Eye className="h-4 w-4" />, isNew: true },
+      { title: "Split Text", href: "/docs/components/split-text", icon: <SplitSquareHorizontal className="h-4 w-4" />, isNew: true },
+      { title: "Rotating Text", href: "/docs/components/rotating-text", icon: <RotateCw className="h-4 w-4" />, isNew: true },
+      { title: "Number Ticker", href: "/docs/components/number-ticker", icon: <Hash className="h-4 w-4" />, isNew: true },
+      { title: "Handwritten Annotation", href: "/docs/components/handwritten-annotation", icon: <PenTool className="h-4 w-4" />, isNew: true },
+      { title: "Chromatic Text", href: "/docs/components/chromatic-text", icon: <Blend className="h-4 w-4" />, isNew: true },
     ],
   },
   {
     heading: "Backgrounds",
     items: [
-      { title: "Aurora", href: "/docs/components/aurora-background", icon: <Sun className="h-4 w-4" /> },
-      { title: "Particle Field", href: "/docs/components/particle-field", icon: <CircleDot className="h-4 w-4" /> },
-      { title: "Grid Pattern", href: "/docs/components/grid-pattern", icon: <Grid3x3 className="h-4 w-4" /> },
-      { title: "Dot Pattern", href: "/docs/components/dot-pattern", icon: <Circle className="h-4 w-4" /> },
-      { title: "Beams", href: "/docs/components/beams-background", icon: <Zap className="h-4 w-4" /> },
-      { title: "Stars", href: "/docs/components/stars-background", icon: <Star className="h-4 w-4" /> },
-      { title: "Mesh Gradient", href: "/docs/components/mesh-gradient", icon: <Blend className="h-4 w-4" /> },
-      { title: "Wavy Lines", href: "/docs/components/wavy-background", icon: <Activity className="h-4 w-4" /> },
+      { title: "Aurora", href: "/docs/components/aurora-background", icon: <Sun className="h-4 w-4" />, isNew: true },
+      { title: "Particle Field", href: "/docs/components/particle-field", icon: <CircleDot className="h-4 w-4" />, isNew: true },
+      { title: "Grid Pattern", href: "/docs/components/grid-pattern", icon: <Grid3x3 className="h-4 w-4" />, isNew: true },
+      { title: "Dot Pattern", href: "/docs/components/dot-pattern", icon: <Circle className="h-4 w-4" />, isNew: true },
+      { title: "Beams", href: "/docs/components/beams-background", icon: <Zap className="h-4 w-4" />, isNew: true },
+      { title: "Stars", href: "/docs/components/stars-background", icon: <Star className="h-4 w-4" />, isNew: true },
+      { title: "Mesh Gradient", href: "/docs/components/mesh-gradient", icon: <Blend className="h-4 w-4" />, isNew: true },
+      { title: "Wavy Lines", href: "/docs/components/wavy-background", icon: <Activity className="h-4 w-4" />, isNew: true },
+      { title: "Neural Network", href: "/docs/components/neural-network", icon: <Network className="h-4 w-4" />, isNew: true },
+      { title: "Retro Grid", href: "/docs/components/retro-grid", icon: <Grid3x3 className="h-4 w-4" />, isNew: true },
     ],
   },
   {
     heading: "Scroll Effects",
     items: [
-      { title: "Parallax Scroll", href: "/docs/components/parallax-scroll", icon: <ArrowUpDown className="h-4 w-4" /> },
-      { title: "Sticky Reveal", href: "/docs/components/sticky-scroll-reveal", icon: <Pin className="h-4 w-4" /> },
-      { title: "Scroll Progress", href: "/docs/components/scroll-progress", icon: <BarChart3 className="h-4 w-4" /> },
-      { title: "Fade on Scroll", href: "/docs/components/fade-on-scroll", icon: <Eye className="h-4 w-4" /> },
-      { title: "Scroll Counter", href: "/docs/components/scroll-counter", icon: <Calculator className="h-4 w-4" /> },
+      { title: "Parallax Scroll", href: "/docs/components/parallax-scroll", icon: <ArrowUpDown className="h-4 w-4" />, isNew: true },
+      { title: "Sticky Reveal", href: "/docs/components/sticky-scroll-reveal", icon: <Pin className="h-4 w-4" />, isNew: true },
+      { title: "Scroll Progress", href: "/docs/components/scroll-progress", icon: <BarChart3 className="h-4 w-4" />, isNew: true },
+      { title: "Fade on Scroll", href: "/docs/components/fade-on-scroll", icon: <Eye className="h-4 w-4" />, isNew: true },
+      { title: "Scroll Counter", href: "/docs/components/scroll-counter", icon: <Calculator className="h-4 w-4" />, isNew: true },
     ],
   },
   {
     heading: "Cursor Effects",
     items: [
-      { title: "Follow Cursor", href: "/docs/components/follow-cursor", icon: <MousePointer className="h-4 w-4" /> },
-      { title: "Blob Cursor", href: "/docs/components/blob-cursor", icon: <Circle className="h-4 w-4" /> },
-      { title: "Spotlight Cursor", href: "/docs/components/spotlight-cursor", icon: <Flashlight className="h-4 w-4" /> },
+      { title: "Follow Cursor", href: "/docs/components/follow-cursor", icon: <MousePointer className="h-4 w-4" />, isNew: true },
+      { title: "Blob Cursor", href: "/docs/components/blob-cursor", icon: <Circle className="h-4 w-4" />, isNew: true },
+      { title: "Spotlight Cursor", href: "/docs/components/spotlight-cursor", icon: <Flashlight className="h-4 w-4" />, isNew: true },
+      { title: "Gravity Grid", href: "/docs/components/gravity-grid", icon: <Grid2x2 className="h-4 w-4" />, isNew: true },
     ],
   },
   {
     heading: "Layout & Navigation",
     items: [
       { title: "Floating Panel", href: "/docs/components/floating-panel", icon: <PanelTop className="h-4 w-4" /> },
-      { title: "Animated Tabs", href: "/docs/components/animated-tabs", icon: <Layers className="h-4 w-4" /> },
-      { title: "Marquee", href: "/docs/components/marquee", icon: <MoveHorizontal className="h-4 w-4" /> },
-      { title: "Drawer", href: "/docs/components/drawer", icon: <PanelBottomOpen className="h-4 w-4" /> },
-      { title: "Toast", href: "/docs/components/toast", icon: <Bell className="h-4 w-4" /> },
-      { title: "Dock Menu", href: "/docs/components/dock-menu", icon: <Monitor className="h-4 w-4" /> },
-      { title: "Floating Navbar", href: "/docs/components/floating-navbar", icon: <Navigation className="h-4 w-4" /> },
-      { title: "Morphing Dialog", href: "/docs/components/morphing-dialog", icon: <Maximize className="h-4 w-4" /> },
-      { title: "Search Spotlight", href: "/docs/components/search-spotlight", icon: <Search className="h-4 w-4" /> },
+      { title: "Animated Tabs", href: "/docs/components/animated-tabs", icon: <Layers className="h-4 w-4" />, isNew: true },
+      { title: "Marquee", href: "/docs/components/marquee", icon: <MoveHorizontal className="h-4 w-4" />, isNew: true },
+      { title: "Drawer", href: "/docs/components/drawer", icon: <PanelBottomOpen className="h-4 w-4" />, isNew: true },
+      { title: "Toast", href: "/docs/components/toast", icon: <Bell className="h-4 w-4" />, isNew: true },
+      { title: "Dock Menu", href: "/docs/components/dock-menu", icon: <Monitor className="h-4 w-4" />, isNew: true },
+      { title: "Floating Navbar", href: "/docs/components/floating-navbar", icon: <Navigation className="h-4 w-4" />, isNew: true },
+      { title: "Morphing Dialog", href: "/docs/components/morphing-dialog", icon: <Maximize className="h-4 w-4" />, isNew: true },
+      { title: "Search Spotlight", href: "/docs/components/search-spotlight", icon: <Search className="h-4 w-4" />, isNew: true },
+      { title: "Moving Border", href: "/docs/components/moving-border", icon: <Square className="h-4 w-4" />, isNew: true },
+      { title: "Typewriter Terminal", href: "/docs/components/typewriter-terminal", icon: <Terminal className="h-4 w-4" />, isNew: true },
+      { title: "Browser Frame", href: "/docs/components/browser-frame", icon: <Monitor className="h-4 w-4" />, isNew: true },
+      { title: "Phone Frame", href: "/docs/components/phone-frame", icon: <Smartphone className="h-4 w-4" />, isNew: true },
+      { title: "Split Screen Reveal", href: "/docs/components/split-screen-reveal", icon: <Columns className="h-4 w-4" />, isNew: true },
     ],
   },
   {
     heading: "Inputs",
     items: [
-      { title: "Animated Input", href: "/docs/components/animated-input", icon: <TextCursor className="h-4 w-4" /> },
-      { title: "OTP Input", href: "/docs/components/otp-input", icon: <KeyRound className="h-4 w-4" /> },
+      { title: "Animated Input", href: "/docs/components/animated-input", icon: <TextCursor className="h-4 w-4" />, isNew: true },
+      { title: "OTP Input", href: "/docs/components/otp-input", icon: <KeyRound className="h-4 w-4" />, isNew: true },
     ],
   },
   {
     heading: "Page Blocks",
     items: [
-      { title: "Hero Block", href: "/docs/components/hero-block", icon: <Layout className="h-4 w-4" /> },
-      { title: "Pricing Block", href: "/docs/components/pricing-block", icon: <CreditCard className="h-4 w-4" /> },
-      { title: "Features Block", href: "/docs/components/features-block", icon: <Grid2x2 className="h-4 w-4" /> },
-      { title: "Testimonials", href: "/docs/components/testimonials-block", icon: <MessageSquareQuote className="h-4 w-4" /> },
-      { title: "CTA Block", href: "/docs/components/cta-block", icon: <Megaphone className="h-4 w-4" /> },
+      { title: "Hero Block", href: "/docs/components/hero-block", icon: <Layout className="h-4 w-4" />, isNew: true },
+      { title: "Pricing Block", href: "/docs/components/pricing-block", icon: <CreditCard className="h-4 w-4" />, isNew: true },
+      { title: "Features Block", href: "/docs/components/features-block", icon: <Grid2x2 className="h-4 w-4" />, isNew: true },
+      { title: "Testimonials", href: "/docs/components/testimonials-block", icon: <MessageSquareQuote className="h-4 w-4" />, isNew: true },
+      { title: "CTA Block", href: "/docs/components/cta-block", icon: <Megaphone className="h-4 w-4" />, isNew: true },
     ],
   },
   {
     heading: "Data Visualization",
     items: [
-      { title: "Sparkline Chart", href: "/docs/components/sparkline-chart", icon: <TrendingUp className="h-4 w-4" /> },
-      { title: "Progress Ring", href: "/docs/components/progress-ring", icon: <CircleDot className="h-4 w-4" /> },
+      { title: "Sparkline Chart", href: "/docs/components/sparkline-chart", icon: <TrendingUp className="h-4 w-4" />, isNew: true },
+      { title: "Progress Ring", href: "/docs/components/progress-ring", icon: <CircleDot className="h-4 w-4" />, isNew: true },
+      { title: "Animated Beam", href: "/docs/components/animated-beam", icon: <Waypoints className="h-4 w-4" />, isNew: true },
+      { title: "Data Orbit", href: "/docs/components/data-orbit", icon: <Orbit className="h-4 w-4" />, isNew: true },
+    ],
+  },
+  {
+    heading: "Effects",
+    items: [
+      { title: "Disintegration Effect", href: "/docs/components/disintegration-effect", icon: <Sparkles className="h-4 w-4" />, isNew: true },
+      { title: "Morphing Blob", href: "/docs/components/morphing-blob", icon: <Circle className="h-4 w-4" />, isNew: true },
+      { title: "Smoke Divider", href: "/docs/components/smoke-divider", icon: <Wind className="h-4 w-4" />, isNew: true },
+      { title: "Audio Reactive Wave", href: "/docs/components/audio-reactive-wave", icon: <Music className="h-4 w-4" />, isNew: true },
+      { title: "Portal Transition", href: "/docs/components/portal-transition", icon: <CircleDot className="h-4 w-4" />, isNew: true },
+      { title: "Icon Cloud", href: "/docs/components/icon-cloud", icon: <Cloud className="h-4 w-4" />, isNew: true },
+      { title: "Glitch Transition", href: "/docs/components/glitch-transition", icon: <Zap className="h-4 w-4" />, isNew: true },
+      { title: "Ambient Tilt", href: "/docs/components/ambient-tilt", icon: <Move3d className="h-4 w-4" />, isNew: true },
     ],
   },
   {
     heading: "WebGL",
     items: [
       { title: "Interactive Globe", href: "/docs/components/interactive-globe", icon: <Globe className="h-4 w-4" /> },
-      { title: "Cosmic Eye", href: "/docs/components/cosmic-eye", icon: <EyeIcon className="h-4 w-4" /> },
+      { title: "Cosmic Eye", href: "/docs/components/cosmic-eye", icon: <EyeIcon className="h-4 w-4" />, isNew: true },
+      { title: "Shader Blob", href: "/docs/components/shader-blob", icon: <Circle className="h-4 w-4" />, isNew: true },
     ],
   },
 ];
@@ -255,6 +294,11 @@ export function DocsSidebar() {
 
                     {/* Title */}
                     {item.title}
+                    {item.isNew && (
+                      <span className="ml-auto shrink-0 rounded bg-violet-500/15 px-1.5 py-0.5 text-[9px] font-bold text-violet-400 ring-1 ring-violet-500/20">
+                        New
+                      </span>
+                    )}
                   </Link>
                 );
               })}

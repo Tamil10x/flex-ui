@@ -779,6 +779,157 @@ const COMPONENTS: RegistryComponent[] = [
     registryDependencies: [],
     files: [{ path: "components/flexui/search-spotlight.tsx", target: "components/flexui/search-spotlight.tsx" }],
   },
+  {
+    name: "holographic-card",
+    type: "registry:ui",
+    title: "Holographic Card",
+    description:
+      "A card with a real-time rainbow holographic foil effect that shifts with viewing angle, like a Pokemon holographic card.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/holographic-card.tsx",
+        target: "components/flexui/holographic-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "handwritten-annotation",
+    type: "registry:ui",
+    title: "Handwritten Annotation",
+    description:
+      "SVG annotations (circles, underlines, highlights, arrows, brackets, strikethroughs) that animate as if being drawn by hand in real-time.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/handwritten-annotation.tsx",
+        target: "components/flexui/handwritten-annotation.tsx",
+      },
+    ],
+  },
+  {
+    name: "moving-border",
+    type: "registry:ui",
+    title: "Moving Border",
+    description:
+      "An animated gradient light that travels along the border of an element using CSS keyframe rotation of a conic-gradient.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/moving-border.tsx",
+        target: "components/flexui/moving-border.tsx",
+      },
+    ],
+  },
+  {
+    name: "shader-blob",
+    type: "registry:ui",
+    title: "Shader Blob",
+    description:
+      "A real-time GLSL metaball/blob that morphs organically using FBM noise, reacts to cursor, and emits a soft emissive glow with two-tone color gradients.",
+    dependencies: ["ogl"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/shader-blob.tsx",
+        target: "components/flexui/shader-blob.tsx",
+      },
+    ],
+  },
+  {
+    name: "liquid-button",
+    type: "registry:ui",
+    title: "Liquid Button",
+    description:
+      "A button whose surface ripples like liquid mercury when hovered and clicked, with organic spring-physics ripple waves from cursor position.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/liquid-button.tsx",
+        target: "components/flexui/liquid-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "morphing-blob",
+    type: "registry:ui",
+    title: "Morphing Blob",
+    description:
+      "An SVG blob that continuously morphs between organic shapes using requestAnimationFrame interpolation with configurable gradient fill, speed, and size.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/morphing-blob.tsx",
+        target: "components/flexui/morphing-blob.tsx",
+      },
+    ],
+  },
+  {
+    name: "chromatic-text",
+    type: "registry:ui",
+    title: "Chromatic Text",
+    description:
+      "Text with chromatic aberration -- RGB channels split on hover or always active with configurable offset and colors.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/chromatic-text.tsx",
+        target: "components/flexui/chromatic-text.tsx",
+      },
+    ],
+  },
+  { name: "disintegration-effect", type: "registry:ui", title: "Disintegration Effect", description: "Thanos-snap particle dissolve effect wrapper.", dependencies: ["framer-motion"], registryDependencies: [], files: [{ path: "components/flexui/disintegration-effect.tsx", target: "components/flexui/disintegration-effect.tsx" }] },
+  { name: "liquid-button", type: "registry:ui", title: "Liquid Button", description: "Button with liquid mercury ripple effect on click.", dependencies: ["framer-motion"], registryDependencies: [], files: [{ path: "components/flexui/liquid-button.tsx", target: "components/flexui/liquid-button.tsx" }] },
+  { name: "morphing-blob", type: "registry:ui", title: "Morphing Blob", description: "SVG blob that continuously morphs between organic shapes.", dependencies: [], registryDependencies: [], files: [{ path: "components/flexui/morphing-blob.tsx", target: "components/flexui/morphing-blob.tsx" }] },
+  { name: "neural-network", type: "registry:ui", title: "Neural Network", description: "Canvas-based animated network graph with firing synapses.", dependencies: [], registryDependencies: [], files: [{ path: "components/flexui/neural-network.tsx", target: "components/flexui/neural-network.tsx" }] },
+  { name: "gravity-grid", type: "registry:ui", title: "Gravity Grid", description: "Grid of dots that attract or repel from cursor.", dependencies: [], registryDependencies: [], files: [{ path: "components/flexui/gravity-grid.tsx", target: "components/flexui/gravity-grid.tsx" }] },
+  { name: "typewriter-terminal", type: "registry:ui", title: "Typewriter Terminal", description: "Realistic terminal emulator with typing animation.", dependencies: [], registryDependencies: [], files: [{ path: "components/flexui/typewriter-terminal.tsx", target: "components/flexui/typewriter-terminal.tsx" }] },
+  { name: "browser-frame", type: "registry:ui", title: "Browser Frame", description: "Browser window mockup for showcasing content.", dependencies: [], registryDependencies: [], files: [{ path: "components/flexui/browser-frame.tsx", target: "components/flexui/browser-frame.tsx" }] },
+  { name: "phone-frame", type: "registry:ui", title: "Phone Frame", description: "Mobile phone device mockup frame.", dependencies: [], registryDependencies: [], files: [{ path: "components/flexui/phone-frame.tsx", target: "components/flexui/phone-frame.tsx" }] },
+  { name: "animated-beam", type: "registry:ui", title: "Animated Beam", description: "Light beam that travels along SVG paths for integration diagrams.", dependencies: [], registryDependencies: [], files: [{ path: "components/flexui/animated-beam.tsx", target: "components/flexui/animated-beam.tsx" }] },
+  { name: "data-orbit", type: "registry:ui", title: "Data Orbit", description: "Icons orbiting in concentric rings around a center element.", dependencies: [], registryDependencies: [], files: [{ path: "components/flexui/data-orbit.tsx", target: "components/flexui/data-orbit.tsx" }] },
+  {
+    name: "audio-reactive-wave",
+    type: "registry:ui",
+    title: "Audio Reactive Wave",
+    description:
+      "A waveform visualizer with gradient-colored bars that react to audio input or generate animated demo sine waves with glow effects.",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/audio-reactive-wave.tsx",
+        target: "components/flexui/audio-reactive-wave.tsx",
+      },
+    ],
+  },
+  {
+    name: "portal-transition",
+    type: "registry:ui",
+    title: "Portal Transition",
+    description:
+      "A circular portal/wormhole transition effect that reveals content with expanding clip-path, glow ring, and particle effects.",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/flexui/portal-transition.tsx",
+        target: "components/flexui/portal-transition.tsx",
+      },
+    ],
+  },
+  { name: "split-screen-reveal", type: "registry:ui", title: "Split Screen Reveal", description: "Two glassmorphic panels that split apart on click to reveal content underneath with spring-physics animation.", dependencies: ["framer-motion"], registryDependencies: [], files: [{ path: "components/flexui/split-screen-reveal.tsx", target: "components/flexui/split-screen-reveal.tsx" }] },
+  { name: "smoke-divider", type: "registry:ui", title: "Smoke Divider", description: "A section divider with animated smoke/fog particles drifting across. Pure CSS animation with hydration-safe seeded randomization.", dependencies: [], registryDependencies: [], files: [{ path: "components/flexui/smoke-divider.tsx", target: "components/flexui/smoke-divider.tsx" }] },
+  { name: "glitch-transition", type: "registry:ui", title: "Glitch Transition", description: "A CRT TV glitch effect with RGB split, scanlines, block displacement, and flicker that wraps any content.", dependencies: ["framer-motion"], registryDependencies: [], files: [{ path: "components/flexui/glitch-transition.tsx", target: "components/flexui/glitch-transition.tsx" }] },
+  { name: "ambient-tilt", type: "registry:ui", title: "Ambient Tilt", description: "A wrapper that adds subtle 3D tilt based on cursor position or device gyroscope with spring-animated transforms.", dependencies: ["framer-motion"], registryDependencies: [], files: [{ path: "components/flexui/ambient-tilt.tsx", target: "components/flexui/ambient-tilt.tsx" }] },
+  { name: "icon-cloud", type: "registry:ui", title: "Icon Cloud", description: "A 3D tag cloud of floating icons that rotate as a sphere with drag interaction and depth-based scaling.", dependencies: [], registryDependencies: [], files: [{ path: "components/flexui/icon-cloud.tsx", target: "components/flexui/icon-cloud.tsx" }] },
+  { name: "retro-grid", type: "registry:ui", title: "Retro Grid", description: "A perspective grid that vanishes to a horizon point with a retro synthwave aesthetic and optional scroll animation.", dependencies: [], registryDependencies: [], files: [{ path: "components/flexui/retro-grid.tsx", target: "components/flexui/retro-grid.tsx" }] },
 ];
 
 // ─── Build Logic ────────────────────────────────────────────────────────────

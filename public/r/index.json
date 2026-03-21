@@ -308,6 +308,156 @@
       "type": "registry:ui",
       "description": "A macOS Spotlight / Raycast-style search dialog with keyboard navigation, category grouping, and spring animations.",
       "url": "https://flexui.dev/r/search-spotlight.json"
+    },
+    {
+      "name": "holographic-card",
+      "type": "registry:ui",
+      "description": "A card with a real-time rainbow holographic foil effect that shifts with viewing angle, like a Pokemon holographic card.",
+      "url": "https://flexui.dev/r/holographic-card.json"
+    },
+    {
+      "name": "handwritten-annotation",
+      "type": "registry:ui",
+      "description": "SVG annotations (circles, underlines, highlights, arrows, brackets, strikethroughs) that animate as if being drawn by hand in real-time.",
+      "url": "https://flexui.dev/r/handwritten-annotation.json"
+    },
+    {
+      "name": "moving-border",
+      "type": "registry:ui",
+      "description": "An animated gradient light that travels along the border of an element using CSS keyframe rotation of a conic-gradient.",
+      "url": "https://flexui.dev/r/moving-border.json"
+    },
+    {
+      "name": "shader-blob",
+      "type": "registry:ui",
+      "description": "A real-time GLSL metaball/blob that morphs organically using FBM noise, reacts to cursor, and emits a soft emissive glow with two-tone color gradients.",
+      "url": "https://flexui.dev/r/shader-blob.json"
+    },
+    {
+      "name": "liquid-button",
+      "type": "registry:ui",
+      "description": "A button whose surface ripples like liquid mercury when hovered and clicked, with organic spring-physics ripple waves from cursor position.",
+      "url": "https://flexui.dev/r/liquid-button.json"
+    },
+    {
+      "name": "morphing-blob",
+      "type": "registry:ui",
+      "description": "An SVG blob that continuously morphs between organic shapes using requestAnimationFrame interpolation with configurable gradient fill, speed, and size.",
+      "url": "https://flexui.dev/r/morphing-blob.json"
+    },
+    {
+      "name": "chromatic-text",
+      "type": "registry:ui",
+      "description": "Text with chromatic aberration -- RGB channels split on hover or always active with configurable offset and colors.",
+      "url": "https://flexui.dev/r/chromatic-text.json"
+    },
+    {
+      "name": "disintegration-effect",
+      "type": "registry:ui",
+      "description": "Thanos-snap particle dissolve effect wrapper.",
+      "url": "https://flexui.dev/r/disintegration-effect.json"
+    },
+    {
+      "name": "liquid-button",
+      "type": "registry:ui",
+      "description": "Button with liquid mercury ripple effect on click.",
+      "url": "https://flexui.dev/r/liquid-button.json"
+    },
+    {
+      "name": "morphing-blob",
+      "type": "registry:ui",
+      "description": "SVG blob that continuously morphs between organic shapes.",
+      "url": "https://flexui.dev/r/morphing-blob.json"
+    },
+    {
+      "name": "neural-network",
+      "type": "registry:ui",
+      "description": "Canvas-based animated network graph with firing synapses.",
+      "url": "https://flexui.dev/r/neural-network.json"
+    },
+    {
+      "name": "gravity-grid",
+      "type": "registry:ui",
+      "description": "Grid of dots that attract or repel from cursor.",
+      "url": "https://flexui.dev/r/gravity-grid.json"
+    },
+    {
+      "name": "typewriter-terminal",
+      "type": "registry:ui",
+      "description": "Realistic terminal emulator with typing animation.",
+      "url": "https://flexui.dev/r/typewriter-terminal.json"
+    },
+    {
+      "name": "browser-frame",
+      "type": "registry:ui",
+      "description": "Browser window mockup for showcasing content.",
+      "url": "https://flexui.dev/r/browser-frame.json"
+    },
+    {
+      "name": "phone-frame",
+      "type": "registry:ui",
+      "description": "Mobile phone device mockup frame.",
+      "url": "https://flexui.dev/r/phone-frame.json"
+    },
+    {
+      "name": "animated-beam",
+      "type": "registry:ui",
+      "description": "Light beam that travels along SVG paths for integration diagrams.",
+      "url": "https://flexui.dev/r/animated-beam.json"
+    },
+    {
+      "name": "data-orbit",
+      "type": "registry:ui",
+      "description": "Icons orbiting in concentric rings around a center element.",
+      "url": "https://flexui.dev/r/data-orbit.json"
+    },
+    {
+      "name": "audio-reactive-wave",
+      "type": "registry:ui",
+      "description": "A waveform visualizer with gradient-colored bars that react to audio input or generate animated demo sine waves with glow effects.",
+      "url": "https://flexui.dev/r/audio-reactive-wave.json"
+    },
+    {
+      "name": "portal-transition",
+      "type": "registry:ui",
+      "description": "A circular portal/wormhole transition effect that reveals content with expanding clip-path, glow ring, and particle effects.",
+      "url": "https://flexui.dev/r/portal-transition.json"
+    },
+    {
+      "name": "split-screen-reveal",
+      "type": "registry:ui",
+      "description": "Two glassmorphic panels that split apart on click to reveal content underneath with spring-physics animation.",
+      "url": "https://flexui.dev/r/split-screen-reveal.json"
+    },
+    {
+      "name": "smoke-divider",
+      "type": "registry:ui",
+      "description": "A section divider with animated smoke/fog particles drifting across. Pure CSS animation with hydration-safe seeded randomization.",
+      "url": "https://flexui.dev/r/smoke-divider.json"
+    },
+    {
+      "name": "glitch-transition",
+      "type": "registry:ui",
+      "description": "A CRT TV glitch effect with RGB split, scanlines, block displacement, and flicker that wraps any content.",
+      "url": "https://flexui.dev/r/glitch-transition.json"
+    },
+    {
+      "name": "ambient-tilt",
+      "type": "registry:ui",
+      "description": "A wrapper that adds subtle 3D tilt based on cursor position or device gyroscope with spring-animated transforms.",
+      "url": "https://flexui.dev/r/ambient-tilt.json"
+    },
+    {
+      "name": "icon-cloud",
+      "type": "registry:ui",
+      "description": "A 3D tag cloud of floating icons that rotate as a sphere with drag interaction and depth-based scaling.",
+      "url": "https://flexui.dev/r/icon-cloud.json"
+    },
+    {
+      "name": "retro-grid",
+      "type": "registry:ui",
+      "description": "A perspective grid that vanishes to a horizon point with a retro synthwave aesthetic and optional scroll animation.",
+      "url": "https://flexui.dev/r/retro-grid.json"
     }
   ]
 }

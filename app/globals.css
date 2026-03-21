@@ -253,6 +253,18 @@ body {
   }
 }
 
+/* Disintegration particle */
+@keyframes disintegrate-particle {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) rotate(var(--rot)) scale(0);
+  }
+}
+
 /* Confetti burst */
 @keyframes confetti-burst {
   0% {
@@ -262,5 +274,88 @@ body {
   100% {
     transform: translate(var(--confetti-tx), var(--confetti-ty)) rotate(var(--confetti-rot));
     opacity: 0;
+  }
+}
+
+/* Animated beam travel */
+@keyframes beam-travel {
+  0% {
+    stroke-dashoffset: 2060;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@utility animate-beam-travel {
+  animation: beam-travel 3s linear infinite;
+}
+
+/* Orbit animations */
+@keyframes orbit-cw {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-ccw {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@utility animate-orbit-cw {
+  animation: orbit-cw 20s linear infinite;
+}
+
+@utility animate-orbit-ccw {
+  animation: orbit-ccw 20s linear infinite;
+}
+
+/* Smoke divider drift */
+@keyframes smoke-drift {
+  0% {
+    transform: translateX(-200px) translateY(0px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 200px)) translateY(0px);
+  }
+}
+
+@keyframes smoke-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Glitch flicker */
+@keyframes glitch-flicker {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Retro grid scroll */
+@keyframes retro-grid-scroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 40px;
   }
 }

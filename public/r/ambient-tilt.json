@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ambient-tilt",
+  "type": "registry:ui",
+  "title": "Ambient Tilt",
+  "description": "A wrapper that adds subtle 3D tilt based on cursor position or device gyroscope with spring-animated transforms.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/ambient-tilt.tsx",
+      "content": "\"use client\";\n\nimport React, { useRef, useEffect, useCallback } from \"react\";\nimport {\n  motion,\n  useMotionValue,\n  useSpring,\n  useTransform,\n} from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface AmbientTiltProps {\n  children: React.ReactNode;\n  className?: string;\n  /** Max tilt angle in degrees */\n  maxAngle?: number;\n  /** Perspective distance in px */\n  perspective?: number;\n  /** Spring stiffness */\n  stiffness?: number;\n  /** Spring damping */\n  damping?: number;\n  /** Use device gyroscope on mobile */\n  useGyroscope?: boolean;\n}\n\n/**\n * AmbientTilt — A wrapper that adds subtle 3D tilt based on\n * cursor position (desktop) or device gyroscope (mobile).\n */\nexport function AmbientTilt({\n  children,\n  className,\n  maxAngle = 8,\n  perspective = 1000,\n  stiffness = 100,\n  damping = 20,\n  useGyroscope = true,\n}: AmbientTiltProps) {\n  const wrapperRef = useRef<HTMLDivElement>(null);\n\n  // Raw motion values for mouse/gyro input (normalised -1 to 1)\n  const rawX = useMotionValue(0);\n  const rawY = useMotionValue(0);\n\n  // Spring-smoothed values\n  const springX = useSpring(rawX, { stiffness, damping });\n  const springY = useSpring(rawY, { stiffness, damping });\n\n  // Map normalised input to rotation degrees\n  const rotateX = useTransform(springY, [-1, 1], [maxAngle, -maxAngle]);\n  const rotateY = useTransform(springX, [-1, 1], [-maxAngle, maxAngle]);\n\n  // ── Desktop: mouse tracking ──────────────────────────────────────\n  const handleMouseMove = useCallback(\n    (e: MouseEvent) => {\n      const w = window.innerWidth;\n      const h = window.innerHeight;\n      // Normalise to -1…1 from window centre\n      rawX.set((e.clientX - w / 2) / (w / 2));\n      rawY.set((e.clientY - h / 2) / (h / 2));\n    },\n    [rawX, rawY]\n  );\n\n  const handleMouseLeave = useCallback(() => {\n    rawX.set(0);\n    rawY.set(0);\n  }, [rawX, rawY]);\n\n  useEffect(() => {\n    window.addEventListener(\"mousemove\", handleMouseMove);\n    window.addEventListener(\"mouseleave\", handleMouseLeave);\n    return () => {\n      window.removeEventListener(\"mousemove\", handleMouseMove);\n      window.removeEventListener(\"mouseleave\", handleMouseLeave);\n    };\n  }, [handleMouseMove, handleMouseLeave]);\n\n  // ── Mobile: gyroscope ────────────────────────────────────────────\n  useEffect(() => {\n    if (!useGyroscope) return;\n\n    const handleOrientation = (e: DeviceOrientationEvent) => {\n      const beta = e.beta ?? 0; // front-to-back tilt (-180 … 180)\n      const gamma = e.gamma ?? 0; // left-to-right tilt (-90 … 90)\n\n      // Normalise to -1…1 (clamped at ±45deg for beta, ±45deg for gamma)\n      rawY.set(Math.max(-1, Math.min(1, beta / 45)));\n      rawX.set(Math.max(-1, Math.min(1, gamma / 45)));\n    };\n\n    window.addEventListener(\"deviceorientation\", handleOrientation);\n    return () => {\n      window.removeEventListener(\"deviceorientation\", handleOrientation);\n    };\n  }, [useGyroscope, rawX, rawY]);\n\n  return (\n    <motion.div\n      ref={wrapperRef}\n      className={cn(\"will-change-transform\", className)}\n      style={{\n        perspective,\n        rotateX,\n        rotateY,\n        transformStyle: \"preserve-3d\",\n      }}\n    >\n      {children}\n    </motion.div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/ambient-tilt.tsx"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-beam",
+  "type": "registry:ui",
+  "title": "Animated Beam",
+  "description": "Light beam that travels along SVG paths for integration diagrams.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/animated-beam.tsx",
+      "content": "\"use client\";\n\nimport React, { useId } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface AnimatedBeamProps {\n  className?: string;\n  /** SVG path data string */\n  pathData: string;\n  /** Beam color */\n  color?: string;\n  /** Beam width */\n  width?: number;\n  /** Speed in seconds for one traversal */\n  speed?: number;\n  /** Track color (the path line) */\n  trackColor?: string;\n  /** Delay before starting */\n  delay?: number;\n}\n\nexport function AnimatedBeam({\n  className,\n  pathData,\n  color = \"#389CFD\",\n  width = 2,\n  speed = 3,\n  trackColor = \"rgba(255,255,255,0.06)\",\n  delay = 0,\n}: AnimatedBeamProps) {\n  const uid = useId();\n  const filterId = `beam-glow-${uid}`;\n  const gradientId = `beam-grad-${uid}`;\n\n  // Dash length controls how long the bright segment is\n  const dashLength = 60;\n  // Total dash-array: bright segment + transparent gap\n  // The gap needs to be very large so only one bright segment is visible at a time\n  const dashGap = 2000;\n\n  return (\n    <svg\n      className={cn(\"pointer-events-none\", className)}\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      style={{ overflow: \"visible\" }}\n    >\n      <defs>\n        {/* Glow filter */}\n        <filter id={filterId} x=\"-50%\" y=\"-50%\" width=\"200%\" height=\"200%\">\n          <feGaussianBlur in=\"SourceGraphic\" stdDeviation=\"3\" result=\"blur\" />\n          <feMerge>\n            <feMergeNode in=\"blur\" />\n            <feMergeNode in=\"SourceGraphic\" />\n          </feMerge>\n        </filter>\n\n        {/* Gradient along path for extra fade */}\n        <linearGradient id={gradientId}>\n          <stop offset=\"0%\" stopColor={color} stopOpacity=\"0\" />\n          <stop offset=\"30%\" stopColor={color} stopOpacity=\"1\" />\n          <stop offset=\"70%\" stopColor={color} stopOpacity=\"1\" />\n          <stop offset=\"100%\" stopColor={color} stopOpacity=\"0\" />\n        </linearGradient>\n      </defs>\n\n      {/* Track: dim line showing the route */}\n      <path\n        d={pathData}\n        stroke={trackColor}\n        strokeWidth={width}\n        strokeLinecap=\"round\"\n        fill=\"none\"\n      />\n\n      {/* Beam: bright segment traveling along the path */}\n      <path\n        d={pathData}\n        stroke={color}\n        strokeWidth={width}\n        strokeLinecap=\"round\"\n        fill=\"none\"\n        filter={`url(#${filterId})`}\n        strokeDasharray={`${dashLength} ${dashGap}`}\n        className=\"animate-beam-travel\"\n        style={{\n          animationDuration: `${speed}s`,\n          animationDelay: `${delay}s`,\n        }}\n      />\n    </svg>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/animated-beam.tsx"
+    }
+  ]
+}

@@ -16,6 +16,8 @@ import {
   Globe,
   Menu,
   X,
+  Music,
+  CircleDot,
 } from "lucide-react";
 
 const items = [
@@ -28,6 +30,10 @@ const items = [
   { title: "3D Hover Card", href: "/docs/components/three-hover-card", icon: <Box className="h-4 w-4" /> },
   { title: "Floating Panel", href: "/docs/components/floating-panel", icon: <PanelTop className="h-4 w-4" /> },
   { title: "Interactive Globe", href: "/docs/components/interactive-globe", icon: <Globe className="h-4 w-4" /> },
+  { title: "Shader Blob", href: "/docs/components/shader-blob", icon: <Globe className="h-4 w-4" /> },
+  { title: "Chromatic Text", href: "/docs/components/chromatic-text", icon: <Box className="h-4 w-4" /> },
+  { title: "Audio Reactive Wave", href: "/docs/components/audio-reactive-wave", icon: <Music className="h-4 w-4" /> },
+  { title: "Portal Transition", href: "/docs/components/portal-transition", icon: <CircleDot className="h-4 w-4" /> },
 ];
 
 export function MobileSidebar() {

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "retro-grid",
+  "type": "registry:ui",
+  "title": "Retro Grid",
+  "description": "A perspective grid that vanishes to a horizon point with a retro synthwave aesthetic and optional scroll animation.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/retro-grid.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface RetroGridProps {\n  children?: React.ReactNode;\n  className?: string;\n  /** Grid line color */\n  color?: string;\n  /** Grid cell size */\n  cellSize?: number;\n  /** Angle of perspective */\n  angle?: number;\n  /** Animate the grid scrolling toward viewer */\n  animate?: boolean;\n  /** Speed of scroll animation */\n  speed?: number;\n}\n\nexport function RetroGrid({\n  children,\n  className,\n  color = \"rgba(139,92,246,0.15)\",\n  cellSize = 40,\n  angle = 65,\n  animate = true,\n  speed = 1,\n}: RetroGridProps) {\n  const duration = 4 / speed;\n\n  return (\n    <div className={cn(\"relative overflow-hidden\", className)}>\n      {/* Grid plane with perspective */}\n      <div\n        className=\"pointer-events-none absolute inset-0\"\n        style={{ perspective: \"200px\" }}\n      >\n        <div\n          className=\"absolute inset-0\"\n          style={{\n            transformOrigin: \"center top\",\n            transform: `rotateX(${angle}deg)`,\n            // Extend the grid well below the container for perspective effect\n            top: \"60%\",\n            bottom: \"-100%\",\n            left: \"-50%\",\n            right: \"-50%\",\n            backgroundImage: `repeating-linear-gradient(\n              0deg,\n              ${color} 0px,\n              ${color} 1px,\n              transparent 1px,\n              transparent ${cellSize}px\n            ),\n            repeating-linear-gradient(\n              90deg,\n              ${color} 0px,\n              ${color} 1px,\n              transparent 1px,\n              transparent ${cellSize}px\n            )`,\n            backgroundSize: `${cellSize}px ${cellSize}px`,\n            ...(animate\n              ? {\n                  animation: `retro-grid-scroll ${duration}s linear infinite`,\n                }\n              : {}),\n          }}\n        />\n        {/* Top horizon fade mask */}\n        <div\n          className=\"absolute inset-0\"\n          style={{\n            background:\n              \"linear-gradient(to bottom, currentColor 0%, currentColor 55%, transparent 80%, transparent 100%)\",\n            color: \"var(--color-background, #000)\",\n          }}\n        />\n      </div>\n\n      {/* Children on top */}\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/retro-grid.tsx"
+    }
+  ]
+}

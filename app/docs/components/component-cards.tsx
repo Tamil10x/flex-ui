@@ -63,6 +63,17 @@ import {
   BarChart,
   MessageSquareQuote,
   Grid2x2,
+  PenTool,
+  Terminal,
+  Smartphone,
+  Waypoints,
+  Orbit,
+  Network,
+  Music,
+  Columns,
+  Wind,
+  Cloud,
+  Move3d,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -1297,6 +1308,489 @@ const components: CardData[] = [
         <CircleDot className="absolute right-6 top-6 h-16 w-16 text-emerald-500/[0.07] rotate-12" />
         <Sparkles className="absolute right-20 top-14 h-8 w-8 text-teal-500/[0.1] -rotate-12" />
         <Zap className="absolute right-10 top-24 h-6 w-6 text-green-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Disintegration Effect",
+    href: "/docs/components/disintegration-effect",
+    tier: "Tier 1",
+    tagline: "Particle Dissolve",
+    description:
+      "A Thanos-snap style particle dissolve wrapper. Toggle a boolean to disintegrate any element into colored particles, then reassemble.",
+    deps: ["framer-motion"],
+    gradient: "from-fuchsia-600/20 via-pink-600/10 to-transparent",
+    glowColor: "rgba(236,72,153,0.15)",
+    iconBg: "bg-gradient-to-br from-fuchsia-500 to-pink-500",
+    accentLine: "from-fuchsia-500 to-pink-500",
+    icon: <Sparkles className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Sparkles className="absolute right-6 top-6 h-16 w-16 text-fuchsia-500/[0.07] rotate-12" />
+        <Zap className="absolute right-20 top-14 h-8 w-8 text-pink-500/[0.1] -rotate-12" />
+        <Star className="absolute right-10 top-24 h-6 w-6 text-rose-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Holographic Card",
+    href: "/docs/components/holographic-card",
+    tier: "Tier 1",
+    tagline: "Rainbow Foil",
+    description:
+      "A card with a real-time rainbow holographic foil effect that shifts with viewing angle, like a Pokemon holographic card.",
+    deps: ["framer-motion"],
+    gradient: "from-violet-600/20 via-cyan-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-cyan-500",
+    accentLine: "from-violet-500 to-cyan-500",
+    icon: <Sparkles className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Sparkles className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Star className="absolute right-20 top-14 h-8 w-8 text-cyan-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-purple-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Moving Border",
+    href: "/docs/components/moving-border",
+    tier: "Tier 1",
+    tagline: "CSS Keyframes",
+    description:
+      "An animated gradient light that travels along the border of an element. Pure CSS rotation with conic-gradient.",
+    deps: ["framer-motion"],
+    gradient: "from-violet-600/20 via-fuchsia-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-fuchsia-500",
+    accentLine: "from-violet-500 to-fuchsia-500",
+    icon: <Square className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Square className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-fuchsia-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-purple-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Handwritten Annotation",
+    href: "/docs/components/handwritten-annotation",
+    tier: "Tier 1",
+    tagline: "SVG Draw Effect",
+    description:
+      "SVG annotations — circles, underlines, highlights, arrows — that animate as if being drawn by hand in real-time.",
+    deps: ["framer-motion"],
+    gradient: "from-red-600/20 via-orange-600/10 to-transparent",
+    glowColor: "rgba(239,68,68,0.15)",
+    iconBg: "bg-gradient-to-br from-red-500 to-orange-500",
+    accentLine: "from-red-500 to-orange-500",
+    icon: <PenTool className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <PenTool className="absolute right-6 top-6 h-16 w-16 text-red-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-orange-500/[0.1] -rotate-12" />
+        <Circle className="absolute right-10 top-24 h-6 w-6 text-red-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Shader Blob",
+    href: "/docs/components/shader-blob",
+    tier: "Tier 3",
+    tagline: "WebGL Shader",
+    description:
+      "A real-time GLSL metaball that morphs organically using FBM noise, reacts to cursor, and emits a soft emissive glow with two-tone color gradients.",
+    deps: ["ogl"],
+    gradient: "from-violet-600/20 via-blue-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-blue-500",
+    accentLine: "from-violet-500 to-blue-500",
+    icon: <Circle className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Circle className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-blue-500/[0.1] -rotate-12" />
+        <Blend className="absolute right-10 top-24 h-6 w-6 text-purple-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Liquid Button",
+    href: "/docs/components/liquid-button",
+    tier: "Tier 1",
+    tagline: "Spring Ripples",
+    description:
+      "A button whose surface ripples like liquid mercury when hovered and clicked. Organic spring-physics ripples expand from cursor position.",
+    deps: ["framer-motion"],
+    gradient: "from-violet-600/20 via-purple-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-purple-500",
+    accentLine: "from-violet-500 to-purple-500",
+    icon: <Droplet className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Droplet className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-purple-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Morphing Blob",
+    href: "/docs/components/morphing-blob",
+    tier: "Tier 1",
+    tagline: "SVG Morph",
+    description:
+      "An SVG blob that continuously morphs between organic shapes using requestAnimationFrame interpolation with gradient fill.",
+    deps: [],
+    gradient: "from-indigo-600/20 via-cyan-600/10 to-transparent",
+    glowColor: "rgba(99,102,241,0.15)",
+    iconBg: "bg-gradient-to-br from-indigo-500 to-cyan-500",
+    accentLine: "from-indigo-500 to-cyan-500",
+    icon: <Circle className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Circle className="absolute right-6 top-6 h-16 w-16 text-indigo-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-cyan-500/[0.1] -rotate-12" />
+        <Blend className="absolute right-10 top-24 h-6 w-6 text-blue-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Chromatic Text",
+    href: "/docs/components/chromatic-text",
+    tier: "Tier 1",
+    tagline: "Text Effect",
+    description:
+      "Text with chromatic aberration -- RGB channels split apart on hover or always active. Pure CSS layers with mix-blend-mode screen and Framer Motion springs.",
+    deps: ["framer-motion"],
+    gradient: "from-red-600/20 via-blue-600/10 to-transparent",
+    glowColor: "rgba(239,68,68,0.15)",
+    iconBg: "bg-gradient-to-br from-red-500 via-green-500 to-blue-500",
+    accentLine: "from-red-500 to-blue-500",
+    icon: <Blend className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Blend className="absolute right-6 top-6 h-16 w-16 text-red-500/[0.07] rotate-12" />
+        <Type className="absolute right-20 top-14 h-8 w-8 text-green-500/[0.1] -rotate-12" />
+        <Sparkles className="absolute right-10 top-24 h-6 w-6 text-blue-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Typewriter Terminal",
+    href: "/docs/components/typewriter-terminal",
+    tier: "Tier 1",
+    tagline: "Terminal Emulator",
+    description:
+      "A realistic terminal emulator with typing animation, command sequences, dark and matrix themes, and optional looping.",
+    deps: ["react"],
+    gradient: "from-green-600/20 via-emerald-600/10 to-transparent",
+    glowColor: "rgba(34,197,94,0.15)",
+    iconBg: "bg-gradient-to-br from-green-500 to-emerald-500",
+    accentLine: "from-green-500 to-emerald-500",
+    icon: <Terminal className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Terminal className="absolute right-6 top-6 h-16 w-16 text-green-500/[0.07] rotate-12" />
+        <Type className="absolute right-20 top-14 h-8 w-8 text-emerald-500/[0.1] -rotate-12" />
+        <Sparkles className="absolute right-10 top-24 h-6 w-6 text-lime-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Browser Frame",
+    href: "/docs/components/browser-frame",
+    tier: "Tier 1",
+    tagline: "Display Frame",
+    description:
+      "A browser window mockup frame with traffic lights, navigation buttons, URL bar, and glassmorphic dark styling for showcasing content.",
+    deps: ["react"],
+    gradient: "from-sky-600/20 via-blue-600/10 to-transparent",
+    glowColor: "rgba(14,165,233,0.15)",
+    iconBg: "bg-gradient-to-br from-sky-500 to-blue-500",
+    accentLine: "from-sky-500 to-blue-500",
+    icon: <Monitor className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Monitor className="absolute right-6 top-6 h-16 w-16 text-sky-500/[0.07] rotate-12" />
+        <Layout className="absolute right-20 top-14 h-8 w-8 text-blue-500/[0.1] -rotate-12" />
+        <Sparkles className="absolute right-10 top-24 h-6 w-6 text-cyan-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Phone Frame",
+    href: "/docs/components/phone-frame",
+    tier: "Tier 1",
+    tagline: "Device Mockup",
+    description:
+      "A phone/mobile device mockup frame with dynamic island, status bar, and home indicator for showcasing mobile designs.",
+    deps: ["react"],
+    gradient: "from-pink-600/20 via-rose-600/10 to-transparent",
+    glowColor: "rgba(236,72,153,0.15)",
+    iconBg: "bg-gradient-to-br from-pink-500 to-rose-500",
+    accentLine: "from-pink-500 to-rose-500",
+    icon: <Smartphone className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Smartphone className="absolute right-6 top-6 h-16 w-16 text-pink-500/[0.07] rotate-12" />
+        <Layout className="absolute right-20 top-14 h-8 w-8 text-rose-500/[0.1] -rotate-12" />
+        <Sparkles className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Animated Beam",
+    href: "/docs/components/animated-beam",
+    tier: "Tier 1",
+    tagline: "SVG Path",
+    description:
+      "An animated light beam that travels along any SVG path — perfect for integration diagrams and data flow visualizations with glow effects.",
+    deps: ["react"],
+    gradient: "from-cyan-600/20 via-blue-600/10 to-transparent",
+    glowColor: "rgba(56,156,253,0.15)",
+    iconBg: "bg-gradient-to-br from-cyan-500 to-blue-500",
+    accentLine: "from-cyan-500 to-blue-500",
+    icon: <Waypoints className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Waypoints className="absolute right-6 top-6 h-16 w-16 text-cyan-500/[0.07] rotate-12" />
+        <Zap className="absolute right-20 top-14 h-8 w-8 text-blue-500/[0.1] -rotate-12" />
+        <Activity className="absolute right-10 top-24 h-6 w-6 text-sky-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Data Orbit",
+    href: "/docs/components/data-orbit",
+    tier: "Tier 1",
+    tagline: "CSS Orbit",
+    description:
+      "Icons and elements orbiting in concentric rings around a center element. Each item counter-rotates to stay upright while the ring spins.",
+    deps: ["react"],
+    gradient: "from-purple-600/20 via-violet-600/10 to-transparent",
+    glowColor: "rgba(168,85,247,0.15)",
+    iconBg: "bg-gradient-to-br from-purple-500 to-violet-500",
+    accentLine: "from-purple-500 to-violet-500",
+    icon: <Orbit className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Orbit className="absolute right-6 top-6 h-16 w-16 text-purple-500/[0.07] rotate-12" />
+        <CircleDot className="absolute right-20 top-14 h-8 w-8 text-violet-500/[0.1] -rotate-12" />
+        <Sparkles className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Neural Network",
+    href: "/docs/components/neural-network",
+    tier: "Tier 2",
+    tagline: "Canvas Animation",
+    description:
+      "An animated network graph where nodes pulse and connections fire like synapses. Canvas-based rendering for smooth performance.",
+    deps: [],
+    gradient: "from-violet-600/20 via-cyan-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-cyan-500",
+    accentLine: "from-violet-500 to-cyan-500",
+    icon: <Network className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Network className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Zap className="absolute right-20 top-14 h-8 w-8 text-cyan-500/[0.1] -rotate-12" />
+        <CircleDot className="absolute right-10 top-24 h-6 w-6 text-blue-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Gravity Grid",
+    href: "/docs/components/gravity-grid",
+    tier: "Tier 1",
+    tagline: "Cursor Effect",
+    description:
+      "A grid of dots that respond to your cursor with gravity or repulsion. Uses direct DOM transforms via refs for silky-smooth performance.",
+    deps: [],
+    gradient: "from-fuchsia-600/20 via-violet-600/10 to-transparent",
+    glowColor: "rgba(168,85,247,0.15)",
+    iconBg: "bg-gradient-to-br from-fuchsia-500 to-violet-500",
+    accentLine: "from-fuchsia-500 to-violet-500",
+    icon: <Grid2x2 className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Grid2x2 className="absolute right-6 top-6 h-16 w-16 text-fuchsia-500/[0.07] rotate-12" />
+        <MousePointer className="absolute right-20 top-14 h-8 w-8 text-violet-500/[0.1] -rotate-12" />
+        <Sparkles className="absolute right-10 top-24 h-6 w-6 text-purple-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Audio Reactive Wave",
+    href: "/docs/components/audio-reactive-wave",
+    tier: "Tier 2",
+    tagline: "Web Audio API",
+    description:
+      "A waveform visualizer with gradient-colored bars that react to audio input or generate animated demo sine waves with glow effects.",
+    deps: [],
+    gradient: "from-violet-600/20 via-blue-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-blue-500",
+    accentLine: "from-violet-500 to-blue-500",
+    icon: <Music className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Music className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Activity className="absolute right-20 top-14 h-8 w-8 text-blue-500/[0.1] -rotate-12" />
+        <Sparkles className="absolute right-10 top-24 h-6 w-6 text-purple-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Portal Transition",
+    href: "/docs/components/portal-transition",
+    tier: "Tier 2",
+    tagline: "Framer Motion",
+    description:
+      "A circular portal/wormhole transition effect that reveals content with an expanding clip-path, glowing ring, and particle effects.",
+    deps: ["framer-motion"],
+    gradient: "from-purple-600/20 via-pink-600/10 to-transparent",
+    glowColor: "rgba(168,85,247,0.15)",
+    iconBg: "bg-gradient-to-br from-purple-500 to-pink-500",
+    accentLine: "from-purple-500 to-pink-500",
+    icon: <CircleDot className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <CircleDot className="absolute right-6 top-6 h-16 w-16 text-purple-500/[0.07] rotate-12" />
+        <Circle className="absolute right-20 top-14 h-8 w-8 text-pink-500/[0.1] -rotate-12" />
+        <Sparkles className="absolute right-10 top-24 h-6 w-6 text-fuchsia-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Split Screen Reveal",
+    href: "/docs/components/split-screen-reveal",
+    tier: "Tier 1",
+    tagline: "Layout & Reveal",
+    description:
+      "Two glassmorphic panels that split apart on click to reveal content underneath with spring-physics animation.",
+    deps: ["framer-motion"],
+    gradient: "from-violet-600/20 via-indigo-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-indigo-500",
+    accentLine: "from-violet-500 to-indigo-500",
+    icon: <Columns className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Columns className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Layers className="absolute right-20 top-14 h-8 w-8 text-indigo-500/[0.1] -rotate-12" />
+        <Sparkles className="absolute right-10 top-24 h-6 w-6 text-purple-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Smoke Divider",
+    href: "/docs/components/smoke-divider",
+    tier: "Tier 1",
+    tagline: "Decorative",
+    description:
+      "A section divider with animated smoke/fog particles drifting across. Pure CSS animation with hydration-safe seeded randomization.",
+    deps: [],
+    gradient: "from-cyan-600/20 via-teal-600/10 to-transparent",
+    glowColor: "rgba(34,211,238,0.15)",
+    iconBg: "bg-gradient-to-br from-cyan-500 to-teal-500",
+    accentLine: "from-cyan-500 to-teal-500",
+    icon: <Wind className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Wind className="absolute right-6 top-6 h-16 w-16 text-cyan-500/[0.07] rotate-12" />
+        <Activity className="absolute right-20 top-14 h-8 w-8 text-teal-500/[0.1] -rotate-12" />
+        <Sparkles className="absolute right-10 top-24 h-6 w-6 text-sky-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Glitch Transition",
+    href: "/docs/components/glitch-transition",
+    tier: "Tier 1",
+    tagline: "CRT Glitch",
+    description:
+      "A CRT TV glitch effect with RGB channel splitting, scanline overlays, block displacement, and rapid flicker. Wrap any content for cinematic transitions.",
+    deps: ["framer-motion"],
+    gradient: "from-red-600/20 via-rose-600/10 to-transparent",
+    glowColor: "rgba(239,68,68,0.15)",
+    iconBg: "bg-gradient-to-br from-red-500 to-rose-500",
+    accentLine: "from-red-500 to-rose-500",
+    icon: <Zap className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Zap className="absolute right-6 top-6 h-16 w-16 text-red-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-rose-500/[0.1] -rotate-12" />
+        <Activity className="absolute right-10 top-24 h-6 w-6 text-orange-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Ambient Tilt",
+    href: "/docs/components/ambient-tilt",
+    tier: "Tier 1",
+    tagline: "3D Tilt",
+    description:
+      "A wrapper that adds subtle 3D tilt based on cursor position or device gyroscope. Spring-animated transforms for a smooth, natural feel.",
+    deps: ["framer-motion"],
+    gradient: "from-blue-600/20 via-cyan-600/10 to-transparent",
+    glowColor: "rgba(59,130,246,0.15)",
+    iconBg: "bg-gradient-to-br from-blue-500 to-cyan-500",
+    accentLine: "from-blue-500 to-cyan-500",
+    icon: <Move3d className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Move3d className="absolute right-6 top-6 h-16 w-16 text-blue-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-cyan-500/[0.1] -rotate-12" />
+        <Box className="absolute right-10 top-24 h-6 w-6 text-sky-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Icon Cloud",
+    href: "/docs/components/icon-cloud",
+    tier: "Tier 2",
+    tagline: "3D Tag Cloud",
+    description:
+      "A 3D tag cloud of floating icons that rotate as a sphere. Drag to interact, icons scale and fade based on depth. Pure math + CSS transforms.",
+    deps: [],
+    gradient: "from-sky-600/20 via-indigo-600/10 to-transparent",
+    glowColor: "rgba(56,189,248,0.15)",
+    iconBg: "bg-gradient-to-br from-sky-500 to-indigo-500",
+    accentLine: "from-sky-500 to-indigo-500",
+    icon: <Cloud className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Cloud className="absolute right-6 top-6 h-16 w-16 text-sky-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-indigo-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-blue-500/[0.08] rotate-45" />
+      </>
+    ),
+  },
+  {
+    name: "Retro Grid",
+    href: "/docs/components/retro-grid",
+    tier: "Tier 1",
+    tagline: "Background Pattern",
+    description:
+      "A perspective grid that vanishes to a horizon point -- retro synthwave/Tron aesthetic. Pure CSS with optional scroll animation.",
+    deps: [],
+    gradient: "from-violet-600/20 via-fuchsia-600/10 to-transparent",
+    glowColor: "rgba(139,92,246,0.15)",
+    iconBg: "bg-gradient-to-br from-violet-500 to-fuchsia-500",
+    accentLine: "from-violet-500 to-fuchsia-500",
+    icon: <Grid3x3 className="h-5 w-5 text-white" />,
+    decorativeIcons: (
+      <>
+        <Grid3x3 className="absolute right-6 top-6 h-16 w-16 text-violet-500/[0.07] rotate-12" />
+        <Sparkles className="absolute right-20 top-14 h-8 w-8 text-fuchsia-500/[0.1] -rotate-12" />
+        <Zap className="absolute right-10 top-24 h-6 w-6 text-purple-500/[0.08] rotate-45" />
       </>
     ),
   },
