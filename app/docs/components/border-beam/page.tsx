@@ -175,6 +175,49 @@ export default function BorderBeamDoc() {
           </ul>
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Rotating Beam", desc: "A conic-gradient beam rotates continuously around the border with GPU-accelerated CSS keyframes." },
+            { icon: "o", label: "Glow Trail", desc: "A blurred copy of the beam creates a soft glow trail effect behind the main beam." },
+            { icon: "#", label: "Custom Radius", desc: "Set any border-radius value via props — works with rounded cards, buttons, and pill shapes." },
+            { icon: "+", label: "Zero Dependencies", desc: "Pure CSS animation with no JavaScript timers or requestAnimationFrame loops." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="fast-beam" title="Fast Purple Beam">
+          <CodeBlock code={`<BorderBeam color="#8B5CF6" speed={2} borderRadius="16px">
+  <div className="p-8">Fast revolving purple beam</div>
+</BorderBeam>`} filename="fast.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="pill-beam" title="Pill Shape Beam">
+          <CodeBlock code={`<BorderBeam color="#22D3EE" speed={6} borderRadius="9999px">
+  <span className="px-6 py-2 text-white">Pill Beam</span>
+</BorderBeam>`} filename="pill.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The beam animation is decorative and does not convey information — screen readers ignore it.", "Content inside the border is rendered in a z-10 layer and remains fully interactive and accessible.", "The animation uses CSS transforms, which are GPU-accelerated and do not cause layout reflows.", "Consider pausing the animation for prefers-reduced-motion users by adding a conditional animation-play-state."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

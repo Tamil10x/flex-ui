@@ -120,6 +120,52 @@ export default function SplashCursorDoc() {
         </DocSubSection>
       </DocSection>
 
+      {/* What You Get */}
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Fluid Ink Blobs", desc: "Canvas-drawn circles with CSS blur filter for a soft, watercolor-like effect." },
+            { icon: "o", label: "Velocity Trails", desc: "Blob velocity inherits from mouse movement speed for natural trailing behavior." },
+            { icon: "#", label: "Color Palette", desc: "Pass an array of hex colors for randomized multi-color splash effects." },
+            { icon: "+", label: "Content Overlay", desc: "Children render above the canvas with z-10 stacking for interactive content." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      {/* Customization Patterns */}
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="color-theme" title="Custom Color Theme">
+          <CodeBlock code={`<SplashCursor colors={["#f59e0b", "#ef4444", "#ec4899"]} size={50}>
+  <div className="p-12 text-center text-white">Warm palette</div>
+</SplashCursor>`} filename="colors.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="subtle-splash" title="Subtle Small Splash">
+          <CodeBlock code={`<SplashCursor size={20} trail={10} colors={["#3b82f6"]}>
+  <div className="p-12 text-center text-white">Subtle effect</div>
+</SplashCursor>`} filename="subtle.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      {/* Accessibility */}
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Canvas element is pointer-events-none and purely decorative -- it does not intercept clicks.", "The splash effect is mouse-only and degrades gracefully on touch devices and keyboards.", "Content rendered via children remains fully interactive and accessible above the canvas layer."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
+
       {/* How it works */}
       <DocSection id="how-it-works" title="How It Works">
         <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">

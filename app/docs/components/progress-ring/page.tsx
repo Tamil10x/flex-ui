@@ -177,6 +177,54 @@ export default function ProgressRingDoc() {
         </DocSubSection>
       </DocSection>
 
+      {/* What You Get */}
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "SVG Stroke Animation", desc: "Animated stroke-dashoffset draws the arc from 0 to target value on scroll." },
+            { icon: "o", label: "Gradient Stroke", desc: "Linear gradient applied to the progress arc for a polished visual effect." },
+            { icon: "#", label: "Center Content Slot", desc: "Render any content (text, icons) centered inside the ring via the children prop." },
+            { icon: "+", label: "Scroll-Triggered", desc: "Animation starts when the ring scrolls into view using Framer Motion useInView." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      {/* Customization Patterns */}
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="ring-sizes" title="Size & Color Variants">
+          <CodeBlock code={`<ProgressRing value={75} size={80} strokeWidth={6} color="#8b5cf6">
+  <span className="text-sm font-bold text-white">75%</span>
+</ProgressRing>
+
+<ProgressRing value={90} size={160} strokeWidth={12} color="#10b981">
+  <span className="text-2xl font-bold text-white">90%</span>
+</ProgressRing>`} filename="variants.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="static-ring" title="Static (No Animation)">
+          <CodeBlock code={`<ProgressRing value={50} animate={false} color="#f59e0b" />`} filename="static.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      {/* Accessibility */}
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Uses role=\"progressbar\" with aria-valuenow, aria-valuemin, and aria-valuemax attributes.", "Descriptive aria-label communicates the progress purpose to assistive technology.", "SVG gradient uses a unique ID per instance to avoid conflicts when rendering multiple rings."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
+
       {/* Performance */}
       <DocSection id="performance" title="Performance Notes">
         <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">

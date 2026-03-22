@@ -281,6 +281,58 @@ export default function DisintegrationEffectDoc() {
           />
         </DocSubSection>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Boolean Trigger", desc: "Toggle disintegration on and off with a single boolean prop for easy state management." },
+            { icon: "o", label: "Customizable Particles", desc: "Control particle count, duration, and color palette to match your design system." },
+            { icon: "#", label: "Seeded Randomness", desc: "Deterministic particle positions using a seeded PRNG for consistent, hydration-safe rendering." },
+            { icon: "+", label: "Completion Callback", desc: "onComplete fires when the dissolve animation finishes, perfect for chaining transitions." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="custom-colors" title="Custom Particle Colors">
+          <CodeBlock code={`<DisintegrationEffect
+  trigger={isGone}
+  colors={["#ef4444", "#f97316", "#eab308"]}
+  particleCount={80}
+>
+  <div className="rounded-lg bg-red-500/10 p-6 text-red-400">Delete me</div>
+</DisintegrationEffect>`} filename="colors.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="slow-dissolve" title="Slow Cinematic Dissolve">
+          <CodeBlock code={`<DisintegrationEffect
+  trigger={trigger}
+  duration={3000}
+  particleCount={100}
+  onComplete={() => console.log("Gone!")}
+>
+  <img src="/avatar.png" alt="User" className="h-24 w-24 rounded-full" />
+</DisintegrationEffect>`} filename="slow.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The disintegration effect is purely visual; screen readers will still see the underlying content in the DOM.", "Use the onComplete callback to update aria-live regions when content is removed after disintegration.", "Particles use pointer-events-none so they never block user interactions with other elements.", "Consider pairing with prefers-reduced-motion to skip the particle animation for motion-sensitive users."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

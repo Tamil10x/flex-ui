@@ -212,6 +212,51 @@ export default function InfiniteCanvasDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Pan & Zoom", desc: "Click-drag to pan and scroll-wheel to zoom toward the cursor position with smooth interpolation." },
+            { icon: "o", label: "Pinch-to-Zoom", desc: "Full multi-touch support for pinch zoom and two-finger pan on mobile and trackpads." },
+            { icon: "#", label: "Scaling Grid", desc: "Background grid lines scale with zoom level and translate with pan for spatial context." },
+            { icon: "+", label: "Double-Click Reset", desc: "Double-click anywhere to instantly reset pan and zoom to the initial state." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="what-you-get-customization" title="Customization Patterns">
+        <DocSubSection id="no-grid-canvas" title="Canvas Without Grid">
+          <CodeBlock code={`<InfiniteCanvas showGrid={false} className="h-[500px]">
+  <div className="absolute left-40 top-40 p-4 bg-zinc-900 rounded-xl">
+    Floating element
+  </div>
+</InfiniteCanvas>`} filename="no-grid.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="deep-zoom" title="Deep Zoom Range">
+          <CodeBlock code={`<InfiniteCanvas minZoom={0.1} maxZoom={5} gridSize={80} className="h-[500px]">
+  <img src="/diagram.png" alt="Diagram" />
+</InfiniteCanvas>`} filename="deep-zoom.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Cursor changes to grab/grabbing to visually communicate the drag interaction.", "A zoom percentage indicator in the bottom-right provides orientation context.", "The grid background is pointer-events-none to avoid interfering with content interaction.", "Consider adding keyboard pan/zoom controls for users who cannot use a mouse or trackpad."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

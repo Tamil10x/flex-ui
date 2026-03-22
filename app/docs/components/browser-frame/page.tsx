@@ -143,6 +143,39 @@ export default function BrowserFrameDoc() {
         </DocSubSection>
       </DocSection>
 
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Realistic Chrome", desc: "Traffic lights, navigation buttons, and URL bar faithfully reproduce a browser window." },
+            { icon: "o", label: "Glassmorphic Design", desc: "Backdrop blur and subtle borders create an elegant dark glass appearance." },
+            { icon: "#", label: "Optional Navigation", desc: "Toggle back, forward, and refresh buttons with the showNav prop." },
+            { icon: "+", label: "Custom URL", desc: "Display any URL in the address bar to match the content being showcased." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="minimal-frame" title="Minimal Frame">
+          <CodeBlock code={`<BrowserFrame url="https://myapp.dev" showNav={false}>
+  <img src="/screenshot.png" alt="App screenshot" />
+</BrowserFrame>`} filename="minimal.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="dashboard-frame" title="Dashboard Showcase">
+          <CodeBlock code={`<BrowserFrame
+  url="https://dashboard.example.com/analytics"
+  className="shadow-2xl shadow-purple-500/5"
+>
+  <div className="h-64 bg-zinc-900 p-6">Dashboard content</div>
+</BrowserFrame>`} filename="dashboard.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
       {/* Accessibility */}
       <DocSection id="accessibility" title="Accessibility Notes">
         <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">

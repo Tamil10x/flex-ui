@@ -231,6 +231,56 @@ export default function CinematicHeroDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Five Background Variants", desc: "Choose from particles, grid, stars, aurora, or none for the perfect atmosphere." },
+            { icon: "o", label: "Blur-Reveal Headline", desc: "Each word fades in from blur with staggered timing for a cinematic entrance." },
+            { icon: "#", label: "Animated CTAs", desc: "Primary and secondary call-to-action buttons slide in with coordinated delays." },
+            { icon: "+", label: "Badge with Ping", desc: "Optional badge above the headline with an animated pinging dot indicator." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization-patterns" title="Customization Patterns">
+        <DocSubSection id="full-hero" title="Full Hero with Badge and CTAs">
+          <CodeBlock code={`<CinematicHero
+  headline="Ship faster with FlexUI"
+  subtitle="Beautiful components for modern React apps."
+  background="stars"
+  badge="Now in Beta"
+  primaryCta={{ label: "Get Started", href: "/docs" }}
+  secondaryCta={{ label: "View on GitHub", href: "/github" }}
+/>`} filename="full.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="minimal-hero" title="Minimal Hero">
+          <CodeBlock code={`<CinematicHero
+  headline="Hello World"
+  background="none"
+  className="min-h-[60vh]"
+/>`} filename="minimal.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The headline renders as an h1 element for proper document structure and screen reader hierarchy.", "CTA links use semantic anchor elements that are keyboard-focusable and announce their text labels.", "Background effects use pointer-events-none and are purely decorative — they do not interfere with interaction.", "The radial vignette and gradient overlays are visual-only and have no impact on content accessibility."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

@@ -205,6 +205,56 @@ export default function NeuralNetworkDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Canvas Rendering", desc: "All nodes, connections, and signals are drawn on HTML Canvas for smooth performance with many elements." },
+            { icon: "o", label: "Signal Propagation", desc: "Glowing dots travel along connections between nodes, pulsing the destination node on arrival." },
+            { icon: "#", label: "Distance-Based Connections", desc: "Lines appear between nodes within configurable connectionDistance and fade with distance." },
+            { icon: "+", label: "Deterministic Layout", desc: "Seeded PRNG generates identical initial node positions on server and client for hydration safety." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="what-you-get-customization" title="Customization Patterns">
+        <DocSubSection id="dense-cyan" title="Dense Cyan Network">
+          <CodeBlock code={`<NeuralNetwork
+  nodeCount={50}
+  color="#38BDF8"
+  connectionColor="rgba(56,189,248,0.2)"
+  connectionDistance={180}
+  className="min-h-[400px] bg-black rounded-xl"
+/>`} filename="dense.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="fast-pink" title="Fast Pink Synapses">
+          <CodeBlock code={`<NeuralNetwork
+  nodeCount={20}
+  speed={2.5}
+  color="#F472B6"
+  className="min-h-[300px] bg-zinc-950 rounded-xl"
+/>`} filename="fast.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The canvas is pointer-events-none, so any child content rendered via children remains fully interactive.", "The animation is decorative and does not convey information; content should be provided via the children prop.", "Canvas handles DPI scaling via devicePixelRatio for crisp rendering on retina displays.", "Consider adding role=\"img\" and an aria-label to the container for screen reader context."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { CodeBlock } from "@/components/ui/code-block";
-import { DocSection } from "@/components/docs/doc-section";
+import { DocSection, DocSubSection } from "@/components/docs/doc-section";
 import { ApiTable } from "@/components/docs/api-table";
 import { ComponentDemo } from "./demo";
+import { BadgeExamples } from "./examples";
+import { Palette, Radio, Sparkles, Puzzle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Badge — FlexUI",
@@ -32,6 +34,11 @@ export default function Page() {
       {/* Preview */}
       <DocSection id="preview" title="Preview">
         <ComponentDemo />
+      </DocSection>
+
+      {/* Examples */}
+      <DocSection id="examples" title="Examples">
+        <BadgeExamples />
       </DocSection>
 
       {/* Installation */}
@@ -94,6 +101,52 @@ export default function Page() {
             },
           ]}
         />
+      </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: <Palette className="h-4 w-4" />, label: "Five Color Variants", desc: "Default, success, warning, error, and info — each with coordinated background, text, and border colors." },
+            { icon: <Radio className="h-4 w-4" />, label: "Pulse Indicator", desc: "Optional animated pulsing dot for live status indicators like online or recording states." },
+            { icon: <Sparkles className="h-4 w-4" />, label: "Entrance Animation", desc: "Fades in with a subtle upward slide powered by Framer Motion viewport detection." },
+            { icon: <Puzzle className="h-4 w-4" />, label: "Composable Content", desc: "Accepts any ReactNode as children — text, icons, or nested elements." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="pulse-badges" title="Live Status Badges">
+          <CodeBlock code={`<Badge variant="success" pulse>Online</Badge>
+<Badge variant="error" pulse>Recording</Badge>
+<Badge variant="warning" pulse>Pending Review</Badge>`} filename="pulse.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="custom-style" title="Custom Styled Badge">
+          <CodeBlock code={`<Badge
+  variant="info"
+  className="rounded-md px-3 py-1 text-sm"
+>
+  v2.0 Beta
+</Badge>`} filename="custom.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Badge text content is directly readable by screen readers as inline text.", "The pulse dot animation is decorative — screen readers announce only the text label.", "Color variants use sufficient contrast ratios against the dark background for readability.", "Consider adding aria-label when the badge conveys status information not obvious from text alone."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </DocSection>
     </div>
   );

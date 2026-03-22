@@ -250,6 +250,49 @@ export default function LiquidButtonDoc() {
           />
         </DocSubSection>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Multi-Wave Ripples", desc: "Primary and secondary ripple waves expand from the click point with spring physics for an organic feel." },
+            { icon: "o", label: "Cursor-Tracking Glow", desc: "A radial gradient glow follows the mouse position across the button surface on hover." },
+            { icon: "#", label: "Hue-Rotate on Hover", desc: "Framer Motion applies a subtle 15-degree hue rotation on hover for a color-shift effect." },
+            { icon: "+", label: "Disabled State", desc: "Full disabled support with reduced opacity, no-cursor, and suppressed hover/ripple effects." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="custom-color" title="Custom Ripple Color">
+          <CodeBlock code={`<LiquidButton color="#10B981" onClick={() => alert("Clicked!")}>
+  Emerald Ripple
+</LiquidButton>`} filename="color.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="full-width-btn" title="Full-Width Button">
+          <CodeBlock code={`<LiquidButton className="w-full justify-center" color="#EC4899">
+  Full Width Action
+</LiquidButton>`} filename="full-width.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Renders as a native <button> element with proper disabled and aria-disabled attributes.", "Ripple overlays use pointer-events-none so they never block click events on the button content.", "The button label is wrapped in a z-10 span to ensure text remains above all visual effects.", "Spring tap animation (scale 0.96) provides tactile feedback that reinforces the click action."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

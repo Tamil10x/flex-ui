@@ -222,6 +222,55 @@ export default function MeshGradientDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Animated Color Blobs", desc: "Four blobs drift with alternating CSS keyframe animations at staggered speeds." },
+            { icon: "o", label: "Heavy Blur Blending", desc: "Configurable CSS filter blur (default 100px) blends blobs into a smooth gradient mesh." },
+            { icon: "#", label: "Custom Color Palette", desc: "Pass any array of CSS color values to create branded gradient themes." },
+            { icon: "+", label: "Content Overlay", desc: "Render children on a z-10 layer above the gradient for text or card overlays." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="what-you-get-customization" title="Customization Patterns">
+        <DocSubSection id="warm-palette" title="Warm Sunset Palette">
+          <CodeBlock code={`<MeshGradient
+  colors={[
+    "rgba(249, 115, 22, 0.3)",
+    "rgba(244, 63, 94, 0.3)",
+    "rgba(245, 158, 11, 0.3)",
+    "rgba(236, 72, 153, 0.3)",
+  ]}
+  className="h-[400px] rounded-2xl"
+/>`} filename="warm.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="slow-blur" title="Slow Heavy Blur">
+          <CodeBlock code={`<MeshGradient speed={40} blur={140} className="h-[400px] rounded-2xl">
+  <h1 className="text-4xl font-bold text-white">Hero Text</h1>
+</MeshGradient>`} filename="slow-blur.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The blob layer uses aria-hidden to exclude decorative gradient elements from the accessibility tree.", "Blob elements are pointer-events-none so they never interfere with interactive content above.", "Content rendered via children sits on z-10, ensuring proper contrast and readability over the gradient."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

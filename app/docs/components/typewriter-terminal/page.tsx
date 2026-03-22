@@ -189,6 +189,46 @@ export default function TypewriterTerminalDoc() {
         </DocSubSection>
       </DocSection>
 
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Realistic Terminal UI", desc: "Includes a macOS-style title bar with traffic light dots and monospace content area." },
+            { icon: "o", label: "Command Sequences", desc: "Define an array of commands with input, optional output, and per-command delays." },
+            { icon: "#", label: "Theme Support", desc: "Choose between a dark theme and a Matrix-style green-on-black theme." },
+            { icon: "+", label: "Loop & Auto-Scroll", desc: "Optionally loop the command sequence and auto-scroll to the latest output." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="matrix-theme" title="Matrix Theme">
+          <CodeBlock code={`<TypewriterTerminal
+  theme="matrix"
+  title="hack.sh"
+  commands={[
+    { input: "access mainframe", output: "ACCESS GRANTED" },
+    { input: "download data", output: "Downloading..." },
+  ]}
+/>`} filename="variant.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="looping-demo" title="Looping Demo">
+          <CodeBlock code={`<TypewriterTerminal
+  loop
+  typingSpeed={30}
+  commands={[
+    { input: "npm install flexui", output: "added 42 packages in 2.1s" },
+    { input: "npm run dev", output: "ready on http://localhost:3000", delay: 500 },
+  ]}
+/>`} filename="styles.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
       {/* Accessibility */}
       <DocSection id="accessibility" title="Accessibility Notes">
         <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">

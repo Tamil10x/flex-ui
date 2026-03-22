@@ -143,6 +143,51 @@ export default function HolographicCardDoc() {
           </ul>
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Rainbow Conic Gradient", desc: "Real-time conic-gradient overlay rotates based on cursor angle for authentic holographic foil." },
+            { icon: "o", label: "Cursor-Tracking Highlight", desc: "Radial specular highlight follows the mouse with mix-blend-mode overlay." },
+            { icon: "#", label: "Noise Texture", desc: "SVG fractalNoise overlay composited for micro-grain holographic authenticity." },
+            { icon: "+", label: "Adjustable Intensity", desc: "Single intensity prop (0-1) controls opacity, brightness boost, and hover response." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="subtle-holo" title="Subtle Holographic">
+          <CodeBlock code={`<HolographicCard intensity={0.3} className="p-6">
+  <h3 className="text-white font-bold">Subtle Effect</h3>
+  <p className="text-zinc-400 text-sm mt-2">Lower intensity for a refined look.</p>
+</HolographicCard>`} filename="subtle.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="full-intensity" title="Full Intensity Card">
+          <CodeBlock code={`<HolographicCard intensity={1} className="p-8 max-w-sm">
+  <img src="/card-art.png" alt="Card" className="rounded-lg" />
+  <h3 className="mt-4 text-xl font-bold text-white">Collector Card</h3>
+</HolographicCard>`} filename="full-intensity.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["All holographic overlays use pointer-events-none so child content remains fully interactive.", "Visual effects are decorative only and do not convey information, ensuring content is accessible without them.", "The component renders as a standard div container, preserving semantic meaning of child elements."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

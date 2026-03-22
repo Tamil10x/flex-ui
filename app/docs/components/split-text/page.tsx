@@ -183,6 +183,38 @@ export default function SplitTextDoc() {
         </DocSubSection>
       </DocSection>
 
+      {/* What You Get */}
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Per-Unit Animation", desc: "Each character or word animates independently with staggered timing." },
+            { icon: "o", label: "Four Variants", desc: "Choose from slide-up, slide-down, fade, or scale animation presets." },
+            { icon: "#", label: "Viewport Triggered", desc: "Animation starts when the text scrolls into view using IntersectionObserver." },
+            { icon: "+", label: "Overflow Clipping", desc: "Each unit is wrapped in overflow-hidden for clean slide animations without content bleed." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      {/* Accessibility */}
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Full text is present in the DOM from initial render, ensuring screen readers can read it immediately.", "Animation is purely visual -- the text content is never conditionally removed or hidden.", "Uses semantic span elements with inline-flex layout that integrates with surrounding text flow."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
+
       {/* Troubleshooting */}
       <DocSection id="troubleshooting" title="Troubleshooting">
         <div className="space-y-3">

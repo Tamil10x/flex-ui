@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { CodeBlock } from "@/components/ui/code-block";
-import { DocSection } from "@/components/docs/doc-section";
+import { DocSection, DocSubSection } from "@/components/docs/doc-section";
 import { ApiTable } from "@/components/docs/api-table";
 import { ComponentDemo } from "./demo";
+import { TiltCardExamples } from "./examples";
+import { Box, SlidersHorizontal, RotateCcw, Package } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Tilt Card — FlexUI",
@@ -31,6 +33,11 @@ export default function Page() {
       {/* Preview */}
       <DocSection id="preview" title="Preview">
         <ComponentDemo />
+      </DocSection>
+
+      {/* Examples */}
+      <DocSection id="examples" title="Examples">
+        <TiltCardExamples />
       </DocSection>
 
       {/* Installation */}
@@ -95,6 +102,50 @@ export default function Page() {
             },
           ]}
         />
+      </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: <Box className="h-4 w-4" />, label: "3D Perspective Tilt", desc: "The card rotates on both X and Y axes following the cursor, creating a realistic 3D effect." },
+            { icon: <SlidersHorizontal className="h-4 w-4" />, label: "Configurable Intensity", desc: "Control the maximum tilt angle and CSS perspective distance to dial in subtle or dramatic effects." },
+            { icon: <RotateCcw className="h-4 w-4" />, label: "Smooth Reset", desc: "The card gracefully returns to its flat position when the mouse leaves, using motion values." },
+            { icon: <Package className="h-4 w-4" />, label: "Zero Dependencies Beyond FM", desc: "Only requires Framer Motion — no Three.js or additional 3D libraries needed." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="dramatic-tilt" title="Dramatic Tilt">
+          <CodeBlock code={`<TiltCard maxTilt={25} perspective={600}>
+  <h3 className="text-lg font-bold text-white">Dramatic</h3>
+  <p className="text-sm text-zinc-400">Higher tilt angle with closer perspective.</p>
+</TiltCard>`} filename="variant.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="subtle-tilt" title="Subtle Tilt">
+          <CodeBlock code={`<TiltCard maxTilt={5} perspective={1500}>
+  <p className="text-sm text-zinc-400">Gentle, barely noticeable tilt effect.</p>
+</TiltCard>`} filename="styles.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The 3D tilt is a purely visual effect that does not affect content readability or interaction.", "All child content remains fully accessible to keyboard navigation and screen readers.", "The transform resets on mouse leave, so the card is always in a neutral position for non-mouse users."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </DocSection>
     </div>
   );

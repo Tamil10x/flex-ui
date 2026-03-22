@@ -212,6 +212,61 @@ export default function GravityGridDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Direct DOM Transforms", desc: "Manipulates dot positions via refs and requestAnimationFrame — zero React state updates for silky performance." },
+            { icon: "o", label: "Attract or Repel", desc: "Toggle between gravity (attract) and repulsion (repel) modes for different interactive behaviors." },
+            { icon: "#", label: "Configurable Grid", desc: "Control columns, rows, dot size, color, and effect radius to match any layout." },
+            { icon: "+", label: "Content Overlay", desc: "Render children centered on top of the grid for interactive backgrounds with foreground content." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization-patterns" title="Customization Patterns">
+        <DocSubSection id="attract-mode" title="Attract Mode with Cyan Dots">
+          <CodeBlock code={`<GravityGrid
+  effect="attract"
+  color="rgba(56,189,248,0.5)"
+  radius={120}
+  cols={14}
+  rows={10}
+  className="min-h-[400px] bg-black"
+/>`} filename="attract.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="dense-repel" title="Dense Small Dots">
+          <CodeBlock code={`<GravityGrid
+  cols={20}
+  rows={14}
+  dotSize={3}
+  radius={80}
+  color="rgba(236,72,153,0.4)"
+  className="min-h-[400px] bg-zinc-950"
+>
+  <h2 className="text-3xl font-bold text-white">Interactive</h2>
+</GravityGrid>`} filename="dense.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The dot grid is purely decorative with pointer-events-none, so it never interferes with user interactions.", "Children content is rendered above the grid with proper z-indexing for full accessibility.", "The interactive effect is mouse-only; on touch devices, the grid displays statically without cursor tracking."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

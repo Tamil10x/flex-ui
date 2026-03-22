@@ -2,12 +2,24 @@
 
 import React, { useState } from "react";
 import { Rating } from "@/components/flexui/rating";
+import { PreviewCodeTabs } from "@/components/docs/preview-code-tabs";
 
-export function ComponentDemo() {
+const demoCode = `import { Rating } from "@/components/flexui/rating";
+import { useState } from "react";
+
+const [value, setValue] = useState(3);
+
+{/* Interactive */}
+<Rating value={value} onChange={setValue} />
+
+{/* Read-only, larger */}
+<Rating value={4} size={32} />`;
+
+function RatingPreview() {
   const [value, setValue] = useState(3);
 
   return (
-    <div className="flex min-h-[200px] flex-col items-center justify-center gap-6 rounded-xl border border-white/[0.04] bg-zinc-950/50 p-8">
+    <div className="flex flex-col items-center justify-center gap-6">
       <div className="flex flex-col items-center gap-2">
         <p className="text-xs text-zinc-400">Interactive (click to rate)</p>
         <Rating value={value} onChange={setValue} />
@@ -20,5 +32,15 @@ export function ComponentDemo() {
         <Rating value={4} size={32} />
       </div>
     </div>
+  );
+}
+
+export function ComponentDemo() {
+  return (
+    <PreviewCodeTabs
+      preview={<RatingPreview />}
+      code={demoCode}
+      filename="rating-demo.tsx"
+    />
   );
 }

@@ -211,6 +211,52 @@ export default function ParticleFieldDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Randomized Particles", desc: "Seeded PRNG generates deterministic positions, sizes, and timings for hydration-safe rendering." },
+            { icon: "o", label: "CSS Keyframe Drift", desc: "Each particle drifts with a CSS animation, requiring zero JS runtime cost after initial render." },
+            { icon: "#", label: "Glow Effect", desc: "Box-shadow on each particle creates a soft glow halo proportional to the particle size." },
+            { icon: "+", label: "Content Overlay", desc: "Children render on z-10 above the particle layer for text, cards, or hero content." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="what-you-get-customization" title="Customization Patterns">
+        <DocSubSection id="colored-particles" title="Colored Particles">
+          <CodeBlock code={`<ParticleField
+  count={60}
+  color="rgba(56, 189, 248, 0.7)"
+  maxSize={5}
+  className="min-h-[400px] bg-zinc-950 rounded-xl"
+>
+  <h1 className="text-3xl font-bold text-white text-center pt-20">Cyan Particles</h1>
+</ParticleField>`} filename="colored.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="dense-slow" title="Dense & Slow">
+          <CodeBlock code={`<ParticleField count={100} speed={0.5} maxSize={3} className="min-h-[400px]" />`} filename="dense.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Particle layer is pointer-events-none so it never interferes with interactive content above.", "The mounted guard defers particle rendering to the client to avoid hydration mismatches.", "Particles are purely decorative; all meaningful content should be provided via the children prop.", "CSS keyframe animations have zero JS runtime cost, keeping the main thread free for user interactions."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

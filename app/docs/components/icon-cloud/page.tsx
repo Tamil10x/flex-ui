@@ -191,6 +191,58 @@ export default function IconCloudDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Fibonacci Sphere Layout", desc: "Icons are evenly distributed on a sphere using the golden ratio for optimal spacing." },
+            { icon: "o", label: "Drag Interaction", desc: "Click and drag to spin the cloud with inertia-based momentum that decays smoothly." },
+            { icon: "#", label: "Depth Perception", desc: "Icons scale from 40% to 100% and fade based on Z-depth for realistic 3D perspective." },
+            { icon: "+", label: "Zero Dependencies", desc: "Pure math and CSS transforms with no WebGL or Three.js required." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="what-you-get-customization" title="Customization Patterns">
+        <DocSubSection id="compact-cloud" title="Compact Fast Cloud">
+          <CodeBlock code={`<IconCloud
+  icons={myIcons}
+  radius={120}
+  speed={1.5}
+  iconSize={30}
+/>`} filename="compact.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="image-cloud" title="Image-Based Cloud">
+          <CodeBlock code={`<IconCloud
+  icons={[
+    <img key="react" src="/logos/react.svg" className="h-8 w-8" />,
+    <img key="next" src="/logos/next.svg" className="h-8 w-8" />,
+    <img key="ts" src="/logos/typescript.svg" className="h-8 w-8" />,
+  ]}
+  radius={180}
+  iconSize={40}
+/>`} filename="images.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Icons are rendered as pointer-events-none spans, keeping the drag interaction on the container only.", "The component uses select-none and cursor-grab/grabbing to communicate interactivity visually.", "A mounted guard prevents hydration mismatches by deferring icon positioning to the client.", "Consider adding an aria-label to the container describing the icon cloud for screen readers."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

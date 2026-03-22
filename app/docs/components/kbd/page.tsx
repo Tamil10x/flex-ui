@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { CodeBlock } from "@/components/ui/code-block";
-import { DocSection } from "@/components/docs/doc-section";
+import { DocSection, DocSubSection } from "@/components/docs/doc-section";
 import { ApiTable } from "@/components/docs/api-table";
 import { ComponentDemo } from "./demo";
+import { KbdExamples } from "./examples";
+import { Square, Type, MousePointerClick, Puzzle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Kbd — FlexUI",
@@ -31,6 +33,10 @@ export default function Page() {
 
       <DocSection id="preview" title="Preview">
         <ComponentDemo />
+      </DocSection>
+
+      <DocSection id="examples" title="Examples">
+        <KbdExamples />
       </DocSection>
 
       <DocSection id="installation" title="Installation">
@@ -76,6 +82,51 @@ export default function Page() {
             },
           ]}
         />
+      </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: <Square className="h-4 w-4 text-blue-400" />, label: "Physical Keycap Style", desc: "Inset shadow and border simulate the look of a real keyboard key with depth." },
+            { icon: <Type className="h-4 w-4 text-blue-400" />, label: "Monospace Font", desc: "Uses font-mono for consistent character width across key labels." },
+            { icon: <MousePointerClick className="h-4 w-4 text-blue-400" />, label: "Entrance Animation", desc: "Fades in and slides up on viewport entry using Framer Motion whileInView." },
+            { icon: <Puzzle className="h-4 w-4 text-blue-400" />, label: "Inline Composable", desc: "Renders as an inline-flex kbd element that fits naturally within text and shortcut displays." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="shortcut-combo" title="Keyboard Shortcut Combo">
+          <CodeBlock code={`<div className="flex items-center gap-1.5">
+  <Kbd>Cmd</Kbd>
+  <span className="text-zinc-600">+</span>
+  <Kbd>Shift</Kbd>
+  <span className="text-zinc-600">+</span>
+  <Kbd>P</Kbd>
+</div>`} filename="combo.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="custom-size" title="Custom Size">
+          <CodeBlock code={`<Kbd className="h-8 min-w-[32px] px-2.5 text-xs">Enter</Kbd>`} filename="size.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Renders as a semantic <kbd> HTML element, which screen readers recognize as keyboard input.", "The viewport-triggered animation fires only once per element to avoid repeated distracting motion.", "Text content inside the keycap is fully readable by assistive technology."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </DocSection>
     </div>
   );

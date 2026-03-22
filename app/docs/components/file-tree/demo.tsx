@@ -2,6 +2,7 @@
 
 import React from "react";
 import { FileTree } from "@/components/flexui/file-tree";
+import { PreviewCodeTabs } from "@/components/docs/preview-code-tabs";
 
 const items = [
   {
@@ -33,10 +34,52 @@ const items = [
   { name: "tsconfig.json", type: "file" as const },
 ];
 
+const code = `import { FileTree } from "@/components/flexui/file-tree";
+
+const items = [
+  {
+    name: "src",
+    type: "folder",
+    children: [
+      {
+        name: "components",
+        type: "folder",
+        children: [
+          { name: "Button.tsx", type: "file" },
+          { name: "Card.tsx", type: "file" },
+          { name: "Modal.tsx", type: "file" },
+        ],
+      },
+      {
+        name: "hooks",
+        type: "folder",
+        children: [
+          { name: "useAuth.ts", type: "file" },
+          { name: "useTheme.ts", type: "file" },
+        ],
+      },
+      { name: "App.tsx", type: "file" },
+      { name: "index.ts", type: "file" },
+    ],
+  },
+  { name: "package.json", type: "file" },
+  { name: "tsconfig.json", type: "file" },
+];
+
+export default function Demo() {
+  return <FileTree items={items} className="w-72" />;
+}`;
+
 export function ComponentDemo() {
   return (
-    <div className="flex min-h-[200px] items-center justify-center rounded-xl border border-white/[0.04] bg-zinc-950/50 p-8">
-      <FileTree items={items} className="w-72" />
-    </div>
+    <PreviewCodeTabs
+      preview={
+        <div className="flex items-center justify-center">
+          <FileTree items={items} className="w-72" />
+        </div>
+      }
+      code={code}
+      filename="file-tree-demo.tsx"
+    />
   );
 }

@@ -158,6 +158,36 @@ export default function WavyBackgroundDoc() {
         </DocSubSection>
       </DocSection>
 
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "SVG-Based Waves", desc: "Multiple sine-wave SVG paths drift horizontally with staggered speeds for a layered depth effect." },
+            { icon: "o", label: "Pure CSS Animation", desc: "Uses CSS keyframe animation for the horizontal drift — no requestAnimationFrame or JavaScript loops." },
+            { icon: "#", label: "Configurable Parameters", desc: "Control wave count, color, amplitude, and speed to create anything from subtle to dramatic backgrounds." },
+            { icon: "+", label: "Content Overlay", desc: "Children render above the wave layer with relative z-10 positioning for full interactivity." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The SVG wave layer uses aria-hidden to prevent screen readers from announcing decorative content.", "The wave container uses pointer-events-none so it never intercepts clicks or hover events.", "Content rendered as children sits above the waves and maintains full accessibility and interactivity."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
+
       {/* Customization */}
       <DocSection id="customization" title="Customization">
         <DocSubSection id="wave-variations" title="Wave Variations">

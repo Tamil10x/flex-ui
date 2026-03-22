@@ -200,6 +200,49 @@ export default function ParallaxScrollDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Scroll-Linked Motion", desc: "Uses Framer Motion useScroll to track scroll progress relative to the element viewport position." },
+            { icon: "o", label: "Bidirectional", desc: "Choose \"up\" or \"down\" direction for the parallax translation relative to scroll direction." },
+            { icon: "#", label: "Adjustable Speed", desc: "Speed multiplier controls how far content shifts, from subtle (0.2) to dramatic (1.0)." },
+            { icon: "+", label: "Composable Wrapper", desc: "Wrap any content to instantly add parallax behavior without modifying the child components." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="what-you-get-customization" title="Customization Patterns">
+        <DocSubSection id="hero-parallax" title="Hero Image Parallax">
+          <CodeBlock code={`<ParallaxScroll speed={0.6} direction="up" className="h-[500px]">
+  <img src="/hero.jpg" alt="Hero" className="w-full h-[600px] object-cover" />
+</ParallaxScroll>`} filename="hero.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="reverse-text" title="Reverse Direction Text">
+          <CodeBlock code={`<ParallaxScroll speed={0.3} direction="down">
+  <h2 className="text-4xl font-bold text-white">Scrolls downward</h2>
+</ParallaxScroll>`} filename="reverse.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The parallax effect uses CSS transform (translateY) which does not affect document flow or reading order.", "Content remains fully readable and interactive regardless of the parallax offset.", "The wrapper uses overflow-hidden to prevent content from leaking outside the container bounds.", "Consider providing extra padding on child content so text is not clipped at extreme scroll positions."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

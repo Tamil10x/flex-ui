@@ -153,6 +153,55 @@ export default function FollowCursorDoc() {
           </ul>
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Zero Re-Renders", desc: "All animation runs through Framer Motion's motion-value pipeline without triggering React re-renders." },
+            { icon: "o", label: "Spring Smoothing", desc: "Configurable stiffness and damping produce fluid, lag-free cursor tracking with natural physics." },
+            { icon: "#", label: "Glow Effect", desc: "A matching box-shadow creates a soft, ambient glow around the cursor dot for visual depth." },
+            { icon: "+", label: "Auto-Hide", desc: "The dot smoothly fades out when the cursor leaves the viewport and reappears on re-entry." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="large-soft" title="Large Soft Cursor">
+          <CodeBlock code={`<FollowCursor
+  size={48}
+  color="rgba(34,211,238,0.3)"
+  stiffness={150}
+  damping={15}
+/>`} filename="large.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="snappy-dot" title="Small Snappy Dot">
+          <CodeBlock code={`<FollowCursor
+  size={12}
+  color="rgba(239,68,68,0.7)"
+  stiffness={500}
+  damping={30}
+/>`} filename="snappy.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The cursor dot uses pointer-events-none and fixed positioning, so it never blocks clicks or other interactions.", "This is a purely decorative element that does not convey any information, making it invisible to screen readers.", "The effect is mouse-only; it does not appear on touch devices, maintaining a clean mobile experience."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { CodeBlock } from "@/components/ui/code-block";
-import { DocSection } from "@/components/docs/doc-section";
+import { DocSection, DocSubSection } from "@/components/docs/doc-section";
 import { ApiTable } from "@/components/docs/api-table";
 import { ComponentDemo } from "./demo";
+import { AvatarGroupExamples } from "./examples";
+import { Users, Maximize2, Layers, Link } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "AvatarGroup — FlexUI",
@@ -31,6 +33,11 @@ export default function Page() {
       {/* Preview */}
       <DocSection id="preview" title="Preview">
         <ComponentDemo />
+      </DocSection>
+
+      {/* Examples */}
+      <DocSection id="examples" title="Examples">
+        <AvatarGroupExamples />
       </DocSection>
 
       {/* Installation */}
@@ -98,6 +105,55 @@ export default function Page() {
             },
           ]}
         />
+      </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: <Users className="h-4 w-4" />, label: "Overflow Indicator", desc: "Automatically shows a +N badge when avatars exceed the max limit." },
+            { icon: <Maximize2 className="h-4 w-4" />, label: "Three Sizes", desc: "Choose between sm (32px), md (40px), and lg (56px) to fit any layout context." },
+            { icon: <Layers className="h-4 w-4" />, label: "Negative Spacing", desc: "Avatars stack with -space-x-2 overlap and ring borders for a clean, professional look." },
+            { icon: <Link className="h-4 w-4" />, label: "Avatar Integration", desc: "Built on top of the Avatar component, inheriting image support and initials fallback." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="small-group" title="Small Compact Group">
+          <CodeBlock code={`<AvatarGroup
+  avatars={team}
+  max={3}
+  size="sm"
+  className="gap-0"
+/>`} filename="compact.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="large-group" title="Large Showcase Group">
+          <CodeBlock code={`<AvatarGroup
+  avatars={team}
+  max={8}
+  size="lg"
+  className="-space-x-3"
+/>`} filename="large.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Each avatar image has an alt attribute derived from the name prop for screen reader identification.", "The overflow indicator displays a count that is visible and readable by assistive technologies.", "The group uses a flex container, so keyboard focus moves naturally through interactive child elements."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </DocSection>
     </div>
   );

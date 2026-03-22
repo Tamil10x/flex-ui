@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Stepper } from "@/components/flexui/stepper";
+import { PreviewCodeTabs } from "@/components/docs/preview-code-tabs";
 
 const steps = [
   { label: "Account", description: "Create your account" },
@@ -10,11 +11,35 @@ const steps = [
   { label: "Complete", description: "All done!" },
 ];
 
-export function ComponentDemo() {
+const demoCode = `import { useState } from "react";
+import { Stepper } from "@/components/flexui/stepper";
+
+const steps = [
+  { label: "Account", description: "Create your account" },
+  { label: "Profile", description: "Set up your profile" },
+  { label: "Preferences", description: "Choose your settings" },
+  { label: "Complete", description: "All done!" },
+];
+
+export function Demo() {
   const [current, setCurrent] = useState(1);
 
   return (
-    <div className="flex min-h-[200px] w-full flex-col items-center justify-center gap-8 rounded-xl border border-white/[0.04] bg-zinc-950/50 p-8">
+    <div className="flex flex-col items-center gap-8">
+      <Stepper steps={steps} currentStep={current} className="w-full max-w-xl" />
+      <div className="flex gap-3">
+        <button onClick={() => setCurrent((s) => Math.max(0, s - 1))}>Back</button>
+        <button onClick={() => setCurrent((s) => Math.min(steps.length - 1, s + 1))}>Next</button>
+      </div>
+    </div>
+  );
+}`;
+
+function StepperPreview() {
+  const [current, setCurrent] = useState(1);
+
+  return (
+    <div className="flex w-full flex-col items-center gap-8">
       <Stepper steps={steps} currentStep={current} className="w-full max-w-xl" />
       <div className="flex gap-3">
         <button
@@ -31,5 +56,15 @@ export function ComponentDemo() {
         </button>
       </div>
     </div>
+  );
+}
+
+export function ComponentDemo() {
+  return (
+    <PreviewCodeTabs
+      preview={<StepperPreview />}
+      code={demoCode}
+      filename="stepper-demo.tsx"
+    />
   );
 }

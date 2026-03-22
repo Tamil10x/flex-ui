@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Accordion } from "@/components/flexui/accordion";
+import { PreviewCodeTabs } from "@/components/docs/preview-code-tabs";
 
 const items = [
   {
@@ -28,8 +29,37 @@ const items = [
 
 export function ComponentDemo() {
   return (
-    <div className="flex min-h-[200px] items-center justify-center rounded-xl border border-white/[0.04] bg-zinc-950/50 p-8">
-      <Accordion items={items} className="max-w-lg" />
-    </div>
+    <PreviewCodeTabs
+      preview={
+        <div className="flex min-h-[200px] items-center justify-center p-8">
+          <Accordion items={items} className="max-w-lg" />
+        </div>
+      }
+      code={`import { Accordion } from "@/components/flexui/accordion";
+
+const items = [
+  {
+    title: "What is FlexUI?",
+    content: "FlexUI is a modern React component library built with Tailwind CSS and Framer Motion.",
+  },
+  {
+    title: "Is FlexUI free to use?",
+    content: "Yes, FlexUI is completely free and open source.",
+  },
+  {
+    title: "How do I install components?",
+    content: "Install individual components using the CLI: npx flexui add <component-name>.",
+  },
+  {
+    title: "Does it support dark mode?",
+    content: "FlexUI components are designed with a dark-first approach.",
+  },
+];
+
+export function Demo() {
+  return <Accordion items={items} className="max-w-lg" />;
+}`}
+      filename="accordion-demo.tsx"
+    />
   );
 }

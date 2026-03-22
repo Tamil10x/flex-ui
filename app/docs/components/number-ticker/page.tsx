@@ -225,6 +225,45 @@ export default function NumberTickerDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Spring Physics Counter", desc: "Number animates to target with configurable stiffness and damping for natural motion." },
+            { icon: "o", label: "Viewport Trigger", desc: "Counter starts counting only when scrolled into view via IntersectionObserver." },
+            { icon: "#", label: "Prefix & Suffix", desc: "Support for currency symbols, percentage signs, and other text around the number." },
+            { icon: "+", label: "Decimal Formatting", desc: "Control the number of decimal places displayed during and after the animation." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="what-you-get-customization" title="Customization Patterns">
+        <DocSubSection id="currency-ticker" title="Currency Ticker">
+          <CodeBlock code={`<NumberTicker value={1299.99} prefix="$" decimals={2} className="text-3xl font-bold text-white" />`} filename="currency.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="bouncy-ticker" title="Bouncy Counter">
+          <CodeBlock code={`<NumberTicker value={500} suffix="+" stiffness={150} damping={10} className="text-4xl font-bold text-emerald-400" />`} filename="bouncy.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Uses tabular-nums font feature for stable character width, preventing layout jitter during counting.", "The animation uses useMotionValue which updates outside React render cycle for smooth performance.", "The final value is always displayed as readable text content for screen readers.", "Setting once={false} allows re-triggering but should be used sparingly to avoid distracting motion."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

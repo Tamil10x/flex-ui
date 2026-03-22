@@ -225,6 +225,53 @@ export default function DrawerDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Spring Physics", desc: "Drawer slides in with Framer Motion spring transitions for a natural, bouncy feel." },
+            { icon: "o", label: "Three Side Options", desc: "Open from bottom, left, or right to suit different UI patterns like sheets, nav drawers, and panels." },
+            { icon: "#", label: "Body Scroll Lock", desc: "Automatically locks body scroll when open and restores it on close to prevent background scrolling." },
+            { icon: "+", label: "ESC + Backdrop Close", desc: "Dismiss via Escape key or clicking the blurred backdrop overlay for intuitive interaction." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization-patterns" title="Customization Patterns">
+        <DocSubSection id="right-panel" title="Right Side Panel">
+          <CodeBlock code={`<Drawer open={open} onClose={close} side="right" className="max-w-lg">
+  <h2 className="text-lg font-bold text-white">Settings</h2>
+  <p className="mt-2 text-sm text-zinc-400">Configure your preferences here.</p>
+</Drawer>`} filename="panel.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="no-backdrop" title="Without Backdrop Overlay">
+          <CodeBlock code={`<Drawer open={open} onClose={close} side="left" showOverlay={false}>
+  <nav className="space-y-2">
+    <a href="/" className="block text-white">Home</a>
+    <a href="/about" className="block text-white">About</a>
+  </nav>
+</Drawer>`} filename="no-overlay.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The drawer panel uses role=\"dialog\" and aria-modal=\"true\" to signal a modal context to assistive technologies.", "ESC key dismissal is built in, following WAI-ARIA dialog pattern recommendations.", "Backdrop overlay prevents interaction with background content while the drawer is open.", "Respects prefers-reduced-motion by skipping slide animations when the user has reduced motion enabled."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

@@ -183,6 +183,53 @@ export default function MovingBorderDoc() {
           </ul>
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Rotating Conic Gradient", desc: "A 200% oversized conic-gradient rotates via CSS keyframes for GPU-accelerated performance." },
+            { icon: "o", label: "Inner Mask", desc: "Solid inner background masks everything except the thin border ring of rotating gradient." },
+            { icon: "#", label: "Tailwind Color Mapping", desc: "Accepts Tailwind gradient classes (from-X via-Y to-Z) or raw CSS color stops." },
+            { icon: "+", label: "Configurable Border", desc: "Control speed, border-radius, border-width, and pause the animation with the animate prop." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="pink-border" title="Pink Gradient Border">
+          <CodeBlock code={`<MovingBorder color="from-pink-500 via-rose-500 to-pink-500" speed={2}>
+  <div className="p-6">
+    <h3 className="text-white font-bold">Pink Border</h3>
+  </div>
+</MovingBorder>`} filename="pink.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="thick-slow" title="Thick Slow Border">
+          <CodeBlock code={`<MovingBorder borderWidth={4} speed={6} borderRadius="1.5rem">
+  <div className="p-8">
+    <p className="text-white">Thick, slow rotating border.</p>
+  </div>
+</MovingBorder>`} filename="thick.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The rotating gradient border is purely decorative and does not convey information.", "Content inside the border wrapper maintains full interactivity and readability.", "Setting animate={false} pauses the rotation for users who prefer reduced motion."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

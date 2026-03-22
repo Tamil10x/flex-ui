@@ -5,6 +5,7 @@ import { ApiTable } from "@/components/docs/api-table";
 import { InstallTabs } from "@/components/docs/install-tabs";
 import { ShimmerButtonPlayground } from "./playground";
 import { ShimmerButtonExamples } from "./examples";
+import { Sparkles, MousePointerClick, Settings2, Blocks } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Shimmer Button — FlexUI",
@@ -190,22 +191,22 @@ export default function ShimmerButtonDoc() {
         <div className="grid gap-3 sm:grid-cols-2">
           {[
             {
-              icon: "~",
+              icon: <Sparkles className="h-4 w-4 text-blue-400" />,
               label: "CSS Shimmer",
               desc: "Continuous shimmer sweep using CSS keyframes for optimal performance — no JS animation overhead.",
             },
             {
-              icon: "o",
+              icon: <MousePointerClick className="h-4 w-4 text-blue-400" />,
               label: "Spring Interactions",
               desc: "Framer Motion whileHover/whileTap scale for satisfying press feedback.",
             },
             {
-              icon: "#",
+              icon: <Settings2 className="h-4 w-4 text-blue-400" />,
               label: "Configurable",
               desc: "Customize shimmer color, size, and border radius via simple string props.",
             },
             {
-              icon: "+",
+              icon: <Blocks className="h-4 w-4 text-blue-400" />,
               label: "Composable",
               desc: "Pass className for full style control — cn() merges your Tailwind classes cleanly.",
             },
@@ -214,7 +215,7 @@ export default function ShimmerButtonDoc() {
               key={item.label}
               className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40"
             >
-              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10">
                 {item.icon}
               </div>
               <p className="text-sm font-semibold text-white">{item.label}</p>

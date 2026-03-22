@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Timeline } from "@/components/flexui/timeline";
+import { PreviewCodeTabs } from "@/components/docs/preview-code-tabs";
 
 const items = [
   {
@@ -26,10 +27,29 @@ const items = [
   },
 ];
 
+const demoCode = `import { Timeline } from "@/components/flexui/timeline";
+
+const items = [
+  { title: "Project Kickoff", description: "Initial planning and team alignment.", date: "Jan 2026" },
+  { title: "Design Phase", description: "Created wireframes and prototypes.", date: "Feb 2026" },
+  { title: "Development Sprint", description: "Built core features and tests.", date: "Mar 2026" },
+  { title: "Beta Release", description: "Launched beta to early adopters.", date: "Apr 2026" },
+];
+
+export function Demo() {
+  return <Timeline items={items} className="max-w-md" />;
+}`;
+
 export function ComponentDemo() {
   return (
-    <div className="flex min-h-[200px] items-start justify-center rounded-xl border border-white/[0.04] bg-zinc-950/50 p-8">
-      <Timeline items={items} className="max-w-md" />
-    </div>
+    <PreviewCodeTabs
+      preview={
+        <div className="flex items-start justify-center">
+          <Timeline items={items} className="max-w-md" />
+        </div>
+      }
+      code={demoCode}
+      filename="timeline-demo.tsx"
+    />
   );
 }

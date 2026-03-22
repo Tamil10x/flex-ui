@@ -204,6 +204,61 @@ export default function MorphingDialogDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Shared Layout Animation", desc: "Trigger morphs into dialog using a shared layoutId for seamless shape transition." },
+            { icon: "o", label: "Blurred Backdrop", desc: "Animated backdrop with blur(12px) and dark overlay for focus isolation." },
+            { icon: "#", label: "Portal Rendering", desc: "Dialog renders via createPortal to document.body, escaping parent overflow constraints." },
+            { icon: "+", label: "ESC & Click Dismiss", desc: "Close via Escape key, backdrop click, or the animated close button." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="what-you-get-customization" title="Customization Patterns">
+        <DocSubSection id="wide-dialog" title="Wide Dialog">
+          <CodeBlock code={`<MorphingDialog
+  trigger={<div className="p-4 bg-zinc-900 rounded-xl">Click me</div>}
+  className="max-w-2xl"
+>
+  <h2 className="text-xl font-bold text-white">Wide Dialog</h2>
+  <p className="mt-2 text-zinc-400">This dialog expands to max-w-2xl.</p>
+</MorphingDialog>`} filename="wide.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="styled-trigger" title="Styled Trigger">
+          <CodeBlock code={`<MorphingDialog
+  trigger={
+    <div className="p-6 bg-gradient-to-br from-violet-500/10 to-cyan-500/10 rounded-2xl border border-white/[0.08]">
+      <h3 className="text-white font-bold">Profile Card</h3>
+    </div>
+  }
+  triggerClassName="inline-block"
+>
+  <h2 className="text-white font-bold">Full Profile</h2>
+  <p className="text-zinc-400 mt-2">Expanded profile details...</p>
+</MorphingDialog>`} filename="styled-trigger.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Trigger has role=\"button\", tabIndex={0}, and responds to Enter/Space keys for keyboard activation.", "Dialog uses role=\"dialog\" and aria-modal=\"true\" for proper screen reader announcement.", "Close button includes aria-label=\"Close dialog\" for screen reader context.", "Body scroll is locked when the dialog is open and restored on close to prevent background scrolling."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { CodeBlock } from "@/components/ui/code-block";
-import { DocSection } from "@/components/docs/doc-section";
+import { DocSection, DocSubSection } from "@/components/docs/doc-section";
 import { ApiTable } from "@/components/docs/api-table";
 import { ComponentDemo } from "./demo";
+import { StepperExamples } from "./examples";
+import { Activity, CircleDot, EyeOff, List } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Stepper — FlexUI",
@@ -32,6 +34,11 @@ export default function Page() {
       {/* Preview */}
       <DocSection id="preview" title="Preview">
         <ComponentDemo />
+      </DocSection>
+
+      {/* Examples */}
+      <DocSection id="examples" title="Examples">
+        <StepperExamples />
       </DocSection>
 
       {/* Installation */}
@@ -89,6 +96,60 @@ export default function Page() {
             },
           ]}
         />
+      </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: <Activity className="h-4 w-4" />, label: "Animated Progress Lines", desc: "Connecting lines between steps animate with spring physics as the current step advances." },
+            { icon: <CircleDot className="h-4 w-4" />, label: "Step State Indicators", desc: "Completed steps show a checkmark, the current step scales up, and future steps remain dimmed." },
+            { icon: <EyeOff className="h-4 w-4" />, label: "Reduced Motion Support", desc: "Uses useReducedMotion to disable animations for users who prefer reduced motion." },
+            { icon: <List className="h-4 w-4" />, label: "Labels & Descriptions", desc: "Each step supports a label and optional description for clear multi-step navigation." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="simple-steps" title="Simple Steps">
+          <CodeBlock code={`<Stepper
+  steps={[
+    { label: "Cart" },
+    { label: "Shipping" },
+    { label: "Payment" },
+    { label: "Done" },
+  ]}
+  currentStep={2}
+/>`} filename="variant.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="with-descriptions" title="With Descriptions">
+          <CodeBlock code={`<Stepper
+  steps={[
+    { label: "Sign Up", description: "Create your account" },
+    { label: "Verify", description: "Confirm your email" },
+    { label: "Complete", description: "Start using the app" },
+  ]}
+  currentStep={1}
+/>`} filename="styles.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The stepper uses role=\"navigation\" with aria-label=\"Progress steps\" for screen reader context.", "Each step circle has an aria-label indicating its number, label, and state (completed, current, or upcoming).", "Animations are automatically disabled when the user has enabled prefers-reduced-motion in their OS settings.", "Step states are communicated through both visual cues (color, checkmark) and semantic labels."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </DocSection>
     </div>
   );

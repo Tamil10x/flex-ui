@@ -166,6 +166,68 @@ export default function PricingBlockDoc() {
         </DocSubSection>
       </DocSection>
 
+      {/* What You Get */}
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Billing Toggle", desc: "Animated monthly/yearly switch with a spring-physics sliding pill indicator." },
+            { icon: "o", label: "Animated Prices", desc: "Price values cross-fade with blur and slide transitions when billing period changes." },
+            { icon: "#", label: "Highlighted Tier", desc: "Gradient border and Popular badge for the featured plan using CSS mask-composite." },
+            { icon: "+", label: "Staggered Entrance", desc: "Cards fade in with staggered delays for a polished page-load experience." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      {/* Customization Patterns */}
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="two-tier-layout" title="Two-Tier Layout">
+          <CodeBlock code={`<PricingBlock
+  tiers={[
+    {
+      name: "Free",
+      price: { monthly: 0, yearly: 0 },
+      description: "For individuals",
+      features: ["1 project", "Basic analytics"],
+    },
+    {
+      name: "Pro",
+      price: { monthly: 29, yearly: 249 },
+      description: "For teams",
+      features: ["Unlimited projects", "Advanced analytics"],
+      highlighted: true,
+      cta: "Upgrade Now",
+    },
+  ]}
+/>`} filename="two-tier.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="custom-styling" title="Custom Section Styling">
+          <CodeBlock code={`<PricingBlock
+  className="bg-zinc-950 px-8 py-16"
+  tiers={tiers}
+/>`} filename="styles.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      {/* Accessibility */}
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Billing toggle buttons are standard button elements with clear text labels.", "Feature lists use semantic list markup with check icons for visual clarity.", "CTA links use anchor elements with sufficient color contrast for both highlighted and default states."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
+
       {/* How it works */}
       <DocSection id="how-it-works" title="How It Works">
         <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">

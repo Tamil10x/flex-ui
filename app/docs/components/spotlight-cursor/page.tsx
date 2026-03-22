@@ -126,6 +126,45 @@ export default function SpotlightCursorDoc() {
         </DocSubSection>
       </DocSection>
 
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Full-Viewport Glow", desc: "A fixed-position radial gradient covers the entire page, illuminating content beneath the cursor." },
+            { icon: "o", label: "Zero Re-Renders", desc: "Uses useMotionTemplate for reactive CSS gradients that update every frame without touching React state." },
+            { icon: "#", label: "Configurable Appearance", desc: "Control size, color, and peak opacity to match subtle or bold design requirements." },
+            { icon: "+", label: "Non-Intrusive", desc: "The overlay is pointer-events-none and fades out when the mouse leaves the document." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="cyan-spotlight" title="Cyan Spotlight">
+          <CodeBlock code={`<SpotlightCursor color="56,189,248" size={500} opacity={0.08} />`} filename="variant.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="subtle-warm" title="Subtle Warm Glow">
+          <CodeBlock code={`<SpotlightCursor color="251,146,60" size={300} opacity={0.04} />`} filename="styles.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The spotlight is purely decorative and hidden from assistive technology via pointer-events-none.", "Low default opacity ensures text contrast ratios remain unaffected by the overlay.", "The component automatically fades out when the mouse leaves the viewport, preventing visual artifacts."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
+
       {/* How it works */}
       <DocSection id="how-it-works" title="How It Works">
         <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">

@@ -222,6 +222,53 @@ export default function MorphingBlobDoc() {
           />
         </DocSubSection>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Organic Shape Morphing", desc: "SVG path interpolates between 5 pre-defined organic blob shapes with smooth easing." },
+            { icon: "o", label: "Gradient Fill", desc: "Linear gradient from color to accentColor fills the blob with customizable start and end colors." },
+            { icon: "#", label: "rAF-Driven Animation", desc: "requestAnimationFrame loop with smoothstep easing for buttery 60fps shape transitions." },
+            { icon: "+", label: "Centered Children", desc: "Render icons, text, or images centered on top of the blob as an overlay." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="warm-blob" title="Warm Color Blob">
+          <CodeBlock code={`<MorphingBlob color="#F97316" accentColor="#EC4899" size={250} speed={3}>
+  <span className="text-2xl">🔥</span>
+</MorphingBlob>`} filename="warm.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="slow-large" title="Large Slow Background Blob">
+          <CodeBlock code={`<MorphingBlob
+  size={400}
+  speed={8}
+  color="rgba(139, 92, 246, 0.4)"
+  accentColor="rgba(6, 182, 212, 0.4)"
+  className="absolute -z-10"
+/>`} filename="background.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The SVG blob is purely decorative; children rendered via the z-10 layer carry the semantic content.", "A mounted guard prevents hydration mismatches between server and client rendering.", "The animation runs entirely via direct DOM manipulation (setAttribute), avoiding unnecessary React re-renders."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

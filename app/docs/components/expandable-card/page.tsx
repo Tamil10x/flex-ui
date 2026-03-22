@@ -312,6 +312,60 @@ export default function ExpandableCardDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Spring Resize", desc: "Card smoothly animates between collapsed and expanded sizes using spring physics." },
+            { icon: "o", label: "Content Presets", desc: "Choose from fade, blur-sm, blur-md, slide-up, slide-down, or scale animation presets for revealed content." },
+            { icon: "#", label: "3D Tilt Effect", desc: "Subtle perspective tilt follows the cursor with a glowing spotlight for a premium card feel." },
+            { icon: "+", label: "Composable API", desc: "Built with Expandable, ExpandableCard, ExpandableTrigger, ExpandableContent, Header, Content, and Footer sub-components." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization-patterns" title="Customization Patterns">
+        <DocSubSection id="vertical-expand" title="Vertical-Only Expansion">
+          <CodeBlock code={`<Expandable expandDirection="vertical">
+  <ExpandableTrigger>
+    <ExpandableCard collapsedSize={{ width: 320, height: 200 }} expandedSize={{ width: 320, height: 450 }}>
+      <ExpandableCardHeader>
+        <h3 className="text-white font-bold">Details</h3>
+      </ExpandableCardHeader>
+      <ExpandableContent preset="slide-up">
+        <p className="text-zinc-400 text-sm">Expanded content here.</p>
+      </ExpandableContent>
+    </ExpandableCard>
+  </ExpandableTrigger>
+</Expandable>`} filename="vertical.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="blur-reveal" title="Blur Reveal with Stagger">
+          <CodeBlock code={`<ExpandableContent preset="blur-md" stagger staggerChildren={0.15}>
+  <p className="text-zinc-300">First paragraph appears first.</p>
+  <p className="text-zinc-400">Second paragraph follows.</p>
+  <p className="text-zinc-500">Third paragraph last.</p>
+</ExpandableContent>`} filename="blur-stagger.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["ExpandableTrigger renders with role=\"button\", tabIndex, and aria-expanded for screen reader compatibility.", "Keyboard users can toggle expansion with Enter or Space keys on the trigger element.", "Respects prefers-reduced-motion by disabling spring animations and 3D tilt effects.", "Focus management is handled through native DOM focus, keeping the trigger accessible after interaction."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

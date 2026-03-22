@@ -220,6 +220,59 @@ export default function MorphingCardDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Layout Animation", desc: "Container resizes with spring physics using Framer Motion layout prop for smooth morphing." },
+            { icon: "o", label: "Content Crossfade", desc: "Collapsed and expanded content crossfade with blur transitions via AnimatePresence." },
+            { icon: "#", label: "Glass Highlight", desc: "Subtle gradient highlight on the top edge creates a glassmorphic depth effect." },
+            { icon: "+", label: "Keyboard Support", desc: "Toggle via click, Enter, or Space key with proper role=\"button\" and tabIndex." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="what-you-get-customization" title="Customization Patterns">
+        <DocSubSection id="width-control" title="Width-Controlled Morph">
+          <CodeBlock code={`<MorphingCard
+  collapsedClassName="w-64"
+  expandedClassName="w-96"
+  collapsed={<p className="text-white">Click to expand</p>}
+  expanded={
+    <div>
+      <h3 className="text-white font-bold">Expanded View</h3>
+      <p className="text-zinc-400 mt-2">Full content here...</p>
+    </div>
+  }
+/>`} filename="width-control.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="custom-theme" title="Custom Theme">
+          <CodeBlock code={`<MorphingCard
+  className="bg-blue-950/50 border border-blue-500/20"
+  collapsed={<p className="text-blue-300">Blue themed collapsed</p>}
+  expanded={<p className="text-blue-300">Blue themed expanded</p>}
+/>`} filename="theme.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The card has role=\"button\" and tabIndex={0} for keyboard focus and activation.", "Enter and Space keys toggle the expanded state, matching native button behavior.", "Content crossfade uses blur transitions that complete quickly (200ms) to avoid disorienting motion.", "Use e.stopPropagation() on interactive elements inside to prevent accidental toggle."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }
