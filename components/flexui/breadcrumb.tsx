@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface BreadcrumbItem {
@@ -20,8 +21,12 @@ export function Breadcrumb({
   className,
 }: BreadcrumbProps) {
   return (
-    <nav
+    <motion.nav
       aria-label="Breadcrumb"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
       className={cn("flex items-center gap-2 text-sm", className)}
     >
       {items.map((item, i) => (
@@ -41,12 +46,13 @@ export function Breadcrumb({
               className={cn(
                 i === items.length - 1 ? "text-white font-medium" : "text-zinc-400"
               )}
+              {...(i === items.length - 1 ? { "aria-current": "page" as const } : {})}
             >
               {item.label}
             </span>
           )}
         </React.Fragment>
       ))}
-    </nav>
+    </motion.nav>
   );
 }

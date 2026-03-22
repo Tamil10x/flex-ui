@@ -54,6 +54,9 @@ export function SplitScreenReveal({
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Split screen reveal"
       className={cn("relative overflow-hidden", className)}
       style={{ isolation: "isolate" }}
     >

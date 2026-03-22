@@ -31,6 +31,9 @@ import {
   Move3d,
   Paintbrush,
   Film,
+  ChevronDown, Users, Award, Clock, Scissors, Copy, ImageIcon, ToggleLeft,
+  SlidersHorizontal, CheckCircle, ListOrdered, Tag, AlertCircle,
+  Eraser, Magnet, Timer, Gauge, StarHalf, Calendar, Code2,
 } from "lucide-react";
 
 interface SidebarItem {
@@ -62,6 +65,7 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "Gradient Border", href: "/docs/components/gradient-border-button", icon: <Square className="h-4 w-4" />, isNew: true },
       { title: "Confetti Button", href: "/docs/components/confetti-button", icon: <PartyPopper className="h-4 w-4" />, isNew: true },
       { title: "Liquid Button", href: "/docs/components/liquid-button", icon: <Droplet className="h-4 w-4" />, isNew: true },
+      { title: "Pulse Button", href: "/docs/components/pulse-button", icon: <CircleDot className="h-4 w-4" />, isNew: true },
     ],
   },
   {
@@ -75,6 +79,12 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "KPI Card", href: "/docs/components/kpi-card", icon: <BarChart className="h-4 w-4" />, isNew: true },
       { title: "Holographic Card", href: "/docs/components/holographic-card", icon: <Sparkles className="h-4 w-4" />, isNew: true },
       { title: "Neon Glow Card", href: "/docs/components/neon-glow-card", icon: <Flame className="h-4 w-4" />, isNew: true },
+      { title: "Hover Card", href: "/docs/components/hover-card", icon: <MousePointer className="h-4 w-4" />, isNew: true },
+      { title: "Magnetic Card", href: "/docs/components/magnetic-card", icon: <Magnet className="h-4 w-4" />, isNew: true },
+      { title: "Tilt Card", href: "/docs/components/tilt-card", icon: <Move3d className="h-4 w-4" />, isNew: true },
+      { title: "Reveal Card", href: "/docs/components/reveal-card", icon: <Eye className="h-4 w-4" />, isNew: true },
+      { title: "Wobble Card", href: "/docs/components/wobble-card", icon: <Waves className="h-4 w-4" />, isNew: true },
+      { title: "Stat Card", href: "/docs/components/stat-card", icon: <BarChart className="h-4 w-4" />, isNew: true },
     ],
   },
   {
@@ -92,6 +102,12 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "Number Ticker", href: "/docs/components/number-ticker", icon: <Hash className="h-4 w-4" />, isNew: true },
       { title: "Handwritten Annotation", href: "/docs/components/handwritten-annotation", icon: <PenTool className="h-4 w-4" />, isNew: true },
       { title: "Chromatic Text", href: "/docs/components/chromatic-text", icon: <Blend className="h-4 w-4" />, isNew: true },
+      { title: "Glow Text", href: "/docs/components/glow-text", icon: <Flame className="h-4 w-4" />, isNew: true },
+      { title: "Blur Fade", href: "/docs/components/blur-fade", icon: <Eye className="h-4 w-4" />, isNew: true },
+      { title: "Text Gradient Scroll", href: "/docs/components/text-gradient-scroll", icon: <Palette className="h-4 w-4" />, isNew: true },
+      { title: "Typewriter Delete", href: "/docs/components/typewriter-delete", icon: <Eraser className="h-4 w-4" />, isNew: true },
+      { title: "Animated Counter", href: "/docs/components/animated-counter", icon: <Hash className="h-4 w-4" />, isNew: true },
+      { title: "Counter Up", href: "/docs/components/counter-up", icon: <TrendingUp className="h-4 w-4" />, isNew: true },
     ],
   },
   {
@@ -118,6 +134,7 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "Scroll Progress", href: "/docs/components/scroll-progress", icon: <BarChart3 className="h-4 w-4" />, isNew: true },
       { title: "Fade on Scroll", href: "/docs/components/fade-on-scroll", icon: <Eye className="h-4 w-4" />, isNew: true },
       { title: "Scroll Counter", href: "/docs/components/scroll-counter", icon: <Calculator className="h-4 w-4" />, isNew: true },
+      { title: "Direction Hover", href: "/docs/components/direction-hover", icon: <MousePointer className="h-4 w-4" />, isNew: true },
     ],
   },
   {
@@ -149,6 +166,15 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "Phone Frame", href: "/docs/components/phone-frame", icon: <Smartphone className="h-4 w-4" />, isNew: true },
       { title: "Split Screen Reveal", href: "/docs/components/split-screen-reveal", icon: <Columns className="h-4 w-4" />, isNew: true },
       { title: "Infinite Canvas", href: "/docs/components/infinite-canvas", icon: <Layout className="h-4 w-4" />, isNew: true },
+      { title: "Accordion", href: "/docs/components/accordion", icon: <ChevronDown className="h-4 w-4" />, isNew: true },
+      { title: "Dropdown Menu", href: "/docs/components/dropdown-menu", icon: <ChevronDown className="h-4 w-4" />, isNew: true },
+      { title: "Popover", href: "/docs/components/popover", icon: <MessageSquareQuote className="h-4 w-4" />, isNew: true },
+      { title: "Tooltip", href: "/docs/components/tooltip", icon: <AlertCircle className="h-4 w-4" />, isNew: true },
+      { title: "Breadcrumb", href: "/docs/components/breadcrumb", icon: <Navigation className="h-4 w-4" />, isNew: true },
+      { title: "Timeline", href: "/docs/components/timeline", icon: <Clock className="h-4 w-4" />, isNew: true },
+      { title: "Stepper", href: "/docs/components/stepper", icon: <ListOrdered className="h-4 w-4" />, isNew: true },
+      { title: "File Tree", href: "/docs/components/file-tree", icon: <FileText className="h-4 w-4" />, isNew: true },
+      { title: "Command Menu", href: "/docs/components/command-menu", icon: <Terminal className="h-4 w-4" />, isNew: true },
     ],
   },
   {
@@ -156,6 +182,13 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
     items: [
       { title: "Animated Input", href: "/docs/components/animated-input", icon: <TextCursor className="h-4 w-4" />, isNew: true },
       { title: "OTP Input", href: "/docs/components/otp-input", icon: <KeyRound className="h-4 w-4" />, isNew: true },
+      { title: "Color Picker", href: "/docs/components/color-picker", icon: <Palette className="h-4 w-4" />, isNew: true },
+      { title: "Tag Input", href: "/docs/components/tag-input", icon: <Tag className="h-4 w-4" />, isNew: true },
+      { title: "Slider", href: "/docs/components/slider", icon: <SlidersHorizontal className="h-4 w-4" />, isNew: true },
+      { title: "Switch", href: "/docs/components/switch", icon: <ToggleLeft className="h-4 w-4" />, isNew: true },
+      { title: "Calendar", href: "/docs/components/calendar", icon: <Calendar className="h-4 w-4" />, isNew: true },
+      { title: "Rating", href: "/docs/components/rating", icon: <StarHalf className="h-4 w-4" />, isNew: true },
+      { title: "Pricing Toggle", href: "/docs/components/pricing-toggle", icon: <ToggleLeft className="h-4 w-4" />, isNew: true },
     ],
   },
   {
@@ -176,6 +209,9 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "Progress Ring", href: "/docs/components/progress-ring", icon: <CircleDot className="h-4 w-4" />, isNew: true },
       { title: "Animated Beam", href: "/docs/components/animated-beam", icon: <Waypoints className="h-4 w-4" />, isNew: true },
       { title: "Data Orbit", href: "/docs/components/data-orbit", icon: <Orbit className="h-4 w-4" />, isNew: true },
+      { title: "Countdown", href: "/docs/components/countdown", icon: <Timer className="h-4 w-4" />, isNew: true },
+      { title: "Progress Bar", href: "/docs/components/progress-bar", icon: <Gauge className="h-4 w-4" />, isNew: true },
+      { title: "Orbit Animation", href: "/docs/components/orbit-animation", icon: <Orbit className="h-4 w-4" />, isNew: true },
     ],
   },
   {
@@ -189,6 +225,23 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "Icon Cloud", href: "/docs/components/icon-cloud", icon: <Cloud className="h-4 w-4" />, isNew: true },
       { title: "Glitch Transition", href: "/docs/components/glitch-transition", icon: <Zap className="h-4 w-4" />, isNew: true },
       { title: "Ambient Tilt", href: "/docs/components/ambient-tilt", icon: <Move3d className="h-4 w-4" />, isNew: true },
+      { title: "Spotlight Border", href: "/docs/components/spotlight-border", icon: <Flashlight className="h-4 w-4" />, isNew: true },
+      { title: "Image Compare", href: "/docs/components/image-compare", icon: <ImageIcon className="h-4 w-4" />, isNew: true },
+    ],
+  },
+  {
+    heading: "Display",
+    items: [
+      { title: "Avatar", href: "/docs/components/avatar", icon: <Users className="h-4 w-4" />, isNew: true },
+      { title: "Avatar Group", href: "/docs/components/avatar-group", icon: <Users className="h-4 w-4" />, isNew: true },
+      { title: "Badge", href: "/docs/components/badge", icon: <Award className="h-4 w-4" />, isNew: true },
+      { title: "Notification Badge", href: "/docs/components/notification-badge", icon: <Bell className="h-4 w-4" />, isNew: true },
+      { title: "Kbd", href: "/docs/components/kbd", icon: <KeyRound className="h-4 w-4" />, isNew: true },
+      { title: "Code Inline", href: "/docs/components/code-inline", icon: <Code2 className="h-4 w-4" />, isNew: true },
+      { title: "Copy Block", href: "/docs/components/copy-block", icon: <Copy className="h-4 w-4" />, isNew: true },
+      { title: "Divider", href: "/docs/components/divider", icon: <Scissors className="h-4 w-4" />, isNew: true },
+      { title: "Skeleton", href: "/docs/components/skeleton", icon: <Square className="h-4 w-4" />, isNew: true },
+      { title: "Empty State", href: "/docs/components/empty-state", icon: <AlertCircle className="h-4 w-4" />, isNew: true },
     ],
   },
   {

@@ -42,7 +42,7 @@ export function ImageCompare({ before, after, className }: ImageCompareProps) {
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       className={cn(
-        "relative select-none overflow-hidden rounded-xl border border-white/[0.08]",
+        "relative select-none overflow-hidden rounded-xl border border-white/[0.08] transition-all duration-300 hover:border-white/[0.12] hover:shadow-[0_0_20px_-8px_rgba(139,92,246,0.1)]",
         className
       )}
       style={{ cursor: "ew-resize" }}

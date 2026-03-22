@@ -79,6 +79,7 @@ function DockIcon({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 4, scale: 0.9 }}
             transition={{ duration: 0.15 }}
+            role="tooltip"
             className="absolute -top-10 whitespace-nowrap rounded-lg border border-white/[0.08] bg-zinc-900/90 px-3 py-1.5 text-xs font-medium text-white shadow-xl backdrop-blur-sm"
           >
             {item.label}
@@ -88,6 +89,7 @@ function DockIcon({
 
       <motion.button
         ref={ref}
+        aria-label={item.label}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         onClick={item.onClick}
@@ -116,6 +118,8 @@ export function DockMenu({
 
   return (
     <motion.div
+      role="navigation"
+      aria-label="Dock menu"
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(

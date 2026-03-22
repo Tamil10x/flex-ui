@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface BadgeProps {
@@ -20,7 +21,11 @@ const variants: Record<string, string> = {
 
 export function Badge({ children, variant = "default", className, pulse }: BadgeProps) {
   return (
-    <span
+    <motion.span
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
       className={cn(
         "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium",
         variants[variant],
@@ -52,6 +57,6 @@ export function Badge({ children, variant = "default", className, pulse }: Badge
         </span>
       )}
       {children}
-    </span>
+    </motion.span>
   );
 }

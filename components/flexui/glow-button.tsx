@@ -28,6 +28,7 @@ export function GlowButton({
       whileTap={disabled || reducedMotion ? undefined : { scale: 0.97 }}
       transition={reducedMotion ? { duration: 0 } : { type: "spring", stiffness: 400, damping: 17 }}
       disabled={disabled}
+      aria-disabled={disabled}
       onClick={onClick}
       className={cn(
         "relative px-8 py-4 text-sm font-semibold rounded-xl",

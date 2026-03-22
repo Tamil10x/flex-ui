@@ -39,4 +39,43 @@ describe('cn() utility', () => {
   it('handles object inputs via clsx', () => {
     expect(cn({ foo: true, bar: false, baz: true })).toBe('foo baz');
   });
+
+  it('merges conflicting Tailwind margin classes', () => {
+    expect(cn('mt-2', 'mt-4')).toBe('mt-4');
+  });
+
+  it('preserves non-conflicting Tailwind classes', () => {
+    expect(cn('mt-2', 'mb-4')).toBe('mt-2 mb-4');
+  });
+
+  it('handles deeply nested arrays', () => {
+    expect(cn(['a', ['b', ['c']]])).toBe('a b c');
+  });
+
+  it('handles mixed object and string inputs', () => {
+    expect(cn('base', { active: true, disabled: false }, 'extra')).toBe('base active extra');
+  });
+
+  it('handles boolean false values gracefully', () => {
+    expect(cn(false, 'valid', false)).toBe('valid');
+  });
+
+  it('handles number zero as falsy', () => {
+    expect(cn(0 as any, 'valid')).toBe('valid');
+  });
+
+  it('merges conflicting Tailwind flex and grid classes', () => {
+    expect(cn('flex', 'grid')).toBe('grid');
+  });
+
+  it('merges conflicting Tailwind font-size classes', () => {
+    expect(cn('text-sm', 'text-lg')).toBe('text-lg');
+  });
+
+  it('handles responsive prefixes independently', () => {
+    const result = cn('p-2', 'md:p-4', 'lg:p-6');
+    expect(result).toContain('p-2');
+    expect(result).toContain('md:p-4');
+    expect(result).toContain('lg:p-6');
+  });
 });

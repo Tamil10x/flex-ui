@@ -102,6 +102,9 @@ export function MorphingDialog({
                 <div className="fixed inset-0 z-[101] flex items-center justify-center p-4 pointer-events-none">
                   <motion.div
                     layoutId={layoutId}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Dialog"
                     className={cn(
                       "pointer-events-auto relative w-full max-w-lg overflow-hidden",
                       "rounded-2xl",
@@ -122,6 +125,7 @@ export function MorphingDialog({
                       exit={{ opacity: 0, scale: 0.8 }}
                       transition={{ delay: 0.15, ...springTransition }}
                       onClick={() => setIsOpen(false)}
+                      aria-label="Close dialog"
                       className="absolute right-3 top-3 z-10 rounded-xl border border-white/[0.08] bg-white/[0.03] p-2 text-zinc-400 backdrop-blur-sm transition-colors hover:bg-white/[0.08] hover:text-white"
                     >
                       <X className="h-4 w-4" />

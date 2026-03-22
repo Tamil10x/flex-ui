@@ -40,7 +40,7 @@ export function Calendar({ selected, onChange, className }: CalendarProps) {
   return (
     <div
       className={cn(
-        "w-72 rounded-xl border border-white/[0.08] bg-zinc-950/80 p-4 backdrop-blur-xl",
+        "w-72 rounded-xl border border-white/[0.08] bg-zinc-950/80 p-4 backdrop-blur-xl transition-all duration-300 hover:border-white/[0.12] hover:shadow-[0_0_20px_-8px_rgba(139,92,246,0.1)]",
         className
       )}
     >

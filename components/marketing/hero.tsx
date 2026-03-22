@@ -26,7 +26,7 @@ export function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#8B5CF6] opacity-50" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-[#8B5CF6]" />
           </span>
-          FlexUI v0.2 — 57+ Components
+          FlexUI v0.2 — 134+ Components
         </span>
       </motion.div>
 
@@ -54,7 +54,7 @@ export function Hero() {
               "Zero npm bloat.",
               "Copy. Paste. Ship.",
               "Spring physics everywhere.",
-              "57+ animated components.",
+              "134+ animated components.",
             ]}
             typingSpeed={55}
             deletingSpeed={30}

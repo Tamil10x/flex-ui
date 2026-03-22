@@ -63,6 +63,7 @@ export function LiquidButton({
     <motion.button
       ref={buttonRef}
       disabled={disabled}
+      aria-disabled={disabled}
       onClick={handleClick}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setHovered(true)}

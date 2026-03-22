@@ -42,8 +42,10 @@ export function ColorPicker({
 
   return (
     <div
+      role="group"
+      aria-label="Color picker"
       className={cn(
-        "inline-flex flex-col gap-3 rounded-xl border border-white/[0.08] bg-zinc-950/80 p-4 backdrop-blur-xl",
+        "inline-flex flex-col gap-3 rounded-xl border border-white/[0.08] bg-zinc-950/80 p-4 backdrop-blur-xl transition-all duration-300 hover:border-white/[0.12] hover:shadow-[0_0_20px_-8px_rgba(139,92,246,0.1)]",
         className
       )}
     >
@@ -55,6 +57,7 @@ export function ColorPicker({
         {presets.map((color) => (
           <button
             key={color}
+            aria-label={`Select color ${color}`}
             onClick={() => selectColor(color)}
             className={cn(
               "h-8 w-8 rounded-full border-2 transition-transform hover:scale-110",
@@ -71,6 +74,7 @@ export function ColorPicker({
           value={hex}
           onChange={handleHexChange}
           maxLength={7}
+          aria-label="Hex color value"
           className="w-full rounded-md border border-white/[0.08] bg-zinc-900 px-2 py-1 text-sm text-white outline-none focus:border-white/20"
         />
       </div>

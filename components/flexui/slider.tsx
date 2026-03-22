@@ -40,9 +40,21 @@ export function Slider({ value, onChange, min = 0, max = 100, step = 1, classNam
   return (
     <div
       ref={trackRef}
+      role="slider"
+      aria-valuemin={min}
+      aria-valuemax={max}
+      aria-valuenow={value}
+      aria-label="Slider"
+      tabIndex={0}
       className={cn("relative h-2 w-full cursor-pointer rounded-full bg-white/[0.06]", className)}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
+      onKeyDown={(e) => {
+        if (e.key === "ArrowRight" || e.key === "ArrowUp") { e.preventDefault(); onChange(Math.min(max, value + step)); }
+        else if (e.key === "ArrowLeft" || e.key === "ArrowDown") { e.preventDefault(); onChange(Math.max(min, value - step)); }
+        else if (e.key === "Home") { e.preventDefault(); onChange(min); }
+        else if (e.key === "End") { e.preventDefault(); onChange(max); }
+      }}
     >
       <div className="absolute inset-y-0 left-0 rounded-full" style={{ width: `${pct}%`, background: color }} />
       <div

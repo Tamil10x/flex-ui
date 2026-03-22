@@ -25,6 +25,7 @@ export function AnimatedInput({
   const [internalValue, setInternalValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const inputId = `animated-input-${label.replace(/\s+/g, "-").toLowerCase()}`;
 
   const value = controlledValue !== undefined ? controlledValue : internalValue;
   const isActive = isFocused || value.length > 0;
@@ -44,6 +45,7 @@ export function AnimatedInput({
     >
       {/* Label */}
       <motion.label
+        htmlFor={inputId}
         animate={{
           y: isActive ? -24 : 0,
           x: isActive ? -4 : 0,
@@ -63,9 +65,11 @@ export function AnimatedInput({
       {/* Input */}
       <input
         ref={inputRef}
+        id={inputId}
         type={type}
         value={value}
         onChange={handleChange}
+        aria-label={label}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         className={cn(

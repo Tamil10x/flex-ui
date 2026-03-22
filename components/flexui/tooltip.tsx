@@ -24,7 +24,7 @@ export function Tooltip({ children, content, side = "top", className }: TooltipP
   const [show, setShow] = useState(false);
 
   return (
-    <div className="relative inline-flex" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
+    <div className="relative inline-flex" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)} onFocus={() => setShow(true)} onBlur={() => setShow(false)}>
       {children}
       <AnimatePresence>
         {show && (
@@ -33,6 +33,7 @@ export function Tooltip({ children, content, side = "top", className }: TooltipP
             animate={{ opacity: 1, x: 0, y: 0 }}
             exit={{ opacity: 0, ...origins[side] }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            role="tooltip"
             className={cn(
               "absolute z-50 whitespace-nowrap rounded-md border border-white/[0.06] bg-zinc-950 px-3 py-1.5 text-xs text-white shadow-lg",
               positions[side],

@@ -37,6 +37,8 @@ export function Rating({ value, onChange, max = 5, size = 24, className }: Ratin
 
   return (
     <div
+      role="radiogroup"
+      aria-label="Rating"
       className={cn("inline-flex gap-1", className)}
       onMouseLeave={() => setHoverIdx(-1)}
     >
@@ -44,6 +46,9 @@ export function Rating({ value, onChange, max = 5, size = 24, className }: Ratin
         <motion.button
           key={i}
           type="button"
+          role="radio"
+          aria-checked={i + 1 === value}
+          aria-label={`${i + 1} star${i === 0 ? "" : "s"}`}
           disabled={!interactive}
           onClick={() => handleClick(i)}
           onMouseEnter={() => interactive && setHoverIdx(i)}

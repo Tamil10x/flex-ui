@@ -44,7 +44,7 @@ export default function Home() {
             </span>
           </h2>
           <p className="mt-3 text-zinc-500">
-            57+ premium, animated, copy-paste components.
+            134+ premium, animated, copy-paste components.
           </p>
         </div>
 

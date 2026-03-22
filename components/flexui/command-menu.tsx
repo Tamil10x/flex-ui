@@ -65,6 +65,9 @@ export function CommandMenu({ items, placeholder = "Type a command…", classNam
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -10 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Command menu"
             className={cn(
               "relative z-10 w-full max-w-lg overflow-hidden rounded-xl border border-white/[0.08] bg-zinc-950/90 shadow-2xl backdrop-blur-xl",
               className
@@ -78,10 +81,12 @@ export function CommandMenu({ items, placeholder = "Type a command…", classNam
               placeholder={placeholder}
               className="w-full border-b border-white/[0.08] bg-transparent px-4 py-3 text-sm text-white outline-none placeholder:text-zinc-500"
             />
-            <div className="max-h-64 overflow-y-auto p-1">
+            <div role="listbox" className="max-h-64 overflow-y-auto p-1">
               {filtered.map((item, i) => (
                 <button
                   key={item.label}
+                  role="option"
+                  aria-selected={i === active}
                   onClick={() => { item.onSelect(); setOpen(false); }}
                   onMouseEnter={() => setActive(i)}
                   className={cn(

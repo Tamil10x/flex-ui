@@ -40,7 +40,12 @@ function Node({ item, depth }: { item: FileTreeItem; depth: number }) {
   const isFolder = item.type === "folder";
 
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0, x: -8 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.3, delay: depth * 0.05 }}
+    >
       <button
         onClick={() => isFolder && setOpen((o) => !o)}
         className={cn(
@@ -67,7 +72,7 @@ function Node({ item, depth }: { item: FileTreeItem; depth: number }) {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
 

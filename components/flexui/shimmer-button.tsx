@@ -31,6 +31,7 @@ export function ShimmerButton({
       whileHover={disabled || reducedMotion ? undefined : { scale: 1.02 }}
       whileTap={disabled || reducedMotion ? undefined : { scale: 0.98 }}
       disabled={disabled}
+      aria-disabled={disabled}
       onClick={onClick}
       className={cn(
         "group relative overflow-hidden px-8 py-4 text-sm font-semibold",

@@ -137,7 +137,7 @@ export function OTPInput({
   );
 
   return (
-    <div className={cn("flex items-center gap-2 sm:gap-3", className)}>
+    <div role="group" aria-label="One-time password input" className={cn("flex items-center gap-2 sm:gap-3", className)}>
       {Array.from({ length }).map((_, index) => {
         const isActive = activeIndex === index;
         const isFilled = values[index] !== "";

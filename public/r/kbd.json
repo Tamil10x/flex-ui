@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "components/flexui/kbd.tsx",
-      "content": "\"use client\";\n\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface KbdProps {\n  children: React.ReactNode;\n  className?: string;\n}\n\nexport function Kbd({ children, className }: KbdProps) {\n  return (\n    <kbd\n      className={cn(\n        \"inline-flex h-6 min-w-[24px] items-center justify-center rounded-md border border-white/[0.1] bg-white/[0.04] px-1.5 font-mono text-[11px] font-medium text-white/60 shadow-[0_1px_0_1px_rgba(255,255,255,0.04)]\",\n        className\n      )}\n    >\n      {children}\n    </kbd>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { motion } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface KbdProps {\n  children: React.ReactNode;\n  className?: string;\n}\n\nexport function Kbd({ children, className }: KbdProps) {\n  return (\n    <motion.kbd\n      initial={{ opacity: 0, y: 20 }}\n      whileInView={{ opacity: 1, y: 0 }}\n      viewport={{ once: true }}\n      transition={{ duration: 0.5 }}\n      className={cn(\n        \"inline-flex h-6 min-w-[24px] items-center justify-center rounded-md border border-white/[0.1] bg-white/[0.04] px-1.5 font-mono text-[11px] font-medium text-white/60 shadow-[0_1px_0_1px_rgba(255,255,255,0.04)]\",\n        className\n      )}\n    >\n      {children}\n    </motion.kbd>\n  );\n}\n",
       "type": "registry:ui",
       "target": "components/flexui/kbd.tsx"
     }

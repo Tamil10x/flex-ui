@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface CountdownProps {
@@ -27,7 +27,7 @@ function calcTimeLeft(target: Date): TimeLeft {
   };
 }
 
-function Digit({ value, label }: { value: number; label: string }) {
+function Digit({ value, label, reducedMotion }: { value: number; label: string; reducedMotion: boolean | null }) {
   const display = String(value).padStart(2, "0");
   return (
     <div className="flex flex-col items-center">
@@ -35,10 +35,10 @@ function Digit({ value, label }: { value: number; label: string }) {
         <AnimatePresence mode="popLayout">
           <motion.span
             key={display}
-            initial={{ y: -20, opacity: 0 }}
+            initial={reducedMotion ? false : { y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 20, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            exit={reducedMotion ? { opacity: 0 } : { y: 20, opacity: 0 }}
+            transition={reducedMotion ? { duration: 0 } : { type: "spring", stiffness: 300, damping: 30 }}
             className="block text-2xl font-bold tabular-nums text-white"
           >
             {display}
@@ -51,6 +51,7 @@ function Digit({ value, label }: { value: number; label: string }) {
 }
 
 export function Countdown({ targetDate, className, onComplete }: CountdownProps) {
+  const reducedMotion = useReducedMotion();
   const target = targetDate instanceof Date ? targetDate : new Date(targetDate);
   const [time, setTime] = useState<TimeLeft>(calcTimeLeft(target));
   const completedRef = React.useRef(false);
@@ -72,13 +73,13 @@ export function Countdown({ targetDate, className, onComplete }: CountdownProps)
 
   return (
     <div className={cn("inline-flex items-center gap-3", className)}>
-      <Digit value={time.days} label="Days" />
+      <Digit value={time.days} label="Days" reducedMotion={reducedMotion} />
       <span className="text-xl text-zinc-600">:</span>
-      <Digit value={time.hours} label="Hours" />
+      <Digit value={time.hours} label="Hours" reducedMotion={reducedMotion} />
       <span className="text-xl text-zinc-600">:</span>
-      <Digit value={time.minutes} label="Min" />
+      <Digit value={time.minutes} label="Min" reducedMotion={reducedMotion} />
       <span className="text-xl text-zinc-600">:</span>
-      <Digit value={time.seconds} label="Sec" />
+      <Digit value={time.seconds} label="Sec" reducedMotion={reducedMotion} />
     </div>
   );
 }

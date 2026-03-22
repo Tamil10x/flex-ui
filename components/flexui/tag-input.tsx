@@ -52,11 +52,14 @@ export function TagInput({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             className="inline-flex items-center gap-1 rounded-md bg-white/[0.08] px-2 py-0.5 text-xs text-zinc-300"
           >
             {tag}
             <button
               onClick={(e) => { e.stopPropagation(); onRemove(tag); }}
+              aria-label={`Remove ${tag}`}
               className="ml-0.5 text-zinc-500 hover:text-white"
             >
               &times;
@@ -70,6 +73,7 @@ export function TagInput({
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder={tags.length === 0 ? placeholder : ""}
+        aria-label="Add tag"
         className="min-w-[80px] flex-1 bg-transparent text-sm text-white outline-none placeholder:text-zinc-500"
       />
     </div>

@@ -24,7 +24,7 @@ export function CopyBlock({ code, language, filename, className }: CopyBlockProp
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-xl border border-white/[0.08] bg-zinc-950/80 backdrop-blur-xl",
+        "overflow-hidden rounded-xl border border-white/[0.08] bg-zinc-950/80 backdrop-blur-xl transition-all duration-300 hover:border-white/[0.12] hover:shadow-[0_0_20px_-8px_rgba(139,92,246,0.1)]",
         className
       )}
     >

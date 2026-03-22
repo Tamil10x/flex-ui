@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface Step {
@@ -16,10 +16,11 @@ interface StepperProps {
 }
 
 export function Stepper({ steps, currentStep, className }: StepperProps) {
+  const reducedMotion = useReducedMotion();
   return (
-    <div className={cn("flex items-start gap-0", className)}>
+    <div role="navigation" aria-label="Progress steps" className={cn("flex items-start gap-0", className)}>
       {steps.map((step, i) => (
-        <div key={step.label} className="flex flex-1 flex-col items-center">
+        <motion.div key={step.label} initial={reducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: reducedMotion ? 0 : 0.5, delay: reducedMotion ? 0 : i * 0.1 }} className="flex flex-1 flex-col items-center">
           <div className="flex w-full items-center">
             {i > 0 && (
               <div className="relative h-0.5 flex-1 bg-zinc-800">
@@ -32,6 +33,7 @@ export function Stepper({ steps, currentStep, className }: StepperProps) {
               </div>
             )}
             <motion.div
+              aria-label={`Step ${i + 1}: ${step.label}${i < currentStep ? " (completed)" : i === currentStep ? " (current)" : ""}`}
               className={cn(
                 "relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-xs font-semibold transition-colors",
                 i < currentStep && "border-cyan-400 bg-cyan-400 text-black",
@@ -63,7 +65,7 @@ export function Stepper({ steps, currentStep, className }: StepperProps) {
               <p className="mt-0.5 text-[10px] text-zinc-500">{step.description}</p>
             )}
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );

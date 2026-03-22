@@ -43,7 +43,14 @@ export function DropdownMenu({ trigger, items, className }: DropdownMenuProps) {
 
   return (
     <div ref={ref} className="relative inline-flex" onKeyDown={onKey}>
-      <div onClick={() => { setOpen((v) => !v); setFocused(-1); }} tabIndex={0} className="inline-flex cursor-pointer">
+      <div
+        onClick={() => { setOpen((v) => !v); setFocused(-1); }}
+        tabIndex={0}
+        className="inline-flex cursor-pointer"
+        role="button"
+        aria-haspopup="menu"
+        aria-expanded={open}
+      >
         {trigger}
       </div>
       <AnimatePresence>
@@ -53,6 +60,7 @@ export function DropdownMenu({ trigger, items, className }: DropdownMenuProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -4 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            role="menu"
             className={cn(
               "absolute right-0 top-full z-50 mt-2 min-w-[180px] overflow-hidden rounded-lg border border-white/[0.06] bg-zinc-950 py-1 shadow-xl",
               className
@@ -61,6 +69,7 @@ export function DropdownMenu({ trigger, items, className }: DropdownMenuProps) {
             {items.map((item, i) => (
               <button
                 key={i}
+                role="menuitem"
                 onClick={() => { item.onClick?.(); setOpen(false); }}
                 onMouseEnter={() => setFocused(i)}
                 className={cn(

@@ -21,7 +21,9 @@ export function PricingToggle({ isYearly, onChange, className }: PricingTogglePr
       <button
         onClick={() => onChange(!isYearly)}
         className="relative h-7 w-12 rounded-full border border-white/[0.08] bg-zinc-900 p-0.5 transition-colors"
-        aria-label="Toggle pricing"
+        role="switch"
+        aria-checked={isYearly}
+        aria-label="Toggle pricing between monthly and yearly"
       >
         <motion.div
           className="h-6 w-6 rounded-full bg-cyan-400"

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface AvatarProps {
@@ -30,7 +31,9 @@ function hashColor(name: string) {
 
 export function Avatar({ src, name, size = "md", className }: AvatarProps) {
   return (
-    <div
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
       className={cn(
         "relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/[0.06] font-medium text-white",
         sizes[size],
@@ -43,6 +46,6 @@ export function Avatar({ src, name, size = "md", className }: AvatarProps) {
       ) : (
         <span>{getInitials(name)}</span>
       )}
-    </div>
+    </motion.div>
   );
 }

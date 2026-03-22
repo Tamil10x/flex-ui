@@ -35,15 +35,30 @@ export function Popover({ trigger, children, side = "bottom", className }: Popov
       if (triggerRef.current?.contains(e.target as Node)) return;
       setOpen(false);
     };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
     document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, [open]);
 
   const translate = { bottom: "-translate-x-1/2", top: "-translate-x-1/2 -translate-y-full", left: "-translate-x-full -translate-y-1/2", right: "-translate-y-1/2" };
 
   return (
     <>
-      <div ref={triggerRef} onClick={() => setOpen((v) => !v)} className="inline-flex">
+      <div
+        ref={triggerRef}
+        onClick={() => setOpen((v) => !v)}
+        className="inline-flex"
+        role="button"
+        tabIndex={0}
+        aria-haspopup="dialog"
+        aria-expanded={open}
+      >
         {trigger}
       </div>
       {typeof window !== "undefined" &&
@@ -56,6 +71,7 @@ export function Popover({ trigger, children, side = "bottom", className }: Popov
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 style={{ position: "fixed", top: pos.top, left: pos.left }}
+                role="dialog"
                 className={cn("z-50 rounded-lg border border-white/[0.06] bg-zinc-950 p-4 text-sm text-white shadow-xl", translate[side], className)}
               >
                 {children}

@@ -26,6 +26,8 @@ export function ScrollProgress({
 
   return (
     <motion.div
+      role="progressbar"
+      aria-label="Page scroll progress"
       className={cn("fixed left-0 right-0 z-50 origin-left", className)}
       style={{
         scaleX,

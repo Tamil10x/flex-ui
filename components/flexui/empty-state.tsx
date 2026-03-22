@@ -15,8 +15,9 @@ interface EmptyStateProps {
 export function EmptyState({ icon, title, description, action, className }: EmptyStateProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
       transition={{ type: "spring", stiffness: 200, damping: 25 }}
       className={cn(
         "flex flex-col items-center justify-center rounded-xl border border-dashed border-white/[0.08] bg-zinc-950/80 px-8 py-12 text-center backdrop-blur-xl",
