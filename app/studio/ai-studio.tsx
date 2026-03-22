@@ -21,7 +21,9 @@ import {
   Package,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { generateComponent, analyzeURL, checkAPI, type GenerateResult, type AnalyzeResult } from "@/lib/studio-api";
 import { SyntaxHighlight } from "@/components/ui/syntax-highlight";
+import { LiveCodePreview } from "@/components/studio/live-preview";
 import { ShimmerButton } from "@/components/flexui/shimmer-button";
 import { GlowButton } from "@/components/flexui/glow-button";
 import { GradientText } from "@/components/flexui/gradient-text";
@@ -32,6 +34,9 @@ import { NumberTicker } from "@/components/flexui/number-ticker";
 import { RotatingText } from "@/components/flexui/rotating-text";
 import { MorphingBlob } from "@/components/flexui/morphing-blob";
 import { HandwrittenAnnotation } from "@/components/flexui/handwritten-annotation";
+import { AmbientTilt } from "@/components/flexui/ambient-tilt";
+import { GlitchTransition } from "@/components/flexui/glitch-transition";
+import { DisintegrationEffect } from "@/components/flexui/disintegration-effect";
 
 // ── Tabs ────────────────────────────────────────────────────────────────────
 type StudioTab = "generate" | "analyze" | "theme" | "customize";
@@ -51,6 +56,7 @@ interface ComponentEntry {
   badgeColor: string;
   docSlug: string;
   preview?: React.ReactNode;
+  imports?: string[];
 }
 
 const componentMap: Record<string, ComponentEntry> = {
@@ -421,6 +427,18 @@ const aliasMap: Record<string, string> = {
   highlight: "annotation",
 };
 
+function _badgeColor(badge: string): string {
+  const colors: Record<string, string> = {
+    Button: "bg-violet-500/15 text-violet-400",
+    Card: "bg-cyan-500/15 text-cyan-400",
+    Text: "bg-amber-500/15 text-amber-400",
+    Background: "bg-emerald-500/15 text-emerald-400",
+    Effect: "bg-rose-500/15 text-rose-400",
+    Layout: "bg-blue-500/15 text-blue-400",
+  };
+  return colors[badge] || "bg-zinc-500/15 text-zinc-400";
+}
+
 function getResponse(prompt: string): ComponentEntry {
   const lower = prompt.toLowerCase();
   for (const [key, val] of Object.entries(componentMap)) {
@@ -665,14 +683,30 @@ function GenerateTab() {
   const [copied, setCopied] = useState(false);
   const [category, setCategory] = useState<GenerateCategory>("All");
 
+  const [apiError, setApiError] = useState<string | null>(null);
+
   const handleGenerate = useCallback(() => {
     if (!prompt.trim() || generating) return;
     setGenerating(true);
     setResult(null);
-    setTimeout(() => {
-      setResult(getResponse(prompt));
-      setGenerating(false);
-    }, 1800);
+    setApiError(null);
+
+    // Real API call — no mock fallback
+    generateComponent(prompt, category !== "All" ? category : undefined)
+      .then((res) => {
+        setResult({
+          name: res.name,
+          code: res.code,
+          badge: res.badge,
+          badgeColor: res.badge_color || _badgeColor(res.badge),
+          docSlug: res.doc_slug,
+          imports: res.imports || [],
+        });
+      })
+      .catch((err) => {
+        setApiError(err.message || "Failed to generate. Is the backend running?");
+      })
+      .finally(() => setGenerating(false));
   }, [prompt, generating]);
 
   const handleCopy = () => {
@@ -686,6 +720,8 @@ function GenerateTab() {
 
   const usedImports = useMemo(() => {
     if (!result) return [];
+    // Use imports from API response if available, otherwise extract from code
+    if (result.imports && result.imports.length > 0) return result.imports;
     return extractImports(result.code);
   }, [result]);
 
@@ -771,7 +807,7 @@ function GenerateTab() {
 
       {/* Right — Output */}
       <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6">
-        {!generating && !result && (
+        {!generating && !result && !apiError && (
           <div className="flex h-full min-h-[300px] flex-col items-center justify-center text-center">
             <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/[0.03] ring-1 ring-white/[0.06]">
               <Code2 className="h-6 w-6 text-zinc-700" />
@@ -782,13 +818,55 @@ function GenerateTab() {
         )}
 
         {generating && (
-          <div className="flex h-full min-h-[300px] flex-col items-center justify-center">
-            <div className="mb-4 flex gap-2">
-              <span className="h-3 w-3 animate-bounce rounded-full bg-violet-400 [animation-delay:0ms]" />
-              <span className="h-3 w-3 animate-bounce rounded-full bg-cyan-400 [animation-delay:150ms]" />
-              <span className="h-3 w-3 animate-bounce rounded-full bg-violet-400 [animation-delay:300ms]" />
+          <div className="min-h-[300px] space-y-4 p-4">
+            {/* Skeleton header */}
+            <div className="flex items-center gap-3">
+              <div className="h-5 w-5 rounded-md bg-violet-500/20 animate-pulse" />
+              <div className="h-4 w-32 rounded-md bg-white/[0.06] animate-pulse" />
+              <div className="h-4 w-16 rounded-full bg-white/[0.04] animate-pulse" />
             </div>
-            <p className="text-sm text-zinc-500">Generating your component...</p>
+            {/* Skeleton tabs */}
+            <div className="flex gap-2">
+              <div className="h-8 w-20 rounded-md bg-white/[0.06] animate-pulse" />
+              <div className="h-8 w-16 rounded-md bg-white/[0.04] animate-pulse" />
+            </div>
+            {/* Skeleton preview area */}
+            <div className="rounded-xl border border-white/[0.04] bg-white/[0.02] p-8">
+              <div className="flex flex-col items-center gap-4">
+                <div className="h-16 w-16 rounded-2xl bg-white/[0.04] animate-pulse" />
+                <div className="h-4 w-40 rounded-md bg-white/[0.06] animate-pulse" />
+                <div className="h-3 w-56 rounded-md bg-white/[0.04] animate-pulse" />
+                <div className="mt-2 flex gap-2">
+                  <div className="h-8 w-24 rounded-lg bg-violet-500/10 animate-pulse" />
+                  <div className="h-8 w-20 rounded-lg bg-white/[0.04] animate-pulse" />
+                </div>
+              </div>
+            </div>
+            {/* Loading text */}
+            <div className="flex items-center justify-center gap-2 pt-2">
+              <div className="flex gap-1">
+                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-violet-400 [animation-delay:0ms]" />
+                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-cyan-400 [animation-delay:150ms]" />
+                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-violet-400 [animation-delay:300ms]" />
+              </div>
+              <p className="text-xs text-zinc-500">AI is generating your component...</p>
+            </div>
+          </div>
+        )}
+
+        {apiError && !generating && (
+          <div className="flex h-full min-h-[300px] flex-col items-center justify-center text-center">
+            <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-500/10 ring-1 ring-red-500/20">
+              <span className="text-xl">⚠</span>
+            </div>
+            <p className="text-sm font-medium text-red-400">Generation Failed</p>
+            <p className="mt-2 max-w-xs text-xs text-zinc-500">{apiError}</p>
+            <button
+              onClick={() => setApiError(null)}
+              className="mt-4 rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-2 text-xs text-zinc-400 hover:bg-white/[0.06] hover:text-white"
+            >
+              Try Again
+            </button>
           </div>
         )}
 
@@ -796,6 +874,222 @@ function GenerateTab() {
           <GenerateOutput result={result} copied={copied} onCopy={handleCopy} usedImports={usedImports} />
         )}
       </div>
+    </div>
+  );
+}
+
+// ── Live preview map — renders actual components by name ─────────────────────
+const previewMap: Record<string, React.ReactNode> = {
+  ShimmerButton: <ShimmerButton className="px-8 py-3 text-white font-semibold">Get Started</ShimmerButton>,
+  GlowButton: <GlowButton className="px-8 py-3 font-semibold">Get Started</GlowButton>,
+  MagneticButton: <ShimmerButton className="px-8 py-3 text-white font-semibold">Hover Me</ShimmerButton>,
+  SpotlightCard: <SpotlightCard className="max-w-xs p-6"><h3 className="text-lg font-bold text-white mb-1">Pro Plan</h3><p className="text-zinc-400 text-sm mb-3">Everything you need.</p><span className="text-2xl font-bold text-white">$49</span><span className="text-zinc-500">/mo</span></SpotlightCard>,
+  NeonGlowCard: <NeonGlowCard color="#8B5CF6" intensity={1.2} pulse><div className="p-6"><h3 className="text-lg font-bold text-white">Neon Card</h3><p className="mt-1 text-sm text-zinc-400">Glowing border effect.</p></div></NeonGlowCard>,
+  GradientText: <GradientText className="text-4xl font-bold" animate>Beautiful Typography</GradientText>,
+  TextReveal: <span className="text-2xl font-bold text-white">Build Something Amazing ✨</span>,
+  TypewriterText: <TypewriterText words={["Fast", "Beautiful", "Cinematic", "Powerful"]} typingSpeed={60} className="text-2xl font-medium text-white" />,
+  FlipWords: <span className="text-2xl font-bold text-white">We build <span className="text-violet-400">amazing</span> things</span>,
+  NumberTicker: <div className="flex items-center gap-2"><NumberTicker value={10000} className="text-4xl font-bold text-white" /><span className="text-lg text-zinc-400">+ users</span></div>,
+  RotatingText: <span className="text-2xl font-bold text-white">Build <RotatingText words={["Cinematic", "Beautiful", "Stunning"]} duration={2000} className="text-violet-400" /> UI</span>,
+  ChromaticText: <span className="text-3xl font-bold text-white">Chromatic Effect</span>,
+  MorphingBlob: <MorphingBlob size={150} color="#8B5CF6" accentColor="#389CFD" speed={4} />,
+  HandwrittenAnnotation: <HandwrittenAnnotation type="circle" color="#EF4444"><span className="text-xl font-bold text-white px-4 py-2">Important!</span></HandwrittenAnnotation>,
+  ConfettiButton: <ShimmerButton className="px-8 py-3 text-white font-semibold">Celebrate! 🎉</ShimmerButton>,
+  LiquidButton: <GlowButton glowColor="rgba(139,92,246,0.5)" className="px-8 py-3 font-semibold">Liquid Effect</GlowButton>,
+  HolographicCard: <SpotlightCard className="max-w-xs p-6"><h3 className="text-lg font-bold text-white">Holographic</h3><p className="text-sm text-zinc-400">Rainbow foil effect</p></SpotlightCard>,
+  PricingCard: <NeonGlowCard color="#389CFD" intensity={1}><div className="p-6"><h3 className="text-lg font-bold text-white">Pro</h3><p className="text-3xl font-bold text-white mt-2">$49<span className="text-sm text-zinc-500">/mo</span></p></div></NeonGlowCard>,
+  DisintegrationEffect: <div className="rounded-xl border border-rose-500/20 bg-rose-500/5 p-6 text-center"><p className="text-lg font-bold text-white mb-2">Thanos Snap Effect</p><p className="text-sm text-zinc-400">Click to dissolve into particles</p><div className="mt-3 flex justify-center gap-1">{[0,1,2,3,4].map(i=><span key={i} className="inline-block h-2 w-2 rounded-full bg-rose-400 animate-ping" style={{animationDelay:`${i*100}ms`,animationDuration:"1.5s"}}/>)}</div></div>,
+  GlitchTransition: <GlitchTransition trigger="always" intensity={0.3}><div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-6 text-center"><p className="text-lg font-bold text-white">Glitch Effect</p><p className="text-sm text-zinc-400 mt-1">RGB split + scanlines</p></div></GlitchTransition>,
+  AmbientTilt: <AmbientTilt maxAngle={12}><div className="rounded-xl border border-violet-500/20 bg-violet-500/5 p-6 text-center"><p className="text-lg font-bold text-white">3D Tilt</p><p className="text-sm text-zinc-400 mt-1">Move cursor to tilt</p></div></AmbientTilt>,
+  PortalTransition: <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-6 text-center"><p className="text-lg font-bold text-white">Portal Reveal</p><p className="text-sm text-zinc-400 mt-1">Wormhole circle transition</p><div className="mt-3 mx-auto h-12 w-12 rounded-full border-2 border-blue-400 animate-ping opacity-30"/></div>,
+  ShaderBlob: <MorphingBlob size={120} color="#8B5CF6" accentColor="#EC4899" speed={3} />,
+  FloatingNavbar: <div className="w-full max-w-sm mx-auto rounded-full border border-white/10 bg-zinc-900/80 backdrop-blur-xl px-6 py-2.5 flex items-center justify-between"><span className="text-sm font-bold text-white">FlexUI</span><div className="flex gap-4 text-xs text-zinc-400"><span>Docs</span><span>Components</span></div></div>,
+  AnimatedTabs: <div className="w-full max-w-xs mx-auto"><div className="flex rounded-lg bg-white/[0.04] p-1 gap-1">{["Preview","Code","API"].map((t,i)=><div key={t} className={`flex-1 rounded-md px-3 py-1.5 text-xs font-medium text-center ${i===0?"bg-white/[0.08] text-white":"text-zinc-500"}`}>{t}</div>)}</div></div>,
+  Toast: <div className="w-full max-w-xs mx-auto rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4 flex items-start gap-3"><div className="mt-0.5 h-5 w-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs">✓</div><div><p className="text-sm font-medium text-white">Success!</p><p className="text-xs text-zinc-400 mt-0.5">Component generated.</p></div></div>,
+  TypewriterTerminal: <div className="w-full max-w-sm mx-auto rounded-xl border border-white/[0.06] bg-zinc-950 overflow-hidden"><div className="flex items-center gap-1.5 px-3 py-2 bg-white/[0.02]"><div className="h-2.5 w-2.5 rounded-full bg-red-500/60"/><div className="h-2.5 w-2.5 rounded-full bg-yellow-500/60"/><div className="h-2.5 w-2.5 rounded-full bg-green-500/60"/></div><div className="px-4 py-3 font-mono text-xs text-green-400"><span className="text-zinc-500">$</span> npx flexui init<span className="animate-pulse">▊</span></div></div>,
+  DataOrbit: <div className="relative h-32 w-32 mx-auto"><div className="absolute inset-0 rounded-full border border-violet-500/20 animate-spin" style={{animationDuration:"8s"}}/><div className="absolute inset-3 rounded-full border border-cyan-500/20 animate-spin" style={{animationDuration:"6s",animationDirection:"reverse"}}/><div className="absolute inset-0 flex items-center justify-center"><div className="h-8 w-8 rounded-full bg-violet-500/20 border border-violet-500/30"/></div></div>,
+  ExpandableCard: <div className="max-w-xs mx-auto rounded-xl border border-white/[0.08] bg-zinc-950/80 p-5"><div className="flex items-center justify-between"><h3 className="text-sm font-bold text-white">Meeting Details</h3><span className="text-xs text-violet-400">▼ Click to expand</span></div><p className="mt-2 text-xs text-zinc-500">1:30 PM — Design Sync</p></div>,
+  SparklineChart: <div className="max-w-xs mx-auto p-4"><p className="text-xs text-zinc-500 mb-2">Revenue</p><div className="flex items-end gap-0.5 h-12">{[30,45,35,60,50,70,65,80,75,90].map((h,i)=><div key={i} className="flex-1 rounded-t bg-gradient-to-t from-violet-500 to-cyan-400" style={{height:`${h}%`}}/>)}</div><p className="mt-2 text-lg font-bold text-white">$12,847</p></div>,
+  KPICard: <NeonGlowCard color="#389CFD" intensity={0.8}><div className="p-5"><p className="text-xs text-zinc-500">Revenue</p><p className="text-2xl font-bold text-white mt-1">$12,847</p><div className="mt-2 flex items-center gap-1 text-xs text-emerald-400"><span>↑ 12.5%</span></div></div></NeonGlowCard>,
+  ExpandableTrigger: <div className="max-w-xs mx-auto rounded-xl border border-white/[0.08] bg-zinc-950/80 p-5"><h3 className="text-sm font-bold text-white">Click to expand</h3></div>,
+  Marquee: <div className="overflow-hidden"><div className="flex gap-4 animate-marquee"><span className="whitespace-nowrap text-sm text-zinc-400">FlexUI • Cinematic Components • 90+ Ready</span><span className="whitespace-nowrap text-sm text-zinc-400">FlexUI • Cinematic Components • 90+ Ready</span></div></div>,
+  DockMenu: <div className="flex items-end justify-center gap-2 py-3 px-4 rounded-2xl bg-zinc-900/80 border border-white/[0.06] mx-auto w-fit">{["🏠","🔍","📧","📅","⚙️","🎵"].map((e,i)=><div key={i} className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.06] text-lg hover:scale-125 transition-transform cursor-pointer">{e}</div>)}</div>,
+  SearchSpotlight: <div className="max-w-sm mx-auto rounded-xl border border-white/[0.08] bg-zinc-950/90 p-4 backdrop-blur-xl"><div className="flex items-center gap-2 mb-3 px-2 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.06]"><span className="text-zinc-600 text-xs">🔍</span><span className="text-xs text-zinc-500">Search components...</span><span className="text-[10px] text-zinc-700 ml-auto">⌘K</span></div></div>,
+  Drawer: <div className="max-w-xs mx-auto rounded-t-2xl border border-white/[0.08] bg-zinc-950/90 p-5"><div className="mx-auto mb-3 h-1 w-8 rounded-full bg-zinc-700"/><h3 className="text-sm font-bold text-white">Drawer Content</h3><p className="mt-1 text-xs text-zinc-500">Slides up from bottom</p></div>,
+  AuroraBackground: <div className="w-full h-40 rounded-xl overflow-hidden relative bg-[#060612]"><div className="absolute inset-0 opacity-40" style={{background:"linear-gradient(120deg, transparent 30%, rgba(139,92,246,0.3) 50%, transparent 70%)"}}><div className="absolute inset-0" style={{background:"linear-gradient(200deg, transparent 40%, rgba(56,189,248,0.2) 55%, transparent 70%)",animation:"aurora-shift 8s ease-in-out infinite alternate"}}/></div><div className="relative z-10 flex items-center justify-center h-full"><p className="text-sm font-bold text-white">Aurora Background</p></div></div>,
+  ParticleField: <div className="w-full h-40 rounded-xl relative bg-[#060612] overflow-hidden"><div className="absolute inset-0">{[...Array(20)].map((_,i)=><div key={i} className="absolute rounded-full bg-violet-400 animate-pulse" style={{left:`${(i*17+5)%100}%`,top:`${(i*23+10)%100}%`,width:`${2+i%3}px`,height:`${2+i%3}px`,opacity:0.3+((i%5)*0.1),animationDelay:`${i*200}ms`}}/>)}</div><div className="relative z-10 flex items-center justify-center h-full"><p className="text-sm font-bold text-white">Particle Field</p></div></div>,
+  StarsBackground: <div className="w-full h-40 rounded-xl relative bg-[#060612] overflow-hidden"><div className="absolute inset-0">{[...Array(30)].map((_,i)=><div key={i} className="absolute rounded-full bg-white animate-pulse" style={{left:`${(i*13+7)%100}%`,top:`${(i*19+3)%100}%`,width:`${1+i%2}px`,height:`${1+i%2}px`,opacity:0.2+((i%4)*0.15),animationDelay:`${i*150}ms`,animationDuration:`${1.5+i%3}s`}}/>)}</div><div className="relative z-10 flex items-center justify-center h-full"><p className="text-sm font-bold text-white">Stars Background ✨</p></div></div>,
+  RetroGrid: <div className="w-full h-40 rounded-xl relative bg-[#060612] overflow-hidden"><div className="absolute inset-0" style={{perspective:"200px"}}><div className="absolute inset-0 origin-bottom" style={{transform:"rotateX(60deg)",backgroundImage:"repeating-linear-gradient(rgba(139,92,246,0.15) 0px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, rgba(139,92,246,0.15) 0px, transparent 1px, transparent 40px)",backgroundSize:"40px 40px"}}/></div><div className="relative z-10 flex items-end justify-center h-full pb-4"><p className="text-sm font-bold text-violet-300">Retro Grid</p></div></div>,
+  NeuralNetwork: <div className="w-full h-40 rounded-xl relative bg-[#060612] overflow-hidden"><svg className="absolute inset-0 w-full h-full"><line x1="20%" y1="30%" x2="50%" y2="60%" stroke="rgba(139,92,246,0.2)" strokeWidth="1"/><line x1="50%" y1="60%" x2="80%" y2="25%" stroke="rgba(56,189,248,0.2)" strokeWidth="1"/><line x1="30%" y1="70%" x2="70%" y2="40%" stroke="rgba(139,92,246,0.15)" strokeWidth="1"/><line x1="15%" y1="50%" x2="45%" y2="20%" stroke="rgba(56,189,248,0.15)" strokeWidth="1"/>{[{x:"20%",y:"30%"},{x:"50%",y:"60%"},{x:"80%",y:"25%"},{x:"30%",y:"70%"},{x:"70%",y:"40%"},{x:"15%",y:"50%"},{x:"45%",y:"20%"},{x:"85%",y:"65%"}].map((p,i)=><circle key={i} cx={p.x} cy={p.y} r="4" fill={i%2===0?"rgba(139,92,246,0.6)":"rgba(56,189,248,0.6)"} className="animate-pulse" style={{animationDelay:`${i*300}ms`}}/>)}</svg><div className="relative z-10 flex items-center justify-center h-full"><p className="text-sm font-bold text-white">Neural Network</p></div></div>,
+  FlickeringGrid: <div className="w-full h-40 rounded-xl relative bg-[#060612] overflow-hidden"><div className="absolute inset-0 grid grid-cols-12 grid-rows-6 gap-[2px] p-2">{[...Array(72)].map((_,i)=><div key={i} className="rounded-sm animate-pulse" style={{backgroundColor:`rgba(139,92,246,${0.05+((i*7)%10)*0.03})`,animationDelay:`${(i*137)%3000}ms`,animationDuration:`${1+(i%4)*0.5}s`}}/>)}</div><div className="relative z-10 flex items-center justify-center h-full"><p className="text-sm font-bold text-white">Flickering Grid</p></div></div>,
+  GridPattern: <div className="w-full h-40 rounded-xl relative bg-[#060612] overflow-hidden"><div className="absolute inset-0 opacity-[0.06]" style={{backgroundImage:"linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",backgroundSize:"30px 30px"}}/><div className="relative z-10 flex items-center justify-center h-full"><p className="text-sm font-bold text-white">Grid Pattern</p></div></div>,
+  DotPattern: <div className="w-full h-40 rounded-xl relative bg-[#060612] overflow-hidden"><div className="absolute inset-0 opacity-[0.15]" style={{backgroundImage:"radial-gradient(circle, rgba(139,92,246,0.8) 1px, transparent 1px)",backgroundSize:"20px 20px"}}/><div className="relative z-10 flex items-center justify-center h-full"><p className="text-sm font-bold text-white">Dot Pattern</p></div></div>,
+  BeamsBackground: <div className="w-full h-40 rounded-xl relative bg-[#060612] overflow-hidden">{[30,60,100,140].map((deg,i)=><div key={i} className="absolute inset-0" style={{background:`linear-gradient(${deg}deg, transparent 45%, rgba(56,189,248,0.04) 50%, transparent 55%)`,animation:`beam-sweep ${8+i*2}s linear infinite`,animationDelay:`${i*1.5}s`}}/>)}<div className="relative z-10 flex items-center justify-center h-full"><p className="text-sm font-bold text-white">Beams Background</p></div></div>,
+  MeshGradient: <div className="w-full h-40 rounded-xl relative bg-[#060612] overflow-hidden"><div className="absolute left-[20%] top-[20%] h-24 w-24 rounded-full bg-violet-500/20 blur-[40px]"/><div className="absolute right-[20%] bottom-[20%] h-20 w-20 rounded-full bg-cyan-500/15 blur-[40px]"/><div className="absolute left-[50%] top-[50%] h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-pink-500/10 blur-[30px]"/><div className="relative z-10 flex items-center justify-center h-full"><p className="text-sm font-bold text-white">Mesh Gradient</p></div></div>,
+  WavyBackground: <div className="w-full h-40 rounded-xl relative bg-[#060612] overflow-hidden"><svg className="absolute bottom-0 w-full h-24 opacity-20" viewBox="0 0 400 100" preserveAspectRatio="none"><path d="M0,50 C100,80 200,20 300,50 C350,65 400,40 400,50 L400,100 L0,100 Z" fill="rgba(139,92,246,0.3)"/><path d="M0,60 C80,40 160,80 240,50 C320,30 400,60 400,60 L400,100 L0,100 Z" fill="rgba(56,189,248,0.2)"/></svg><div className="relative z-10 flex items-center justify-center h-full"><p className="text-sm font-bold text-white">Wavy Background</p></div></div>,
+};
+
+// ── Extract props from AI code to build dynamic previews ─────────────────────
+function extractPropValue(code: string, comp: string, prop: string): string | undefined {
+  // Match: <Component prop="value" or prop={value} or prop='value'
+  const patterns = [
+    new RegExp(`<${comp}[^>]*?${prop}=["']([^"']+)["']`, "s"),
+    new RegExp(`<${comp}[^>]*?${prop}=\\{["']([^"']+)["']\\}`, "s"),
+    new RegExp(`<${comp}[^>]*?${prop}=\\{([^}]+)\\}`, "s"),
+  ];
+  for (const p of patterns) {
+    const m = code.match(p);
+    if (m) return m[1];
+  }
+  return undefined;
+}
+
+function extractWords(code: string, comp: string): string[] {
+  const m = code.match(new RegExp(`<${comp}[^>]*?words=\\{\\[([^\\]]+)\\]\\}`, "s"));
+  if (m) {
+    return m[1].replace(/['"]/g, "").split(",").map(s => s.trim()).filter(Boolean);
+  }
+  return [];
+}
+
+function extractChildren(code: string, comp: string): string {
+  // Try children="text" prop first
+  const m = code.match(new RegExp(`<${comp}[^]*?children=["']([^"']+)["']`, "s"));
+  if (m) return m[1];
+
+  // Try children={'text'} prop
+  const m1b = code.match(new RegExp(`<${comp}[^]*?children=\\{["']([^"']+)["']\\}`, "s"));
+  if (m1b) return m1b[1];
+
+  // Try text between closing > and </Component>
+  // Find the closing tag first, then work backwards to find the content
+  const closeTag = `</${comp}>`;
+  const closeIdx = code.indexOf(closeTag);
+  if (closeIdx === -1) return "";
+
+  // Find the last > before the close tag (this is where the opening tag ends)
+  const beforeClose = code.substring(0, closeIdx);
+  const lastGt = beforeClose.lastIndexOf(">");
+  if (lastGt === -1) return "";
+
+  const content = beforeClose.substring(lastGt + 1).trim();
+  // Clean up — remove any nested JSX tags, keep only text
+  const textOnly = content.replace(/<[^>]*>/g, "").trim();
+  if (textOnly && textOnly.length < 100) return textOnly;
+
+  return "";
+}
+
+function getPreviewForResult(result: ComponentEntry): React.ReactNode {
+  if (result.preview) return result.preview;
+
+  const code = result.code;
+  const imports = result.imports || [];
+  const seen = new Set<string>();
+  const matched: { name: string; node: React.ReactNode }[] = [];
+
+  // Build DYNAMIC previews from the actual AI code
+  for (const imp of imports) {
+    if (seen.has(imp)) continue;
+    seen.add(imp);
+
+    switch (imp) {
+      case "ShimmerButton": {
+        const label = extractChildren(code, "ShimmerButton") || extractPropValue(code, "ShimmerButton", "children") || "Get Started";
+        matched.push({ name: imp, node: <ShimmerButton className="px-8 py-3 text-white font-semibold">{label}</ShimmerButton> });
+        break;
+      }
+      case "GlowButton": {
+        const label = extractChildren(code, "GlowButton") || "Click Me";
+        const color = extractPropValue(code, "GlowButton", "glowColor");
+        matched.push({ name: imp, node: <GlowButton glowColor={color} className="px-8 py-3 font-semibold">{label}</GlowButton> });
+        break;
+      }
+      case "TypewriterText": {
+        const words = extractWords(code, "TypewriterText");
+        matched.push({ name: imp, node: <TypewriterText words={words.length > 0 ? words : ["Hello", "World"]} typingSpeed={60} className="text-2xl font-medium text-white" /> });
+        break;
+      }
+      case "GradientText": {
+        const text = extractChildren(code, "GradientText") || "Gradient Text";
+        matched.push({ name: imp, node: <GradientText className="text-3xl font-bold" animate>{text}</GradientText> });
+        break;
+      }
+      case "NumberTicker": {
+        const val = parseInt(extractPropValue(code, "NumberTicker", "value") || "1000");
+        const prefix = extractPropValue(code, "NumberTicker", "prefix") || "";
+        const suffix = extractPropValue(code, "NumberTicker", "suffix") || "";
+        matched.push({ name: imp, node: <div className="flex items-center gap-1"><span className="text-lg text-zinc-400">{prefix}</span><NumberTicker value={isNaN(val) ? 1000 : val} className="text-4xl font-bold text-white" /><span className="text-lg text-zinc-400">{suffix}</span></div> });
+        break;
+      }
+      case "RotatingText": {
+        const words = extractWords(code, "RotatingText");
+        matched.push({ name: imp, node: <span className="text-2xl font-bold text-white">Build <RotatingText words={words.length > 0 ? words : ["Cinematic", "Beautiful"]} duration={2000} className="text-violet-400" /> UI</span> });
+        break;
+      }
+      case "SpotlightCard": {
+        matched.push({ name: imp, node: previewMap.SpotlightCard });
+        break;
+      }
+      case "NeonGlowCard": {
+        const color = extractPropValue(code, "NeonGlowCard", "color") || "#8B5CF6";
+        matched.push({ name: imp, node: <NeonGlowCard color={color} intensity={1.2} pulse><div className="p-6"><h3 className="text-lg font-bold text-white">Neon Card</h3><p className="mt-1 text-sm text-zinc-400">Glowing border effect</p></div></NeonGlowCard> });
+        break;
+      }
+      case "GlitchTransition": {
+        matched.push({ name: imp, node: <GlitchTransition trigger="always" intensity={0.3}><div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-6 text-center"><p className="text-lg font-bold text-white">Glitch Effect</p></div></GlitchTransition> });
+        break;
+      }
+      case "AmbientTilt": {
+        matched.push({ name: imp, node: <AmbientTilt maxAngle={12}><div className="rounded-xl border border-violet-500/20 bg-violet-500/5 p-6 text-center"><p className="text-lg font-bold text-white">3D Tilt — Move cursor</p></div></AmbientTilt> });
+        break;
+      }
+      case "HandwrittenAnnotation": {
+        const text = extractChildren(code, "HandwrittenAnnotation") || "Annotated!";
+        matched.push({ name: imp, node: <HandwrittenAnnotation type="circle" color="#EF4444"><span className="text-xl font-bold text-white px-4 py-2">{text}</span></HandwrittenAnnotation> });
+        break;
+      }
+      case "MorphingBlob": {
+        const color = extractPropValue(code, "MorphingBlob", "color") || "#8B5CF6";
+        matched.push({ name: imp, node: <MorphingBlob size={120} color={color} accentColor="#389CFD" speed={4} /> });
+        break;
+      }
+      default: {
+        // Fall back to static previewMap
+        if (previewMap[imp]) {
+          matched.push({ name: imp, node: previewMap[imp] });
+        }
+        break;
+      }
+    }
+  }
+
+  // If no imports matched, try by name and code extraction
+  if (matched.length === 0) {
+    if (previewMap[result.name]) return previewMap[result.name];
+    const jsxMatch = result.code.match(/<(\w+)\s/g);
+    if (jsxMatch) {
+      for (const match of jsxMatch) {
+        const compName = match.replace(/</, "").replace(/\s/, "");
+        if (previewMap[compName] && !seen.has(compName)) {
+          matched.push({ name: compName, node: previewMap[compName] });
+          seen.add(compName);
+        }
+      }
+    }
+  }
+
+  if (matched.length === 0) return null;
+  if (matched.length === 1) return matched[0].node;
+
+  return (
+    <div className="w-full space-y-4 max-h-[400px] overflow-y-auto">
+      {matched.map(({ name, node }) => (
+        <div key={name}>
+          <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-zinc-600">{name}</p>
+          <div className="flex items-center justify-center">{node}</div>
+        </div>
+      ))}
     </div>
   );
 }
@@ -808,6 +1102,7 @@ function GenerateOutput({ result, copied, onCopy, usedImports }: {
   usedImports: string[];
 }) {
   const [viewTab, setViewTab] = useState<"preview" | "code">("preview");
+  const livePreview = getPreviewForResult(result);
 
   return (
     <div>
@@ -869,19 +1164,8 @@ function GenerateOutput({ result, copied, onCopy, usedImports }: {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="flex min-h-[280px] items-center justify-center rounded-xl border border-white/[0.04] bg-white/[0.02] p-8"
           >
-            {result.preview ? (
-              result.preview
-            ) : (
-              <div className="text-center">
-                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-violet-500/10 ring-1 ring-violet-500/20">
-                  <Sparkles className="h-5 w-5 text-violet-400" />
-                </div>
-                <p className="text-sm font-medium text-white">{result.name}</p>
-                <p className="mt-1 text-xs text-zinc-500">Switch to Code tab to see the source</p>
-              </div>
-            )}
+            <LiveCodePreview code={result.code} />
           </motion.div>
         ) : (
           <motion.div
@@ -919,14 +1203,29 @@ function AnalyzeTab() {
   const [analyzing, setAnalyzing] = useState(false);
   const [result, setResult] = useState<AnalysisResult | null>(null);
 
+  const [analyzeError, setAnalyzeError] = useState<string | null>(null);
+
   const handleAnalyze = () => {
     if (!url.trim() || analyzing) return;
     setAnalyzing(true);
     setResult(null);
-    setTimeout(() => {
-      setResult(mockAnalyze());
-      setAnalyzing(false);
-    }, 2500);
+    setAnalyzeError(null);
+
+    // Try real API first, fall back to mock
+    analyzeURL(url)
+      .then((res) => {
+        setResult({
+          colors: res.colors,
+          fonts: res.fonts,
+          components: res.components,
+          suggestions: res.suggestions,
+        });
+      })
+      .catch(() => {
+        // Fallback to mock
+        setResult(mockAnalyze());
+      })
+      .finally(() => setAnalyzing(false));
   };
 
   return (
