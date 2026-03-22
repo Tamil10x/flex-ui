@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "orbit-animation",
+  "type": "registry:ui",
+  "title": "Orbit Animation",
+  "description": "Orbiting dots around a center element with CSS rotation animation and configurable count and speed.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/orbit-animation.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface OrbitAnimationProps {\n  className?: string;\n  dotCount?: number;\n  speed?: number;\n  color?: string;\n}\n\nexport function OrbitAnimation({\n  className,\n  dotCount = 6,\n  speed = 8,\n  color = \"rgb(56,189,248)\",\n}: OrbitAnimationProps) {\n  return (\n    <div className={cn(\"relative flex items-center justify-center\", className)} style={{ width: 200, height: 200 }}>\n      <div className=\"h-3 w-3 rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.5)]\" />\n      {Array.from({ length: dotCount }).map((_, i) => {\n        const radius = 50 + i * 15;\n        const delay = -(speed / dotCount) * i;\n        const duration = speed + i * 2;\n        return (\n          <div\n            key={i}\n            className=\"absolute animate-[orbit-spin_linear_infinite]\"\n            style={{\n              width: radius * 2,\n              height: radius * 2,\n              animationDuration: `${duration}s`,\n              animationDelay: `${delay}s`,\n            }}\n          >\n            <div\n              className=\"absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full\"\n              style={{ backgroundColor: color, boxShadow: `0 0 8px ${color}` }}\n            />\n          </div>\n        );\n      })}\n      <style jsx>{`\n        @keyframes orbit-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }\n      `}</style>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/orbit-animation.tsx"
+    }
+  ]
+}

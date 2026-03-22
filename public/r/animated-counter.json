@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-counter",
+  "type": "registry:ui",
+  "title": "Animated Counter",
+  "description": "Counting animation with slot-machine digit flip where each digit slides independently.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/animated-counter.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface AnimatedCounterProps {\n  value: number;\n  className?: string;\n}\n\nfunction Digit({ digit, className }: { digit: string; className?: string }) {\n  return (\n    <span className={cn(\"relative inline-block h-[1em] w-[0.6em] overflow-hidden\", className)}>\n      <AnimatePresence mode=\"popLayout\">\n        <motion.span\n          key={digit}\n          initial={{ y: \"100%\", opacity: 0 }}\n          animate={{ y: \"0%\", opacity: 1 }}\n          exit={{ y: \"-100%\", opacity: 0 }}\n          transition={{ type: \"spring\", stiffness: 300, damping: 30 }}\n          className=\"absolute inset-0 flex items-center justify-center\"\n        >\n          {digit}\n        </motion.span>\n      </AnimatePresence>\n    </span>\n  );\n}\n\nexport function AnimatedCounter({ value, className }: AnimatedCounterProps) {\n  const digits = String(value).split(\"\");\n\n  return (\n    <span className={cn(\"inline-flex tabular-nums font-bold text-white\", className)}>\n      {digits.map((d, i) => (\n        <Digit key={`${i}-${digits.length}`} digit={d} />\n      ))}\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/animated-counter.tsx"
+    }
+  ]
+}

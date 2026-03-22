@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-group",
+  "type": "registry:ui",
+  "title": "Avatar Group",
+  "description": "Stacked overlapping avatars with configurable max count and overflow indicator.",
+  "dependencies": [],
+  "registryDependencies": [
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "components/flexui/avatar-group.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Avatar } from \"@/components/flexui/avatar\";\n\ninterface AvatarGroupItem {\n  src?: string;\n  name: string;\n}\n\ninterface AvatarGroupProps {\n  avatars: AvatarGroupItem[];\n  max?: number;\n  size?: \"sm\" | \"md\" | \"lg\";\n  className?: string;\n}\n\nexport function AvatarGroup({ avatars, max = 5, size = \"md\", className }: AvatarGroupProps) {\n  const visible = avatars.slice(0, max);\n  const overflow = avatars.length - max;\n\n  return (\n    <div className={cn(\"flex items-center -space-x-2\", className)}>\n      {visible.map((a, i) => (\n        <div key={i} className=\"ring-2 ring-zinc-950 rounded-full\">\n          <Avatar src={a.src} name={a.name} size={size} />\n        </div>\n      ))}\n      {overflow > 0 && (\n        <div\n          className={cn(\n            \"relative inline-flex shrink-0 items-center justify-center rounded-full border border-white/[0.06] bg-zinc-800 font-medium text-white/60 ring-2 ring-zinc-950\",\n            size === \"sm\" && \"h-8 w-8 text-xs\",\n            size === \"md\" && \"h-10 w-10 text-sm\",\n            size === \"lg\" && \"h-14 w-14 text-base\"\n          )}\n        >\n          +{overflow}\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/avatar-group.tsx"
+    }
+  ]
+}

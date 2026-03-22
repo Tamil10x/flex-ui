@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pulse-button",
+  "type": "registry:ui",
+  "title": "Pulse Button",
+  "description": "Button with radiating pulse rings using CSS keyframe animations with configurable color and count.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/pulse-button.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface PulseButtonProps {\n  children: React.ReactNode;\n  className?: string;\n  color?: string;\n  pulseCount?: number;\n  onClick?: () => void;\n}\n\nexport function PulseButton({\n  children,\n  className,\n  color = \"rgba(56,189,248,0.5)\",\n  pulseCount = 3,\n  onClick,\n}: PulseButtonProps) {\n  return (\n    <button\n      onClick={onClick}\n      className={cn(\n        \"relative inline-flex items-center justify-center px-8 py-3 text-sm font-semibold rounded-xl\",\n        \"bg-zinc-900 text-white border border-white/[0.08]\",\n        \"hover:scale-105 active:scale-95 transition-transform duration-200\",\n        className\n      )}\n    >\n      {Array.from({ length: pulseCount }).map((_, i) => (\n        <span\n          key={i}\n          className=\"absolute inset-0 rounded-xl animate-[pulse-ring_2s_ease-out_infinite]\"\n          style={{\n            border: `2px solid ${color}`,\n            animationDelay: `${i * 0.5}s`,\n            opacity: 0,\n          }}\n        />\n      ))}\n      <span className=\"relative z-10\">{children}</span>\n      <style jsx>{`\n        @keyframes pulse-ring {\n          0% { transform: scale(1); opacity: 0.6; }\n          100% { transform: scale(1.6); opacity: 0; }\n        }\n      `}</style>\n    </button>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/pulse-button.tsx"
+    }
+  ]
+}

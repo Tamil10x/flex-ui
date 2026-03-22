@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magnetic-card",
+  "type": "registry:ui",
+  "title": "Magnetic Card",
+  "description": "Card that slightly follows cursor with magnetic pull effect using spring-animated motion values.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/magnetic-card.tsx",
+      "content": "\"use client\";\n\nimport React, { useRef, useCallback } from \"react\";\nimport { motion, useMotionValue, useSpring } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface MagneticCardProps {\n  children: React.ReactNode;\n  className?: string;\n  strength?: number;\n}\n\nexport function MagneticCard({ children, className, strength = 30 }: MagneticCardProps) {\n  const ref = useRef<HTMLDivElement>(null);\n  const x = useMotionValue(0);\n  const y = useMotionValue(0);\n  const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.5 });\n  const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.5 });\n\n  const handleMouseMove = useCallback(\n    (e: React.MouseEvent) => {\n      if (!ref.current) return;\n      const rect = ref.current.getBoundingClientRect();\n      const dx = (e.clientX - rect.left - rect.width / 2) / rect.width;\n      const dy = (e.clientY - rect.top - rect.height / 2) / rect.height;\n      x.set(dx * strength);\n      y.set(dy * strength);\n    },\n    [x, y, strength]\n  );\n\n  const handleMouseLeave = useCallback(() => {\n    x.set(0);\n    y.set(0);\n  }, [x, y]);\n\n  return (\n    <motion.div\n      ref={ref}\n      onMouseMove={handleMouseMove}\n      onMouseLeave={handleMouseLeave}\n      style={{ x: springX, y: springY }}\n      className={cn(\n        \"rounded-2xl border border-white/[0.08] bg-zinc-950/80 p-6 backdrop-blur-xl\",\n        className\n      )}\n    >\n      {children}\n    </motion.div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/magnetic-card.tsx"
+    }
+  ]
+}

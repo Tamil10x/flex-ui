@@ -32,6 +32,7 @@ export function AnimatedTabs({
     <div className={cn("w-full", className)}>
       {/* Tab bar */}
       <div
+        role="tablist"
         className={cn(
           "relative flex",
           variant === "underline" && "border-b border-white/[0.08] gap-1",
@@ -45,6 +46,9 @@ export function AnimatedTabs({
           return (
             <button
               key={tab.id}
+              role="tab"
+              aria-selected={isActive}
+              aria-controls={`tabpanel-${tab.id}`}
               onClick={() => setActiveTab(tab.id)}
               className={cn(
                 "relative z-10 px-4 py-2.5 text-sm font-medium transition-colors duration-200",
@@ -90,7 +94,12 @@ export function AnimatedTabs({
       </div>
 
       {/* Content area */}
-      <div className="relative mt-4 overflow-hidden">
+      <div
+        role="tabpanel"
+        id={`tabpanel-${activeTab}`}
+        aria-labelledby={activeTab}
+        className="relative mt-4 overflow-hidden"
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}

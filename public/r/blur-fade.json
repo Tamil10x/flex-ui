@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blur-fade",
+  "type": "registry:ui",
+  "title": "Blur Fade",
+  "description": "Wrapper that blurs and fades content in on scroll using useInView with configurable delay and duration.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/blur-fade.tsx",
+      "content": "\"use client\";\n\nimport React, { useRef } from \"react\";\nimport { motion, useInView } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface BlurFadeProps {\n  children: React.ReactNode;\n  className?: string;\n  delay?: number;\n  duration?: number;\n}\n\nexport function BlurFade({ children, className, delay = 0, duration = 0.6 }: BlurFadeProps) {\n  const ref = useRef<HTMLDivElement>(null);\n  const inView = useInView(ref, { once: true, margin: \"-50px\" });\n\n  return (\n    <motion.div\n      ref={ref}\n      initial={{ opacity: 0, filter: \"blur(12px)\", y: 16 }}\n      animate={inView ? { opacity: 1, filter: \"blur(0px)\", y: 0 } : undefined}\n      transition={{ duration, delay, ease: \"easeOut\" }}\n      className={cn(className)}\n    >\n      {children}\n    </motion.div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/blur-fade.tsx"
+    }
+  ]
+}

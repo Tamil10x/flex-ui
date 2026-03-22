@@ -4,6 +4,7 @@ import React, { useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 interface DrawerProps {
   open: boolean;
@@ -55,6 +56,8 @@ export function Drawer({
   side = "bottom",
   showOverlay = true,
 }: DrawerProps) {
+  const reducedMotion = useReducedMotion();
+
   // ESC to close
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -99,10 +102,13 @@ export function Drawer({
 
           {/* Drawer panel */}
           <motion.div
-            initial={variant.initial}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Drawer"
+            initial={reducedMotion ? variant.animate : variant.initial}
             animate={variant.animate}
-            exit={variant.exit}
-            transition={springTransition}
+            exit={reducedMotion ? variant.animate : variant.exit}
+            transition={reducedMotion ? { duration: 0 } : springTransition}
             className={cn(
               "absolute z-10 flex flex-col border-white/[0.08] bg-zinc-950/95 backdrop-blur-2xl",
               side === "bottom" && "border-t",

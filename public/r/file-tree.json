@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "file-tree",
+  "type": "registry:ui",
+  "title": "File Tree",
+  "description": "Animated expandable file tree with folder/file icons, indentation, and spring-animated expand/collapse.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/file-tree.tsx",
+      "content": "\"use client\";\n\nimport React, { useState } from \"react\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface FileTreeItem {\n  name: string;\n  type: \"file\" | \"folder\";\n  children?: FileTreeItem[];\n}\n\ninterface FileTreeProps {\n  items: FileTreeItem[];\n  className?: string;\n}\n\nfunction FileIcon() {\n  return (\n    <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" className=\"shrink-0 text-zinc-500\">\n      <path d=\"M4 1h5l4 4v9a1 1 0 01-1 1H4a1 1 0 01-1-1V2a1 1 0 011-1z\" stroke=\"currentColor\" strokeWidth=\"1.2\" />\n    </svg>\n  );\n}\n\nfunction FolderIcon({ open }: { open: boolean }) {\n  return (\n    <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" className=\"shrink-0 text-cyan-400\">\n      {open ? (\n        <path d=\"M2 4h4l1.5-2H14a1 1 0 011 1v9a1 1 0 01-1 1H2a1 1 0 01-1-1V5a1 1 0 011-1z\" stroke=\"currentColor\" strokeWidth=\"1.2\" />\n      ) : (\n        <path d=\"M2 3h4l1.5 2H14a1 1 0 011 1v7a1 1 0 01-1 1H2a1 1 0 01-1-1V4a1 1 0 011-1z\" stroke=\"currentColor\" strokeWidth=\"1.2\" />\n      )}\n    </svg>\n  );\n}\n\nfunction Node({ item, depth }: { item: FileTreeItem; depth: number }) {\n  const [open, setOpen] = useState(false);\n  const isFolder = item.type === \"folder\";\n\n  return (\n    <div>\n      <button\n        onClick={() => isFolder && setOpen((o) => !o)}\n        className={cn(\n          \"flex w-full items-center gap-2 rounded-md px-2 py-1 text-sm transition-colors hover:bg-white/[0.06]\",\n          isFolder ? \"text-zinc-200 cursor-pointer\" : \"text-zinc-400 cursor-default\"\n        )}\n        style={{ paddingLeft: `${depth * 16 + 8}px` }}\n      >\n        {isFolder ? <FolderIcon open={open} /> : <FileIcon />}\n        {item.name}\n      </button>\n      <AnimatePresence initial={false}>\n        {isFolder && open && item.children && (\n          <motion.div\n            initial={{ height: 0, opacity: 0 }}\n            animate={{ height: \"auto\", opacity: 1 }}\n            exit={{ height: 0, opacity: 0 }}\n            transition={{ type: \"spring\", stiffness: 300, damping: 30 }}\n            className=\"overflow-hidden\"\n          >\n            {item.children.map((child) => (\n              <Node key={child.name} item={child} depth={depth + 1} />\n            ))}\n          </motion.div>\n        )}\n      </AnimatePresence>\n    </div>\n  );\n}\n\nexport function FileTree({ items, className }: FileTreeProps) {\n  return (\n    <div\n      className={cn(\n        \"rounded-xl border border-white/[0.08] bg-zinc-950/80 p-3 backdrop-blur-xl\",\n        className\n      )}\n    >\n      {items.map((item) => (\n        <Node key={item.name} item={item} depth={0} />\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/file-tree.tsx"
+    }
+  ]
+}

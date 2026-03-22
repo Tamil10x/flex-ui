@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tilt-card",
+  "type": "registry:ui",
+  "title": "Tilt Card",
+  "description": "Simplified 3D tilt card using useMotionValue and useTransform with configurable max tilt and perspective.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/tilt-card.tsx",
+      "content": "\"use client\";\n\nimport React, { useRef, useCallback } from \"react\";\nimport { motion, useMotionValue, useTransform } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface TiltCardProps {\n  children: React.ReactNode;\n  className?: string;\n  maxTilt?: number;\n  perspective?: number;\n}\n\nexport function TiltCard({ children, className, maxTilt = 15, perspective = 1000 }: TiltCardProps) {\n  const ref = useRef<HTMLDivElement>(null);\n  const x = useMotionValue(0.5);\n  const y = useMotionValue(0.5);\n\n  const rotateX = useTransform(y, [0, 1], [maxTilt, -maxTilt]);\n  const rotateY = useTransform(x, [0, 1], [-maxTilt, maxTilt]);\n\n  const handleMouseMove = useCallback(\n    (e: React.MouseEvent) => {\n      if (!ref.current) return;\n      const rect = ref.current.getBoundingClientRect();\n      x.set((e.clientX - rect.left) / rect.width);\n      y.set((e.clientY - rect.top) / rect.height);\n    },\n    [x, y]\n  );\n\n  const handleMouseLeave = useCallback(() => {\n    x.set(0.5);\n    y.set(0.5);\n  }, [x, y]);\n\n  return (\n    <motion.div\n      ref={ref}\n      onMouseMove={handleMouseMove}\n      onMouseLeave={handleMouseLeave}\n      style={{ rotateX, rotateY, transformPerspective: perspective }}\n      transition={{ type: \"spring\", stiffness: 200, damping: 20 }}\n      className={cn(\n        \"rounded-2xl border border-white/[0.08] bg-zinc-950/80 p-6 backdrop-blur-xl\",\n        className\n      )}\n    >\n      {children}\n    </motion.div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/tilt-card.tsx"
+    }
+  ]
+}

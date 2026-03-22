@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "counter-up",
+  "type": "registry:ui",
+  "title": "Counter Up",
+  "description": "Animated counting number using requestAnimationFrame with eased progress on scroll into view.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/counter-up.tsx",
+      "content": "\"use client\";\n\nimport React, { useEffect, useRef, useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface CounterUpProps {\n  end: number;\n  duration?: number;\n  className?: string;\n}\n\nexport function CounterUp({ end, duration = 2000, className }: CounterUpProps) {\n  const [value, setValue] = useState(0);\n  const ref = useRef<HTMLSpanElement>(null);\n  const started = useRef(false);\n\n  useEffect(() => {\n    const el = ref.current;\n    if (!el) return;\n    const observer = new IntersectionObserver(\n      ([entry]) => {\n        if (entry.isIntersecting && !started.current) {\n          started.current = true;\n          const start = performance.now();\n          const step = (now: number) => {\n            const progress = Math.min((now - start) / duration, 1);\n            const eased = 1 - Math.pow(1 - progress, 3);\n            setValue(Math.round(eased * end));\n            if (progress < 1) requestAnimationFrame(step);\n          };\n          requestAnimationFrame(step);\n        }\n      },\n      { threshold: 0.3 }\n    );\n    observer.observe(el);\n    return () => observer.disconnect();\n  }, [end, duration]);\n\n  return (\n    <span ref={ref} className={cn(\"tabular-nums text-white font-bold\", className)}>\n      {value}\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/counter-up.tsx"
+    }
+  ]
+}

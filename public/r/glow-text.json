@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glow-text",
+  "type": "registry:ui",
+  "title": "Glow Text",
+  "description": "Text with animated glow/bloom effect using CSS text-shadow keyframe animation.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/glow-text.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface GlowTextProps {\n  children: React.ReactNode;\n  className?: string;\n  color?: string;\n}\n\nexport function GlowText({ children, className, color = \"rgb(56,189,248)\" }: GlowTextProps) {\n  return (\n    <span\n      className={cn(\"inline-block font-bold text-white animate-[glow-text_2s_ease-in-out_infinite_alternate]\", className)}\n      style={{\n        // @ts-expect-error CSS custom property\n        \"--glow-color\": color,\n      }}\n    >\n      {children}\n      <style jsx>{`\n        @keyframes glow-text {\n          0% { text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color); }\n          100% { text-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--glow-color), 0 0 60px var(--glow-color); }\n        }\n      `}</style>\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/glow-text.tsx"
+    }
+  ]
+}

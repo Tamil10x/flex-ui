@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spotlight-border",
+  "type": "registry:ui",
+  "title": "Spotlight Border",
+  "description": "Border wrapper with a cursor-following spotlight glow effect using spring-animated motion values.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/spotlight-border.tsx",
+      "content": "\"use client\";\n\nimport React, { useRef, useCallback } from \"react\";\nimport { motion, useMotionValue, useSpring, useTransform, type MotionValue } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface SpotlightBorderProps {\n  children: React.ReactNode;\n  className?: string;\n  color?: string;\n}\n\nexport function SpotlightBorder({ children, className, color = \"56,189,248\" }: SpotlightBorderProps) {\n  const ref = useRef<HTMLDivElement>(null);\n  const mouseX = useMotionValue(-500);\n  const mouseY = useMotionValue(-500);\n  const springX = useSpring(mouseX, { stiffness: 200, damping: 30 });\n  const springY = useSpring(mouseY, { stiffness: 200, damping: 30 });\n  const opacity = useMotionValue(0);\n  const springOpacity = useSpring(opacity, { stiffness: 200, damping: 25 });\n\n  const borderBg = useTransform(\n    [springX, springY] as MotionValue[],\n    ([x, y]: number[]) =>\n      `radial-gradient(300px circle at ${x}px ${y}px, rgba(${color},0.4), transparent 70%)`\n  );\n\n  const handleMouseMove = useCallback(\n    (e: React.MouseEvent) => {\n      if (!ref.current) return;\n      const rect = ref.current.getBoundingClientRect();\n      mouseX.set(e.clientX - rect.left);\n      mouseY.set(e.clientY - rect.top);\n    },\n    [mouseX, mouseY]\n  );\n\n  return (\n    <div\n      ref={ref}\n      onMouseMove={handleMouseMove}\n      onMouseEnter={() => opacity.set(1)}\n      onMouseLeave={() => opacity.set(0)}\n      className={cn(\"relative rounded-2xl p-px\", className)}\n    >\n      <motion.div\n        className=\"pointer-events-none absolute inset-0 rounded-2xl\"\n        style={{ background: borderBg, opacity: springOpacity }}\n      />\n      <div className=\"relative rounded-2xl bg-zinc-950 p-6\">{children}</div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/spotlight-border.tsx"
+    }
+  ]
+}

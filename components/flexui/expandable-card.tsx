@@ -18,6 +18,7 @@ import {
   type Transition,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 type ExpandDirection = "vertical" | "horizontal" | "both";
@@ -143,7 +144,7 @@ export function ExpandableTrigger({
   children,
   className,
 }: ExpandableTriggerProps) {
-  const { toggle } = useExpandable();
+  const { toggle, isExpanded } = useExpandable();
 
   return (
     <div
@@ -151,6 +152,7 @@ export function ExpandableTrigger({
       onClick={toggle}
       role="button"
       tabIndex={0}
+      aria-expanded={isExpanded}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -184,6 +186,7 @@ export function ExpandableCard({
   collapseDelay = 500,
 }: ExpandableCardProps) {
   const { isExpanded, toggle, expandDirection } = useExpandable();
+  const reducedMotion = useReducedMotion();
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -274,12 +277,16 @@ export function ExpandableCard({
         )}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
         animate={{ width, height }}
-        transition={{
-          type: "spring",
-          stiffness: 170,
-          damping: 26,
-          mass: 1,
-        }}
+        transition={
+          reducedMotion
+            ? { duration: 0 }
+            : {
+                type: "spring",
+                stiffness: 170,
+                damping: 26,
+                mass: 1,
+              }
+        }
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}

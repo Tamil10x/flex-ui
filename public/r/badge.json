@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "type": "registry:ui",
+  "title": "Badge",
+  "description": "Status badge/tag with five color variants (default, success, warning, error, info) and optional pulse dot.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/badge.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface BadgeProps {\n  children: React.ReactNode;\n  variant?: \"default\" | \"success\" | \"warning\" | \"error\" | \"info\";\n  className?: string;\n  pulse?: boolean;\n}\n\nconst variants: Record<string, string> = {\n  default: \"bg-white/[0.06] text-white/80 border-white/[0.06]\",\n  success: \"bg-emerald-500/10 text-emerald-400 border-emerald-500/20\",\n  warning: \"bg-amber-500/10 text-amber-400 border-amber-500/20\",\n  error: \"bg-red-500/10 text-red-400 border-red-500/20\",\n  info: \"bg-blue-500/10 text-blue-400 border-blue-500/20\",\n};\n\nexport function Badge({ children, variant = \"default\", className, pulse }: BadgeProps) {\n  return (\n    <span\n      className={cn(\n        \"inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium\",\n        variants[variant],\n        className\n      )}\n    >\n      {pulse && (\n        <span className=\"relative flex h-2 w-2\">\n          <span\n            className={cn(\n              \"absolute inline-flex h-full w-full animate-ping rounded-full opacity-75\",\n              variant === \"success\" && \"bg-emerald-400\",\n              variant === \"warning\" && \"bg-amber-400\",\n              variant === \"error\" && \"bg-red-400\",\n              variant === \"info\" && \"bg-blue-400\",\n              variant === \"default\" && \"bg-white/60\"\n            )}\n          />\n          <span\n            className={cn(\n              \"relative inline-flex h-2 w-2 rounded-full\",\n              variant === \"success\" && \"bg-emerald-400\",\n              variant === \"warning\" && \"bg-amber-400\",\n              variant === \"error\" && \"bg-red-400\",\n              variant === \"info\" && \"bg-blue-400\",\n              variant === \"default\" && \"bg-white/60\"\n            )}\n          />\n        </span>\n      )}\n      {children}\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/badge.tsx"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-inline",
+  "type": "registry:ui",
+  "title": "Code Inline",
+  "description": "Inline code snippet with monospace styling, subtle background, and border.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/code-inline.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface CodeInlineProps {\n  children: React.ReactNode;\n  className?: string;\n}\n\nexport function CodeInline({ children, className }: CodeInlineProps) {\n  return (\n    <code\n      className={cn(\n        \"rounded-md border border-white/[0.06] bg-white/[0.04] px-1.5 py-0.5 font-mono text-[13px] text-white/80\",\n        className\n      )}\n    >\n      {children}\n    </code>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/code-inline.tsx"
+    }
+  ]
+}

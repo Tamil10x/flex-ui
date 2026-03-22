@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 interface ShimmerButtonProps {
   children: React.ReactNode;
@@ -23,10 +24,12 @@ export function ShimmerButton({
   disabled = false,
   onClick,
 }: ShimmerButtonProps) {
+  const reducedMotion = useReducedMotion();
+
   return (
     <motion.button
-      whileHover={disabled ? undefined : { scale: 1.02 }}
-      whileTap={disabled ? undefined : { scale: 0.98 }}
+      whileHover={disabled || reducedMotion ? undefined : { scale: 1.02 }}
+      whileTap={disabled || reducedMotion ? undefined : { scale: 0.98 }}
       disabled={disabled}
       onClick={onClick}
       className={cn(
@@ -40,18 +43,20 @@ export function ShimmerButton({
       style={{ borderRadius }}
     >
       {/* Shimmer sweep */}
-      <div
-        className="absolute inset-0 overflow-hidden"
-        style={{ borderRadius }}
-      >
+      {!reducedMotion && (
         <div
-          className="absolute inset-0 animate-shimmer"
-          style={{
-            background: `linear-gradient(105deg, transparent 40%, ${shimmerColor}10 45%, ${shimmerColor}20 50%, ${shimmerColor}10 55%, transparent 60%)`,
-            backgroundSize: shimmerSize,
-          }}
-        />
-      </div>
+          className="absolute inset-0 overflow-hidden"
+          style={{ borderRadius }}
+        >
+          <div
+            className="absolute inset-0 animate-shimmer"
+            style={{
+              background: `linear-gradient(105deg, transparent 40%, ${shimmerColor}10 45%, ${shimmerColor}20 50%, ${shimmerColor}10 55%, transparent 60%)`,
+              backgroundSize: shimmerSize,
+            }}
+          />
+        </div>
+      )}
 
       {/* Content */}
       <span className="relative z-10">{children}</span>

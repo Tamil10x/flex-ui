@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "countdown",
+  "type": "registry:ui",
+  "title": "Countdown",
+  "description": "Animated countdown timer showing days, hours, minutes, and seconds with spring-animated digit transitions.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/countdown.tsx",
+      "content": "\"use client\";\n\nimport React, { useState, useEffect, useCallback } from \"react\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface CountdownProps {\n  targetDate: Date | string;\n  className?: string;\n  onComplete?: () => void;\n}\n\ninterface TimeLeft {\n  days: number;\n  hours: number;\n  minutes: number;\n  seconds: number;\n}\n\nfunction calcTimeLeft(target: Date): TimeLeft {\n  const diff = Math.max(0, target.getTime() - Date.now());\n  return {\n    days: Math.floor(diff / (1000 * 60 * 60 * 24)),\n    hours: Math.floor((diff / (1000 * 60 * 60)) % 24),\n    minutes: Math.floor((diff / (1000 * 60)) % 60),\n    seconds: Math.floor((diff / 1000) % 60),\n  };\n}\n\nfunction Digit({ value, label }: { value: number; label: string }) {\n  const display = String(value).padStart(2, \"0\");\n  return (\n    <div className=\"flex flex-col items-center\">\n      <div className=\"relative overflow-hidden rounded-lg border border-white/[0.08] bg-zinc-900 px-3 py-2\">\n        <AnimatePresence mode=\"popLayout\">\n          <motion.span\n            key={display}\n            initial={{ y: -20, opacity: 0 }}\n            animate={{ y: 0, opacity: 1 }}\n            exit={{ y: 20, opacity: 0 }}\n            transition={{ type: \"spring\", stiffness: 300, damping: 30 }}\n            className=\"block text-2xl font-bold tabular-nums text-white\"\n          >\n            {display}\n          </motion.span>\n        </AnimatePresence>\n      </div>\n      <span className=\"mt-1 text-[10px] uppercase tracking-wider text-zinc-500\">{label}</span>\n    </div>\n  );\n}\n\nexport function Countdown({ targetDate, className, onComplete }: CountdownProps) {\n  const target = targetDate instanceof Date ? targetDate : new Date(targetDate);\n  const [time, setTime] = useState<TimeLeft>(calcTimeLeft(target));\n  const completedRef = React.useRef(false);\n\n  const tick = useCallback(() => {\n    const t = calcTimeLeft(target);\n    setTime(t);\n    if (!completedRef.current && t.days + t.hours + t.minutes + t.seconds === 0) {\n      completedRef.current = true;\n      onComplete?.();\n    }\n  }, [target, onComplete]);\n\n  useEffect(() => {\n    tick();\n    const id = setInterval(tick, 1000);\n    return () => clearInterval(id);\n  }, [tick]);\n\n  return (\n    <div className={cn(\"inline-flex items-center gap-3\", className)}>\n      <Digit value={time.days} label=\"Days\" />\n      <span className=\"text-xl text-zinc-600\">:</span>\n      <Digit value={time.hours} label=\"Hours\" />\n      <span className=\"text-xl text-zinc-600\">:</span>\n      <Digit value={time.minutes} label=\"Min\" />\n      <span className=\"text-xl text-zinc-600\">:</span>\n      <Digit value={time.seconds} label=\"Sec\" />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/countdown.tsx"
+    }
+  ]
+}

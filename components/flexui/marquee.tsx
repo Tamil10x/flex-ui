@@ -2,6 +2,7 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 interface MarqueeProps {
   children: React.ReactNode;
@@ -24,6 +25,8 @@ export function Marquee({
   pauseOnHover = false,
   repeat = 4,
 }: MarqueeProps) {
+  const reducedMotion = useReducedMotion();
+
   return (
     <div
       className={cn(
@@ -45,7 +48,7 @@ export function Marquee({
             pauseOnHover && "group-hover:[animation-play-state:paused]"
           )}
           style={{
-            animation: `marquee-scroll ${speed}s linear infinite`,
+            animation: reducedMotion ? "none" : `marquee-scroll ${speed}s linear infinite`,
             animationDirection: direction === "right" ? "reverse" : "normal",
           }}
         >

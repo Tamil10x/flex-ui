@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-gradient-scroll",
+  "type": "registry:ui",
+  "title": "Text Gradient Scroll",
+  "description": "Text that fills with gradient color as the user scrolls using useScroll and clip-path transforms.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/text-gradient-scroll.tsx",
+      "content": "\"use client\";\n\nimport React, { useRef } from \"react\";\nimport { motion, useScroll, useTransform } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface TextGradientScrollProps {\n  text: string;\n  className?: string;\n}\n\nexport function TextGradientScroll({ text, className }: TextGradientScrollProps) {\n  const ref = useRef<HTMLDivElement>(null);\n  const { scrollYProgress } = useScroll({\n    target: ref,\n    offset: [\"start 0.9\", \"end 0.3\"],\n  });\n\n  const clipRight = useTransform(scrollYProgress, [0, 1], [\"0%\", \"100%\"]);\n\n  return (\n    <div ref={ref} className={cn(\"relative\", className)}>\n      <span className=\"text-4xl font-bold text-zinc-700\">{text}</span>\n      <motion.span\n        className=\"absolute inset-0 text-4xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent\"\n        style={{ clipPath: useTransform(clipRight, (v) => `inset(0 ${100 - parseFloat(v)}% 0 0)`) }}\n      >\n        {text}\n      </motion.span>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/text-gradient-scroll.tsx"
+    }
+  ]
+}

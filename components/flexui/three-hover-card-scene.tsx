@@ -4,7 +4,6 @@ import React, { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, ContactShadows, Edges } from "@react-three/drei";
 import type { Mesh, Group } from "three";
-import * as THREE from "three";
 
 interface SceneProps {
   mouse: { x: number; y: number };

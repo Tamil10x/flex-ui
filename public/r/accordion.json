@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion",
+  "type": "registry:ui",
+  "title": "Accordion",
+  "description": "Collapsible sections with animated open/close using Framer Motion AnimatePresence for height animation.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/accordion.tsx",
+      "content": "\"use client\";\n\nimport React, { useState } from \"react\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface AccordionItem {\n  title: string;\n  content: React.ReactNode;\n}\n\ninterface AccordionProps {\n  items: AccordionItem[];\n  className?: string;\n  allowMultiple?: boolean;\n}\n\nexport function Accordion({ items, className, allowMultiple = false }: AccordionProps) {\n  const [open, setOpen] = useState<Set<number>>(new Set());\n\n  const toggle = (i: number) => {\n    setOpen((prev) => {\n      const next = new Set(allowMultiple ? prev : []);\n      if (prev.has(i)) next.delete(i);\n      else next.add(i);\n      return next;\n    });\n  };\n\n  return (\n    <div className={cn(\"w-full divide-y divide-white/[0.06]\", className)}>\n      {items.map((item, i) => {\n        const isOpen = open.has(i);\n        const panelId = `accordion-panel-${i}`;\n        const triggerId = `accordion-trigger-${i}`;\n\n        return (\n          <div key={i}>\n            <button\n              id={triggerId}\n              onClick={() => toggle(i)}\n              aria-expanded={isOpen}\n              aria-controls={panelId}\n              className=\"flex w-full items-center justify-between py-4 text-left text-sm font-medium text-white transition-colors hover:text-white/80\"\n            >\n              {item.title}\n              <motion.span\n                animate={{ rotate: isOpen ? 180 : 0 }}\n                transition={{ type: \"spring\", stiffness: 300, damping: 25 }}\n                className=\"text-white/50\"\n              >\n                &#x25BE;\n              </motion.span>\n            </button>\n            <AnimatePresence initial={false}>\n              {isOpen && (\n                <motion.div\n                  id={panelId}\n                  role=\"region\"\n                  aria-labelledby={triggerId}\n                  initial={{ height: 0, opacity: 0 }}\n                  animate={{ height: \"auto\", opacity: 1 }}\n                  exit={{ height: 0, opacity: 0 }}\n                  transition={{ type: \"spring\", stiffness: 300, damping: 30 }}\n                  className=\"overflow-hidden\"\n                >\n                  <div className=\"pb-4 text-sm text-white/60\">{item.content}</div>\n                </motion.div>\n              )}\n            </AnimatePresence>\n          </div>\n        );\n      })}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/accordion.tsx"
+    }
+  ]
+}

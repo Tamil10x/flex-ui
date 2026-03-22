@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 interface TypewriterTextProps {
   /** Array of strings to cycle through */
@@ -28,6 +29,7 @@ export function TypewriterText({
   loop = true,
   className,
 }: TypewriterTextProps) {
+  const reducedMotion = useReducedMotion();
   const [wordIndex, setWordIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -85,6 +87,14 @@ export function TypewriterText({
       if (timer) clearTimeout(timer);
     };
   }, [tick]);
+
+  if (reducedMotion) {
+    return (
+      <span className={cn("inline-flex items-baseline", className)}>
+        <span>{words[0] ?? ""}</span>
+      </span>
+    );
+  }
 
   return (
     <span className={cn("inline-flex items-baseline", className)}>

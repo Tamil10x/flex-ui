@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb",
+  "type": "registry:ui",
+  "title": "Breadcrumb",
+  "description": "Breadcrumb navigation with customizable separator, link support, and active-last-item styling.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/breadcrumb.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface BreadcrumbItem {\n  label: string;\n  href?: string;\n}\n\ninterface BreadcrumbProps {\n  items: BreadcrumbItem[];\n  separator?: React.ReactNode;\n  className?: string;\n}\n\nexport function Breadcrumb({\n  items,\n  separator = \"/\",\n  className,\n}: BreadcrumbProps) {\n  return (\n    <nav\n      aria-label=\"Breadcrumb\"\n      className={cn(\"flex items-center gap-2 text-sm\", className)}\n    >\n      {items.map((item, i) => (\n        <React.Fragment key={item.label}>\n          {i > 0 && (\n            <span className=\"text-zinc-600\">{separator}</span>\n          )}\n          {item.href && i < items.length - 1 ? (\n            <a\n              href={item.href}\n              className=\"text-zinc-400 transition-colors hover:text-white\"\n            >\n              {item.label}\n            </a>\n          ) : (\n            <span\n              className={cn(\n                i === items.length - 1 ? \"text-white font-medium\" : \"text-zinc-400\"\n              )}\n            >\n              {item.label}\n            </span>\n          )}\n        </React.Fragment>\n      ))}\n    </nav>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/breadcrumb.tsx"
+    }
+  ]
+}
