@@ -53,6 +53,7 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "MCP Server", href: "/docs/mcp-server", icon: <Server className="h-4 w-4" /> },
       { title: "Changelog", href: "/docs/changelog", icon: <FileText className="h-4 w-4" /> },
       { title: "AI Studio", href: "/studio", icon: <Sparkles className="h-4 w-4" /> },
+      { title: "Theme Preview", href: "/docs/theme-preview", icon: <Palette className="h-4 w-4" />, isNew: true },
     ],
   },
   {
@@ -200,6 +201,28 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "Testimonials", href: "/docs/components/testimonials-block", icon: <MessageSquareQuote className="h-4 w-4" />, isNew: true },
       { title: "CTA Block", href: "/docs/components/cta-block", icon: <Megaphone className="h-4 w-4" />, isNew: true },
       { title: "Cinematic Hero", href: "/docs/components/cinematic-hero", icon: <Film className="h-4 w-4" />, isNew: true },
+      { title: "Header Block", href: "/docs/components/header-block", icon: <PanelTop className="h-4 w-4" />, isNew: true },
+      { title: "Footer Block", href: "/docs/components/footer-block", icon: <PanelBottomOpen className="h-4 w-4" />, isNew: true },
+      { title: "FAQ Block", href: "/docs/components/faq-block", icon: <MessageSquareQuote className="h-4 w-4" />, isNew: true },
+      { title: "Team Block", href: "/docs/components/team-block", icon: <Users className="h-4 w-4" />, isNew: true },
+      { title: "Stats Block", href: "/docs/components/stats-block", icon: <BarChart className="h-4 w-4" />, isNew: true },
+      { title: "Newsletter Block", href: "/docs/components/newsletter-block", icon: <Bell className="h-4 w-4" />, isNew: true },
+      { title: "Login Block", href: "/docs/components/login-block", icon: <KeyRound className="h-4 w-4" />, isNew: true },
+      { title: "Signup Block", href: "/docs/components/signup-block", icon: <ListOrdered className="h-4 w-4" />, isNew: true },
+      { title: "Logo Cloud", href: "/docs/components/logo-cloud-block", icon: <Globe className="h-4 w-4" />, isNew: true },
+      { title: "Comparison Block", href: "/docs/components/comparison-block", icon: <Columns className="h-4 w-4" />, isNew: true },
+    ],
+  },
+  {
+    heading: "Page Templates",
+    items: [
+      { title: "SaaS Landing", href: "/docs/components/saas-landing", icon: <Layout className="h-4 w-4" />, isNew: true },
+      { title: "Portfolio", href: "/docs/components/portfolio", icon: <Users className="h-4 w-4" />, isNew: true },
+      { title: "Dashboard", href: "/docs/components/dashboard", icon: <Monitor className="h-4 w-4" />, isNew: true },
+      { title: "E-commerce", href: "/docs/components/ecommerce", icon: <CreditCard className="h-4 w-4" />, isNew: true },
+      { title: "Blog", href: "/docs/components/blog", icon: <FileText className="h-4 w-4" />, isNew: true },
+      { title: "Pricing Page", href: "/docs/components/pricing-page", icon: <CreditCard className="h-4 w-4" />, isNew: true },
+      { title: "Auth Login", href: "/docs/components/auth-login", icon: <KeyRound className="h-4 w-4" />, isNew: true },
     ],
   },
   {
@@ -271,7 +294,7 @@ export function DocsSidebar() {
   );
 
   return (
-    <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-64 shrink-0 overflow-y-auto border-r border-white/[0.06] py-8 pr-6 lg:block">
+    <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-64 shrink-0 overflow-y-auto border-r border-border py-8 pr-6 lg:block">
       {/* Logo */}
       <Link href="/" className="mb-4 flex items-center gap-2.5 px-3">
         <Image src="/logo.png" alt="FlexUI" width={28} height={28} className="rounded-lg" />

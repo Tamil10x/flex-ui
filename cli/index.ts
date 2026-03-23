@@ -945,6 +945,9 @@ function commandHelp() {
     `    ${c.cyan}flexui${c.reset} ${c.bold}list${c.reset}                        List all available components`
   );
   log(
+    `    ${c.cyan}flexui${c.reset} ${c.bold}theme${c.reset} ${c.dim}<list|apply> [name]${c.reset}   Manage themes`
+  );
+  log(
     `    ${c.cyan}flexui${c.reset} ${c.bold}help${c.reset}                        Show this help message`
   );
   log("");
@@ -995,6 +998,89 @@ function commandHelp() {
   log(`    ${c.dim}# Filter by category${c.reset}`);
   log(`    ${c.cyan}$ npx flexui list --category "Buttons"${c.reset}`);
   log("");
+  log(`    ${c.dim}# List available themes${c.reset}`);
+  log(`    ${c.cyan}$ npx flexui theme list${c.reset}`);
+  log("");
+  log(`    ${c.dim}# Apply a theme${c.reset}`);
+  log(`    ${c.cyan}$ npx flexui theme apply ocean${c.reset}`);
+  log("");
+}
+
+// ── Theme Command ───────────────────────────────────────────────────────────
+
+const THEMES: Record<string, { label: string; accent: string; description: string }> = {
+  midnight: { label: "Midnight", accent: "#8B5CF6", description: "Deep blacks, violet accents, glass surfaces" },
+  ocean:    { label: "Ocean",    accent: "#06B6D4", description: "Deep sea blues and teals — calm, professional" },
+  forest:   { label: "Forest",   accent: "#10B981", description: "Rich emerald greens — natural, grounded" },
+  sunset:   { label: "Sunset",   accent: "#F97316", description: "Warm ambers and roses — vibrant, bold" },
+  neon:     { label: "Neon",     accent: "#00FF88", description: "Electric neon on black — cyberpunk, futuristic" },
+  corporate:{ label: "Corporate",accent: "#6366F1", description: "Clean slate tones — enterprise-ready" },
+};
+
+async function commandTheme(subcommand: string, args: string[]) {
+  switch (subcommand) {
+    case "list":
+    case "ls": {
+      log("");
+      log(`${c.bold}  Available Themes${c.reset}`);
+      log("");
+      for (const [name, theme] of Object.entries(THEMES)) {
+        const dot = `${c.magenta}\u25CF${c.reset}`;
+        log(`  ${dot}  ${c.bold}${theme.label.padEnd(12)}${c.reset} ${c.dim}(${name})${c.reset}`);
+        log(`     ${c.gray}${theme.description}${c.reset}`);
+        log("");
+      }
+      log(`  ${c.dim}Apply a theme:${c.reset} ${c.cyan}flexui theme apply <name>${c.reset}`);
+      log("");
+      break;
+    }
+
+    case "apply":
+    case "set": {
+      const themeName = args[0];
+      if (!themeName) {
+        error("Please specify a theme name.");
+        log(`  ${c.dim}Available:${c.reset} ${Object.keys(THEMES).join(", ")}`);
+        process.exit(1);
+      }
+      if (!THEMES[themeName]) {
+        error(`Unknown theme: "${themeName}"`);
+        log(`  ${c.dim}Available:${c.reset} ${Object.keys(THEMES).join(", ")}`);
+        const similar = Object.keys(THEMES).filter((t) => levenshteinClose(t, themeName));
+        if (similar.length > 0) {
+          log(`  ${c.bold}Did you mean:${c.reset} ${similar.map((s) => `${c.cyan}${s}${c.reset}`).join(", ")}`);
+        }
+        process.exit(1);
+      }
+
+      const configPath = path.join(process.cwd(), "flexui.theme.json");
+      const config = { theme: themeName, updatedAt: new Date().toISOString() };
+      fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + "\n");
+      success(`Theme set to ${c.bold}${THEMES[themeName].label}${c.reset}`);
+      log("");
+      hint(`Config written to ${c.dim}flexui.theme.json${c.reset}`);
+      hint(`Import ThemeProvider and set defaultTheme="${themeName}" in your layout.`);
+      log("");
+      break;
+    }
+
+    default: {
+      if (subcommand && THEMES[subcommand]) {
+        // Allow `flexui theme ocean` as shorthand for `flexui theme apply ocean`
+        await commandTheme("apply", [subcommand]);
+        return;
+      }
+      log("");
+      log(`${c.bold}  Theme Commands${c.reset}`);
+      log("");
+      log(`    ${c.cyan}flexui theme list${c.reset}            List all available themes`);
+      log(`    ${c.cyan}flexui theme apply <name>${c.reset}    Apply a theme to your project`);
+      log("");
+      log(`  ${c.dim}Available themes:${c.reset} ${Object.keys(THEMES).join(", ")}`);
+      log("");
+      break;
+    }
+  }
 }
 
 // ── Utility: truncate ────────────────────────────────────────────────────────
@@ -1058,6 +1144,10 @@ async function main() {
       await commandList(parsed.flags);
       break;
 
+    case "theme":
+      await commandTheme(parsed.positional[0] || "", parsed.positional.slice(1));
+      break;
+
     case "help":
       commandHelp();
       break;
@@ -1078,7 +1168,7 @@ async function main() {
         log("");
 
         // Suggest similar commands
-        const commands = ["init", "add", "list", "help"];
+        const commands = ["init", "add", "list", "theme", "help"];
         const similar = commands.filter((cmd) =>
           levenshteinClose(cmd, command)
         );

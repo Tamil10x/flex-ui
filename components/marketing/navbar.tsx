@@ -5,12 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Menu, X, Github } from "lucide-react";
+import { ThemeSwitcher } from "@/components/docs/theme-switcher";
 
 const navLinks = [
   { href: "/docs/introduction", label: "Docs" },
   { href: "/docs/components", label: "Components" },
+  { href: "/templates", label: "Templates", badge: "New" },
   { href: "/docs/installation", label: "Installation" },
-  { href: "/docs/changelog", label: "Changelog" },
   { href: "/studio", label: "Studio", badge: "AI" },
   { href: "/blog", label: "Blog" },
   { href: "/showcase", label: "Showcase" },
@@ -31,7 +32,7 @@ export function Navbar() {
       className={cn(
         "fixed left-0 right-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-white/[0.06] bg-black/80 backdrop-blur-xl"
+          ? "border-b border-border bg-background/80 backdrop-blur-xl"
           : "bg-transparent"
       )}
     >
@@ -69,7 +70,8 @@ export function Navbar() {
               )}
             </Link>
           ))}
-          <div className="mx-3 h-4 w-px bg-white/10" />
+          <div className="mx-2 h-4 w-px bg-white/10" />
+          <ThemeSwitcher />
           <Link
             href="https://github.com/flexui/flexui"
             target="_blank"
@@ -96,7 +98,7 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="border-t border-white/[0.06] bg-black/95 backdrop-blur-xl md:hidden">
+        <div className="border-t border-border bg-background/95 backdrop-blur-xl md:hidden">
           <div className="flex flex-col gap-1 px-6 py-4">
             {navLinks.map((link) => (
               <Link

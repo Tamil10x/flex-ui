@@ -22,7 +22,7 @@ export default function Home() {
       color="rgba(139,92,246,0.6)"
       maxSize={5}
       speed={0.4}
-      className="min-h-screen bg-black text-white"
+      className="min-h-screen bg-background text-foreground"
     >
       <Navbar />
 

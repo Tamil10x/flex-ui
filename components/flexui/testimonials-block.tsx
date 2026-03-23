@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +16,11 @@ interface TestimonialsBlockProps {
   testimonials: Testimonial[];
   className?: string;
   /** Layout style */
-  variant?: "grid" | "marquee";
+  variant?: "grid" | "marquee" | "masonry";
+  /** Section heading */
+  heading?: string;
+  /** Section subtitle */
+  subtitle?: string;
 }
 
 // ─── Star icon ──────────────────────────────────────────────────────────────
@@ -107,6 +110,31 @@ function TestimonialCard({
   );
 }
 
+// ─── Section Header ─────────────────────────────────────────────────────────
+
+const headingVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
+
+function SectionHeader({ heading, subtitle }: { heading?: string; subtitle?: string }) {
+  if (!heading && !subtitle) return null;
+  return (
+    <motion.div className="mb-12 text-center" variants={headingVariants}>
+      {heading && (
+        <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{heading}</h2>
+      )}
+      {subtitle && (
+        <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-zinc-400">{subtitle}</p>
+      )}
+    </motion.div>
+  );
+}
+
 // ─── Grid variant ───────────────────────────────────────────────────────────
 
 const containerVariants = {
@@ -130,6 +158,26 @@ const cardVariants = {
 function GridLayout({ testimonials }: { testimonials: Testimonial[] }) {
   return (
     <motion.div
+      className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+    >
+      {testimonials.map((t, i) => (
+        <motion.div key={i} variants={cardVariants}>
+          <TestimonialCard testimonial={t} />
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+}
+
+// ─── Masonry variant ────────────────────────────────────────────────────────
+
+function MasonryLayout({ testimonials }: { testimonials: Testimonial[] }) {
+  return (
+    <motion.div
       className="columns-1 gap-4 space-y-4 sm:columns-2 lg:columns-3"
       variants={containerVariants}
       initial="hidden"
@@ -148,12 +196,10 @@ function GridLayout({ testimonials }: { testimonials: Testimonial[] }) {
 // ─── Marquee variant ────────────────────────────────────────────────────────
 
 function MarqueeLayout({ testimonials }: { testimonials: Testimonial[] }) {
-  // Duplicate for seamless loop
   const items = [...testimonials, ...testimonials];
 
   return (
     <div className="relative overflow-hidden">
-      {/* Fade edges */}
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-black to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-black to-transparent" />
 
@@ -185,14 +231,25 @@ export function TestimonialsBlock({
   testimonials,
   className,
   variant = "grid",
+  heading,
+  subtitle,
 }: TestimonialsBlockProps) {
   return (
-    <div className={cn("w-full", className)}>
+    <motion.div
+      className={cn("w-full", className)}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+    >
+      <SectionHeader heading={heading} subtitle={subtitle} />
+
       {variant === "grid" ? (
         <GridLayout testimonials={testimonials} />
+      ) : variant === "masonry" ? (
+        <MasonryLayout testimonials={testimonials} />
       ) : (
         <MarqueeLayout testimonials={testimonials} />
       )}
-    </div>
+    </motion.div>
   );
 }

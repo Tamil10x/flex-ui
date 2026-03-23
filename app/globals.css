@@ -1,20 +1,115 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #000000;
-  --color-foreground: #ededed;
+  --color-background: var(--flexui-background, #000000);
+  --color-foreground: var(--flexui-foreground, #ededed);
+
+  /* Surface layers */
+  --color-surface: var(--flexui-surface, rgba(24, 24, 27, 0.8));
+  --color-surface-hover: var(--flexui-surface-hover, rgba(39, 39, 42, 0.6));
+  --color-surface-active: var(--flexui-surface-active, rgba(39, 39, 42, 0.8));
+
+  /* Borders */
+  --color-border: var(--flexui-border, rgba(255, 255, 255, 0.08));
+  --color-border-hover: var(--flexui-border-hover, rgba(255, 255, 255, 0.15));
+  --color-border-focus: var(--flexui-border-focus, rgba(139, 92, 246, 0.5));
+
+  /* Accent / brand */
+  --color-accent: var(--flexui-accent, #8B5CF6);
+  --color-accent-foreground: var(--flexui-accent-foreground, #ffffff);
+  --color-accent-hover: var(--flexui-accent-hover, #7C3AED);
+  --color-accent-glow: var(--flexui-accent-glow, rgba(139, 92, 246, 0.3));
+
+  /* Secondary */
+  --color-secondary: var(--flexui-secondary, #3B82F6);
+  --color-secondary-foreground: var(--flexui-secondary-foreground, #ffffff);
+
+  /* Muted */
+  --color-muted: var(--flexui-muted, rgba(255, 255, 255, 0.03));
+  --color-muted-foreground: var(--flexui-muted-foreground, #71717A);
+
+  /* Status */
+  --color-success: var(--flexui-success, #10B981);
+  --color-warning: var(--flexui-warning, #F59E0B);
+  --color-error: var(--flexui-error, #EF4444);
+  --color-info: var(--flexui-info, #3B82F6);
+
+  /* Typography */
+  --color-heading: var(--flexui-heading, #ffffff);
+  --color-body: var(--flexui-body, #A1A1AA);
+  --color-caption: var(--flexui-caption, #71717A);
+
+  /* Fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+/* FlexUI Semantic Design Tokens — defaults (Midnight theme) */
+:root {
+  /* Core surfaces */
+  --flexui-background: #09090b;
+  --flexui-foreground: #fafafa;
+  --flexui-surface: rgba(17, 17, 21, 0.75);
+  --flexui-surface-hover: rgba(28, 28, 35, 0.65);
+  --flexui-surface-active: rgba(40, 40, 50, 0.6);
+
+  /* Borders */
+  --flexui-border: rgba(139, 92, 246, 0.06);
+  --flexui-border-hover: rgba(139, 92, 246, 0.14);
+  --flexui-border-focus: rgba(167, 139, 250, 0.6);
+
+  /* Accent */
+  --flexui-accent: #A78BFA;
+  --flexui-accent-foreground: #09090b;
+  --flexui-accent-hover: #C4B5FD;
+  --flexui-accent-glow: rgba(167, 139, 250, 0.35);
+
+  /* Secondary */
+  --flexui-secondary: #818CF8;
+  --flexui-secondary-foreground: #09090b;
+
+  /* Muted */
+  --flexui-muted: rgba(139, 92, 246, 0.04);
+  --flexui-muted-foreground: #6b6b80;
+
+  /* Status */
+  --flexui-success: #6EE7B7;
+  --flexui-warning: #FDE68A;
+  --flexui-error: #FCA5A5;
+  --flexui-info: #93C5FD;
+
+  /* Effects */
+  --flexui-glow-primary: 167, 139, 250;
+  --flexui-glow-secondary: 129, 140, 248;
+  --flexui-shimmer: rgba(167, 139, 250, 0.15);
+  --flexui-spotlight: rgba(167, 139, 250, 0.08);
+
+  /* Typography */
+  --flexui-heading: #fafafa;
+  --flexui-body: #a1a1aa;
+  --flexui-caption: #52525b;
+
+  /* Radii */
+  --flexui-radius-sm: 0.5rem;
+  --flexui-radius-md: 0.75rem;
+  --flexui-radius-lg: 1rem;
+  --flexui-radius-xl: 1.5rem;
+
+  /* Shadows */
+  --flexui-shadow-sm: 0 1px 3px rgba(0,0,0,0.5), 0 0 1px rgba(139,92,246,0.05);
+  --flexui-shadow-md: 0 4px 16px rgba(0,0,0,0.4), 0 0 8px rgba(139,92,246,0.04);
+  --flexui-shadow-lg: 0 16px 48px rgba(0,0,0,0.5), 0 0 24px rgba(139,92,246,0.06);
+  --flexui-shadow-glow: 0 0 20px rgba(167,139,250,0.2), 0 0 80px rgba(139,92,246,0.1), 0 0 120px rgba(139,92,246,0.05);
+}
+
 body {
-  background: var(--color-background);
-  color: var(--color-foreground);
+  background: var(--flexui-background);
+  color: var(--flexui-foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
 ::selection {
-  background-color: rgba(120, 119, 198, 0.3);
+  background-color: var(--flexui-accent-glow, rgba(120, 119, 198, 0.3));
   color: white;
 }
 
