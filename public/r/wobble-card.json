@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "wobble-card",
+  "type": "registry:ui",
+  "title": "Wobble Card",
+  "description": "Card that wobbles with spring physics on hover using mouse-tracked rotateX/Y transforms.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/wobble-card.tsx",
+      "content": "\"use client\";\n\nimport React, { useRef, useCallback } from \"react\";\nimport { motion, useMotionValue, useSpring } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface WobbleCardProps {\n  children: React.ReactNode;\n  className?: string;\n}\n\nexport function WobbleCard({ children, className }: WobbleCardProps) {\n  const ref = useRef<HTMLDivElement>(null);\n  const rotateX = useMotionValue(0);\n  const rotateY = useMotionValue(0);\n  const springX = useSpring(rotateX, { stiffness: 150, damping: 15, mass: 0.5 });\n  const springY = useSpring(rotateY, { stiffness: 150, damping: 15, mass: 0.5 });\n\n  const handleMouseMove = useCallback(\n    (e: React.MouseEvent) => {\n      if (!ref.current) return;\n      const rect = ref.current.getBoundingClientRect();\n      const x = (e.clientX - rect.left) / rect.width - 0.5;\n      const y = (e.clientY - rect.top) / rect.height - 0.5;\n      rotateX.set(y * -20);\n      rotateY.set(x * 20);\n    },\n    [rotateX, rotateY]\n  );\n\n  const handleMouseLeave = useCallback(() => {\n    rotateX.set(0);\n    rotateY.set(0);\n  }, [rotateX, rotateY]);\n\n  return (\n    <motion.div\n      ref={ref}\n      onMouseMove={handleMouseMove}\n      onMouseLeave={handleMouseLeave}\n      style={{ rotateX: springX, rotateY: springY, transformPerspective: 800 }}\n      className={cn(\n        \"rounded-2xl border border-white/[0.08] bg-zinc-950/80 p-6 backdrop-blur-xl\",\n        className\n      )}\n    >\n      {children}\n    </motion.div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/wobble-card.tsx"
+    }
+  ]
+}

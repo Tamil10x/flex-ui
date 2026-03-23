@@ -308,6 +308,486 @@
       "type": "registry:ui",
       "description": "A macOS Spotlight / Raycast-style search dialog with keyboard navigation, category grouping, and spring animations.",
       "url": "https://flexui.dev/r/search-spotlight.json"
+    },
+    {
+      "name": "holographic-card",
+      "type": "registry:ui",
+      "description": "A card with a real-time rainbow holographic foil effect that shifts with viewing angle, like a Pokemon holographic card.",
+      "url": "https://flexui.dev/r/holographic-card.json"
+    },
+    {
+      "name": "handwritten-annotation",
+      "type": "registry:ui",
+      "description": "SVG annotations (circles, underlines, highlights, arrows, brackets, strikethroughs) that animate as if being drawn by hand in real-time.",
+      "url": "https://flexui.dev/r/handwritten-annotation.json"
+    },
+    {
+      "name": "moving-border",
+      "type": "registry:ui",
+      "description": "An animated gradient light that travels along the border of an element using CSS keyframe rotation of a conic-gradient.",
+      "url": "https://flexui.dev/r/moving-border.json"
+    },
+    {
+      "name": "shader-blob",
+      "type": "registry:ui",
+      "description": "A real-time GLSL metaball/blob that morphs organically using FBM noise, reacts to cursor, and emits a soft emissive glow with two-tone color gradients.",
+      "url": "https://flexui.dev/r/shader-blob.json"
+    },
+    {
+      "name": "liquid-button",
+      "type": "registry:ui",
+      "description": "A button whose surface ripples like liquid mercury when hovered and clicked, with organic spring-physics ripple waves from cursor position.",
+      "url": "https://flexui.dev/r/liquid-button.json"
+    },
+    {
+      "name": "morphing-blob",
+      "type": "registry:ui",
+      "description": "An SVG blob that continuously morphs between organic shapes using requestAnimationFrame interpolation with configurable gradient fill, speed, and size.",
+      "url": "https://flexui.dev/r/morphing-blob.json"
+    },
+    {
+      "name": "chromatic-text",
+      "type": "registry:ui",
+      "description": "Text with chromatic aberration -- RGB channels split on hover or always active with configurable offset and colors.",
+      "url": "https://flexui.dev/r/chromatic-text.json"
+    },
+    {
+      "name": "disintegration-effect",
+      "type": "registry:ui",
+      "description": "Thanos-snap particle dissolve effect wrapper.",
+      "url": "https://flexui.dev/r/disintegration-effect.json"
+    },
+    {
+      "name": "liquid-button",
+      "type": "registry:ui",
+      "description": "Button with liquid mercury ripple effect on click.",
+      "url": "https://flexui.dev/r/liquid-button.json"
+    },
+    {
+      "name": "morphing-blob",
+      "type": "registry:ui",
+      "description": "SVG blob that continuously morphs between organic shapes.",
+      "url": "https://flexui.dev/r/morphing-blob.json"
+    },
+    {
+      "name": "neural-network",
+      "type": "registry:ui",
+      "description": "Canvas-based animated network graph with firing synapses.",
+      "url": "https://flexui.dev/r/neural-network.json"
+    },
+    {
+      "name": "gravity-grid",
+      "type": "registry:ui",
+      "description": "Grid of dots that attract or repel from cursor.",
+      "url": "https://flexui.dev/r/gravity-grid.json"
+    },
+    {
+      "name": "typewriter-terminal",
+      "type": "registry:ui",
+      "description": "Realistic terminal emulator with typing animation.",
+      "url": "https://flexui.dev/r/typewriter-terminal.json"
+    },
+    {
+      "name": "browser-frame",
+      "type": "registry:ui",
+      "description": "Browser window mockup for showcasing content.",
+      "url": "https://flexui.dev/r/browser-frame.json"
+    },
+    {
+      "name": "phone-frame",
+      "type": "registry:ui",
+      "description": "Mobile phone device mockup frame.",
+      "url": "https://flexui.dev/r/phone-frame.json"
+    },
+    {
+      "name": "animated-beam",
+      "type": "registry:ui",
+      "description": "Light beam that travels along SVG paths for integration diagrams.",
+      "url": "https://flexui.dev/r/animated-beam.json"
+    },
+    {
+      "name": "data-orbit",
+      "type": "registry:ui",
+      "description": "Icons orbiting in concentric rings around a center element.",
+      "url": "https://flexui.dev/r/data-orbit.json"
+    },
+    {
+      "name": "audio-reactive-wave",
+      "type": "registry:ui",
+      "description": "A waveform visualizer with gradient-colored bars that react to audio input or generate animated demo sine waves with glow effects.",
+      "url": "https://flexui.dev/r/audio-reactive-wave.json"
+    },
+    {
+      "name": "portal-transition",
+      "type": "registry:ui",
+      "description": "A circular portal/wormhole transition effect that reveals content with expanding clip-path, glow ring, and particle effects.",
+      "url": "https://flexui.dev/r/portal-transition.json"
+    },
+    {
+      "name": "split-screen-reveal",
+      "type": "registry:ui",
+      "description": "Two glassmorphic panels that split apart on click to reveal content underneath with spring-physics animation.",
+      "url": "https://flexui.dev/r/split-screen-reveal.json"
+    },
+    {
+      "name": "smoke-divider",
+      "type": "registry:ui",
+      "description": "A section divider with animated smoke/fog particles drifting across. Pure CSS animation with hydration-safe seeded randomization.",
+      "url": "https://flexui.dev/r/smoke-divider.json"
+    },
+    {
+      "name": "glitch-transition",
+      "type": "registry:ui",
+      "description": "A CRT TV glitch effect with RGB split, scanlines, block displacement, and flicker that wraps any content.",
+      "url": "https://flexui.dev/r/glitch-transition.json"
+    },
+    {
+      "name": "ambient-tilt",
+      "type": "registry:ui",
+      "description": "A wrapper that adds subtle 3D tilt based on cursor position or device gyroscope with spring-animated transforms.",
+      "url": "https://flexui.dev/r/ambient-tilt.json"
+    },
+    {
+      "name": "icon-cloud",
+      "type": "registry:ui",
+      "description": "A 3D tag cloud of floating icons that rotate as a sphere with drag interaction and depth-based scaling.",
+      "url": "https://flexui.dev/r/icon-cloud.json"
+    },
+    {
+      "name": "retro-grid",
+      "type": "registry:ui",
+      "description": "A perspective grid that vanishes to a horizon point with a retro synthwave aesthetic and optional scroll animation.",
+      "url": "https://flexui.dev/r/retro-grid.json"
+    },
+    {
+      "name": "evolution-hero",
+      "type": "registry:ui",
+      "description": "Cinematic hero section with AI-generated evolution scene background, mouse parallax, holographic code overlays, and scanning effects.",
+      "url": "https://flexui.dev/r/evolution-hero.json"
+    },
+    {
+      "name": "kpi-card",
+      "type": "registry:ui",
+      "description": "Dashboard KPI card with animated number counter, change indicator, and optional sparkline.",
+      "url": "https://flexui.dev/r/kpi-card.json"
+    },
+    {
+      "name": "sparkline-chart",
+      "type": "registry:ui",
+      "description": "Pure SVG sparkline with smooth bezier curves and optional animated drawing.",
+      "url": "https://flexui.dev/r/sparkline-chart.json"
+    },
+    {
+      "name": "progress-ring",
+      "type": "registry:ui",
+      "description": "SVG progress ring with animated stroke and configurable gradient.",
+      "url": "https://flexui.dev/r/progress-ring.json"
+    },
+    {
+      "name": "splash-cursor",
+      "type": "registry:ui",
+      "description": "A fluid ink splash effect that follows the cursor with colorful blobs, blur trails, and velocity-based motion using Canvas 2D.",
+      "url": "https://flexui.dev/r/splash-cursor.json"
+    },
+    {
+      "name": "flickering-grid",
+      "type": "registry:ui",
+      "description": "A canvas-rendered grid of cells that randomly flicker on and off with smooth opacity transitions and a radial fade mask.",
+      "url": "https://flexui.dev/r/flickering-grid.json"
+    },
+    {
+      "name": "border-beam",
+      "type": "registry:ui",
+      "description": "A continuous animated light beam that travels around the border of an element using CSS conic-gradient rotation with a glow trail.",
+      "url": "https://flexui.dev/r/border-beam.json"
+    },
+    {
+      "name": "neon-glow-card",
+      "type": "registry:ui",
+      "description": "A card with animated neon border glow that pulses and reacts to cursor position with multiple box-shadow layers and spring-scale hover.",
+      "url": "https://flexui.dev/r/neon-glow-card.json"
+    },
+    {
+      "name": "infinite-canvas",
+      "type": "registry:ui",
+      "description": "A pannable, zoomable canvas where child elements float in 2D space with grid background, mouse wheel zoom, and touch pinch support.",
+      "url": "https://flexui.dev/r/infinite-canvas.json"
+    },
+    {
+      "name": "cinematic-hero",
+      "type": "registry:ui",
+      "description": "A full-screen cinematic hero section with multiple background variants, staggered word blur-reveal headline, animated CTAs, and badge.",
+      "url": "https://flexui.dev/r/cinematic-hero.json"
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "description": "Collapsible sections with animated open/close using Framer Motion AnimatePresence for height animation.",
+      "url": "https://flexui.dev/r/accordion.json"
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "description": "Animated tooltip on hover with configurable side positioning and spring-physics enter/exit transitions.",
+      "url": "https://flexui.dev/r/tooltip.json"
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "description": "Click-triggered popover panel with portal rendering, click-outside-to-close, and spring animation.",
+      "url": "https://flexui.dev/r/popover.json"
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "description": "Animated dropdown menu with spring animation, keyboard navigation, and click-outside dismiss.",
+      "url": "https://flexui.dev/r/dropdown-menu.json"
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "description": "User avatar with image support and gradient-colored fallback initials derived from the user name.",
+      "url": "https://flexui.dev/r/avatar.json"
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "description": "Status badge/tag with five color variants (default, success, warning, error, info) and optional pulse dot.",
+      "url": "https://flexui.dev/r/badge.json"
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "description": "Loading placeholder with animated shimmer pulse, configurable dimensions, and optional rounded shape.",
+      "url": "https://flexui.dev/r/skeleton.json"
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "description": "Toggle switch with spring-animated thumb, three sizes, and proper ARIA switch role.",
+      "url": "https://flexui.dev/r/switch.json"
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "description": "Range slider with track fill, draggable thumb, configurable min/max/step, and custom color.",
+      "url": "https://flexui.dev/r/slider.json"
+    },
+    {
+      "name": "progress-bar",
+      "type": "registry:ui",
+      "description": "Horizontal progress bar with configurable color, optional animation pulse, and percentage label.",
+      "url": "https://flexui.dev/r/progress-bar.json"
+    },
+    {
+      "name": "divider",
+      "type": "registry:ui",
+      "description": "Styled divider line supporting horizontal/vertical orientation, optional label, and gradient fade.",
+      "url": "https://flexui.dev/r/divider.json"
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "description": "Keyboard shortcut display styled like a physical key with inset shadow and monospace font.",
+      "url": "https://flexui.dev/r/kbd.json"
+    },
+    {
+      "name": "code-inline",
+      "type": "registry:ui",
+      "description": "Inline code snippet with monospace styling, subtle background, and border.",
+      "url": "https://flexui.dev/r/code-inline.json"
+    },
+    {
+      "name": "avatar-group",
+      "type": "registry:ui",
+      "description": "Stacked overlapping avatars with configurable max count and overflow indicator.",
+      "url": "https://flexui.dev/r/avatar-group.json"
+    },
+    {
+      "name": "timeline",
+      "type": "registry:ui",
+      "description": "Vertical timeline with scroll-triggered fade-in animation, dot/icon markers, and date support.",
+      "url": "https://flexui.dev/r/timeline.json"
+    },
+    {
+      "name": "color-picker",
+      "type": "registry:ui",
+      "description": "Simple color picker with preset swatches and hex input.",
+      "url": "https://flexui.dev/r/color-picker.json"
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "description": "Mini calendar component with clickable days, month navigation, and dark theme styling.",
+      "url": "https://flexui.dev/r/calendar.json"
+    },
+    {
+      "name": "stat-card",
+      "type": "registry:ui",
+      "description": "Dashboard stat card with label, value, change indicator, and animated number on mount.",
+      "url": "https://flexui.dev/r/stat-card.json"
+    },
+    {
+      "name": "command-menu",
+      "type": "registry:ui",
+      "description": "Cmd+K command palette with keyboard navigation, search filtering, and spring animations.",
+      "url": "https://flexui.dev/r/command-menu.json"
+    },
+    {
+      "name": "file-tree",
+      "type": "registry:ui",
+      "description": "Animated expandable file tree with folder/file icons, indentation, and spring-animated expand/collapse.",
+      "url": "https://flexui.dev/r/file-tree.json"
+    },
+    {
+      "name": "stepper",
+      "type": "registry:ui",
+      "description": "Step progress indicator with connected animated lines, active step scaling, and descriptions.",
+      "url": "https://flexui.dev/r/stepper.json"
+    },
+    {
+      "name": "rating",
+      "type": "registry:ui",
+      "description": "Star rating component with hover preview, configurable max and size, and spring-physics interactions.",
+      "url": "https://flexui.dev/r/rating.json"
+    },
+    {
+      "name": "tag-input",
+      "type": "registry:ui",
+      "description": "Input for adding and removing tags with animated enter/exit, backspace-to-delete, and glassmorphic styling.",
+      "url": "https://flexui.dev/r/tag-input.json"
+    },
+    {
+      "name": "countdown",
+      "type": "registry:ui",
+      "description": "Animated countdown timer showing days, hours, minutes, and seconds with spring-animated digit transitions.",
+      "url": "https://flexui.dev/r/countdown.json"
+    },
+    {
+      "name": "copy-block",
+      "type": "registry:ui",
+      "description": "Code block with copy-to-clipboard button, filename header, and animated copy confirmation.",
+      "url": "https://flexui.dev/r/copy-block.json"
+    },
+    {
+      "name": "image-compare",
+      "type": "registry:ui",
+      "description": "Before/after image comparison slider with draggable handle and clip-path reveal.",
+      "url": "https://flexui.dev/r/image-compare.json"
+    },
+    {
+      "name": "pricing-toggle",
+      "type": "registry:ui",
+      "description": "Monthly/yearly pricing toggle with spring-animated pill switch and savings badge.",
+      "url": "https://flexui.dev/r/pricing-toggle.json"
+    },
+    {
+      "name": "notification-badge",
+      "type": "registry:ui",
+      "description": "Numbered notification badge with spring-animated enter/exit, max count overflow, and configurable color.",
+      "url": "https://flexui.dev/r/notification-badge.json"
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "description": "Breadcrumb navigation with customizable separator, link support, and active-last-item styling.",
+      "url": "https://flexui.dev/r/breadcrumb.json"
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "description": "Empty state placeholder with icon, title, description, and optional CTA button with spring entrance animation.",
+      "url": "https://flexui.dev/r/empty-state.json"
+    },
+    {
+      "name": "wobble-card",
+      "type": "registry:ui",
+      "description": "Card that wobbles with spring physics on hover using mouse-tracked rotateX/Y transforms.",
+      "url": "https://flexui.dev/r/wobble-card.json"
+    },
+    {
+      "name": "direction-hover",
+      "type": "registry:ui",
+      "description": "Content overlay that slides in from the direction the cursor enters the element.",
+      "url": "https://flexui.dev/r/direction-hover.json"
+    },
+    {
+      "name": "tilt-card",
+      "type": "registry:ui",
+      "description": "Simplified 3D tilt card using useMotionValue and useTransform with configurable max tilt and perspective.",
+      "url": "https://flexui.dev/r/tilt-card.json"
+    },
+    {
+      "name": "blur-fade",
+      "type": "registry:ui",
+      "description": "Wrapper that blurs and fades content in on scroll using useInView with configurable delay and duration.",
+      "url": "https://flexui.dev/r/blur-fade.json"
+    },
+    {
+      "name": "pulse-button",
+      "type": "registry:ui",
+      "description": "Button with radiating pulse rings using CSS keyframe animations with configurable color and count.",
+      "url": "https://flexui.dev/r/pulse-button.json"
+    },
+    {
+      "name": "spotlight-border",
+      "type": "registry:ui",
+      "description": "Border wrapper with a cursor-following spotlight glow effect using spring-animated motion values.",
+      "url": "https://flexui.dev/r/spotlight-border.json"
+    },
+    {
+      "name": "typewriter-delete",
+      "type": "registry:ui",
+      "description": "Text that types then deletes with a blinking cursor, configurable speed and loop.",
+      "url": "https://flexui.dev/r/typewriter-delete.json"
+    },
+    {
+      "name": "counter-up",
+      "type": "registry:ui",
+      "description": "Animated counting number using requestAnimationFrame with eased progress on scroll into view.",
+      "url": "https://flexui.dev/r/counter-up.json"
+    },
+    {
+      "name": "magnetic-card",
+      "type": "registry:ui",
+      "description": "Card that slightly follows cursor with magnetic pull effect using spring-animated motion values.",
+      "url": "https://flexui.dev/r/magnetic-card.json"
+    },
+    {
+      "name": "glow-text",
+      "type": "registry:ui",
+      "description": "Text with animated glow/bloom effect using CSS text-shadow keyframe animation.",
+      "url": "https://flexui.dev/r/glow-text.json"
+    },
+    {
+      "name": "reveal-card",
+      "type": "registry:ui",
+      "description": "Card that reveals content on hover with a slide-up transition using Framer Motion variants.",
+      "url": "https://flexui.dev/r/reveal-card.json"
+    },
+    {
+      "name": "orbit-animation",
+      "type": "registry:ui",
+      "description": "Orbiting dots around a center element with CSS rotation animation and configurable count and speed.",
+      "url": "https://flexui.dev/r/orbit-animation.json"
+    },
+    {
+      "name": "text-gradient-scroll",
+      "type": "registry:ui",
+      "description": "Text that fills with gradient color as the user scrolls using useScroll and clip-path transforms.",
+      "url": "https://flexui.dev/r/text-gradient-scroll.json"
+    },
+    {
+      "name": "animated-counter",
+      "type": "registry:ui",
+      "description": "Counting animation with slot-machine digit flip where each digit slides independently.",
+      "url": "https://flexui.dev/r/animated-counter.json"
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "description": "Card with subtle lift and shadow increase on hover using spring scale and shadow transition.",
+      "url": "https://flexui.dev/r/hover-card.json"
     }
   ]
 }

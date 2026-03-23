@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "border-beam",
+  "type": "registry:ui",
+  "title": "Border Beam",
+  "description": "A continuous animated light beam that travels around the border of an element using CSS conic-gradient rotation with a glow trail.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/border-beam.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface BorderBeamProps {\n  children: React.ReactNode;\n  className?: string;\n  /** Beam color */\n  color?: string;\n  /** Speed in seconds for one revolution */\n  speed?: number;\n  /** Beam size/length in px */\n  beamSize?: number;\n  /** Border radius */\n  borderRadius?: string;\n}\n\nexport function BorderBeam({\n  children,\n  className,\n  color = \"#389CFD\",\n  speed = 4,\n  beamSize = 80,\n  borderRadius = \"12px\",\n}: BorderBeamProps) {\n  const borderWidth = 1.5;\n\n  return (\n    <div\n      className={cn(\"relative\", className)}\n      style={{ borderRadius }}\n    >\n      {/* Rotating conic-gradient border */}\n      <div\n        className=\"absolute inset-0 overflow-hidden\"\n        style={{ borderRadius, padding: borderWidth }}\n      >\n        <div\n          className=\"absolute inset-[-50%] animate-[border-rotate_linear_infinite]\"\n          style={{\n            animationDuration: `${speed}s`,\n            background: `conic-gradient(from 0deg, transparent 0%, transparent 70%, ${color} 78%, transparent 86%, transparent 100%)`,\n          }}\n        />\n\n        {/* Inner mask to reveal only the border */}\n        <div\n          className=\"absolute inset-0 bg-zinc-950\"\n          style={{\n            borderRadius: `calc(${borderRadius} - ${borderWidth}px)`,\n            margin: borderWidth,\n          }}\n        />\n      </div>\n\n      {/* Glow layer — same rotating gradient but blurred */}\n      <div\n        className=\"pointer-events-none absolute inset-0 overflow-hidden opacity-50\"\n        style={{ borderRadius, padding: borderWidth }}\n      >\n        <div\n          className=\"absolute inset-[-50%] animate-[border-rotate_linear_infinite] blur-md\"\n          style={{\n            animationDuration: `${speed}s`,\n            background: `conic-gradient(from 0deg, transparent 0%, transparent 70%, ${color} 78%, transparent 86%, transparent 100%)`,\n          }}\n        />\n        <div\n          className=\"absolute inset-0 bg-zinc-950\"\n          style={{\n            borderRadius: `calc(${borderRadius} - ${borderWidth}px)`,\n            margin: borderWidth,\n          }}\n        />\n      </div>\n\n      {/* Content */}\n      <div\n        className=\"relative z-10\"\n        style={{\n          borderRadius,\n          padding: borderWidth,\n        }}\n      >\n        <div\n          className=\"bg-zinc-950\"\n          style={{\n            borderRadius: `calc(${borderRadius} - ${borderWidth}px)`,\n          }}\n        >\n          {children}\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/border-beam.tsx"
+    }
+  ]
+}

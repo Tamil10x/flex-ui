@@ -31,6 +31,7 @@ export function GradientBorderButton({
       whileTap={disabled ? undefined : { scale: 0.97 }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
       disabled={disabled}
+      aria-disabled={disabled}
       onClick={onClick}
       className={cn(
         "relative px-8 py-4 text-sm font-semibold rounded-xl",

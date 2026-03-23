@@ -50,6 +50,7 @@ export function RippleButton({
   return (
     <button
       disabled={disabled}
+      aria-disabled={disabled}
       onClick={handleClick}
       className={cn(
         "relative overflow-hidden px-8 py-4 text-sm font-semibold rounded-xl",

@@ -231,6 +231,51 @@ export default function FadeOnScrollDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Five Directions", desc: "Slide in from up, down, left, right, or use 'none' for a pure fade with no movement." },
+            { icon: "o", label: "Spring Physics", desc: "Uses Framer Motion spring-based transitions with configurable stiffness and damping." },
+            { icon: "#", label: "Once or Repeat", desc: "Control whether the animation triggers once or re-triggers every time the element scrolls into view." },
+            { icon: "+", label: "Reduced Motion Safe", desc: "Automatically falls back to static rendering when the user prefers reduced motion." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization-patterns" title="Customization Patterns">
+        <DocSubSection id="stagger-list" title="Staggered List Reveal">
+          <CodeBlock code={`{items.map((item, i) => (
+  <FadeOnScroll key={item.id} direction="up" delay={i * 0.1} distance={30}>
+    <Card {...item} />
+  </FadeOnScroll>
+))}`} filename="stagger.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="fade-only" title="Fade-Only (No Slide)">
+          <CodeBlock code={`<FadeOnScroll direction="none" duration={1.2}>
+  <p className="text-zinc-400">This content fades in without any directional slide.</p>
+</FadeOnScroll>`} filename="fade-only.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Respects prefers-reduced-motion by rendering children statically without any animation when enabled.", "Content is present in the DOM from mount, so screen readers can access it regardless of scroll position.", "The animation uses opacity and transform only, which do not affect document flow or screen reader announcements."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

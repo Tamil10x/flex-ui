@@ -3,6 +3,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 interface FadeOnScrollProps {
   children: React.ReactNode;
@@ -25,6 +26,7 @@ export function FadeOnScroll({
 }: FadeOnScrollProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once, margin: "-10% 0px" });
+  const reducedMotion = useReducedMotion();
 
   const directionMap: Record<string, { x: number; y: number }> = {
     up: { x: 0, y: distance },
@@ -35,6 +37,14 @@ export function FadeOnScroll({
   };
 
   const offset = directionMap[direction];
+
+  if (reducedMotion) {
+    return (
+      <div ref={ref} className={cn(className)}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div

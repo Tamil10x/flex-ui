@@ -73,6 +73,7 @@ export function MagneticButton({
       )}
       onClick={onClick}
       disabled={disabled}
+      aria-disabled={disabled}
     >
       {/* Spotlight glow overlay */}
       <motion.div

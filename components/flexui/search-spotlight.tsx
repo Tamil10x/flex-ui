@@ -136,6 +136,8 @@ export function SearchSpotlight({
       {/* Trigger button */}
       <button
         onClick={() => setOpen(true)}
+        aria-haspopup="dialog"
+        aria-expanded={open}
         className={cn(
           "flex items-center gap-2.5 rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-2.5 text-sm text-zinc-500 transition-colors hover:border-white/[0.12] hover:bg-white/[0.06] hover:text-zinc-400",
           className
@@ -172,7 +174,7 @@ export function SearchSpotlight({
               transition={{ type: "spring", stiffness: 400, damping: 30 }}
               className="fixed left-1/2 top-[20%] z-50 w-full max-w-lg -translate-x-1/2"
             >
-              <div className="overflow-hidden rounded-xl border border-white/[0.1] bg-zinc-900/95 shadow-2xl shadow-black/40 backdrop-blur-xl">
+              <div role="dialog" aria-modal="true" aria-label="Search" className="overflow-hidden rounded-xl border border-white/[0.1] bg-zinc-900/95 shadow-2xl shadow-black/40 backdrop-blur-xl">
                 {/* Search input */}
                 <div className="flex items-center gap-3 border-b border-white/[0.06] px-4 py-3">
                   <Search className="h-5 w-5 shrink-0 text-zinc-500" />
@@ -183,11 +185,14 @@ export function SearchSpotlight({
                     onChange={(e) => setQuery(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder={placeholder}
+                    aria-label="Search"
+                    aria-autocomplete="list"
                     className="flex-1 bg-transparent text-sm text-white outline-none placeholder:text-zinc-500"
                   />
                   {query && (
                     <button
                       onClick={() => setQuery("")}
+                      aria-label="Clear search"
                       className="rounded p-0.5 text-zinc-500 transition-colors hover:text-zinc-300"
                     >
                       <X className="h-4 w-4" />
@@ -201,6 +206,7 @@ export function SearchSpotlight({
                 {/* Results */}
                 <div
                   ref={listRef}
+                  role="listbox"
                   className="max-h-[320px] overflow-y-auto overscroll-contain p-2"
                 >
                   {flatResults.length === 0 ? (
@@ -222,6 +228,8 @@ export function SearchSpotlight({
                           return (
                             <button
                               key={item.id}
+                              role="option"
+                              aria-selected={isActive}
                               data-active={isActive}
                               onClick={() => handleSelect(item)}
                               onMouseEnter={() =>

@@ -195,6 +195,57 @@ export default function FlipWordsDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "3D Flip Animation", desc: "Words rotate on the X-axis with perspective for a realistic card-flip transition effect." },
+            { icon: "o", label: "Blur Transitions", desc: "Each word blurs in and out during the flip for a polished, cinematic feel." },
+            { icon: "#", label: "Auto-Cycling", desc: "Words cycle automatically on a configurable interval with seamless looping back to the first word." },
+            { icon: "+", label: "Reduced Motion Safe", desc: "Falls back to showing the first word statically when the user prefers reduced motion." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization-patterns" title="Customization Patterns">
+        <DocSubSection id="hero-headline" title="Hero Headline Integration">
+          <CodeBlock code={`<h1 className="text-5xl font-bold text-white">
+  We build{" "}
+  <FlipWords
+    words={["faster", "smarter", "better"]}
+    duration={2500}
+    className="text-blue-400"
+  />{" "}
+  software.
+</h1>`} filename="hero.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="fast-cycle" title="Fast Status Indicator">
+          <CodeBlock code={`<FlipWords
+  words={["Loading", "Processing", "Complete"]}
+  duration={1000}
+  className="text-sm text-emerald-400"
+/>`} filename="status.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Screen readers will announce the currently visible word as it changes in the DOM.", "When prefers-reduced-motion is enabled, only the first word is shown statically with no animation.", "The component renders inline <span> elements, preserving natural text flow for assistive technologies."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

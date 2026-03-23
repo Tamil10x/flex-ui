@@ -80,6 +80,7 @@ export function ConfettiButton({
       whileTap={disabled ? undefined : { scale: 0.97 }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
       disabled={disabled}
+      aria-disabled={disabled}
       onClick={handleClick}
       className={cn(
         "relative overflow-visible px-8 py-4 text-sm font-semibold rounded-xl",

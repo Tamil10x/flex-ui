@@ -1,0 +1,14 @@
+{
+  "name": "flexui",
+  "version": "0.2.0",
+  "description": "FlexUI CLI — Install cinematic React components",
+  "bin": {
+    "flexui": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node index.ts"
+  },
+  "keywords": ["react", "components", "animation", "ui", "cli"],
+  "license": "MIT"
+}

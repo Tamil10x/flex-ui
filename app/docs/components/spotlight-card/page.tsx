@@ -128,6 +128,53 @@ export default function SpotlightCardDoc() {
         </DocSubSection>
       </DocSection>
 
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Dual Gradient Layers", desc: "A spotlight fill gradient plus a separate border glow gradient track the cursor independently for depth." },
+            { icon: "o", label: "Zero Re-Renders", desc: "All mouse tracking runs through Framer Motion values, keeping the React tree completely static." },
+            { icon: "#", label: "Configurable Spotlight", desc: "Adjust spotlightColor and spotlightSize props to match any brand or design system." },
+            { icon: "+", label: "Glassmorphic Styling", desc: "Ships with backdrop-blur, translucent background, and subtle border that brightens on hover." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="custom-color" title="Purple Spotlight">
+          <CodeBlock code={`<SpotlightCard spotlightColor="168,85,247" spotlightSize={400}>
+  <div className="p-6">
+    <h3 className="text-lg font-bold text-white">Purple Card</h3>
+  </div>
+</SpotlightCard>`} filename="variant.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="compact-card" title="Compact Card">
+          <CodeBlock code={`<SpotlightCard spotlightSize={200} className="max-w-xs">
+  <div className="p-4 text-center">
+    <p className="text-sm text-zinc-400">Small spotlight card</p>
+  </div>
+</SpotlightCard>`} filename="styles.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The spotlight overlay uses pointer-events-none so all card content remains fully interactive.", "Content inside the card is rendered at a higher z-index and remains accessible to screen readers.", "The hover effect is visual-only and does not convey information, so it degrades gracefully without a mouse."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
+
       {/* How it works */}
       <DocSection id="how-it-works" title="How It Works">
         <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">

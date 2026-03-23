@@ -244,6 +244,51 @@ export default function CTABlockDoc() {
           />
         </DocSubSection>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Animated Borders", desc: "Top and bottom gradient border lines pulse with alternating opacity for a living, breathing feel." },
+            { icon: "o", label: "Radial Glow", desc: "A blurred radial gradient creates a subtle ambient light behind the content." },
+            { icon: "#", label: "Staggered Entrance", desc: "Heading, description, and buttons animate in sequentially with blur-to-clear fade-up transitions." },
+            { icon: "+", label: "Dual CTA Buttons", desc: "Primary solid and secondary ghost button styles matching HeroBlock conventions." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="minimal-cta" title="Minimal CTA">
+          <CodeBlock code={`<CTABlock heading="Ready to get started?" />`} filename="minimal.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="full-cta" title="Full CTA with Both Buttons">
+          <CodeBlock code={`<CTABlock
+  heading="Start Building Today"
+  description="Join thousands of developers shipping faster with FlexUI."
+  primaryCta={{ label: "Get Started Free", href: "/signup" }}
+  secondaryCta={{ label: "View Docs", href: "/docs" }}
+  className="bg-zinc-950"
+/>`} filename="full.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Renders as a semantic <section> element for proper document structure.", "CTA links use <a> tags with visible text labels for screen reader compatibility.", "Animated borders and glow are purely decorative and use pointer-events-none to avoid interaction interference.", "The staggered entrance animation uses whileInView with once:true so it does not repeatedly distract users."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

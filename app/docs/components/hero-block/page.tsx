@@ -177,6 +177,61 @@ export default function HeroBlockDoc() {
           </ul>
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Staggered Animations", desc: "Badge, headline, subtitle, and CTAs fade up in sequence with blur-to-clear transitions." },
+            { icon: "o", label: "Radial Gradient Glow", desc: "Ambient background glow using a 600px radial gradient centered behind the content." },
+            { icon: "#", label: "Dot-Grid Pattern", desc: "Optional 24px-interval dot-grid background rendered with CSS radial-gradient." },
+            { icon: "+", label: "Dual CTA Buttons", desc: "Primary solid and secondary glassmorphic call-to-action buttons with hover states." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="gradient-headline" title="Gradient Headline">
+          <CodeBlock code={`<HeroBlock
+  headline={
+    <span>
+      Build faster with{" "}
+      <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+        FlexUI
+      </span>
+    </span>
+  }
+  subtitle="Ship production-ready components in minutes."
+  primaryCta={{ label: "Get Started", href: "/docs" }}
+/>`} filename="gradient-headline.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="minimal-hero" title="Minimal Without Grid">
+          <CodeBlock code={`<HeroBlock
+  headline="Clean & Simple"
+  subtitle="A minimal hero with no grid pattern."
+  showGrid={false}
+  className="min-h-[60vh]"
+/>`} filename="minimal.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Uses semantic <section> and <h1> elements for proper document structure.", "CTA buttons are rendered as <a> tags with visible focus states for keyboard navigation.", "Background decorations use pointer-events-none so they never interfere with interactive content.", "Staggered animations respect the natural reading order: badge, headline, subtitle, then CTAs."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

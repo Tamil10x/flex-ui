@@ -38,6 +38,11 @@ export function ProgressRing({
   return (
     <div
       ref={ref}
+      role="progressbar"
+      aria-valuenow={Math.round(clamped)}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-label="Progress"
       className={cn("relative inline-flex items-center justify-center", className)}
       style={{ width: size, height: size }}
     >

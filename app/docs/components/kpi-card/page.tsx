@@ -198,6 +198,57 @@ export default function KPICardDoc() {
           </ul>
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Spring-Animated Counter", desc: "Numbers tick up with spring physics using useMotionValue outside the React render cycle." },
+            { icon: "o", label: "Change Indicator", desc: "Color-coded badge with directional arrow shows positive (green) or negative (red) percentage change." },
+            { icon: "#", label: "Embedded Sparkline", desc: "Optional inline sparkline chart renders below the value for trend visualization." },
+            { icon: "+", label: "Scroll-Triggered", desc: "Counter animation only starts when the card scrolls into view via useInView observer." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="currency-kpi" title="Currency Display">
+          <CodeBlock code={`<KPICard
+  title="Revenue"
+  value={12450}
+  prefix="$"
+  change={8.3}
+  sparklineData={[40, 55, 60, 48, 70, 85, 90]}
+/>`} filename="currency.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="percentage-kpi" title="Percentage Metric">
+          <CodeBlock code={`<KPICard
+  title="Conversion Rate"
+  value={3.24}
+  suffix="%"
+  change={-1.2}
+  sparklineData={[3.5, 3.3, 3.1, 3.4, 3.2, 3.24]}
+/>`} filename="percentage.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The animated number uses tabular-nums font feature for stable width during counting.", "Change indicator uses both color and a directional arrow icon so meaning is not conveyed by color alone.", "The sparkline is a visual supplement; the numeric value is always present as readable text.", "Glassmorphic backdrop-blur does not affect text readability or contrast ratios."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

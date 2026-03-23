@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typewriter-delete",
+  "type": "registry:ui",
+  "title": "Typewriter Delete",
+  "description": "Text that types then deletes with a blinking cursor, configurable speed and loop.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/typewriter-delete.tsx",
+      "content": "\"use client\";\n\nimport React, { useState, useEffect, useCallback } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface TypewriterDeleteProps {\n  text: string;\n  className?: string;\n  speed?: number;\n  loop?: boolean;\n}\n\nexport function TypewriterDelete({ text, className, speed = 80, loop = true }: TypewriterDeleteProps) {\n  const [displayed, setDisplayed] = useState(\"\");\n  const [isDeleting, setIsDeleting] = useState(false);\n\n  const tick = useCallback(() => {\n    if (!isDeleting) {\n      if (displayed.length < text.length) {\n        setDisplayed(text.slice(0, displayed.length + 1));\n      } else {\n        setTimeout(() => setIsDeleting(true), 1500);\n      }\n    } else {\n      if (displayed.length > 0) {\n        setDisplayed(text.slice(0, displayed.length - 1));\n      } else {\n        setIsDeleting(false);\n        if (!loop) return;\n      }\n    }\n  }, [displayed, isDeleting, text, loop]);\n\n  useEffect(() => {\n    const id = setTimeout(tick, isDeleting ? speed / 2 : speed);\n    return () => clearTimeout(id);\n  }, [tick, speed, isDeleting]);\n\n  return (\n    <span className={cn(\"font-mono text-white\", className)}>\n      {displayed}\n      <span className=\"ml-0.5 inline-block w-[2px] h-[1em] bg-cyan-400 animate-pulse align-middle\" />\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/typewriter-delete.tsx"
+    }
+  ]
+}

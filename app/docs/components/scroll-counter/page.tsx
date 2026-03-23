@@ -200,6 +200,38 @@ export default function ScrollCounterDoc() {
         </DocSubSection>
       </DocSection>
 
+      {/* What You Get */}
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Spring Physics", desc: "Counter animates with configurable spring stiffness for natural deceleration." },
+            { icon: "o", label: "Zero Re-Renders", desc: "Updates the DOM directly via ref instead of React state for optimal performance." },
+            { icon: "#", label: "Prefix & Suffix", desc: "Add currency symbols, percentage signs, or any string before and after the number." },
+            { icon: "+", label: "Scroll Triggered", desc: "Animation starts when the element enters the viewport using IntersectionObserver." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      {/* Accessibility */}
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Uses tabular-nums font feature for stable digit widths that prevent layout shift during counting.", "The span element contains the final value in textContent, making it readable by screen readers.", "Consider wrapping in an aria-live region if the counter value communicates important real-time data."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
+
       {/* Troubleshooting */}
       <DocSection id="troubleshooting" title="Troubleshooting">
         <div className="space-y-3">

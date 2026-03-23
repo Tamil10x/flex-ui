@@ -113,6 +113,59 @@ export default function ReflectiveCardDoc() {
         </DocSubSection>
       </DocSection>
 
+      {/* What You Get */}
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "3D Perspective Tilt", desc: "Mouse-tracking spring tilt with 16-degree rotation for immersive depth." },
+            { icon: "o", label: "Webcam Backdrop", desc: "Live camera feed processed through SVG displacement and specular lighting filters." },
+            { icon: "#", label: "Holographic Border", desc: "Cursor-tracking conic-gradient border with mask-composite glass edge effect." },
+            { icon: "+", label: "Aurora Bands", desc: "Animated color-shifting aurora overlays driven by requestAnimationFrame." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      {/* Customization Patterns */}
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="no-webcam" title="Without Webcam">
+          <CodeBlock code={`<ReflectiveCard enableWebcam={false} metalness={0.8} roughness={0.5}>
+  <div className="p-6">
+    <h2 className="text-xl font-bold">Custom Content</h2>
+    <p className="mt-2 text-sm opacity-60">Aurora and metallic effects still work.</p>
+  </div>
+</ReflectiveCard>`} filename="no-webcam.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="tuning" title="Visual Tuning">
+          <CodeBlock code={`<ReflectiveCard
+  blurStrength={20}
+  displacementStrength={10}
+  specularConstant={2}
+  grayscale={0}
+  overlayColor="rgba(0,0,0,0.3)"
+/>`} filename="tuning.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      {/* Accessibility */}
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["SVG filter element is hidden with aria-hidden=\"true\" to prevent screen reader noise.", "Webcam video is muted and purely decorative -- it does not capture or transmit audio.", "All visual effects (glow, aurora, particles) use pointer-events-none so interactive content remains accessible.", "Gracefully degrades without webcam permission -- the card still renders with full metallic effects."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
+
       {/* How it works */}
       <DocSection id="how-it-works" title="How It Works">
         <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">

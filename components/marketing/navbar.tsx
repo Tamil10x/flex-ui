@@ -12,6 +12,8 @@ const navLinks = [
   { href: "/docs/installation", label: "Installation" },
   { href: "/docs/changelog", label: "Changelog" },
   { href: "/studio", label: "Studio", badge: "AI" },
+  { href: "/blog", label: "Blog" },
+  { href: "/showcase", label: "Showcase" },
 ];
 
 export function Navbar() {

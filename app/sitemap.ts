@@ -80,6 +80,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/docs/components/search-spotlight",
     // WebGL
     "/docs/components/interactive-globe",
+    // Blog
+    "/blog",
+    "/blog/introducing-flexui",
+    "/blog/why-spring-physics",
+    "/blog/webgl-components",
+    // Showcase
+    "/showcase",
   ];
 
   return routes.map((route) => ({

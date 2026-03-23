@@ -219,6 +219,57 @@ export default function AuroraBackgroundDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Pure CSS Animation", desc: "No JavaScript animation loop — the aurora bands drift using CSS keyframes for zero runtime cost." },
+            { icon: "o", label: "Customizable Colors", desc: "Pass an array of up to four RGBA color values to create any aurora palette you need." },
+            { icon: "#", label: "Configurable Speed & Blur", desc: "Control animation speed and blur intensity with simple numeric props." },
+            { icon: "+", label: "Content Overlay", desc: "Children render on top via z-10, so text and interactive elements remain fully visible." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization-patterns" title="Customization Patterns">
+        <DocSubSection id="warm-palette" title="Warm Palette">
+          <CodeBlock code={`<AuroraBackground
+  colors={[
+    "rgba(239, 68, 68, 0.3)",
+    "rgba(249, 115, 22, 0.3)",
+    "rgba(234, 179, 8, 0.3)",
+    "rgba(236, 72, 153, 0.3)",
+  ]}
+  speed={10}
+>
+  <h1>Warm Aurora</h1>
+</AuroraBackground>`} filename="warm.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="subtle-slow" title="Subtle Slow Motion">
+          <CodeBlock code={`<AuroraBackground blur={160} speed={14} showAurora>
+  <div className="py-32 text-center">Slow and dreamy</div>
+</AuroraBackground>`} filename="slow.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The aurora bands are decorative and use pointer-events-none, so they never interfere with user interaction.", "Content renders in a z-10 layer above the effect, keeping all text and interactive elements accessible.", "Use the showAurora prop to disable the effect for users who prefer reduced motion.", "The component does not produce flashing content — the gentle drift animation is safe for photosensitive users."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu",
+  "type": "registry:ui",
+  "title": "Dropdown Menu",
+  "description": "Animated dropdown menu with spring animation, keyboard navigation, and click-outside dismiss.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/dropdown-menu.tsx",
+      "content": "\"use client\";\n\nimport React, { useState, useRef, useEffect, useCallback } from \"react\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface DropdownItem {\n  label: string;\n  onClick?: () => void;\n  icon?: React.ReactNode;\n}\n\ninterface DropdownMenuProps {\n  trigger: React.ReactNode;\n  items: DropdownItem[];\n  className?: string;\n}\n\nexport function DropdownMenu({ trigger, items, className }: DropdownMenuProps) {\n  const [open, setOpen] = useState(false);\n  const [focused, setFocused] = useState(-1);\n  const ref = useRef<HTMLDivElement>(null);\n\n  useEffect(() => {\n    if (!open) return;\n    const handler = (e: MouseEvent) => {\n      if (!ref.current?.contains(e.target as Node)) setOpen(false);\n    };\n    document.addEventListener(\"mousedown\", handler);\n    return () => document.removeEventListener(\"mousedown\", handler);\n  }, [open]);\n\n  const onKey = useCallback(\n    (e: React.KeyboardEvent) => {\n      if (!open) return;\n      if (e.key === \"ArrowDown\") { e.preventDefault(); setFocused((f) => Math.min(f + 1, items.length - 1)); }\n      else if (e.key === \"ArrowUp\") { e.preventDefault(); setFocused((f) => Math.max(f - 1, 0)); }\n      else if (e.key === \"Enter\" && focused >= 0) { items[focused]?.onClick?.(); setOpen(false); }\n      else if (e.key === \"Escape\") setOpen(false);\n    },\n    [open, focused, items]\n  );\n\n  return (\n    <div ref={ref} className=\"relative inline-flex\" onKeyDown={onKey}>\n      <div\n        onClick={() => { setOpen((v) => !v); setFocused(-1); }}\n        tabIndex={0}\n        className=\"inline-flex cursor-pointer\"\n        role=\"button\"\n        aria-haspopup=\"menu\"\n        aria-expanded={open}\n      >\n        {trigger}\n      </div>\n      <AnimatePresence>\n        {open && (\n          <motion.div\n            initial={{ opacity: 0, scale: 0.95, y: -4 }}\n            animate={{ opacity: 1, scale: 1, y: 0 }}\n            exit={{ opacity: 0, scale: 0.95, y: -4 }}\n            transition={{ type: \"spring\", stiffness: 400, damping: 25 }}\n            role=\"menu\"\n            className={cn(\n              \"absolute right-0 top-full z-50 mt-2 min-w-[180px] overflow-hidden rounded-lg border border-white/[0.06] bg-zinc-950 py-1 shadow-xl\",\n              className\n            )}\n          >\n            {items.map((item, i) => (\n              <button\n                key={i}\n                role=\"menuitem\"\n                onClick={() => { item.onClick?.(); setOpen(false); }}\n                onMouseEnter={() => setFocused(i)}\n                className={cn(\n                  \"flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-white/80 transition-colors\",\n                  focused === i && \"bg-white/[0.06] text-white\"\n                )}\n              >\n                {item.icon && <span className=\"text-white/50\">{item.icon}</span>}\n                {item.label}\n              </button>\n            ))}\n          </motion.div>\n        )}\n      </AnimatePresence>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/dropdown-menu.tsx"
+    }
+  ]
+}

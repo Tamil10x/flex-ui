@@ -193,6 +193,55 @@ export default function GridPatternDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Pure CSS", desc: "Uses CSS linear-gradient for grid lines with zero JavaScript — instant rendering and no runtime cost." },
+            { icon: "o", label: "Configurable Grid", desc: "Adjust cell size, line color, and opacity to match any design system or background." },
+            { icon: "#", label: "Radial Fade Mask", desc: "Optional fade prop adds a CSS mask that softly fades grid lines at the edges." },
+            { icon: "+", label: "Content Overlay", desc: "Children render on top with proper z-indexing for hero sections and decorative containers." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization-patterns" title="Customization Patterns">
+        <DocSubSection id="hero-grid" title="Hero Section Background">
+          <CodeBlock code={`<GridPattern fade size={48} className="h-[500px] bg-zinc-950">
+  <div className="flex h-full items-center justify-center">
+    <h1 className="text-5xl font-bold text-white">Build Faster</h1>
+  </div>
+</GridPattern>`} filename="hero.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="colored-grid" title="Colored Grid Lines">
+          <CodeBlock code={`<GridPattern
+  size={36}
+  color="rgb(59 130 246)"
+  opacity={0.12}
+  fade
+  className="h-64 bg-zinc-950"
+/>`} filename="colored.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The grid pattern is a purely decorative background using pointer-events-none, so it never blocks user interactions.", "Children content maintains proper z-index stacking for full screen reader accessibility.", "No motion or animation is involved, making it safe for users who prefer reduced motion."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

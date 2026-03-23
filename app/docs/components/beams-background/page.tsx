@@ -166,6 +166,54 @@ export default function BeamsBackgroundDoc() {
           </ul>
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Pure CSS Animation", desc: "Beams sweep using CSS keyframes — no JavaScript animation loop or requestAnimationFrame." },
+            { icon: "o", label: "Deterministic Randomness", desc: "Seeded random function ensures identical beam layout between server and client renders." },
+            { icon: "#", label: "Configurable Density", desc: "Control beam count, color, and speed with simple props for any visual intensity." },
+            { icon: "+", label: "Content Layer", desc: "Children render in a z-10 layer above beams, keeping interactive elements fully accessible." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="colored-beams" title="Colored Beams">
+          <CodeBlock code={`<BeamsBackground
+  beamCount={10}
+  color="rgba(139, 92, 246, 0.4)"
+  speed={6}
+  className="min-h-[400px] rounded-2xl bg-zinc-950"
+>
+  <h1 className="text-white">Purple Beams</h1>
+</BeamsBackground>`} filename="colored.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="subtle-beams" title="Subtle Background">
+          <CodeBlock code={`<BeamsBackground beamCount={3} speed={12} color="rgba(255,255,255,0.2)">
+  <div className="py-20 text-center text-zinc-300">Minimal beams</div>
+</BeamsBackground>`} filename="subtle.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Beams are decorative and use pointer-events-none, so they never block user interactions.", "Content renders in a z-10 layer above the beam layer for full accessibility.", "The low opacity values (0.03-0.08) prevent the beams from creating distracting visual noise.", "Consider using prefers-reduced-motion media query to disable beam animations for sensitive users."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

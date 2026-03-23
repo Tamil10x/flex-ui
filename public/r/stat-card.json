@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stat-card",
+  "type": "registry:ui",
+  "title": "Stat Card",
+  "description": "Dashboard stat card with label, value, change indicator, and animated number on mount.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/stat-card.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { motion, useInView } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface StatCardProps {\n  label: string;\n  value: string | number;\n  change?: number;\n  icon?: React.ReactNode;\n  className?: string;\n}\n\nexport function StatCard({ label, value, change, icon, className }: StatCardProps) {\n  const ref = React.useRef<HTMLDivElement>(null);\n  const inView = useInView(ref, { once: true });\n\n  return (\n    <motion.div\n      ref={ref}\n      initial={{ opacity: 0, y: 20 }}\n      animate={inView ? { opacity: 1, y: 0 } : {}}\n      transition={{ type: \"spring\", stiffness: 200, damping: 25 }}\n      className={cn(\n        \"relative overflow-hidden rounded-xl border border-white/[0.08] bg-zinc-950/80 p-5 backdrop-blur-xl\",\n        className\n      )}\n    >\n      <div className=\"flex items-start justify-between\">\n        <div>\n          <p className=\"text-sm text-zinc-400\">{label}</p>\n          <motion.p\n            className=\"mt-1 text-3xl font-bold text-white\"\n            initial={{ opacity: 0, scale: 0.5 }}\n            animate={inView ? { opacity: 1, scale: 1 } : {}}\n            transition={{ type: \"spring\", stiffness: 260, damping: 20, delay: 0.15 }}\n          >\n            {value}\n          </motion.p>\n        </div>\n        {icon && <div className=\"text-zinc-500\">{icon}</div>}\n      </div>\n      {change !== undefined && (\n        <motion.div\n          className=\"mt-3 flex items-center gap-1\"\n          initial={{ opacity: 0 }}\n          animate={inView ? { opacity: 1 } : {}}\n          transition={{ delay: 0.3 }}\n        >\n          <span\n            className={cn(\n              \"text-sm font-medium\",\n              change >= 0 ? \"text-emerald-400\" : \"text-red-400\"\n            )}\n          >\n            {change >= 0 ? \"+\" : \"\"}\n            {change}%\n          </span>\n          <span className=\"text-xs text-zinc-500\">vs last period</span>\n        </motion.div>\n      )}\n    </motion.div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/stat-card.tsx"
+    }
+  ]
+}

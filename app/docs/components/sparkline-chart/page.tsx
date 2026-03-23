@@ -171,6 +171,58 @@ export default function SparklineChartDoc() {
         </DocSubSection>
       </DocSection>
 
+      {/* What You Get */}
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Smooth Bezier Curves", desc: "Cubic bezier path interpolation for organic, non-jagged line rendering." },
+            { icon: "o", label: "Line Draw Animation", desc: "Stroke-dashoffset animation draws the line from left to right on mount." },
+            { icon: "#", label: "Gradient Area Fill", desc: "Optional gradient-filled area below the line for visual depth and emphasis." },
+            { icon: "+", label: "No Chart Library", desc: "Pure SVG with zero external charting dependencies -- just framer-motion." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      {/* Customization Patterns */}
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="area-chart" title="Area Chart with Custom Color">
+          <CodeBlock code={`<SparklineChart
+  data={[10, 25, 15, 40, 30, 55, 45]}
+  color="#10b981"
+  showArea
+  width={300}
+  height={80}
+/>`} filename="area.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="static-sparkline" title="Static (No Animation)">
+          <CodeBlock code={`<SparklineChart
+  data={[5, 12, 8, 20, 15, 25]}
+  animate={false}
+  color="#f59e0b"
+/>`} filename="static.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      {/* Accessibility */}
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["SVG element is decorative by default -- add an aria-label or title element for meaningful charts.", "Gradient definitions use unique IDs per instance to prevent conflicts in multi-chart layouts.", "Consider pairing with visible labels or tooltips to convey the data values to all users."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
+
       {/* Performance */}
       <DocSection id="performance" title="Performance Notes">
         <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">

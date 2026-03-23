@@ -46,6 +46,8 @@ export function FloatingNavbar({ items, className, logo }: FloatingNavbarProps) 
   return (
     <AnimatePresence>
       <motion.nav
+        role="navigation"
+        aria-label="Main navigation"
         initial={{ y: 0, opacity: 1 }}
         animate={{
           y: hidden ? -100 : 0,

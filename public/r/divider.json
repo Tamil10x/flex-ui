@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "divider",
+  "type": "registry:ui",
+  "title": "Divider",
+  "description": "Styled divider line supporting horizontal/vertical orientation, optional label, and gradient fade.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/divider.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { motion } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface DividerProps {\n  className?: string;\n  label?: string;\n  orientation?: \"horizontal\" | \"vertical\";\n  gradient?: boolean;\n}\n\nexport function Divider({ className, label, orientation = \"horizontal\", gradient }: DividerProps) {\n  if (orientation === \"vertical\") {\n    return (\n      <div\n        className={cn(\n          \"inline-block w-px self-stretch\",\n          gradient ? \"bg-gradient-to-b from-transparent via-white/20 to-transparent\" : \"bg-white/[0.06]\",\n          className\n        )}\n      />\n    );\n  }\n\n  if (label) {\n    return (\n      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className={cn(\"flex items-center gap-3\", className)}>\n        <div className={cn(\"h-px flex-1\", gradient ? \"bg-gradient-to-r from-transparent to-white/20\" : \"bg-white/[0.06]\")} />\n        <span className=\"shrink-0 text-xs text-white/40\">{label}</span>\n        <div className={cn(\"h-px flex-1\", gradient ? \"bg-gradient-to-r from-white/20 to-transparent\" : \"bg-white/[0.06]\")} />\n      </motion.div>\n    );\n  }\n\n  return (\n    <motion.div\n      initial={{ opacity: 0, y: 20 }}\n      whileInView={{ opacity: 1, y: 0 }}\n      viewport={{ once: true }}\n      transition={{ duration: 0.5 }}\n      className={cn(\n        \"h-px w-full\",\n        gradient ? \"bg-gradient-to-r from-transparent via-white/20 to-transparent\" : \"bg-white/[0.06]\",\n        className\n      )}\n    />\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/divider.tsx"
+    }
+  ]
+}

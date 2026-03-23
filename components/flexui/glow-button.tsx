@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 interface GlowButtonProps {
   children: React.ReactNode;
@@ -19,12 +20,15 @@ export function GlowButton({
   onClick,
   disabled = false,
 }: GlowButtonProps) {
+  const reducedMotion = useReducedMotion();
+
   return (
     <motion.button
-      whileHover={disabled ? undefined : { scale: 1.04 }}
-      whileTap={disabled ? undefined : { scale: 0.97 }}
-      transition={{ type: "spring", stiffness: 400, damping: 17 }}
+      whileHover={disabled || reducedMotion ? undefined : { scale: 1.04 }}
+      whileTap={disabled || reducedMotion ? undefined : { scale: 0.97 }}
+      transition={reducedMotion ? { duration: 0 } : { type: "spring", stiffness: 400, damping: 17 }}
       disabled={disabled}
+      aria-disabled={disabled}
       onClick={onClick}
       className={cn(
         "relative px-8 py-4 text-sm font-semibold rounded-xl",
@@ -38,7 +42,7 @@ export function GlowButton({
         boxShadow: disabled
           ? undefined
           : `0 0 20px ${glowColor}, 0 0 60px ${glowColor.replace(/[\d.]+\)$/, "0.15)")}`,
-        animation: disabled ? undefined : "glow-pulse 2s ease-in-out infinite",
+        animation: disabled || reducedMotion ? undefined : "glow-pulse 2s ease-in-out infinite",
         // @ts-expect-error CSS custom property
         "--glow-color": glowColor,
         "--glow-color-intense": glowColor.replace(/[\d.]+\)$/, "0.8)"),

@@ -206,6 +206,58 @@ export default function GradientBorderButtonDoc() {
           />
         </DocSubSection>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Rotating Gradient", desc: "A conic-gradient border continuously rotates with configurable speed for an eye-catching shimmer." },
+            { icon: "o", label: "Custom Color Stops", desc: "Pass an array of hex colors to fully control the gradient palette of the rotating border." },
+            { icon: "#", label: "Spring Interactions", desc: "Framer Motion spring scale on hover and tap gives tactile button feedback." },
+            { icon: "+", label: "Adjustable Border", desc: "Control border width precisely in pixels while maintaining a solid dark inner background." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="warm-gradient" title="Warm Color Gradient">
+          <CodeBlock code={`<GradientBorderButton
+  colors={["#f97316", "#ef4444", "#ec4899", "#f97316"]}
+  speed={2}
+  borderWidth={2}
+>
+  Subscribe Now
+</GradientBorderButton>`} filename="warm.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="slow-border" title="Slow Thick Border">
+          <CodeBlock code={`<GradientBorderButton
+  colors={["#06b6d4", "#3b82f6", "#8b5cf6", "#06b6d4"]}
+  speed={6}
+  borderWidth={3}
+  className="text-lg"
+>
+  Explore
+</GradientBorderButton>`} filename="slow.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Renders as a native <button> with proper disabled and aria-disabled attributes for assistive technologies.", "The rotating gradient border is purely decorative and does not affect the interactive button area.", "Keyboard focus and activation work natively since the component extends the standard button element."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

@@ -11,6 +11,7 @@ import React, {
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle2, AlertCircle, Info, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -96,14 +97,17 @@ function ToastItem({
 }) {
   const config = typeConfig[toast.type];
   const Icon = config.icon;
+  const reducedMotion = useReducedMotion();
 
   return (
     <motion.div
+      role="alert"
+      aria-live="polite"
       layout
-      initial={{ opacity: 0, x: 80, scale: 0.95 }}
+      initial={reducedMotion ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 80, scale: 0.95 }}
       animate={{ opacity: 1, x: 0, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
-      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+      exit={reducedMotion ? { opacity: 0, transition: { duration: 0 } } : { opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+      transition={reducedMotion ? { duration: 0 } : { type: "spring", stiffness: 350, damping: 30 }}
       className={cn(
         "pointer-events-auto relative flex w-80 items-start gap-3 overflow-hidden rounded-xl border bg-zinc-950/95 px-4 py-3.5 shadow-2xl backdrop-blur-2xl",
         config.borderColor

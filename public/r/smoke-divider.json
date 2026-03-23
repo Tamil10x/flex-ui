@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "smoke-divider",
+  "type": "registry:ui",
+  "title": "Smoke Divider",
+  "description": "A section divider with animated smoke/fog particles drifting across. Pure CSS animation with hydration-safe seeded randomization.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/smoke-divider.tsx",
+      "content": "\"use client\";\n\nimport React, { useMemo, useState, useEffect } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface SmokeDividerProps {\n  className?: string;\n  /** Smoke color */\n  color?: string;\n  /** Number of smoke wisps */\n  count?: number;\n  /** Height of the smoke area in px */\n  height?: number;\n  /** Speed multiplier */\n  speed?: number;\n}\n\n// Simple seeded random for hydration-safe deterministic values\nfunction seededRandom(seed: number) {\n  let s = seed;\n  return () => {\n    s = (s * 16807 + 0) % 2147483647;\n    return (s - 1) / 2147483646;\n  };\n}\n\ninterface WispData {\n  id: number;\n  width: number;\n  height: number;\n  top: number;\n  blur: number;\n  opacity: number;\n  duration: number;\n  delay: number;\n  oscillateAmount: number;\n}\n\nexport function SmokeDivider({\n  className,\n  color = \"rgba(139,92,246,0.15)\",\n  count = 8,\n  height = 60,\n  speed = 1,\n}: SmokeDividerProps) {\n  const [mounted, setMounted] = useState(false);\n\n  useEffect(() => {\n    setMounted(true);\n  }, []);\n\n  const wisps = useMemo<WispData[]>(() => {\n    const rand = seededRandom(42);\n    return Array.from({ length: count }, (_, i) => {\n      const w = 60 + rand() * 120;\n      const h = 20 + rand() * 30;\n      const top = rand() * (height - h);\n      const blur = 20 + rand() * 20;\n      const opacity = 0.3 + rand() * 0.5;\n      const baseDuration = 8 + rand() * 12;\n      const duration = baseDuration / speed;\n      const delay = -(rand() * duration);\n      const oscillateAmount = 4 + rand() * 10;\n\n      return {\n        id: i,\n        width: w,\n        height: h,\n        top,\n        blur,\n        opacity,\n        duration,\n        delay,\n        oscillateAmount,\n      };\n    });\n  }, [count, height, speed]);\n\n  return (\n    <div\n      className={cn(\"relative w-full overflow-hidden\", className)}\n      style={{ height }}\n    >\n      {mounted &&\n        wisps.map((wisp) => (\n          <div\n            key={wisp.id}\n            className=\"absolute rounded-[50%]\"\n            style={{\n              width: wisp.width,\n              height: wisp.height,\n              top: wisp.top,\n              filter: `blur(${wisp.blur}px)`,\n              opacity: wisp.opacity,\n              backgroundColor: color,\n              animation: `smoke-drift ${wisp.duration}s linear ${wisp.delay}s infinite, smoke-float ${wisp.duration * 0.5}s ease-in-out ${wisp.delay}s infinite`,\n              willChange: \"transform\",\n            }}\n          />\n        ))}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/smoke-divider.tsx"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chromatic-text",
+  "type": "registry:ui",
+  "title": "Chromatic Text",
+  "description": "Text with chromatic aberration -- RGB channels split on hover or always active with configurable offset and colors.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/chromatic-text.tsx",
+      "content": "\"use client\";\n\nimport React, { useState } from \"react\";\nimport { motion } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface ChromaticTextProps {\n  children: string;\n  className?: string;\n  /** Split distance in px */\n  offset?: number;\n  /** Trigger on hover or always active */\n  trigger?: \"hover\" | \"always\";\n  /** RGB channel colors */\n  colors?: [string, string, string];\n}\n\nexport function ChromaticText({\n  children,\n  className,\n  offset = 3,\n  trigger = \"hover\",\n  colors = [\"#ff0000\", \"#00ff00\", \"#0000ff\"],\n}: ChromaticTextProps) {\n  const [hovered, setHovered] = useState(false);\n  const isActive = trigger === \"always\" || hovered;\n\n  return (\n    <span\n      className={cn(\"relative inline-block cursor-default select-none\", className)}\n      onMouseEnter={trigger === \"hover\" ? () => setHovered(true) : undefined}\n      onMouseLeave={trigger === \"hover\" ? () => setHovered(false) : undefined}\n    >\n      {/* Base (visible) text — white */}\n      <span className=\"relative z-10 text-white\">{children}</span>\n\n      {/* Red channel — shifts left */}\n      <motion.span\n        aria-hidden\n        className=\"absolute inset-0 z-0\"\n        style={{\n          color: colors[0],\n          mixBlendMode: \"screen\",\n        }}\n        animate={{\n          x: isActive ? -offset : 0,\n          opacity: isActive ? 0.8 : 0,\n        }}\n        transition={{\n          type: \"spring\",\n          stiffness: 300,\n          damping: 20,\n          delay: isActive ? 0 : 0.05,\n        }}\n      >\n        {children}\n      </motion.span>\n\n      {/* Green channel — stays centered */}\n      <motion.span\n        aria-hidden\n        className=\"absolute inset-0 z-0\"\n        style={{\n          color: colors[1],\n          mixBlendMode: \"screen\",\n        }}\n        animate={{\n          x: 0,\n          opacity: isActive ? 0.8 : 0,\n        }}\n        transition={{\n          type: \"spring\",\n          stiffness: 300,\n          damping: 20,\n          delay: isActive ? 0.03 : 0.03,\n        }}\n      >\n        {children}\n      </motion.span>\n\n      {/* Blue channel — shifts right */}\n      <motion.span\n        aria-hidden\n        className=\"absolute inset-0 z-0\"\n        style={{\n          color: colors[2],\n          mixBlendMode: \"screen\",\n        }}\n        animate={{\n          x: isActive ? offset : 0,\n          opacity: isActive ? 0.8 : 0,\n        }}\n        transition={{\n          type: \"spring\",\n          stiffness: 300,\n          damping: 20,\n          delay: isActive ? 0.06 : 0,\n        }}\n      >\n        {children}\n      </motion.span>\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/chromatic-text.tsx"
+    }
+  ]
+}

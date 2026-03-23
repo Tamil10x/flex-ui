@@ -173,6 +173,38 @@ export default function ScrollProgressDoc() {
         </DocSubSection>
       </DocSection>
 
+      {/* What You Get */}
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Spring-Smoothed", desc: "Scroll position is smoothed with spring physics for natural, jitter-free motion." },
+            { icon: "o", label: "Gradient Support", desc: "Pass any CSS background value including linear gradients for colorful progress bars." },
+            { icon: "#", label: "Top or Bottom", desc: "Position the bar at the top or bottom of the viewport with a single prop." },
+            { icon: "+", label: "Fixed Position", desc: "Stays visible as a fixed overlay while scrolling, with z-50 stacking." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      {/* Accessibility */}
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Uses role=\"progressbar\" with aria-label to communicate scroll progress to screen readers.", "The bar is purely informational and does not interfere with page interactivity.", "Spring-smoothed scaleX transform is GPU-accelerated and does not cause layout recalculations."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
+
       {/* Troubleshooting */}
       <DocSection id="troubleshooting" title="Troubleshooting">
         <div className="space-y-3">

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "direction-hover",
+  "type": "registry:ui",
+  "title": "Direction Hover",
+  "description": "Content overlay that slides in from the direction the cursor enters the element.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/direction-hover.tsx",
+      "content": "\"use client\";\n\nimport React, { useRef, useState } from \"react\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface DirectionHoverProps {\n  children: React.ReactNode;\n  overlay?: React.ReactNode;\n  className?: string;\n}\n\ntype Direction = \"top\" | \"bottom\" | \"left\" | \"right\";\n\nconst variants: Record<Direction, { from: { x: number; y: number }; to: { x: number; y: number } }> = {\n  top: { from: { x: 0, y: -100 }, to: { x: 0, y: 100 } },\n  bottom: { from: { x: 0, y: 100 }, to: { x: 0, y: -100 } },\n  left: { from: { x: -100, y: 0 }, to: { x: 100, y: 0 } },\n  right: { from: { x: 100, y: 0 }, to: { x: -100, y: 0 } },\n};\n\nexport function DirectionHover({ children, overlay, className }: DirectionHoverProps) {\n  const ref = useRef<HTMLDivElement>(null);\n  const [dir, setDir] = useState<Direction>(\"top\");\n  const [hovered, setHovered] = useState(false);\n\n  function getDirection(e: React.MouseEvent) {\n    if (!ref.current) return \"top\" as Direction;\n    const { top, left, width, height } = ref.current.getBoundingClientRect();\n    const x = (e.clientX - left - width / 2) / width;\n    const y = (e.clientY - top - height / 2) / height;\n    if (Math.abs(x) > Math.abs(y)) return x > 0 ? \"right\" : \"left\";\n    return y > 0 ? \"bottom\" : \"top\";\n  }\n\n  return (\n    <div\n      ref={ref}\n      onMouseEnter={(e) => { setDir(getDirection(e)); setHovered(true); }}\n      onMouseLeave={(e) => { setDir(getDirection(e)); setHovered(false); }}\n      className={cn(\"group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-zinc-950\", className)}\n    >\n      {children}\n      <AnimatePresence>\n        {hovered && overlay && (\n          <motion.div\n            initial={{ ...variants[dir].from, opacity: 0 }}\n            animate={{ x: 0, y: 0, opacity: 1 }}\n            exit={{ ...variants[dir].to, opacity: 0 }}\n            transition={{ type: \"spring\", stiffness: 300, damping: 30 }}\n            className=\"absolute inset-0 z-10 flex items-center justify-center bg-zinc-900/90 backdrop-blur-sm\"\n          >\n            {overlay}\n          </motion.div>\n        )}\n      </AnimatePresence>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/direction-hover.tsx"
+    }
+  ]
+}

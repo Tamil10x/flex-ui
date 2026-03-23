@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card",
+  "type": "registry:ui",
+  "title": "Hover Card",
+  "description": "Card with subtle lift and shadow increase on hover using spring scale and shadow transition.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/hover-card.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { motion } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface HoverCardProps {\n  children: React.ReactNode;\n  className?: string;\n}\n\nexport function HoverCard({ children, className }: HoverCardProps) {\n  return (\n    <motion.div\n      whileHover={{ y: -6, scale: 1.02 }}\n      transition={{ type: \"spring\", stiffness: 300, damping: 20 }}\n      className={cn(\n        \"rounded-2xl border border-white/[0.08] bg-zinc-950/80 p-6 backdrop-blur-xl\",\n        \"shadow-[0_4px_20px_rgba(0,0,0,0.3)]\",\n        \"hover:shadow-[0_16px_40px_rgba(0,0,0,0.5)] hover:border-white/[0.15]\",\n        \"transition-shadow duration-300\",\n        className\n      )}\n    >\n      {children}\n    </motion.div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/hover-card.tsx"
+    }
+  ]
+}

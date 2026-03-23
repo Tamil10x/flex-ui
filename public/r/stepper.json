@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stepper",
+  "type": "registry:ui",
+  "title": "Stepper",
+  "description": "Step progress indicator with connected animated lines, active step scaling, and descriptions.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/stepper.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { motion, useReducedMotion } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface Step {\n  label: string;\n  description?: string;\n}\n\ninterface StepperProps {\n  steps: Step[];\n  currentStep: number;\n  className?: string;\n}\n\nexport function Stepper({ steps, currentStep, className }: StepperProps) {\n  const reducedMotion = useReducedMotion();\n  return (\n    <div role=\"navigation\" aria-label=\"Progress steps\" className={cn(\"flex items-start gap-0\", className)}>\n      {steps.map((step, i) => (\n        <motion.div key={step.label} initial={reducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: reducedMotion ? 0 : 0.5, delay: reducedMotion ? 0 : i * 0.1 }} className=\"flex flex-1 flex-col items-center\">\n          <div className=\"flex w-full items-center\">\n            {i > 0 && (\n              <div className=\"relative h-0.5 flex-1 bg-zinc-800\">\n                <motion.div\n                  className=\"absolute inset-y-0 left-0 bg-cyan-400\"\n                  initial={{ width: \"0%\" }}\n                  animate={{ width: i <= currentStep ? \"100%\" : \"0%\" }}\n                  transition={{ type: \"spring\", stiffness: 200, damping: 25 }}\n                />\n              </div>\n            )}\n            <motion.div\n              aria-label={`Step ${i + 1}: ${step.label}${i < currentStep ? \" (completed)\" : i === currentStep ? \" (current)\" : \"\"}`}\n              className={cn(\n                \"relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-xs font-semibold transition-colors\",\n                i < currentStep && \"border-cyan-400 bg-cyan-400 text-black\",\n                i === currentStep && \"border-cyan-400 bg-transparent text-cyan-400\",\n                i > currentStep && \"border-zinc-700 bg-transparent text-zinc-500\"\n              )}\n              initial={false}\n              animate={{ scale: i === currentStep ? 1.1 : 1 }}\n              transition={{ type: \"spring\", stiffness: 300, damping: 20 }}\n            >\n              {i < currentStep ? \"✓\" : i + 1}\n            </motion.div>\n            {i < steps.length - 1 && (\n              <div className=\"relative h-0.5 flex-1 bg-zinc-800\">\n                <motion.div\n                  className=\"absolute inset-y-0 left-0 bg-cyan-400\"\n                  initial={{ width: \"0%\" }}\n                  animate={{ width: i < currentStep ? \"100%\" : \"0%\" }}\n                  transition={{ type: \"spring\", stiffness: 200, damping: 25 }}\n                />\n              </div>\n            )}\n          </div>\n          <div className=\"mt-2 text-center\">\n            <p className={cn(\"text-xs font-medium\", i <= currentStep ? \"text-white\" : \"text-zinc-500\")}>\n              {step.label}\n            </p>\n            {step.description && (\n              <p className=\"mt-0.5 text-[10px] text-zinc-500\">{step.description}</p>\n            )}\n          </div>\n        </motion.div>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/stepper.tsx"
+    }
+  ]
+}

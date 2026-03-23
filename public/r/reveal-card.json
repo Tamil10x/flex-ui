@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "reveal-card",
+  "type": "registry:ui",
+  "title": "Reveal Card",
+  "description": "Card that reveals content on hover with a slide-up transition using Framer Motion variants.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/reveal-card.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { motion } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface RevealCardProps {\n  title: React.ReactNode;\n  children: React.ReactNode;\n  className?: string;\n}\n\nexport function RevealCard({ title, children, className }: RevealCardProps) {\n  return (\n    <motion.div\n      initial=\"rest\"\n      whileHover=\"hover\"\n      className={cn(\n        \"group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-zinc-950/80 backdrop-blur-xl\",\n        className\n      )}\n    >\n      <div className=\"relative z-10 p-6\">\n        <div className=\"text-lg font-semibold text-white\">{title}</div>\n      </div>\n      <motion.div\n        variants={{\n          rest: { y: \"100%\" },\n          hover: { y: 0 },\n        }}\n        transition={{ type: \"spring\", stiffness: 300, damping: 30 }}\n        className=\"absolute inset-0 z-20 flex items-center justify-center bg-zinc-900/95 p-6 backdrop-blur-sm\"\n      >\n        <div className=\"text-sm text-zinc-300\">{children}</div>\n      </motion.div>\n    </motion.div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/reveal-card.tsx"
+    }
+  ]
+}

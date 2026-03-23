@@ -209,6 +209,60 @@ export default function SearchSpotlightDoc() {
           />
         </DocSubSection>
       </DocSection>
+
+      {/* What You Get */}
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Keyboard Navigation", desc: "Arrow keys, Enter, and Escape for full keyboard-driven search and selection." },
+            { icon: "o", label: "Category Grouping", desc: "Results are automatically grouped by category with section headers." },
+            { icon: "#", label: "Cmd+K Shortcut", desc: "Built-in keyboard shortcut listener toggles the dialog open and closed." },
+            { icon: "+", label: "Spring Animation", desc: "Dialog enters with scale and fade spring animation for a polished feel." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      {/* Customization Patterns */}
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="custom-items" title="Custom Items with Icons">
+          <CodeBlock code={`<SearchSpotlight
+  items={[
+    { id: "1", title: "Dashboard", description: "View analytics", category: "Pages", icon: <LayoutIcon className="h-4 w-4" /> },
+    { id: "2", title: "Settings", description: "Manage account", category: "Pages", icon: <GearIcon className="h-4 w-4" /> },
+    { id: "3", title: "Dark Mode", category: "Actions", onSelect: () => toggleTheme() },
+  ]}
+  placeholder="Type a command..."
+  shortcut="Ctrl+K"
+/>`} filename="items.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="custom-trigger" title="Custom Trigger Styling">
+          <CodeBlock code={`<SearchSpotlight
+  items={items}
+  className="w-64 rounded-full border-white/10"
+  placeholder="Search docs..."
+/>`} filename="trigger.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      {/* Accessibility */}
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Dialog uses role=\"dialog\" with aria-modal and aria-label for screen reader identification.", "Search input has aria-autocomplete=\"list\" and results use role=\"listbox\" with role=\"option\" items.", "Trigger button uses aria-haspopup=\"dialog\" and aria-expanded to communicate state.", "Active result is tracked with aria-selected and scrolled into view for keyboard users."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

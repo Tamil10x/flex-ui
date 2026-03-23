@@ -212,6 +212,52 @@ export default function RippleButtonDoc() {
           />
         </DocSubSection>
       </DocSection>
+
+      {/* What You Get */}
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Click-Position Ripple", desc: "Expanding circle originates from the exact click position for precise feedback." },
+            { icon: "o", label: "Stacking Ripples", desc: "Multiple rapid clicks create overlapping ripples that animate independently." },
+            { icon: "#", label: "Auto Cleanup", desc: "Each ripple removes itself from the DOM after its animation completes." },
+            { icon: "+", label: "Disabled State", desc: "Built-in disabled prop suppresses ripples and applies reduced opacity styling." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      {/* Customization Patterns */}
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="ripple-colors" title="Ripple Color Variants">
+          <CodeBlock code={`<RippleButton rippleColor="rgba(139,92,246,0.4)">Purple Ripple</RippleButton>
+<RippleButton rippleColor="rgba(16,185,129,0.4)">Green Ripple</RippleButton>
+<RippleButton rippleColor="rgba(239,68,68,0.3)">Red Ripple</RippleButton>`} filename="colors.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="custom-shape" title="Custom Button Shape">
+          <CodeBlock code={`<RippleButton className="rounded-full px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 border-none">
+  Round Button
+</RippleButton>`} filename="shape.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      {/* Accessibility */}
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Uses native button element with built-in keyboard and focus support.", "Disabled state sets both disabled and aria-disabled attributes for assistive technology.", "Ripple effects are pointer-events-none and purely decorative with no impact on button semantics."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

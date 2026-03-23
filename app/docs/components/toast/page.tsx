@@ -155,6 +155,36 @@ export default function ToastDoc() {
         </DocSubSection>
       </DocSection>
 
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Context-Based API", desc: "Use the useToast hook anywhere in your component tree — no prop drilling or global state libraries needed." },
+            { icon: "o", label: "Four Type Variants", desc: "Success, error, info, and warning types each with distinct color-coded icons and border accents." },
+            { icon: "#", label: "Auto-Dismiss & Stacking", desc: "Toasts auto-dismiss after a configurable duration and stack with a max of 5 visible at once." },
+            { icon: "+", label: "Spring Entry Animation", desc: "Toasts slide in with spring physics and scale out on exit, with reduced-motion support built in." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["Each toast uses role=\"alert\" and aria-live=\"polite\" so screen readers announce new notifications.", "The dismiss button is keyboard-accessible and provides a way to manually close each toast.", "Animations are automatically disabled when prefers-reduced-motion is enabled.", "Toast type icons supplement color with shape, ensuring meaning is not conveyed by color alone."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
+
       {/* Customization */}
       <DocSection id="customization" title="Customization">
         <DocSubSection id="positions" title="Position Variants">

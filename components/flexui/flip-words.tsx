@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 interface FlipWordsProps {
   words: string[];
@@ -17,15 +18,25 @@ export function FlipWords({
   className,
 }: FlipWordsProps) {
   const [index, setIndex] = useState(0);
+  const reducedMotion = useReducedMotion();
 
   const next = useCallback(() => {
     setIndex((prev) => (prev + 1) % words.length);
   }, [words.length]);
 
   useEffect(() => {
+    if (reducedMotion) return;
     const id = setInterval(next, duration);
     return () => clearInterval(id);
-  }, [next, duration]);
+  }, [next, duration, reducedMotion]);
+
+  if (reducedMotion) {
+    return (
+      <span className={cn("inline-block relative overflow-hidden", className)}>
+        <span className="inline-block">{words[0]}</span>
+      </span>
+    );
+  }
 
   return (
     <span

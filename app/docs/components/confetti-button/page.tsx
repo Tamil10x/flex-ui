@@ -251,6 +251,49 @@ export default function ConfettiButtonDoc() {
           />
         </DocSubSection>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Burst Animation", desc: "Particles explode outward in random directions from the button center on every click." },
+            { icon: "o", label: "Auto Cleanup", desc: "Particles self-remove via onAnimationEnd, so the DOM stays clean after each burst." },
+            { icon: "#", label: "Vibrant Colors", desc: "Five curated confetti colors — violet, cyan, pink, yellow, and emerald — for a festive feel." },
+            { icon: "+", label: "Spring Interactions", desc: "Button scales with spring physics on hover and tap for satisfying micro-interactions." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization" title="Customization Patterns">
+        <DocSubSection id="heavy-confetti" title="Heavy Confetti Burst">
+          <CodeBlock code={`<ConfettiButton particleCount={40} className="bg-purple-600 hover:bg-purple-700">
+  Celebrate!
+</ConfettiButton>`} filename="heavy.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="subtle-confetti" title="Subtle Confetti">
+          <CodeBlock code={`<ConfettiButton particleCount={8} className="px-4 py-2 text-xs">
+  Like
+</ConfettiButton>`} filename="subtle.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The component renders as a native button element, fully keyboard-accessible out of the box.", "Disabled state sets both disabled and aria-disabled attributes for assistive technology support.", "Confetti particles are pointer-events-none and purely decorative — they do not interfere with interaction.", "The button label (children) is announced by screen readers normally."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

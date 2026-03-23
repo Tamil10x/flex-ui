@@ -193,6 +193,55 @@ export default function DotPatternDoc() {
           ))}
         </div>
       </DocSection>
+
+      <DocSection id="what-you-get" title="What You Get">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {[
+            { icon: "~", label: "Pure CSS", desc: "No JavaScript animation — uses CSS radial-gradient for zero runtime cost and instant rendering." },
+            { icon: "o", label: "Configurable Spacing", desc: "Adjust dot spacing, size, and color to match any design system or background." },
+            { icon: "#", label: "Radial Fade Mask", desc: "Optional fade prop adds a CSS mask that softly fades dots at the edges for a polished look." },
+            { icon: "+", label: "Content Overlay", desc: "Children render on top of the pattern with proper z-indexing for layered compositions." },
+          ].map((item) => (
+            <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>
+              <p className="text-sm font-semibold text-white">{item.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection id="customization-patterns" title="Customization Patterns">
+        <DocSubSection id="hero-background" title="Hero Section Background">
+          <CodeBlock code={`<DotPattern fade spacing={20} dotSize={1} className="h-[400px] bg-zinc-950">
+  <div className="flex h-full items-center justify-center">
+    <h1 className="text-4xl font-bold text-white">Welcome</h1>
+  </div>
+</DotPattern>`} filename="hero.tsx" language="tsx" />
+        </DocSubSection>
+        <DocSubSection id="colored-dots" title="Colored Accent Dots">
+          <CodeBlock code={`<DotPattern
+  color="rgb(168 85 247 / 0.5)"
+  spacing={16}
+  dotSize={1.5}
+  fade
+  className="h-64 bg-zinc-950"
+/>`} filename="colored.tsx" language="tsx" />
+        </DocSubSection>
+      </DocSection>
+
+      <DocSection id="accessibility" title="Accessibility">
+        <div className="rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5">
+          <ul className="space-y-3 text-sm text-zinc-400">
+            {["The dot pattern is a purely decorative background using pointer-events-none, so it never interferes with user interactions.", "Children content maintains proper z-index stacking for full accessibility.", "No motion or animation is involved, making it safe for users with vestibular disorders."].map((note, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </DocSection>
     </div>
   );
 }

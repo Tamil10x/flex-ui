@@ -3,6 +3,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 interface TextRevealProps {
   text: string;
@@ -27,11 +28,20 @@ export function TextReveal({
 }: TextRevealProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once });
+  const reducedMotion = useReducedMotion();
 
   const units =
     mode === "word"
       ? text.split(/(\s+)/)
       : text.split("");
+
+  if (reducedMotion) {
+    return (
+      <span className={cn("inline-block overflow-hidden", className)}>
+        {text}
+      </span>
+    );
+  }
 
   return (
     <span
