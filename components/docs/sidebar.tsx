@@ -34,6 +34,7 @@ import {
   ChevronDown, Users, Award, Clock, Scissors, Copy, ImageIcon, ToggleLeft,
   SlidersHorizontal, CheckCircle, ListOrdered, Tag, AlertCircle,
   Eraser, Magnet, Timer, Gauge, StarHalf, Calendar, Code2,
+  Shield, AudioLines, Mic, Loader,
 } from "lucide-react";
 
 interface SidebarItem {
@@ -54,6 +55,9 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "Changelog", href: "/docs/changelog", icon: <FileText className="h-4 w-4" /> },
       { title: "AI Studio", href: "/studio", icon: <Sparkles className="h-4 w-4" /> },
       { title: "Theme Preview", href: "/docs/theme-preview", icon: <Palette className="h-4 w-4" />, isNew: true },
+      { title: "Accessibility", href: "/docs/accessibility", icon: <Shield className="h-4 w-4" />, isNew: true },
+      { title: "Performance", href: "/docs/performance", icon: <Gauge className="h-4 w-4" />, isNew: true },
+      { title: "Analytics", href: "/studio/analytics", icon: <BarChart className="h-4 w-4" />, isNew: true },
     ],
   },
   {
@@ -250,6 +254,7 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "Ambient Tilt", href: "/docs/components/ambient-tilt", icon: <Move3d className="h-4 w-4" />, isNew: true },
       { title: "Spotlight Border", href: "/docs/components/spotlight-border", icon: <Flashlight className="h-4 w-4" />, isNew: true },
       { title: "Image Compare", href: "/docs/components/image-compare", icon: <ImageIcon className="h-4 w-4" />, isNew: true },
+      { title: "Preloader", href: "/docs/components/preloader", icon: <Loader className="h-4 w-4" />, isNew: true },
     ],
   },
   {
@@ -265,6 +270,14 @@ const sidebarSections: { heading: string; items: SidebarItem[] }[] = [
       { title: "Divider", href: "/docs/components/divider", icon: <Scissors className="h-4 w-4" />, isNew: true },
       { title: "Skeleton", href: "/docs/components/skeleton", icon: <Square className="h-4 w-4" />, isNew: true },
       { title: "Empty State", href: "/docs/components/empty-state", icon: <AlertCircle className="h-4 w-4" />, isNew: true },
+    ],
+  },
+  {
+    heading: "Voice",
+    items: [
+      { title: "Voice Input", href: "/docs/components/voice-input", icon: <Mic className="h-4 w-4" />, isNew: true },
+      { title: "Voice Command", href: "/docs/components/voice-command", icon: <AudioLines className="h-4 w-4" />, isNew: true },
+      { title: "Voice Search", href: "/docs/components/voice-search", icon: <Search className="h-4 w-4" />, isNew: true },
     ],
   },
   {

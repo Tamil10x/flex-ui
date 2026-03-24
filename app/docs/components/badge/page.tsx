@@ -82,16 +82,34 @@ export default function Page() {
             },
             {
               name: "variant",
-              type: '"default" | "success" | "warning" | "error" | "info"',
+              type: '"default" | "success" | "warning" | "error" | "info" | "purple" | "gradient"',
               default: '"default"',
               description: "Color variant that determines the badge styling.",
             },
             {
+              name: "size",
+              type: '"sm" | "md" | "lg"',
+              default: '"md"',
+              description: "Badge size — affects padding and font size.",
+            },
+            {
               name: "pulse",
               type: "boolean",
-              default: "—",
+              default: "false",
               description:
                 "When true, shows an animated pulsing dot before the label.",
+            },
+            {
+              name: "glow",
+              type: "boolean",
+              default: "false",
+              description: "Adds a colored box-shadow glow matching the variant color.",
+            },
+            {
+              name: "icon",
+              type: "ReactNode",
+              default: "—",
+              description: "Optional icon rendered before the text content.",
             },
             {
               name: "className",

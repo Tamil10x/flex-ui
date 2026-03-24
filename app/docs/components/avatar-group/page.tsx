@@ -81,7 +81,7 @@ export default function Page() {
               type: "AvatarGroupItem[]",
               default: "—",
               description:
-                "Array of avatar objects with name (string) and optional src (string).",
+                "Array of { name, src?, status? } objects for each avatar.",
               required: true,
             },
             {
@@ -93,9 +93,21 @@ export default function Page() {
             },
             {
               name: "size",
-              type: '"sm" | "md" | "lg"',
+              type: '"xs" | "sm" | "md" | "lg" | "xl"',
               default: '"md"',
               description: "Size of each avatar in the group.",
+            },
+            {
+              name: "spacing",
+              type: '"tight" | "normal" | "loose"',
+              default: '"normal"',
+              description: "Control the overlap density between stacked avatars.",
+            },
+            {
+              name: "expandable",
+              type: "boolean",
+              default: "false",
+              description: "When true, hovering the +N badge reveals all hidden avatars with spring animation.",
             },
             {
               name: "className",

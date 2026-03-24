@@ -90,10 +90,28 @@ export default function Page() {
             },
             {
               name: "size",
-              type: '"sm" | "md" | "lg"',
+              type: '"xs" | "sm" | "md" | "lg" | "xl"',
               default: '"md"',
               description:
-                "Avatar size. sm = 32px, md = 40px, lg = 56px.",
+                "Avatar size. xs=28px, sm=36px, md=44px, lg=56px, xl=80px.",
+            },
+            {
+              name: "status",
+              type: '"online" | "offline" | "away" | "busy"',
+              default: "—",
+              description: "Status indicator dot at bottom-right. Online and busy have animated ping.",
+            },
+            {
+              name: "ring",
+              type: "boolean",
+              default: "false",
+              description: "Show a colored ring around the avatar.",
+            },
+            {
+              name: "ringColor",
+              type: "string",
+              default: "rgba(167,139,250,0.5)",
+              description: "CSS color for the ring when ring is true.",
             },
             {
               name: "className",
