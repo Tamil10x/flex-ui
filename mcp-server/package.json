@@ -1,0 +1,19 @@
+{
+  "name": "@flexui/mcp-server",
+  "version": "0.1.0",
+  "description": "FlexUI MCP Server — browse, search, and add 157+ cinematic React components via AI assistants",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "flexui-mcp": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": ["mcp", "flexui", "components", "react", "ai", "claude", "cursor"],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  }
+}
