@@ -3,7 +3,7 @@ import * as path from "path";
 
 // ─── Configuration ──────────────────────────────────────────────────────────
 
-const BASE_URL = "https://flexui.dev";
+const BASE_URL = "https://flex-ui-wine.vercel.app";
 
 // ─── Registry Component Definitions ─────────────────────────────────────────
 

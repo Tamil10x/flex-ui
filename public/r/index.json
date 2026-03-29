@@ -7,787 +7,925 @@
       "name": "magnetic-button",
       "type": "registry:ui",
       "description": "A button that uses Framer Motion spring physics to magnetically pull toward the cursor on hover with a glowing spotlight border effect.",
-      "url": "https://flexui.dev/r/magnetic-button.json"
+      "url": "https://flex-ui-wine.vercel.app/r/magnetic-button.json"
     },
     {
       "name": "floating-panel",
       "type": "registry:ui",
       "description": "A headless, composable floating panel with glassmorphic styling, spring animations, position-aware anchoring, and built-in form support.",
-      "url": "https://flexui.dev/r/floating-panel.json"
+      "url": "https://flex-ui-wine.vercel.app/r/floating-panel.json"
     },
     {
       "name": "three-hover-card",
       "type": "registry:ui",
       "description": "A premium card component that reveals a live Three.js 3D scene with a rotating icosahedron on hover. The canvas is lazy-loaded for performance.",
-      "url": "https://flexui.dev/r/three-hover-card.json"
+      "url": "https://flex-ui-wine.vercel.app/r/three-hover-card.json"
     },
     {
       "name": "interactive-globe",
       "type": "registry:ui",
       "description": "A 3D interactive globe component powered by Three.js and three-globe with customizable arcs, points, and atmosphere rendering.",
-      "url": "https://flexui.dev/r/interactive-globe.json"
+      "url": "https://flex-ui-wine.vercel.app/r/interactive-globe.json"
     },
     {
       "name": "cosmic-eye",
       "type": "registry:ui",
       "description": "A WebGL shader-based animated eye effect with cosmic nebula colors, mouse-tracking pupil, and organic noise textures.",
-      "url": "https://flexui.dev/r/cosmic-eye.json"
+      "url": "https://flex-ui-wine.vercel.app/r/cosmic-eye.json"
     },
     {
       "name": "expandable-card",
       "type": "registry:ui",
       "description": "An expandable card component with smooth Framer Motion animations that reveals additional content on interaction.",
-      "url": "https://flexui.dev/r/expandable-card.json"
+      "url": "https://flex-ui-wine.vercel.app/r/expandable-card.json"
     },
     {
       "name": "reflective-card",
       "type": "registry:ui",
       "description": "A card component with a reflective surface effect powered by Framer Motion animations that responds to cursor movement.",
-      "url": "https://flexui.dev/r/reflective-card.json"
+      "url": "https://flex-ui-wine.vercel.app/r/reflective-card.json"
     },
     {
       "name": "shimmer-button",
       "type": "registry:ui",
       "description": "A button with a continuous diagonal shimmer sweep effect, configurable color, and spring-physics hover interactions.",
-      "url": "https://flexui.dev/r/shimmer-button.json"
+      "url": "https://flex-ui-wine.vercel.app/r/shimmer-button.json"
     },
     {
       "name": "text-reveal",
       "type": "registry:ui",
       "description": "Text animation that reveals characters or words with staggered blur-in effect on scroll into view.",
-      "url": "https://flexui.dev/r/text-reveal.json"
+      "url": "https://flex-ui-wine.vercel.app/r/text-reveal.json"
     },
     {
       "name": "number-ticker",
       "type": "registry:ui",
       "description": "Animated number counter with spring physics that ticks up to a target value when scrolled into view.",
-      "url": "https://flexui.dev/r/number-ticker.json"
+      "url": "https://flex-ui-wine.vercel.app/r/number-ticker.json"
     },
     {
       "name": "dock-menu",
       "type": "registry:ui",
       "description": "A macOS-style dock with smooth magnification effect powered by Framer Motion spring physics and motion values.",
-      "url": "https://flexui.dev/r/dock-menu.json"
+      "url": "https://flex-ui-wine.vercel.app/r/dock-menu.json"
     },
     {
       "name": "spotlight-card",
       "type": "registry:ui",
       "description": "A glassmorphic card with a cursor-following spotlight radial gradient, border glow, and hover effects.",
-      "url": "https://flexui.dev/r/spotlight-card.json"
+      "url": "https://flex-ui-wine.vercel.app/r/spotlight-card.json"
     },
     {
       "name": "drawer",
       "type": "registry:ui",
       "description": "An animated bottom sheet / side drawer with spring physics, backdrop blur overlay, ESC-to-close, click-outside dismiss, and body scroll lock.",
-      "url": "https://flexui.dev/r/drawer.json"
+      "url": "https://flex-ui-wine.vercel.app/r/drawer.json"
     },
     {
       "name": "toast",
       "type": "registry:ui",
       "description": "A context-based toast notification system with spring-physics animations, auto-dismiss, four color-coded types, and stacked positioning.",
-      "url": "https://flexui.dev/r/toast.json"
+      "url": "https://flex-ui-wine.vercel.app/r/toast.json"
     },
     {
       "name": "animated-tabs",
       "type": "registry:ui",
       "description": "A tab component with a sliding animated indicator and smooth fade+slide content transitions. Three variants with spring physics.",
-      "url": "https://flexui.dev/r/animated-tabs.json"
+      "url": "https://flex-ui-wine.vercel.app/r/animated-tabs.json"
     },
     {
       "name": "marquee",
       "type": "registry:ui",
       "description": "A reusable infinite horizontal scrolling component with pure CSS animation, configurable speed, direction, and hover-to-pause.",
-      "url": "https://flexui.dev/r/marquee.json"
+      "url": "https://flex-ui-wine.vercel.app/r/marquee.json"
     },
     {
       "name": "flip-words",
       "type": "registry:ui",
       "description": "Words that flip and rotate in and out with 3D perspective animation and spring physics.",
-      "url": "https://flexui.dev/r/flip-words.json"
+      "url": "https://flex-ui-wine.vercel.app/r/flip-words.json"
     },
     {
       "name": "wavy-text",
       "type": "registry:ui",
       "description": "Text where each character animates in with a staggered wave pattern using spring physics on viewport entry.",
-      "url": "https://flexui.dev/r/wavy-text.json"
+      "url": "https://flex-ui-wine.vercel.app/r/wavy-text.json"
     },
     {
       "name": "typewriter-text",
       "type": "registry:ui",
       "description": "A typewriter effect that types text character by character with a blinking cursor, cycling through an array of words.",
-      "url": "https://flexui.dev/r/typewriter-text.json"
+      "url": "https://flex-ui-wine.vercel.app/r/typewriter-text.json"
     },
     {
       "name": "gradient-text",
       "type": "registry:ui",
       "description": "Animated gradient text with flowing color stops that shift across the text using a CSS keyframe animation.",
-      "url": "https://flexui.dev/r/gradient-text.json"
+      "url": "https://flex-ui-wine.vercel.app/r/gradient-text.json"
     },
     {
       "name": "text-scramble",
       "type": "registry:ui",
       "description": "Text that scrambles through random characters before resolving left-to-right with configurable speed and character set.",
-      "url": "https://flexui.dev/r/text-scramble.json"
+      "url": "https://flex-ui-wine.vercel.app/r/text-scramble.json"
     },
     {
       "name": "blur-text",
       "type": "registry:ui",
       "description": "Text that fades in from a blurred state, word by word or all at once, with configurable blur amount and stagger.",
-      "url": "https://flexui.dev/r/blur-text.json"
+      "url": "https://flex-ui-wine.vercel.app/r/blur-text.json"
     },
     {
       "name": "split-text",
       "type": "registry:ui",
       "description": "Text animation that splits into characters or words with staggered slide, fade, or scale transitions on scroll.",
-      "url": "https://flexui.dev/r/split-text.json"
+      "url": "https://flex-ui-wine.vercel.app/r/split-text.json"
     },
     {
       "name": "rotating-text",
       "type": "registry:ui",
       "description": "Text that rotates through multiple strings with a rolling slot-machine effect using spring-physics transitions.",
-      "url": "https://flexui.dev/r/rotating-text.json"
+      "url": "https://flex-ui-wine.vercel.app/r/rotating-text.json"
     },
     {
       "name": "grid-pattern",
       "type": "registry:ui",
       "description": "A subtle CSS grid background pattern with configurable cell size, line color, opacity, and an optional radial fade mask.",
-      "url": "https://flexui.dev/r/grid-pattern.json"
+      "url": "https://flex-ui-wine.vercel.app/r/grid-pattern.json"
     },
     {
       "name": "dot-pattern",
       "type": "registry:ui",
       "description": "A dot matrix background pattern with configurable spacing, dot size, color, and an optional radial fade mask.",
-      "url": "https://flexui.dev/r/dot-pattern.json"
+      "url": "https://flex-ui-wine.vercel.app/r/dot-pattern.json"
     },
     {
       "name": "beams-background",
       "type": "registry:ui",
       "description": "Animated light beams that sweep across the background with staggered delays and randomized angles. Pure CSS keyframes.",
-      "url": "https://flexui.dev/r/beams-background.json"
+      "url": "https://flex-ui-wine.vercel.app/r/beams-background.json"
     },
     {
       "name": "stars-background",
       "type": "registry:ui",
       "description": "A twinkling star field background with randomly scattered stars that pulse in and out at varying speeds. Pure CSS keyframes.",
-      "url": "https://flexui.dev/r/stars-background.json"
+      "url": "https://flex-ui-wine.vercel.app/r/stars-background.json"
     },
     {
       "name": "mesh-gradient",
       "type": "registry:ui",
       "description": "An animated mesh gradient background with multiple color blobs that blend together using heavy CSS blur.",
-      "url": "https://flexui.dev/r/mesh-gradient.json"
+      "url": "https://flex-ui-wine.vercel.app/r/mesh-gradient.json"
     },
     {
       "name": "wavy-background",
       "type": "registry:ui",
       "description": "SVG-based animated wavy lines that drift horizontally in the background with decreasing opacity for depth.",
-      "url": "https://flexui.dev/r/wavy-background.json"
+      "url": "https://flex-ui-wine.vercel.app/r/wavy-background.json"
     },
     {
       "name": "aurora-background",
       "type": "registry:ui",
       "description": "A CSS-only animated aurora borealis background effect with soft blurred gradient bands that drift and rotate.",
-      "url": "https://flexui.dev/r/aurora-background.json"
+      "url": "https://flex-ui-wine.vercel.app/r/aurora-background.json"
     },
     {
       "name": "particle-field",
       "type": "registry:ui",
       "description": "Floating particle dots that drift slowly across the background with CSS keyframe animations and randomized timing.",
-      "url": "https://flexui.dev/r/particle-field.json"
+      "url": "https://flex-ui-wine.vercel.app/r/particle-field.json"
     },
     {
       "name": "scroll-progress",
       "type": "registry:ui",
       "description": "A fixed progress bar that animates from 0% to 100% based on page scroll using useScroll and useSpring for smooth spring-physics animation.",
-      "url": "https://flexui.dev/r/scroll-progress.json"
+      "url": "https://flex-ui-wine.vercel.app/r/scroll-progress.json"
     },
     {
       "name": "fade-on-scroll",
       "type": "registry:ui",
       "description": "A wrapper component that fades and slides children into view when scrolled into the viewport with configurable direction, distance, and spring physics.",
-      "url": "https://flexui.dev/r/fade-on-scroll.json"
+      "url": "https://flex-ui-wine.vercel.app/r/fade-on-scroll.json"
     },
     {
       "name": "scroll-counter",
       "type": "registry:ui",
       "description": "An animated counter that counts from one number to another when scrolled into view using spring physics and direct DOM updates for performance.",
-      "url": "https://flexui.dev/r/scroll-counter.json"
+      "url": "https://flex-ui-wine.vercel.app/r/scroll-counter.json"
     },
     {
       "name": "glow-button",
       "type": "registry:ui",
       "description": "A button with a pulsing glow shadow that intensifies on hover, using CSS keyframes and Framer Motion spring interactions.",
-      "url": "https://flexui.dev/r/glow-button.json"
+      "url": "https://flex-ui-wine.vercel.app/r/glow-button.json"
     },
     {
       "name": "ripple-button",
       "type": "registry:ui",
       "description": "A Material-design-style ripple effect button with expanding circles at the click position. Pure CSS animation, no Framer Motion.",
-      "url": "https://flexui.dev/r/ripple-button.json"
+      "url": "https://flex-ui-wine.vercel.app/r/ripple-button.json"
     },
     {
       "name": "gradient-border-button",
       "type": "registry:ui",
       "description": "A button with a continuously rotating conic-gradient border and solid dark inner background. Framer Motion hover/tap.",
-      "url": "https://flexui.dev/r/gradient-border-button.json"
+      "url": "https://flex-ui-wine.vercel.app/r/gradient-border-button.json"
     },
     {
       "name": "confetti-button",
       "type": "registry:ui",
       "description": "A button that bursts colorful confetti particles on click with random directions, colors, and rotations. Framer Motion hover/tap.",
-      "url": "https://flexui.dev/r/confetti-button.json"
+      "url": "https://flex-ui-wine.vercel.app/r/confetti-button.json"
     },
     {
       "name": "follow-cursor",
       "type": "registry:ui",
       "description": "A decorative glowing dot that smoothly follows the cursor using Framer Motion spring physics with configurable stiffness and damping.",
-      "url": "https://flexui.dev/r/follow-cursor.json"
+      "url": "https://flex-ui-wine.vercel.app/r/follow-cursor.json"
     },
     {
       "name": "blob-cursor",
       "type": "registry:ui",
       "description": "A morphing blob shape that follows the cursor with heavy spring inertia, CSS blur, and mix-blend-mode for an organic liquid feel.",
-      "url": "https://flexui.dev/r/blob-cursor.json"
+      "url": "https://flex-ui-wine.vercel.app/r/blob-cursor.json"
     },
     {
       "name": "spotlight-cursor",
       "type": "registry:ui",
       "description": "A full-viewport radial gradient spotlight that follows the cursor, illuminating content beneath with useMotionTemplate for reactive CSS gradients.",
-      "url": "https://flexui.dev/r/spotlight-cursor.json"
+      "url": "https://flex-ui-wine.vercel.app/r/spotlight-cursor.json"
     },
     {
       "name": "otp-input",
       "type": "registry:ui",
       "description": "An animated OTP/verification code input with auto-focus navigation, paste support, spring-physics glow on active input, and glass-morphic styling.",
-      "url": "https://flexui.dev/r/otp-input.json"
+      "url": "https://flex-ui-wine.vercel.app/r/otp-input.json"
     },
     {
       "name": "morphing-dialog",
       "type": "registry:ui",
       "description": "A dialog that morphs from its trigger element using shared layout animation with spring physics, backdrop blur, and glassmorphic styling.",
-      "url": "https://flexui.dev/r/morphing-dialog.json"
+      "url": "https://flex-ui-wine.vercel.app/r/morphing-dialog.json"
     },
     {
       "name": "morphing-card",
       "type": "registry:ui",
       "description": "A card that smoothly morphs between collapsed and expanded states using layout animation with spring physics and content crossfade.",
-      "url": "https://flexui.dev/r/morphing-card.json"
+      "url": "https://flex-ui-wine.vercel.app/r/morphing-card.json"
     },
     {
       "name": "floating-navbar",
       "type": "registry:ui",
       "description": "A scroll-aware navbar that shrinks into a floating glassmorphic pill on scroll.",
-      "url": "https://flexui.dev/r/floating-navbar.json"
+      "url": "https://flex-ui-wine.vercel.app/r/floating-navbar.json"
     },
     {
       "name": "animated-input",
       "type": "registry:ui",
       "description": "Text input with animated floating label and expanding underline on focus.",
-      "url": "https://flexui.dev/r/animated-input.json"
+      "url": "https://flex-ui-wine.vercel.app/r/animated-input.json"
     },
     {
       "name": "parallax-scroll",
       "type": "registry:ui",
       "description": "Wrapper that adds parallax scrolling to any content with configurable speed and direction.",
-      "url": "https://flexui.dev/r/parallax-scroll.json"
+      "url": "https://flex-ui-wine.vercel.app/r/parallax-scroll.json"
     },
     {
       "name": "sticky-scroll-reveal",
       "type": "registry:ui",
       "description": "Two-column layout with scrolling text sections and a sticky content panel.",
-      "url": "https://flexui.dev/r/sticky-scroll-reveal.json"
+      "url": "https://flex-ui-wine.vercel.app/r/sticky-scroll-reveal.json"
     },
     {
       "name": "cta-block",
       "type": "registry:ui",
       "description": "A call-to-action section with animated gradient borders, radial glow background, and staggered entrance animation.",
-      "url": "https://flexui.dev/r/cta-block.json"
+      "url": "https://flex-ui-wine.vercel.app/r/cta-block.json"
     },
     {
       "name": "search-spotlight",
       "type": "registry:ui",
       "description": "A macOS Spotlight / Raycast-style search dialog with keyboard navigation, category grouping, and spring animations.",
-      "url": "https://flexui.dev/r/search-spotlight.json"
+      "url": "https://flex-ui-wine.vercel.app/r/search-spotlight.json"
     },
     {
       "name": "holographic-card",
       "type": "registry:ui",
       "description": "A card with a real-time rainbow holographic foil effect that shifts with viewing angle, like a Pokemon holographic card.",
-      "url": "https://flexui.dev/r/holographic-card.json"
+      "url": "https://flex-ui-wine.vercel.app/r/holographic-card.json"
     },
     {
       "name": "handwritten-annotation",
       "type": "registry:ui",
       "description": "SVG annotations (circles, underlines, highlights, arrows, brackets, strikethroughs) that animate as if being drawn by hand in real-time.",
-      "url": "https://flexui.dev/r/handwritten-annotation.json"
+      "url": "https://flex-ui-wine.vercel.app/r/handwritten-annotation.json"
     },
     {
       "name": "moving-border",
       "type": "registry:ui",
       "description": "An animated gradient light that travels along the border of an element using CSS keyframe rotation of a conic-gradient.",
-      "url": "https://flexui.dev/r/moving-border.json"
+      "url": "https://flex-ui-wine.vercel.app/r/moving-border.json"
     },
     {
       "name": "shader-blob",
       "type": "registry:ui",
       "description": "A real-time GLSL metaball/blob that morphs organically using FBM noise, reacts to cursor, and emits a soft emissive glow with two-tone color gradients.",
-      "url": "https://flexui.dev/r/shader-blob.json"
+      "url": "https://flex-ui-wine.vercel.app/r/shader-blob.json"
     },
     {
       "name": "liquid-button",
       "type": "registry:ui",
       "description": "A button whose surface ripples like liquid mercury when hovered and clicked, with organic spring-physics ripple waves from cursor position.",
-      "url": "https://flexui.dev/r/liquid-button.json"
+      "url": "https://flex-ui-wine.vercel.app/r/liquid-button.json"
     },
     {
       "name": "morphing-blob",
       "type": "registry:ui",
       "description": "An SVG blob that continuously morphs between organic shapes using requestAnimationFrame interpolation with configurable gradient fill, speed, and size.",
-      "url": "https://flexui.dev/r/morphing-blob.json"
+      "url": "https://flex-ui-wine.vercel.app/r/morphing-blob.json"
     },
     {
       "name": "chromatic-text",
       "type": "registry:ui",
       "description": "Text with chromatic aberration -- RGB channels split on hover or always active with configurable offset and colors.",
-      "url": "https://flexui.dev/r/chromatic-text.json"
+      "url": "https://flex-ui-wine.vercel.app/r/chromatic-text.json"
     },
     {
       "name": "disintegration-effect",
       "type": "registry:ui",
       "description": "Thanos-snap particle dissolve effect wrapper.",
-      "url": "https://flexui.dev/r/disintegration-effect.json"
+      "url": "https://flex-ui-wine.vercel.app/r/disintegration-effect.json"
     },
     {
       "name": "liquid-button",
       "type": "registry:ui",
       "description": "Button with liquid mercury ripple effect on click.",
-      "url": "https://flexui.dev/r/liquid-button.json"
+      "url": "https://flex-ui-wine.vercel.app/r/liquid-button.json"
     },
     {
       "name": "morphing-blob",
       "type": "registry:ui",
       "description": "SVG blob that continuously morphs between organic shapes.",
-      "url": "https://flexui.dev/r/morphing-blob.json"
+      "url": "https://flex-ui-wine.vercel.app/r/morphing-blob.json"
     },
     {
       "name": "neural-network",
       "type": "registry:ui",
       "description": "Canvas-based animated network graph with firing synapses.",
-      "url": "https://flexui.dev/r/neural-network.json"
+      "url": "https://flex-ui-wine.vercel.app/r/neural-network.json"
     },
     {
       "name": "gravity-grid",
       "type": "registry:ui",
       "description": "Grid of dots that attract or repel from cursor.",
-      "url": "https://flexui.dev/r/gravity-grid.json"
+      "url": "https://flex-ui-wine.vercel.app/r/gravity-grid.json"
     },
     {
       "name": "typewriter-terminal",
       "type": "registry:ui",
       "description": "Realistic terminal emulator with typing animation.",
-      "url": "https://flexui.dev/r/typewriter-terminal.json"
+      "url": "https://flex-ui-wine.vercel.app/r/typewriter-terminal.json"
     },
     {
       "name": "browser-frame",
       "type": "registry:ui",
       "description": "Browser window mockup for showcasing content.",
-      "url": "https://flexui.dev/r/browser-frame.json"
+      "url": "https://flex-ui-wine.vercel.app/r/browser-frame.json"
     },
     {
       "name": "phone-frame",
       "type": "registry:ui",
       "description": "Mobile phone device mockup frame.",
-      "url": "https://flexui.dev/r/phone-frame.json"
+      "url": "https://flex-ui-wine.vercel.app/r/phone-frame.json"
     },
     {
       "name": "animated-beam",
       "type": "registry:ui",
       "description": "Light beam that travels along SVG paths for integration diagrams.",
-      "url": "https://flexui.dev/r/animated-beam.json"
+      "url": "https://flex-ui-wine.vercel.app/r/animated-beam.json"
     },
     {
       "name": "data-orbit",
       "type": "registry:ui",
       "description": "Icons orbiting in concentric rings around a center element.",
-      "url": "https://flexui.dev/r/data-orbit.json"
+      "url": "https://flex-ui-wine.vercel.app/r/data-orbit.json"
     },
     {
       "name": "audio-reactive-wave",
       "type": "registry:ui",
       "description": "A waveform visualizer with gradient-colored bars that react to audio input or generate animated demo sine waves with glow effects.",
-      "url": "https://flexui.dev/r/audio-reactive-wave.json"
+      "url": "https://flex-ui-wine.vercel.app/r/audio-reactive-wave.json"
     },
     {
       "name": "portal-transition",
       "type": "registry:ui",
       "description": "A circular portal/wormhole transition effect that reveals content with expanding clip-path, glow ring, and particle effects.",
-      "url": "https://flexui.dev/r/portal-transition.json"
+      "url": "https://flex-ui-wine.vercel.app/r/portal-transition.json"
     },
     {
       "name": "split-screen-reveal",
       "type": "registry:ui",
       "description": "Two glassmorphic panels that split apart on click to reveal content underneath with spring-physics animation.",
-      "url": "https://flexui.dev/r/split-screen-reveal.json"
+      "url": "https://flex-ui-wine.vercel.app/r/split-screen-reveal.json"
     },
     {
       "name": "smoke-divider",
       "type": "registry:ui",
       "description": "A section divider with animated smoke/fog particles drifting across. Pure CSS animation with hydration-safe seeded randomization.",
-      "url": "https://flexui.dev/r/smoke-divider.json"
+      "url": "https://flex-ui-wine.vercel.app/r/smoke-divider.json"
     },
     {
       "name": "glitch-transition",
       "type": "registry:ui",
       "description": "A CRT TV glitch effect with RGB split, scanlines, block displacement, and flicker that wraps any content.",
-      "url": "https://flexui.dev/r/glitch-transition.json"
+      "url": "https://flex-ui-wine.vercel.app/r/glitch-transition.json"
     },
     {
       "name": "ambient-tilt",
       "type": "registry:ui",
       "description": "A wrapper that adds subtle 3D tilt based on cursor position or device gyroscope with spring-animated transforms.",
-      "url": "https://flexui.dev/r/ambient-tilt.json"
+      "url": "https://flex-ui-wine.vercel.app/r/ambient-tilt.json"
     },
     {
       "name": "icon-cloud",
       "type": "registry:ui",
       "description": "A 3D tag cloud of floating icons that rotate as a sphere with drag interaction and depth-based scaling.",
-      "url": "https://flexui.dev/r/icon-cloud.json"
+      "url": "https://flex-ui-wine.vercel.app/r/icon-cloud.json"
     },
     {
       "name": "retro-grid",
       "type": "registry:ui",
       "description": "A perspective grid that vanishes to a horizon point with a retro synthwave aesthetic and optional scroll animation.",
-      "url": "https://flexui.dev/r/retro-grid.json"
+      "url": "https://flex-ui-wine.vercel.app/r/retro-grid.json"
     },
     {
       "name": "evolution-hero",
       "type": "registry:ui",
       "description": "Cinematic hero section with AI-generated evolution scene background, mouse parallax, holographic code overlays, and scanning effects.",
-      "url": "https://flexui.dev/r/evolution-hero.json"
+      "url": "https://flex-ui-wine.vercel.app/r/evolution-hero.json"
     },
     {
       "name": "kpi-card",
       "type": "registry:ui",
       "description": "Dashboard KPI card with animated number counter, change indicator, and optional sparkline.",
-      "url": "https://flexui.dev/r/kpi-card.json"
+      "url": "https://flex-ui-wine.vercel.app/r/kpi-card.json"
     },
     {
       "name": "sparkline-chart",
       "type": "registry:ui",
       "description": "Pure SVG sparkline with smooth bezier curves and optional animated drawing.",
-      "url": "https://flexui.dev/r/sparkline-chart.json"
+      "url": "https://flex-ui-wine.vercel.app/r/sparkline-chart.json"
     },
     {
       "name": "progress-ring",
       "type": "registry:ui",
       "description": "SVG progress ring with animated stroke and configurable gradient.",
-      "url": "https://flexui.dev/r/progress-ring.json"
+      "url": "https://flex-ui-wine.vercel.app/r/progress-ring.json"
     },
     {
       "name": "splash-cursor",
       "type": "registry:ui",
       "description": "A fluid ink splash effect that follows the cursor with colorful blobs, blur trails, and velocity-based motion using Canvas 2D.",
-      "url": "https://flexui.dev/r/splash-cursor.json"
+      "url": "https://flex-ui-wine.vercel.app/r/splash-cursor.json"
     },
     {
       "name": "flickering-grid",
       "type": "registry:ui",
       "description": "A canvas-rendered grid of cells that randomly flicker on and off with smooth opacity transitions and a radial fade mask.",
-      "url": "https://flexui.dev/r/flickering-grid.json"
+      "url": "https://flex-ui-wine.vercel.app/r/flickering-grid.json"
     },
     {
       "name": "border-beam",
       "type": "registry:ui",
       "description": "A continuous animated light beam that travels around the border of an element using CSS conic-gradient rotation with a glow trail.",
-      "url": "https://flexui.dev/r/border-beam.json"
+      "url": "https://flex-ui-wine.vercel.app/r/border-beam.json"
     },
     {
       "name": "neon-glow-card",
       "type": "registry:ui",
       "description": "A card with animated neon border glow that pulses and reacts to cursor position with multiple box-shadow layers and spring-scale hover.",
-      "url": "https://flexui.dev/r/neon-glow-card.json"
+      "url": "https://flex-ui-wine.vercel.app/r/neon-glow-card.json"
     },
     {
       "name": "infinite-canvas",
       "type": "registry:ui",
       "description": "A pannable, zoomable canvas where child elements float in 2D space with grid background, mouse wheel zoom, and touch pinch support.",
-      "url": "https://flexui.dev/r/infinite-canvas.json"
+      "url": "https://flex-ui-wine.vercel.app/r/infinite-canvas.json"
     },
     {
       "name": "cinematic-hero",
       "type": "registry:ui",
       "description": "A full-screen cinematic hero section with multiple background variants, staggered word blur-reveal headline, animated CTAs, and badge.",
-      "url": "https://flexui.dev/r/cinematic-hero.json"
+      "url": "https://flex-ui-wine.vercel.app/r/cinematic-hero.json"
     },
     {
       "name": "accordion",
       "type": "registry:ui",
       "description": "Collapsible sections with animated open/close using Framer Motion AnimatePresence for height animation.",
-      "url": "https://flexui.dev/r/accordion.json"
+      "url": "https://flex-ui-wine.vercel.app/r/accordion.json"
     },
     {
       "name": "tooltip",
       "type": "registry:ui",
       "description": "Animated tooltip on hover with configurable side positioning and spring-physics enter/exit transitions.",
-      "url": "https://flexui.dev/r/tooltip.json"
+      "url": "https://flex-ui-wine.vercel.app/r/tooltip.json"
     },
     {
       "name": "popover",
       "type": "registry:ui",
       "description": "Click-triggered popover panel with portal rendering, click-outside-to-close, and spring animation.",
-      "url": "https://flexui.dev/r/popover.json"
+      "url": "https://flex-ui-wine.vercel.app/r/popover.json"
     },
     {
       "name": "dropdown-menu",
       "type": "registry:ui",
       "description": "Animated dropdown menu with spring animation, keyboard navigation, and click-outside dismiss.",
-      "url": "https://flexui.dev/r/dropdown-menu.json"
+      "url": "https://flex-ui-wine.vercel.app/r/dropdown-menu.json"
     },
     {
       "name": "avatar",
       "type": "registry:ui",
       "description": "User avatar with image support and gradient-colored fallback initials derived from the user name.",
-      "url": "https://flexui.dev/r/avatar.json"
+      "url": "https://flex-ui-wine.vercel.app/r/avatar.json"
     },
     {
       "name": "badge",
       "type": "registry:ui",
       "description": "Status badge/tag with five color variants (default, success, warning, error, info) and optional pulse dot.",
-      "url": "https://flexui.dev/r/badge.json"
+      "url": "https://flex-ui-wine.vercel.app/r/badge.json"
     },
     {
       "name": "skeleton",
       "type": "registry:ui",
       "description": "Loading placeholder with animated shimmer pulse, configurable dimensions, and optional rounded shape.",
-      "url": "https://flexui.dev/r/skeleton.json"
+      "url": "https://flex-ui-wine.vercel.app/r/skeleton.json"
     },
     {
       "name": "switch",
       "type": "registry:ui",
       "description": "Toggle switch with spring-animated thumb, three sizes, and proper ARIA switch role.",
-      "url": "https://flexui.dev/r/switch.json"
+      "url": "https://flex-ui-wine.vercel.app/r/switch.json"
     },
     {
       "name": "slider",
       "type": "registry:ui",
       "description": "Range slider with track fill, draggable thumb, configurable min/max/step, and custom color.",
-      "url": "https://flexui.dev/r/slider.json"
+      "url": "https://flex-ui-wine.vercel.app/r/slider.json"
     },
     {
       "name": "progress-bar",
       "type": "registry:ui",
       "description": "Horizontal progress bar with configurable color, optional animation pulse, and percentage label.",
-      "url": "https://flexui.dev/r/progress-bar.json"
+      "url": "https://flex-ui-wine.vercel.app/r/progress-bar.json"
     },
     {
       "name": "divider",
       "type": "registry:ui",
       "description": "Styled divider line supporting horizontal/vertical orientation, optional label, and gradient fade.",
-      "url": "https://flexui.dev/r/divider.json"
+      "url": "https://flex-ui-wine.vercel.app/r/divider.json"
     },
     {
       "name": "kbd",
       "type": "registry:ui",
       "description": "Keyboard shortcut display styled like a physical key with inset shadow and monospace font.",
-      "url": "https://flexui.dev/r/kbd.json"
+      "url": "https://flex-ui-wine.vercel.app/r/kbd.json"
     },
     {
       "name": "code-inline",
       "type": "registry:ui",
       "description": "Inline code snippet with monospace styling, subtle background, and border.",
-      "url": "https://flexui.dev/r/code-inline.json"
+      "url": "https://flex-ui-wine.vercel.app/r/code-inline.json"
     },
     {
       "name": "avatar-group",
       "type": "registry:ui",
       "description": "Stacked overlapping avatars with configurable max count and overflow indicator.",
-      "url": "https://flexui.dev/r/avatar-group.json"
+      "url": "https://flex-ui-wine.vercel.app/r/avatar-group.json"
     },
     {
       "name": "timeline",
       "type": "registry:ui",
       "description": "Vertical timeline with scroll-triggered fade-in animation, dot/icon markers, and date support.",
-      "url": "https://flexui.dev/r/timeline.json"
+      "url": "https://flex-ui-wine.vercel.app/r/timeline.json"
     },
     {
       "name": "color-picker",
       "type": "registry:ui",
       "description": "Simple color picker with preset swatches and hex input.",
-      "url": "https://flexui.dev/r/color-picker.json"
+      "url": "https://flex-ui-wine.vercel.app/r/color-picker.json"
     },
     {
       "name": "calendar",
       "type": "registry:ui",
       "description": "Mini calendar component with clickable days, month navigation, and dark theme styling.",
-      "url": "https://flexui.dev/r/calendar.json"
+      "url": "https://flex-ui-wine.vercel.app/r/calendar.json"
     },
     {
       "name": "stat-card",
       "type": "registry:ui",
       "description": "Dashboard stat card with label, value, change indicator, and animated number on mount.",
-      "url": "https://flexui.dev/r/stat-card.json"
+      "url": "https://flex-ui-wine.vercel.app/r/stat-card.json"
     },
     {
       "name": "command-menu",
       "type": "registry:ui",
       "description": "Cmd+K command palette with keyboard navigation, search filtering, and spring animations.",
-      "url": "https://flexui.dev/r/command-menu.json"
+      "url": "https://flex-ui-wine.vercel.app/r/command-menu.json"
     },
     {
       "name": "file-tree",
       "type": "registry:ui",
       "description": "Animated expandable file tree with folder/file icons, indentation, and spring-animated expand/collapse.",
-      "url": "https://flexui.dev/r/file-tree.json"
+      "url": "https://flex-ui-wine.vercel.app/r/file-tree.json"
     },
     {
       "name": "stepper",
       "type": "registry:ui",
       "description": "Step progress indicator with connected animated lines, active step scaling, and descriptions.",
-      "url": "https://flexui.dev/r/stepper.json"
+      "url": "https://flex-ui-wine.vercel.app/r/stepper.json"
     },
     {
       "name": "rating",
       "type": "registry:ui",
       "description": "Star rating component with hover preview, configurable max and size, and spring-physics interactions.",
-      "url": "https://flexui.dev/r/rating.json"
+      "url": "https://flex-ui-wine.vercel.app/r/rating.json"
     },
     {
       "name": "tag-input",
       "type": "registry:ui",
       "description": "Input for adding and removing tags with animated enter/exit, backspace-to-delete, and glassmorphic styling.",
-      "url": "https://flexui.dev/r/tag-input.json"
+      "url": "https://flex-ui-wine.vercel.app/r/tag-input.json"
     },
     {
       "name": "countdown",
       "type": "registry:ui",
       "description": "Animated countdown timer showing days, hours, minutes, and seconds with spring-animated digit transitions.",
-      "url": "https://flexui.dev/r/countdown.json"
+      "url": "https://flex-ui-wine.vercel.app/r/countdown.json"
     },
     {
       "name": "copy-block",
       "type": "registry:ui",
       "description": "Code block with copy-to-clipboard button, filename header, and animated copy confirmation.",
-      "url": "https://flexui.dev/r/copy-block.json"
+      "url": "https://flex-ui-wine.vercel.app/r/copy-block.json"
     },
     {
       "name": "image-compare",
       "type": "registry:ui",
       "description": "Before/after image comparison slider with draggable handle and clip-path reveal.",
-      "url": "https://flexui.dev/r/image-compare.json"
+      "url": "https://flex-ui-wine.vercel.app/r/image-compare.json"
     },
     {
       "name": "pricing-toggle",
       "type": "registry:ui",
       "description": "Monthly/yearly pricing toggle with spring-animated pill switch and savings badge.",
-      "url": "https://flexui.dev/r/pricing-toggle.json"
+      "url": "https://flex-ui-wine.vercel.app/r/pricing-toggle.json"
     },
     {
       "name": "notification-badge",
       "type": "registry:ui",
       "description": "Numbered notification badge with spring-animated enter/exit, max count overflow, and configurable color.",
-      "url": "https://flexui.dev/r/notification-badge.json"
+      "url": "https://flex-ui-wine.vercel.app/r/notification-badge.json"
     },
     {
       "name": "breadcrumb",
       "type": "registry:ui",
       "description": "Breadcrumb navigation with customizable separator, link support, and active-last-item styling.",
-      "url": "https://flexui.dev/r/breadcrumb.json"
+      "url": "https://flex-ui-wine.vercel.app/r/breadcrumb.json"
     },
     {
       "name": "empty-state",
       "type": "registry:ui",
       "description": "Empty state placeholder with icon, title, description, and optional CTA button with spring entrance animation.",
-      "url": "https://flexui.dev/r/empty-state.json"
+      "url": "https://flex-ui-wine.vercel.app/r/empty-state.json"
     },
     {
       "name": "wobble-card",
       "type": "registry:ui",
       "description": "Card that wobbles with spring physics on hover using mouse-tracked rotateX/Y transforms.",
-      "url": "https://flexui.dev/r/wobble-card.json"
+      "url": "https://flex-ui-wine.vercel.app/r/wobble-card.json"
     },
     {
       "name": "direction-hover",
       "type": "registry:ui",
       "description": "Content overlay that slides in from the direction the cursor enters the element.",
-      "url": "https://flexui.dev/r/direction-hover.json"
+      "url": "https://flex-ui-wine.vercel.app/r/direction-hover.json"
     },
     {
       "name": "tilt-card",
       "type": "registry:ui",
       "description": "Simplified 3D tilt card using useMotionValue and useTransform with configurable max tilt and perspective.",
-      "url": "https://flexui.dev/r/tilt-card.json"
+      "url": "https://flex-ui-wine.vercel.app/r/tilt-card.json"
     },
     {
       "name": "blur-fade",
       "type": "registry:ui",
       "description": "Wrapper that blurs and fades content in on scroll using useInView with configurable delay and duration.",
-      "url": "https://flexui.dev/r/blur-fade.json"
+      "url": "https://flex-ui-wine.vercel.app/r/blur-fade.json"
     },
     {
       "name": "pulse-button",
       "type": "registry:ui",
       "description": "Button with radiating pulse rings using CSS keyframe animations with configurable color and count.",
-      "url": "https://flexui.dev/r/pulse-button.json"
+      "url": "https://flex-ui-wine.vercel.app/r/pulse-button.json"
     },
     {
       "name": "spotlight-border",
       "type": "registry:ui",
       "description": "Border wrapper with a cursor-following spotlight glow effect using spring-animated motion values.",
-      "url": "https://flexui.dev/r/spotlight-border.json"
+      "url": "https://flex-ui-wine.vercel.app/r/spotlight-border.json"
     },
     {
       "name": "typewriter-delete",
       "type": "registry:ui",
       "description": "Text that types then deletes with a blinking cursor, configurable speed and loop.",
-      "url": "https://flexui.dev/r/typewriter-delete.json"
+      "url": "https://flex-ui-wine.vercel.app/r/typewriter-delete.json"
     },
     {
       "name": "counter-up",
       "type": "registry:ui",
       "description": "Animated counting number using requestAnimationFrame with eased progress on scroll into view.",
-      "url": "https://flexui.dev/r/counter-up.json"
+      "url": "https://flex-ui-wine.vercel.app/r/counter-up.json"
     },
     {
       "name": "magnetic-card",
       "type": "registry:ui",
       "description": "Card that slightly follows cursor with magnetic pull effect using spring-animated motion values.",
-      "url": "https://flexui.dev/r/magnetic-card.json"
+      "url": "https://flex-ui-wine.vercel.app/r/magnetic-card.json"
     },
     {
       "name": "glow-text",
       "type": "registry:ui",
       "description": "Text with animated glow/bloom effect using CSS text-shadow keyframe animation.",
-      "url": "https://flexui.dev/r/glow-text.json"
+      "url": "https://flex-ui-wine.vercel.app/r/glow-text.json"
     },
     {
       "name": "reveal-card",
       "type": "registry:ui",
       "description": "Card that reveals content on hover with a slide-up transition using Framer Motion variants.",
-      "url": "https://flexui.dev/r/reveal-card.json"
+      "url": "https://flex-ui-wine.vercel.app/r/reveal-card.json"
     },
     {
       "name": "orbit-animation",
       "type": "registry:ui",
       "description": "Orbiting dots around a center element with CSS rotation animation and configurable count and speed.",
-      "url": "https://flexui.dev/r/orbit-animation.json"
+      "url": "https://flex-ui-wine.vercel.app/r/orbit-animation.json"
     },
     {
       "name": "text-gradient-scroll",
       "type": "registry:ui",
       "description": "Text that fills with gradient color as the user scrolls using useScroll and clip-path transforms.",
-      "url": "https://flexui.dev/r/text-gradient-scroll.json"
+      "url": "https://flex-ui-wine.vercel.app/r/text-gradient-scroll.json"
     },
     {
       "name": "animated-counter",
       "type": "registry:ui",
       "description": "Counting animation with slot-machine digit flip where each digit slides independently.",
-      "url": "https://flexui.dev/r/animated-counter.json"
+      "url": "https://flex-ui-wine.vercel.app/r/animated-counter.json"
     },
     {
       "name": "hover-card",
       "type": "registry:ui",
       "description": "Card with subtle lift and shadow increase on hover using spring scale and shadow transition.",
-      "url": "https://flexui.dev/r/hover-card.json"
+      "url": "https://flex-ui-wine.vercel.app/r/hover-card.json"
+    },
+    {
+      "name": "aurora-card",
+      "type": "registry:ui",
+      "description": "3-layer aurora borealis card with staggered spring physics and additive color blending on cursor hover.",
+      "url": "https://flex-ui-wine.vercel.app/r/aurora-card.json"
+    },
+    {
+      "name": "liquid-glass-button",
+      "type": "registry:ui",
+      "description": "Glass refraction button with white light spot, colored caustic, skew distortion, and spring tap animation.",
+      "url": "https://flex-ui-wine.vercel.app/r/liquid-glass-button.json"
+    },
+    {
+      "name": "parallax-depth-card",
+      "type": "registry:ui",
+      "description": "Compound component card with per-layer parallax depth springs for realistic 3D hover effect.",
+      "url": "https://flex-ui-wine.vercel.app/r/parallax-depth-card.json"
+    },
+    {
+      "name": "cursor-glow",
+      "type": "registry:ui",
+      "description": "Composable wrapper with dual-layer cursor trail glow and optional border glow effect.",
+      "url": "https://flex-ui-wine.vercel.app/r/cursor-glow.json"
+    },
+    {
+      "name": "morphing-border-card",
+      "type": "registry:ui",
+      "description": "Card with animated conic gradient border rotation using CSS @property and mask-composite trick.",
+      "url": "https://flex-ui-wine.vercel.app/r/morphing-border-card.json"
+    },
+    {
+      "name": "header-block",
+      "type": "registry:ui",
+      "description": "Responsive header with glassmorphic/solid/transparent variants, sticky scroll, and mobile hamburger menu.",
+      "url": "https://flex-ui-wine.vercel.app/r/header-block.json"
+    },
+    {
+      "name": "footer-block",
+      "type": "registry:ui",
+      "description": "Multi-column footer with brand column, link columns, social icons, and copyright section.",
+      "url": "https://flex-ui-wine.vercel.app/r/footer-block.json"
+    },
+    {
+      "name": "faq-block",
+      "type": "registry:ui",
+      "description": "FAQ accordion with animated expand/collapse, single or two-column layout variants.",
+      "url": "https://flex-ui-wine.vercel.app/r/faq-block.json"
+    },
+    {
+      "name": "team-block",
+      "type": "registry:ui",
+      "description": "Team member grid with avatar, role, bio, and social links with staggered fade-up animations.",
+      "url": "https://flex-ui-wine.vercel.app/r/team-block.json"
+    },
+    {
+      "name": "stats-block",
+      "type": "registry:ui",
+      "description": "Statistics grid section with staggered fade-up animations and responsive column layout.",
+      "url": "https://flex-ui-wine.vercel.app/r/stats-block.json"
+    },
+    {
+      "name": "newsletter-block",
+      "type": "registry:ui",
+      "description": "Email capture form with loading/success states and configurable heading, subtitle, and callbacks.",
+      "url": "https://flex-ui-wine.vercel.app/r/newsletter-block.json"
+    },
+    {
+      "name": "login-block",
+      "type": "registry:ui",
+      "description": "Login form with social providers, centered or split layout variants, and forgot/signup links.",
+      "url": "https://flex-ui-wine.vercel.app/r/login-block.json"
+    },
+    {
+      "name": "signup-block",
+      "type": "registry:ui",
+      "description": "Multi-step signup form with animated step transitions, progress indicator, and success state.",
+      "url": "https://flex-ui-wine.vercel.app/r/signup-block.json"
+    },
+    {
+      "name": "logo-cloud-block",
+      "type": "registry:ui",
+      "description": "Trusted-by logo section with marquee or grid layout variants and edge fade masks.",
+      "url": "https://flex-ui-wine.vercel.app/r/logo-cloud-block.json"
+    },
+    {
+      "name": "comparison-block",
+      "type": "registry:ui",
+      "description": "Feature comparison table with grouped categories, boolean/string values, and featured plan highlighting.",
+      "url": "https://flex-ui-wine.vercel.app/r/comparison-block.json"
+    },
+    {
+      "name": "theme-provider",
+      "type": "registry:ui",
+      "description": "React context provider for FlexUI multi-theme system with localStorage persistence and CSS variable injection.",
+      "url": "https://flex-ui-wine.vercel.app/r/theme-provider.json"
+    },
+    {
+      "name": "page:saas-landing",
+      "type": "registry:ui",
+      "description": "Complete SaaS landing page with header, hero, features, stats, testimonials, FAQ, newsletter, and footer.",
+      "url": "https://flex-ui-wine.vercel.app/r/page:saas-landing.json"
+    },
+    {
+      "name": "page:portfolio",
+      "type": "registry:ui",
+      "description": "Developer portfolio with hero, project grid, timeline experience section, and contact CTA.",
+      "url": "https://flex-ui-wine.vercel.app/r/page:portfolio.json"
+    },
+    {
+      "name": "page:dashboard",
+      "type": "registry:ui",
+      "description": "Admin dashboard with sidebar navigation, KPI cards, revenue chart, and activity feed.",
+      "url": "https://flex-ui-wine.vercel.app/r/page:dashboard.json"
+    },
+    {
+      "name": "page:ecommerce",
+      "type": "registry:ui",
+      "description": "E-commerce storefront with product grid, category filters, logo cloud, and newsletter.",
+      "url": "https://flex-ui-wine.vercel.app/r/page:ecommerce.json"
+    },
+    {
+      "name": "page:blog",
+      "type": "registry:ui",
+      "description": "Blog layout with article cards, category sidebar, and newsletter subscription.",
+      "url": "https://flex-ui-wine.vercel.app/r/page:blog.json"
+    },
+    {
+      "name": "page:pricing",
+      "type": "registry:ui",
+      "description": "Pricing page with tier cards, feature comparison, FAQ, and logo cloud.",
+      "url": "https://flex-ui-wine.vercel.app/r/page:pricing.json"
+    },
+    {
+      "name": "page:auth-login",
+      "type": "registry:ui",
+      "description": "Split-layout authentication page with decorative brand panel and login form.",
+      "url": "https://flex-ui-wine.vercel.app/r/page:auth-login.json"
     }
   ]
 }

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-provider",
+  "type": "registry:ui",
+  "title": "Theme Provider",
+  "description": "React context provider for FlexUI multi-theme system with localStorage persistence and CSS variable injection.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/theme-provider.tsx",
+      "content": "\"use client\";\n\nimport React, {\n  createContext,\n  useCallback,\n  useContext,\n  useEffect,\n  useState,\n} from \"react\";\nimport { themes, getTheme, getThemeNames, DEFAULT_THEME } from \"@/lib/themes\";\nimport type { FlexUITheme } from \"@/lib/themes\";\nimport { THEME_TOKENS } from \"@/lib/themes/tokens\";\n\ninterface ThemeContextValue {\n  /** Current active theme */\n  theme: FlexUITheme;\n  /** Current theme name */\n  themeName: string;\n  /** Switch to a different theme */\n  setTheme: (name: string) => void;\n  /** List of all available theme names */\n  availableThemes: string[];\n}\n\nconst ThemeContext = createContext<ThemeContextValue | null>(null);\n\nconst STORAGE_KEY = \"flexui-theme\";\n\ninterface ThemeProviderProps {\n  children: React.ReactNode;\n  /** Default theme name (falls back to \"midnight\") */\n  defaultTheme?: string;\n  /** Force a specific theme (ignores localStorage) */\n  forcedTheme?: string;\n}\n\nexport function ThemeProvider({\n  children,\n  defaultTheme = DEFAULT_THEME,\n  forcedTheme,\n}: ThemeProviderProps) {\n  const [themeName, setThemeName] = useState(defaultTheme);\n\n  // Read persisted theme on mount\n  useEffect(() => {\n    if (forcedTheme) {\n      setThemeName(forcedTheme);\n      return;\n    }\n    try {\n      const stored = localStorage.getItem(STORAGE_KEY);\n      if (stored && themes[stored]) {\n        setThemeName(stored);\n      }\n    } catch {\n      // localStorage unavailable (SSR, private browsing, etc.)\n    }\n  }, [forcedTheme]);\n\n  // Apply CSS variables to document root\n  useEffect(() => {\n    const theme = getTheme(themeName);\n    const root = document.documentElement;\n\n    for (const token of THEME_TOKENS) {\n      const value = theme.tokens[token];\n      if (value) {\n        root.style.setProperty(token, value);\n      }\n    }\n\n    // Set data attribute for CSS selectors\n    root.setAttribute(\"data-flexui-theme\", themeName);\n  }, [themeName]);\n\n  const setTheme = useCallback(\n    (name: string) => {\n      if (forcedTheme) return;\n      const resolved = themes[name] ? name : DEFAULT_THEME;\n      setThemeName(resolved);\n      try {\n        localStorage.setItem(STORAGE_KEY, resolved);\n      } catch {\n        // localStorage unavailable\n      }\n    },\n    [forcedTheme]\n  );\n\n  const theme = getTheme(themeName);\n\n  return (\n    <ThemeContext.Provider\n      value={{\n        theme,\n        themeName,\n        setTheme,\n        availableThemes: getThemeNames(),\n      }}\n    >\n      {children}\n    </ThemeContext.Provider>\n  );\n}\n\nexport function useTheme(): ThemeContextValue {\n  const ctx = useContext(ThemeContext);\n  if (!ctx) {\n    throw new Error(\"useTheme must be used within a <ThemeProvider>\");\n  }\n  return ctx;\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/theme-provider.tsx"
+    },
+    {
+      "path": "hooks/use-theme.ts",
+      "content": "\"use client\";\n\nexport { useTheme } from \"@/components/flexui/theme-provider\";\n",
+      "type": "registry:ui",
+      "target": "hooks/use-theme.ts"
+    },
+    {
+      "path": "lib/themes/index.ts",
+      "content": "import type { ThemeTokenValues } from \"./tokens\";\nimport { midnight } from \"./presets/midnight\";\nimport { ocean } from \"./presets/ocean\";\nimport { forest } from \"./presets/forest\";\nimport { sunset } from \"./presets/sunset\";\nimport { neon } from \"./presets/neon\";\nimport { corporate } from \"./presets/corporate\";\n\nexport interface FlexUITheme {\n  /** Unique identifier (kebab-case) */\n  name: string;\n  /** Display label */\n  label: string;\n  /** Short description */\n  description: string;\n  /** CSS variable values for all semantic tokens */\n  tokens: ThemeTokenValues;\n}\n\n/** All registered themes */\nexport const themes: Record<string, FlexUITheme> = {\n  midnight,\n  ocean,\n  forest,\n  sunset,\n  neon,\n  corporate,\n};\n\n/** Default theme name */\nexport const DEFAULT_THEME = \"midnight\";\n\n/** Get a theme by name, falling back to midnight */\nexport function getTheme(name: string): FlexUITheme {\n  return themes[name] ?? themes[DEFAULT_THEME];\n}\n\n/** List all available theme names */\nexport function getThemeNames(): string[] {\n  return Object.keys(themes);\n}\n\nexport type { ThemeTokenValues, ThemeToken } from \"./tokens\";\n",
+      "type": "registry:ui",
+      "target": "lib/themes/index.ts"
+    },
+    {
+      "path": "lib/themes/tokens.ts",
+      "content": "/**\n * FlexUI Design Token Definitions\n *\n * Three-layer architecture:\n * 1. Primitive — raw color values (defined in each preset)\n * 2. Semantic — purpose-based mappings (these token names)\n * 3. Component — component-scoped overrides (via className/props)\n */\n\n/** All semantic token names used by FlexUI themes */\nexport const THEME_TOKENS = [\n  // Core surfaces\n  \"--flexui-background\",\n  \"--flexui-foreground\",\n  \"--flexui-surface\",\n  \"--flexui-surface-hover\",\n  \"--flexui-surface-active\",\n\n  // Borders\n  \"--flexui-border\",\n  \"--flexui-border-hover\",\n  \"--flexui-border-focus\",\n\n  // Accent / brand\n  \"--flexui-accent\",\n  \"--flexui-accent-foreground\",\n  \"--flexui-accent-hover\",\n  \"--flexui-accent-glow\",\n\n  // Secondary accent\n  \"--flexui-secondary\",\n  \"--flexui-secondary-foreground\",\n\n  // Muted / subtle\n  \"--flexui-muted\",\n  \"--flexui-muted-foreground\",\n\n  // Semantic status\n  \"--flexui-success\",\n  \"--flexui-warning\",\n  \"--flexui-error\",\n  \"--flexui-info\",\n\n  // Effects\n  \"--flexui-glow-primary\",\n  \"--flexui-glow-secondary\",\n  \"--flexui-shimmer\",\n  \"--flexui-spotlight\",\n\n  // Typography\n  \"--flexui-heading\",\n  \"--flexui-body\",\n  \"--flexui-caption\",\n\n  // Radii\n  \"--flexui-radius-sm\",\n  \"--flexui-radius-md\",\n  \"--flexui-radius-lg\",\n  \"--flexui-radius-xl\",\n\n  // Shadows\n  \"--flexui-shadow-sm\",\n  \"--flexui-shadow-md\",\n  \"--flexui-shadow-lg\",\n  \"--flexui-shadow-glow\",\n] as const;\n\nexport type ThemeToken = (typeof THEME_TOKENS)[number];\nexport type ThemeTokenValues = Record<ThemeToken, string>;\n",
+      "type": "registry:ui",
+      "target": "lib/themes/tokens.ts"
+    }
+  ]
+}

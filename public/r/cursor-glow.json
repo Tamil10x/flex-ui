@@ -3,7 +3,7 @@
   "name": "cursor-glow",
   "type": "registry:ui",
   "title": "Cursor Glow",
-  "description": "A cursor-following glow wrapper with dual-layer trail effect. Wrap any content to add a smooth, spring-based glow that tracks the mouse.",
+  "description": "Composable wrapper with dual-layer cursor trail glow and optional border glow effect.",
   "dependencies": [
     "framer-motion"
   ],
