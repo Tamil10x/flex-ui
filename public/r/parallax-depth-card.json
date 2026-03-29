@@ -3,7 +3,7 @@
   "name": "parallax-depth-card",
   "type": "registry:ui",
   "title": "Parallax Depth Card",
-  "description": "A multi-layer parallax card where content layers move at different speeds based on cursor position, creating real depth perception with 3D tilt.",
+  "description": "Compound component card with per-layer parallax depth springs for realistic 3D hover effect.",
   "dependencies": [
     "framer-motion"
   ],

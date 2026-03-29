@@ -3,7 +3,7 @@
   "name": "morphing-border-card",
   "type": "registry:ui",
   "title": "Morphing Border Card",
-  "description": "A card with an animated conic gradient border that continuously rotates. Cursor-reactive glow intensity, inner spotlight, and customizable multi-color gradient.",
+  "description": "Card with animated conic gradient border rotation using CSS @property and mask-composite trick.",
   "dependencies": [
     "framer-motion"
   ],

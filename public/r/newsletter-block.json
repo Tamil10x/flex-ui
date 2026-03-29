@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "newsletter-block",
+  "type": "registry:ui",
+  "title": "Newsletter Block",
+  "description": "Email capture form with loading/success states and configurable heading, subtitle, and callbacks.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/flexui/newsletter-block.tsx",
+      "content": "\"use client\";\n\nimport React, { useState, useCallback } from \"react\";\nimport { motion } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface NewsletterBlockProps {\n  /** Section heading */\n  heading?: string;\n  /** Section subtitle */\n  subtitle?: string;\n  /** Input placeholder */\n  placeholder?: string;\n  /** Button text */\n  buttonText?: string;\n  /** Success message */\n  successMessage?: string;\n  /** Callback when submitted */\n  onSubmit?: (email: string) => void | Promise<void>;\n  className?: string;\n}\n\nexport function NewsletterBlock({\n  heading = \"Stay Updated\",\n  subtitle = \"Get the latest updates on new components and features.\",\n  placeholder = \"you@example.com\",\n  buttonText = \"Subscribe\",\n  successMessage = \"Thanks for subscribing!\",\n  onSubmit,\n  className,\n}: NewsletterBlockProps) {\n  const [email, setEmail] = useState(\"\");\n  const [submitted, setSubmitted] = useState(false);\n  const [loading, setLoading] = useState(false);\n\n  const handleSubmit = useCallback(\n    async (e: React.FormEvent) => {\n      e.preventDefault();\n      if (!email || loading) return;\n      setLoading(true);\n      try {\n        await onSubmit?.(email);\n        setSubmitted(true);\n        setEmail(\"\");\n      } finally {\n        setLoading(false);\n      }\n    },\n    [email, loading, onSubmit]\n  );\n\n  return (\n    <section className={cn(\"px-6 py-24\", className)}>\n      <motion.div\n        initial={{ opacity: 0, y: 20 }}\n        whileInView={{ opacity: 1, y: 0 }}\n        viewport={{ once: true }}\n        transition={{ duration: 0.5 }}\n        className=\"mx-auto max-w-xl text-center\"\n      >\n        <h2 className=\"text-3xl font-bold tracking-tight text-white\">{heading}</h2>\n        {subtitle && (\n          <p className=\"mt-3 text-lg text-zinc-400\">{subtitle}</p>\n        )}\n\n        {submitted ? (\n          <motion.div\n            initial={{ opacity: 0, scale: 0.95 }}\n            animate={{ opacity: 1, scale: 1 }}\n            className=\"mt-8 rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-4\"\n          >\n            <p className=\"text-sm font-medium text-emerald-400\">{successMessage}</p>\n          </motion.div>\n        ) : (\n          <form onSubmit={handleSubmit} className=\"mt-8 flex gap-3\">\n            <input\n              type=\"email\"\n              value={email}\n              onChange={(e) => setEmail(e.target.value)}\n              placeholder={placeholder}\n              required\n              className=\"h-11 flex-1 rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 text-sm text-white outline-none transition-all placeholder:text-zinc-600 focus:border-white/[0.2] focus:ring-1 focus:ring-white/[0.1]\"\n            />\n            <button\n              type=\"submit\"\n              disabled={loading}\n              className=\"inline-flex h-11 items-center justify-center rounded-lg bg-white px-6 text-sm font-semibold text-zinc-950 transition-all hover:bg-zinc-200 disabled:opacity-50\"\n            >\n              {loading ? \"...\" : buttonText}\n            </button>\n          </form>\n        )}\n      </motion.div>\n    </section>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/flexui/newsletter-block.tsx"
+    }
+  ]
+}

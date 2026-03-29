@@ -3,7 +3,7 @@
   "name": "liquid-glass-button",
   "type": "registry:ui",
   "title": "Liquid Glass Button",
-  "description": "A glassmorphic button with liquid refraction distortion on hover. Cursor-tracked caustic light, subtle skew deformation, and spring-based tap feedback.",
+  "description": "Glass refraction button with white light spot, colored caustic, skew distortion, and spring tap animation.",
   "dependencies": [
     "framer-motion"
   ],

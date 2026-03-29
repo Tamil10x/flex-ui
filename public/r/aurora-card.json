@@ -3,7 +3,7 @@
   "name": "aurora-card",
   "type": "registry:ui",
   "title": "Aurora Card",
-  "description": "A cinematic card with multi-layered aurora borealis light effect that follows cursor position. Three independent color layers with staggered spring physics.",
+  "description": "3-layer aurora borealis card with staggered spring physics and additive color blending on cursor hover.",
   "dependencies": [
     "framer-motion"
   ],
