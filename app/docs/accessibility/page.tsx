@@ -82,8 +82,8 @@ function ScoreRing({ score, size = 80, strokeWidth = 6, accent, glowRgb }: {
 
 /* ── Spotlight Card ────────────────────────────────────────────────────── */
 
-function SpotlightHoverCard({ children, className = "", accent, glowRgb }: {
-  children: React.ReactNode; className?: string; accent: string; glowRgb: string;
+function SpotlightHoverCard({ children, className = "", glowRgb }: {
+  children: React.ReactNode; className?: string; accent?: string; glowRgb: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);

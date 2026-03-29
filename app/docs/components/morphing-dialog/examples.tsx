@@ -13,7 +13,6 @@ import {
   MapPin,
   Star,
   ArrowRight,
-  Sparkles,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { MorphingDialog } from "@/components/flexui/morphing-dialog";

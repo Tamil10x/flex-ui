@@ -12,68 +12,6 @@ export const metadata: Metadata = {
     "A three-globe powered interactive world globe with animated arc connections, ring pulses, and 5 built-in color themes.",
 };
 
-const interactiveGlobeSource = `"use client";
-
-import React, { useMemo } from "react";
-import dynamic from "next/dynamic";
-import type { GlobeConfig } from "@/components/ui/globe";
-import { cn } from "@/lib/utils";
-
-const World = dynamic(
-  () => import("@/components/ui/globe").then((m) => m.World),
-  { ssr: false }
-);
-
-export type GlobeTheme = "ocean" | "nebula" | "forest" | "sunset" | "custom";
-
-const THEMES = {
-  ocean: {
-    globeColor: "#062056",
-    emissive: "#062056",
-    atmosphereColor: "#38bdf8",
-    arcColors: ["#06b6d4", "#3b82f6", "#6366f1"],
-    polygonColor: "rgba(255,255,255,0.7)",
-    ambientLight: "#38bdf8",
-  },
-  nebula: {
-    globeColor: "#1a0530",
-    emissive: "#2d0a52",
-    atmosphereColor: "#c084fc",
-    arcColors: ["#e879f9", "#a855f7", "#ec4899"],
-    polygonColor: "rgba(232,194,255,0.6)",
-    ambientLight: "#c084fc",
-  },
-  // ... more themes
-};
-
-export function InteractiveGlobe({
-  theme = "ocean",
-  heading = "Connected Worldwide",
-  subtitle = "Real-time data flows across the globe with live animated arcs.",
-  showLabel = true,
-  arcTime = 1000,
-  autoRotateSpeed = 0.5,
-  atmosphereAltitude = 0.1,
-}) {
-  const themeValues = THEMES[theme];
-  // ... arc data and globe config setup
-
-  return (
-    <div className="relative flex flex-col items-center justify-center w-full overflow-hidden">
-      {showLabel && (
-        <div className="relative z-20 mb-2 text-center">
-          <h3 className="text-xl font-bold text-white md:text-3xl">{heading}</h3>
-          <p className="mt-1 text-sm text-zinc-400 max-w-xs mx-auto">{subtitle}</p>
-        </div>
-      )}
-      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-b from-transparent to-black z-10 pointer-events-none" />
-      <div className="relative z-0 w-full" style={{ height: 380 }}>
-        <World data={arcs} globeConfig={globeConfig} />
-      </div>
-    </div>
-  );
-}`;
-
 export default function InteractiveGlobeDoc() {
   return (
     <div className="min-w-0 flex-1 space-y-14">

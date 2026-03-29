@@ -47,7 +47,7 @@ export default function WebGLComponents() {
             The hardest part of shipping WebGL in a component library is not
             writing the shader code — it is managing the lifecycle. A Three.js
             renderer allocates GPU memory, creates a canvas context, and runs a
-            render loop that can easily conflict with React's reconciliation
+            render loop that can easily conflict with React&apos;s reconciliation
             cycle. FlexUI solves this by wrapping each WebGL component in a
             lazy-loaded boundary that only initializes the renderer when the
             component enters the viewport. When the component unmounts or leaves
@@ -78,7 +78,7 @@ export default function WebGLComponents() {
             result is components that look stunning on capable hardware and
             degrade gracefully everywhere else. If you have been hesitant to add
             3D to your React app because of complexity or performance concerns,
-            FlexUI's WebGL components are designed to remove those barriers and
+            FlexUI&apos;s WebGL components are designed to remove those barriers and
             let you ship immersive experiences with a single import.
           </p>
         </div>

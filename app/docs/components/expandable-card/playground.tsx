@@ -32,7 +32,7 @@ const code = `import {
 export function Demo() {
   return (
     <Expandable expandDirection="both" expandBehavior="replace">
-      {({ isExpanded }) => (
+      {({ isExpanded: _isExpanded }) => (
         <ExpandableTrigger>
           <ExpandableCard
             collapsedSize={{ width: 320, height: 240 }}
@@ -79,7 +79,7 @@ export function ExpandableCardPlayground() {
         preview={
           <div className="flex min-h-[350px] w-full items-center justify-center">
             <Expandable expandDirection="both" expandBehavior="replace">
-              {({ isExpanded }) => (
+              {({ isExpanded: _isExpanded }) => (
                 <ExpandableTrigger>
                   <ExpandableCard
                     collapsedSize={{ width: 320, height: 220 }}

@@ -94,7 +94,6 @@ interface ExpandableProps {
     | ((ctx: { isExpanded: boolean }) => React.ReactNode);
   expandDirection?: ExpandDirection;
   expandBehavior?: ExpandBehavior;
-  initialDelay?: number;
   onExpandStart?: () => void;
   onExpandEnd?: () => void;
   className?: string;
@@ -104,7 +103,6 @@ export function Expandable({
   children,
   expandDirection = "both",
   expandBehavior = "replace",
-  initialDelay = 0,
   onExpandStart,
   onExpandEnd,
   className,

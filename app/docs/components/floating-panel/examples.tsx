@@ -20,7 +20,7 @@ import {
   Plus,
   Palette,
   Zap,
-  Image,
+  Image as ImageIcon,
   Paintbrush,
   FileText,
   Upload,
@@ -199,7 +199,7 @@ function ImagePreviewPanel() {
   return (
     <FloatingPanelRoot>
       <FloatingPanelTrigger title="Preview Image">
-        <Image className="h-4 w-4" /> Preview Image
+        <ImageIcon className="h-4 w-4" /> Preview Image
       </FloatingPanelTrigger>
       <FloatingPanelContent className="w-80">
         <FloatingPanelBody>
@@ -209,7 +209,7 @@ function ImagePreviewPanel() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <Image className="h-10 w-10 text-zinc-600" />
+            <ImageIcon className="h-10 w-10 text-zinc-600" />
           </motion.div>
           <motion.p
             className="mt-3 text-xs text-zinc-500"
@@ -389,7 +389,7 @@ const examples = [
     preview: <ImagePreviewPanel />,
     code: `<FloatingPanelRoot>
   <FloatingPanelTrigger title="Preview Image">
-    <Image className="h-4 w-4" /> Preview Image
+    <ImageIcon className="h-4 w-4" /> Preview Image
   </FloatingPanelTrigger>
   <FloatingPanelContent className="w-80">
     <FloatingPanelBody>
@@ -399,7 +399,7 @@ const examples = [
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.3 }}
       >
-        <Image className="h-10 w-10 text-zinc-600" />
+        <ImageIcon className="h-10 w-10 text-zinc-600" />
       </motion.div>
       <motion.p
         className="mt-3 text-xs text-zinc-500"

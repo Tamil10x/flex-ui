@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { AnimatedInput } from "@/components/flexui/animated-input";
 import { ShowcaseGrid } from "@/components/docs/expandable-showcase";
 

@@ -12,34 +12,6 @@ export const metadata: Metadata = {
     "A real-time GLSL metaball/blob that morphs organically, reacts to cursor, and glows with two-tone color gradients.",
 };
 
-const shaderBlobSource = `"use client";
-
-import React, { useEffect, useRef, useState, useCallback } from "react";
-import { cn } from "@/lib/utils";
-
-interface ShaderBlobProps {
-  className?: string;
-  color?: string;
-  accentColor?: string;
-  speed?: number;
-  complexity?: number;
-  interactive?: boolean;
-}
-
-export function ShaderBlob({
-  className,
-  color = "#8B5CF6",
-  accentColor = "#389CFD",
-  speed = 1.0,
-  complexity = 1.0,
-  interactive = true,
-}: ShaderBlobProps) {
-  // Uses OGL for WebGL rendering with a fullscreen triangle
-  // Fragment shader creates animated metaball with FBM noise
-  // Cursor tracking stretches blob toward pointer
-  // See full source in components/flexui/shader-blob.tsx
-}`;
-
 export default function ShaderBlobDoc() {
   return (
     <div className="min-w-0 flex-1 space-y-14">

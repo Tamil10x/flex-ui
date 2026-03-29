@@ -136,7 +136,7 @@ export default function ShowcasePage() {
           <span className="mb-4 inline-block text-4xl">🚀</span>
           <h3 className="text-xl font-bold text-white">Built something with FlexUI?</h3>
           <p className="mt-2 text-sm text-zinc-500">
-            We'd love to feature your project. Submit it and get showcased to thousands of developers.
+            We&apos;d love to feature your project. Submit it and get showcased to thousands of developers.
           </p>
           <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a

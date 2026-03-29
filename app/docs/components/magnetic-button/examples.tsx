@@ -3,7 +3,7 @@
 import React from "react";
 import { MagneticButton } from "@/components/flexui/magnetic-button";
 import { ShowcaseGrid } from "@/components/docs/expandable-showcase";
-import { ArrowRight, Zap, Download, Star, Heart } from "lucide-react";
+import { ArrowRight, Zap, Download } from "lucide-react";
 
 const examples = [
   {

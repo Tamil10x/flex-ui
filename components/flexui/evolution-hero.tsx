@@ -30,6 +30,7 @@ export function EvolutionHero({
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { setMounted(true); }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -168,7 +169,7 @@ export function EvolutionHero({
                 {stage}
               </span>
               {i < stages.length - 1 && (
-                <span className="hidden text-zinc-700 sm:inline">//</span>
+                <span className="hidden text-zinc-700 sm:inline">{"//"}</span>
               )}
             </div>
           ))}

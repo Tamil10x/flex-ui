@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { FloatingNavbar } from "@/components/flexui/floating-navbar";
 import { PreviewCodeTabs } from "@/components/docs/preview-code-tabs";
 import { Home, User, Briefcase, Mail } from "lucide-react";
 

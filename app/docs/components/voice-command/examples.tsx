@@ -3,7 +3,7 @@
 import React from "react";
 import { VoiceCommand } from "@/components/flexui/voice-command";
 import { ShowcaseGrid } from "@/components/docs/expandable-showcase";
-import { Sun, Moon, Search, Volume2, Zap } from "lucide-react";
+import { Sun, Moon, Zap } from "lucide-react";
 
 const noop = () => {};
 

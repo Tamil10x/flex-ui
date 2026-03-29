@@ -11,7 +11,6 @@ import {
   CheckCircle2,
   Circle,
   AlertCircle,
-  Star,
   ShoppingCart,
   ArrowRight,
   Sparkles,

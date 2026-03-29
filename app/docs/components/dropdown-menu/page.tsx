@@ -4,7 +4,7 @@ import { DocSection, DocSubSection } from "@/components/docs/doc-section";
 import { ApiTable } from "@/components/docs/api-table";
 import { ComponentDemo } from "./demo";
 import { DropdownMenuExamples } from "./examples";
-import { Keyboard, Zap, MousePointerClick, Image } from "lucide-react";
+import { Keyboard, Zap, MousePointerClick, Image as ImageIcon } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "DropdownMenu — FlexUI",
@@ -56,7 +56,7 @@ export default function Page() {
             { icon: <Keyboard className="h-4 w-4" />, label: "Keyboard Navigation", desc: "Full arrow key, Enter, and Escape support for navigating and selecting menu items." },
             { icon: <Zap className="h-4 w-4" />, label: "Spring Animation", desc: "Menu opens with a Framer Motion spring scale transition for a snappy, polished feel." },
             { icon: <MousePointerClick className="h-4 w-4" />, label: "Click Outside", desc: "Automatically dismisses when clicking outside the menu using a document mousedown listener." },
-            { icon: <Image className="h-4 w-4" />, label: "Icon Support", desc: "Each menu item can include an optional icon rendered alongside the label." },
+            { icon: <ImageIcon className="h-4 w-4" />, label: "Icon Support", desc: "Each menu item can include an optional icon rendered alongside the label." },
           ].map((item) => (
             <div key={item.label} className="group/card rounded-xl border border-white/[0.06] bg-zinc-950/50 p-5 transition-all duration-300 hover:border-white/[0.1] hover:bg-zinc-900/40">
               <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 text-sm font-bold text-blue-400">{item.icon}</div>

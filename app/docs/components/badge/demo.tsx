@@ -3,7 +3,7 @@
 import React from "react";
 import { Badge } from "@/components/flexui/badge";
 import { PreviewCodeTabs } from "@/components/docs/preview-code-tabs";
-import { Wifi, Rocket, Shield, Star, Zap, Check } from "lucide-react";
+import { Rocket, Star, Zap, Check } from "lucide-react";
 
 export function ComponentDemo() {
   return (

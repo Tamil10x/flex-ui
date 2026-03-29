@@ -1,11 +1,11 @@
 "use client";
 
-import React from "react";
+import { useState } from "react";
 import { PreviewCodeTabs } from "@/components/docs/preview-code-tabs";
 import { Countdown } from "@/components/flexui/countdown";
 
 export function ComponentDemo() {
-  const target = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+  const [target] = useState(() => new Date(Date.now() + 7 * 24 * 60 * 60 * 1000));
 
   return (
     <PreviewCodeTabs

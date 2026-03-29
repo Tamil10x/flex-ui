@@ -12,44 +12,6 @@ export const metadata: Metadata = {
     "A WebGL shader-based animated eye effect with cosmic nebula colors, mouse-tracking pupil, and organic noise textures.",
 };
 
-const cosmicEyeSource = `"use client";
-
-import React, { useEffect, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
-
-interface CosmicEyeProps {
-  color?: string;
-  accentColor?: string;
-  intensity?: number;
-  pupilSize?: number;
-  irisWidth?: number;
-  glowIntensity?: number;
-  scale?: number;
-  noiseScale?: number;
-  pupilFollow?: number;
-  speed?: number;
-  className?: string;
-}
-
-export function CosmicEye({
-  color = "#8b5cf6",
-  accentColor = "#22d3ee",
-  intensity = 1.5,
-  pupilSize = 0.55,
-  irisWidth = 0.25,
-  glowIntensity = 0.4,
-  scale = 0.85,
-  noiseScale = 1.0,
-  pupilFollow = 1.0,
-  speed = 1.0,
-  className,
-}: CosmicEyeProps) {
-  // Uses OGL for WebGL rendering with a fullscreen triangle
-  // Fragment shader creates animated iris, pupil, and corona
-  // Mouse tracking with smooth lerp for pupil movement
-  // See full source in components/flexui/cosmic-eye.tsx
-}`;
-
 export default function CosmicEyeDoc() {
   return (
     <div className="min-w-0 flex-1 space-y-14">

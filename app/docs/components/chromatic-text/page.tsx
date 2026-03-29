@@ -12,33 +12,6 @@ export const metadata: Metadata = {
     "Text with chromatic aberration effect -- RGB channels split on hover or always active with configurable offset and colors.",
 };
 
-const chromaticTextSource = `"use client";
-
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-
-interface ChromaticTextProps {
-  children: string;
-  className?: string;
-  offset?: number;
-  trigger?: "hover" | "always";
-  colors?: [string, string, string];
-}
-
-export function ChromaticText({
-  children,
-  className,
-  offset = 3,
-  trigger = "hover",
-  colors = ["#ff0000", "#00ff00", "#0000ff"],
-}: ChromaticTextProps) {
-  // Renders text 3 times with absolute positioning
-  // Each layer has a different color and offset
-  // mix-blend-mode: screen merges channels
-  // See full source in components/flexui/chromatic-text.tsx
-}`;
-
 export default function ChromaticTextDoc() {
   return (
     <div className="min-w-0 flex-1 space-y-14">

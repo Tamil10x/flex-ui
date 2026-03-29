@@ -3,7 +3,7 @@
 import React from "react";
 import { Breadcrumb } from "@/components/flexui/breadcrumb";
 import { ShowcaseGrid } from "@/components/docs/expandable-showcase";
-import { ChevronRight, Dot, Home } from "lucide-react";
+import { ChevronRight, Dot } from "lucide-react";
 
 const examples = [
   {
